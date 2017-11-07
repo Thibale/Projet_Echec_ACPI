@@ -34,6 +34,12 @@ public class Joueurs {
     private String ligueJ;
     private String clubJ;
     
+    
+    DocumentBuilderFactory factory;
+    DocumentBuilder builder;
+    Document document;
+    
+    
     public Joueurs(int id,String numLicence,String nom,String prenom,int numEloNormal,int numEloSemiRapide,int numEloRapide,String categorie,String dateNais,char sexe,String federation,String ligue,String club){
         idJ=id;
         numLicenceJ=numLicence;
@@ -50,16 +56,19 @@ public class Joueurs {
         clubJ=club;
     }
     
+    public void InitXMLFile(){
+        factory = DocumentBuilderFactory.newInstance();
+        try{
+            builder = factory.newDocumentBuilder();
+            document= builder.newDocument();
+        }catch (final ParserConfigurationException e) {
+	    e.printStackTrace();
+	}
+    }
+    
     public void WriteXML(int id,String numLicence,String nom,String prenom,int numEloNormal,int numEloSemiRapide,int numEloRapide,String categorie,String dateNais,char sexe,String federation,String ligue,String club){
-	final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		
 	try {
-	    //Etape 2 : création d'un parseur
-	    final DocumentBuilder builder = factory.newDocumentBuilder();
-	    		
-	    //Etape 3 : création d'un Document
-	    final Document document= builder.newDocument();
-					
             //Etape 4 : création de l'Element racine
 	    final Element racine = document.createElement("joueurs");
 	    document.appendChild(racine);			
@@ -143,9 +152,6 @@ public class Joueurs {
 			
 	    //sortie
 	    transformer.transform(source, sortie);	
-	}
-	catch (final ParserConfigurationException e) {
-	    e.printStackTrace();
 	}
 	catch (TransformerConfigurationException e) {
 	    e.printStackTrace();
