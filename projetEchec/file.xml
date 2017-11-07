@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <joueurs>
-  <!--personne n°1-->
-  <joueur categorie="junM" club="nimes" dateNais="01-01-1997" federation="Fr" idJ="1" ligue="ligue" nomJoueur="Falcone" numEloNormal="1234" numEloRapide="9101" numEloSemiRapide="5678" numLicence="294J" prenomJoueur="Tibo" sexe="H">
-    <idJoueur/>
-    <numLicence/>
-    <nomJoueur/>
-    <prenomJoueur/>
-    <numEloNormal/>
-    <numEloSemiRapide/>
-    <numEloRapide/>
-    <categorie/>
-    <dateNais/>
-    <sexe/>
-    <federation/>
-    <ligue/>
-    <club/>
+  <!--personne n°2-->
+  <joueur>
+    <idJoueur idJ="2"/>
+    <numLicence numLicence="293J"/>
+    <nomJoueur nomJoueur="Bert"/>
+    <prenomJoueur prenomJoueur="Flo"/>
+    <numEloNormal numEloNormal="1264"/>
+    <numEloSemiRapide numEloSemiRapide="5698"/>
+    <numEloRapide numEloRapide="3101"/>
+    <categorie categorie="junF"/>
+    <dateNais dateNais="01-01-1997"/>
+    <sexe sexe="F"/>
+    <federation federation="Fr"/>
+    <ligue ligue="ligue"/>
+    <club club="nimes"/>
   </joueur>
 </joueurs>
