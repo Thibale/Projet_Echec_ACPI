@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <joueurs>
+  <!--personne n°1-->
+  <joueur>
+    <idJoueur idJ="1"/>
+    <numLicence numLicence="294J"/>
+    <nomJoueur nomJoueur="Falcone"/>
+    <prenomJoueur prenomJoueur="Tibo"/>
+    <numEloNormal numEloNormal="1234"/>
+    <numEloSemiRapide numEloSemiRapide="5678"/>
+    <numEloRapide numEloRapide="9101"/>
+    <categorie categorie="junM"/>
+    <dateNais dateNais="01-01-1997"/>
+    <sexe sexe="H"/>
+    <federation federation="Fr"/>
+    <ligue ligue="ligue"/>
+    <club club="nimes"/>
+  </joueur>
   <!--personne n°2-->
   <joueur>
     <idJoueur idJ="2"/>
