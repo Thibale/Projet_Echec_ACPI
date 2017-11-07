@@ -1,11 +1,21 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package projetechec;
+
+/**
+ *
+ * @author Titi
+ */
 public class ProjetEchec {
+
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String[] args) {
-       Joueurs j = new Joueurs(1,"294J","Falcone","Tibo",1234,5678,9101,"junM","01-01-1997",'H',"Fr","ligue","nimes");
-       Joueurs j2 = new Joueurs(2,"293J","Bert","Flo",1264,5698,3101,"junF","01-01-1997",'F',"Fr","ligue","nimes");
-       j.WriteXML(1,"294J","Falcone","Tibo",1234,5678,9101,"junM","01-01-1997",'H',"Fr","ligue","nimes");
-       j2.WriteXML(2,"293J","Bert","Flo",1264,5698,3101,"junF","01-01-1997",'F',"Fr","ligue","nimes");
-    }   
-    
+        // TODO code application logic here
+    }
     
 }
