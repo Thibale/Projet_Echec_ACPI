@@ -12,12 +12,12 @@ public class Joueurs {
     private int numEloRapideJ;
     private String categorieJ;
     private String dateNaisJ;
-    private char sexeJ;
+    private String sexeJ;
     private String federationJ;
     private String ligueJ;
     private String clubJ;
     
-    public Joueurs(int id,String numLicence,String nom,String prenom,int numEloNormal,int numEloSemiRapide,int numEloRapide,String categorie,String dateNais,char sexe,String federation,String ligue,String club){
+    public Joueurs(int id,String numLicence,String nom,String prenom,int numEloNormal,int numEloSemiRapide,int numEloRapide,String categorie,String dateNais,String sexe,String federation,String ligue,String club){
         idJ=id;
         numLicenceJ=numLicence;
         nomJ=nom;
@@ -33,7 +33,7 @@ public class Joueurs {
         clubJ=club;
     }
     
-    public Joueurs(String nom, String prenom, String dateN, char sexe){
+    public Joueurs(String nom, String prenom, String dateN, String sexe){
         idJ=1;
         numLicenceJ="";
         nomJ=nom;
@@ -87,7 +87,7 @@ public class Joueurs {
         return this.dateNaisJ;
     }
     
-    public char getSexeJ(){
+    public String getSexeJ(){
         return this.sexeJ;
     }
     
