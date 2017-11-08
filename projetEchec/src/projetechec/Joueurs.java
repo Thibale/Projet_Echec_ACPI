@@ -1,6 +1,12 @@
 package projetechec;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Joueurs {
     private int idJ;
@@ -17,7 +23,7 @@ public class Joueurs {
     private String ligueJ;
     private String clubJ;
     
-    public Joueurs(int id,String numLicence,String nom,String prenom,int numEloNormal,int numEloSemiRapide,int numEloRapide,String categorie,String dateNais,char sexe,String federation,String ligue,String club){
+    public Joueurs(int id,String numLicence,String nom,String prenom,int numEloNormal,int numEloSemiRapide,int numEloRapide,String dateNais,char sexe,String federation,String ligue,String club){
         idJ=id;
         numLicenceJ=numLicence;
         nomJ=nom;
@@ -25,7 +31,7 @@ public class Joueurs {
         numEloNormalJ=numEloNormal;
         numEloSemiRapideJ=numEloSemiRapide;
         numEloRapideJ=numEloRapide;
-        categorieJ=categorie;
+        categorieJ=this.calculCategorie(sexe,dateNais);
         dateNaisJ=dateNais;
         sexeJ=sexe;
         federationJ=federation;
@@ -115,6 +121,32 @@ public class Joueurs {
         this.clubJ = club;
     }
     
+    public String calculCategorie(char sexe, String date){
+        String cat = "";
+        LocalDate dob = LocalDate.parse(date);
+        LocalDate curDate = LocalDate.now();
+        int age = Period.between(dob, curDate).getYears();
+        if(age < 8){
+            cat = cat+"pPo";
+        }else if(age < 10){
+            cat = cat+"Po";
+        }else if(age < 12){
+            cat = cat+"Pu";
+        }else if(age < 14){
+            cat = cat+"Ben";
+        }else if(age < 16){
+            cat = cat+"Min";
+        }else if(age < 18){
+            cat = cat+"Cad";
+        }else if(age < 20){
+            cat = cat+"Jun";
+        }else if(age < 50){
+            cat = cat+"Sen";
+        }else{
+            cat = cat+"Vet";
+        }
+        return cat+sexe;
+    }
 }
 
     
