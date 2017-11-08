@@ -1,4 +1,4 @@
-package test; // t'aura peut être besoin de modifier ça (probablement)
+package projetechec; // t'aura peut être besoin de modifier ça (probablement)
 
 import java.awt.Color;
 
