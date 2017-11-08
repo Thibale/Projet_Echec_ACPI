@@ -431,6 +431,7 @@ public class MainMenu extends javax.swing.JFrame {
         labelSexe.setForeground(Color.black);
         labelDateDeNaissance.setForeground(Color.black);
         if(verifDonneeEnregistrementJoueur(nom, prenom, dateDeNaissance, sexe)){
+        //    Joueur J = new Joueur();
         RetourCreation.setText(nom + '\n' + prenom + '\n' + dateDeNaissance + '\n' + sexe + '\n' + licence);
         }
         else{

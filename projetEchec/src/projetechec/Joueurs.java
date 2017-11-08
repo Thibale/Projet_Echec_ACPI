@@ -33,6 +33,22 @@ public class Joueurs {
         clubJ=club;
     }
     
+    public Joueurs(String nom, String prenom, String dateN, char sexe){
+        idJ=1;
+        numLicenceJ="";
+        nomJ=nom;
+        prenomJ=prenom;
+        numEloNormalJ=0;
+        numEloSemiRapideJ=0;
+        numEloRapideJ=0;
+        categorieJ="";
+        dateNaisJ=dateN;
+        sexeJ=sexe;
+        federationJ="";
+        ligueJ="";
+        clubJ="";
+    }
+    
     /* Assesseurs */
     
     public int getIdJ(){
