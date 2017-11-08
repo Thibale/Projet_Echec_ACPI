@@ -24,7 +24,6 @@ public class XML {
     
     
     public void InitXMLFile(){
-        System.out.println("Entrée init");
         factory = DocumentBuilderFactory.newInstance();
         
         try {
@@ -42,16 +41,12 @@ public class XML {
 	}
         
         isInit = true;
-        System.out.println("Sortie init");
     }
     
     public void WriteXML(Joueurs j){
-        System.out.println("Entrée write");
         if(!isInit){
-            System.out.println("bool init");
             this.InitXMLFile();
         }
-        System.out.println("après bool init");
         
 	try {			
 			
@@ -67,22 +62,22 @@ public class XML {
             idJoueur.setAttribute("idJ", String.valueOf(j.getIdJ()));
 			
 	    final Element numLic = document.createElement("numLicence");
-	    numLic.setAttribute("numLicence", j.getNumLicenceJ() );
+	    numLic.setAttribute("numLicence", j.getNumLicenceJ());
             
             final Element nomJoueur = document.createElement("nomJoueur");
             nomJoueur.setAttribute("nomJoueur", j.getNomJ());
 			
 	    final Element prenomJoueur = document.createElement("prenomJoueur");
-	    prenomJoueur.setAttribute("prenomJoueur", j.getPrenomJ() );
+	    prenomJoueur.setAttribute("prenomJoueur", j.getPrenomJ());
             
             final Element numEloNorm = document.createElement("numEloNormal");
             numEloNorm.setAttribute("numEloNormal", String.valueOf(j.getNumEloNormalJ()));
 			
 	    final Element numEloSemiRap = document.createElement("numEloSemiRapide");
-	    numEloSemiRap.setAttribute("numEloSemiRapide", String.valueOf(j.getNumEloSemiRapideJ() ));
+	    numEloSemiRap.setAttribute("numEloSemiRapide", String.valueOf(j.getNumEloSemiRapideJ()));
             
             final Element numEloRap = document.createElement("numEloRapide");
-	    numEloRap.setAttribute("numEloRapide", String.valueOf(j.getNumEloRapideJ() ));
+	    numEloRap.setAttribute("numEloRapide", String.valueOf(j.getNumEloRapideJ()));
             
             final Element catJ = document.createElement("categorie");
             catJ.setAttribute("categorie", j.getCategorieJ());
@@ -120,7 +115,7 @@ public class XML {
 	    final TransformerFactory transformerFactory = TransformerFactory.newInstance();
 	    final Transformer transformer = transformerFactory.newTransformer();
 	    final DOMSource source = new DOMSource(document);
-	    final StreamResult sortie = new StreamResult(new File(System.getProperty("user.dir")+"\\file.xml"));
+	    final StreamResult sortie = new StreamResult(new File(System.getProperty("user.dir")+"\\Joueurs.xml"));
 	    //final StreamResult result = new StreamResult(System.out);
 			
 	    //prologue
