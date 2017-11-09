@@ -1,6 +1,9 @@
 package projetechec; // t'aura peut être besoin de modifier ça (probablement)
 
 import java.awt.Color;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 /**
  *
@@ -443,6 +446,7 @@ public class MainMenu extends javax.swing.JFrame {
         if(verifDonneeEnregistrementJoueur(nom, prenom, dateDeNaissance, sexe)){
             if(verifFormatNomValide(nom)){
                 if(verifFormatPrenomValide(prenom)){
+                    if(verifFormatDateValide(dateDeNaissance)){
                     if(verifFormatEloValide(eloN)){
                         if(verifFormatEloValide(eloR)){
                             if(verifFormatEloValide(eloSR)){
@@ -457,7 +461,7 @@ public class MainMenu extends javax.swing.JFrame {
                                 }
                             }
                         }
-                    }
+                    } }
                 }
             }
         }
@@ -469,18 +473,33 @@ public class MainMenu extends javax.swing.JFrame {
     private void comboBoxSexeActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
     }
-    /*
+    
     private boolean verifFormatDateValide(String date){
         boolean res = true;
-        if(date.length() != 10){
+        /*if(date.length() != 10){
             res = false;
         }
         else if (){
             
         }
+        return res;*/
+        String myDate = "2007-05-26";
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	sdf.setLenient(true);
+  	Date d = new Date();
+	  	
+  	try {
+	   d = sdf.parse(date );
+	   String t = sdf.format(d);
+	   if(t.compareTo(date) !=  0){
+		  	res=false;
+			RetourCreation.setText("Erreur, date invalide");}  	
+  	} catch (Exception e) {
+		   // --- Gestion mauvaise date
+  	}
         return res;
     }
-    */
+    
     private boolean verifFormatNomValide(String nom){
         boolean res = true;
         if(!nom.matches("[A-Za-z-]*")){
