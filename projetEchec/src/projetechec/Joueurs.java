@@ -188,7 +188,18 @@ public class Joueurs {
         return cat+sexe;
     }
     
-    public void JtoString(){
-        System.out.println(this.idJ+this.numLicenceJ+this.nomJ+this.prenomJ+this.numEloNormalJ+this.numEloSemiRapideJ+this.numEloRapideJ+this.categorieJ+this.dateNaisJ+this.sexeJ+this.federationJ+this.ligueJ+this.clubJ);
+    public String JtoString(){
+        return "Numero Licence: " + this.numLicenceJ +System.getProperty("line.separator")+
+                "Nom joueur: " + this.nomJ +System.getProperty("line.separator")+ 
+                "Prenom joueur: " + this.prenomJ +System.getProperty("line.separator")+
+                "Numero Elo Normal: " + this.numEloNormalJ +System.getProperty("line.separator")+
+                "Numero Elo SemiRapide: "+ this.numEloSemiRapideJ +System.getProperty("line.separator")+
+                "Numero Elo Rapide:  " + this.numEloRapideJ +System.getProperty("line.separator")+
+                "Categorie: "+this.categorieJ +System.getProperty("line.separator")+
+                "Date Naissance: " + this.dateNaisJ +System.getProperty("line.separator")+
+                "Sexe: " + this.sexeJ +System.getProperty("line.separator")+
+                "Federation: " + this.federationJ +System.getProperty("line.separator")+
+                "Ligue: " + this.ligueJ +System.getProperty("line.separator")+
+                "Club: "+ this.clubJ+System.getProperty("line.separator");
     }
 }  

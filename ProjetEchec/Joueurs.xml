@@ -1,35 +1,497 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <joueurs>
-  <!--personne n°1-->
-  <joueur>
+<!--personne n°1--><joueur>
     <idJoueur idJ="1"/>
-    <numLicence numLicence=""/>
-    <nomJoueur nomJoueur="f"/>
-    <prenomJoueur prenomJoueur="f"/>
-    <numEloNormal numEloNormal="0"/>
-    <numEloSemiRapide numEloSemiRapide="0"/>
-    <numEloRapide numEloRapide="0"/>
-    <categorie categorie=""/>
-    <dateNais dateNais="f"/>
+    <numLicence numLicence="flkdf"/>
+    <nomJoueur nomJoueur="bert"/>
+    <prenomJoueur prenomJoueur="floriane"/>
+    <numEloNormal numEloNormal="111"/>
+    <numEloSemiRapide numEloSemiRapide="222"/>
+    <numEloRapide numEloRapide="333"/>
+    <categorie categorie="SenM"/>
+    <dateNais dateNais="1997-01-01"/>
     <sexe sexe="M"/>
-    <federation federation=""/>
-    <ligue ligue=""/>
-    <club club=""/>
+    <federation federation="fra"/>
+    <ligue ligue="dfs"/>
+    <club club="sdfds"/>
   </joueur>
-  <!--personne n°1-->
+  <!--personne n°2-->
   <joueur>
+    <idJoueur idJ="2"/>
+    <numLicence numLicence="flkdf"/>
+    <nomJoueur nomJoueur="falcone"/>
+    <prenomJoueur prenomJoueur="tibo"/>
+    <numEloNormal numEloNormal="111"/>
+    <numEloSemiRapide numEloSemiRapide="222"/>
+    <numEloRapide numEloRapide="333"/>
+    <categorie categorie="SenM"/>
+    <dateNais dateNais="1997-01-01"/>
+    <sexe sexe="M"/>
+    <federation federation="fra"/>
+    <ligue ligue="dfs"/>
+    <club club="sdfds"/>
+  </joueur>
+<!--personne n°1--><joueur>
     <idJoueur idJ="1"/>
-    <numLicence numLicence=""/>
-    <nomJoueur nomJoueur="f"/>
-    <prenomJoueur prenomJoueur="f"/>
-    <numEloNormal numEloNormal="0"/>
-    <numEloSemiRapide numEloSemiRapide="0"/>
-    <numEloRapide numEloRapide="0"/>
-    <categorie categorie=""/>
-    <dateNais dateNais="f"/>
+    <numLicence numLicence="fds"/>
+    <nomJoueur nomJoueur="dfds"/>
+    <prenomJoueur prenomJoueur="dfd"/>
+    <numEloNormal numEloNormal="111"/>
+    <numEloSemiRapide numEloSemiRapide="111"/>
+    <numEloRapide numEloRapide="111"/>
+    <categorie categorie="pPoF"/>
+    <dateNais dateNais="2016-01-01"/>
     <sexe sexe="F"/>
-    <federation federation=""/>
-    <ligue ligue=""/>
-    <club club=""/>
+    <federation federation="fds"/>
+    <ligue ligue="dfd"/>
+    <club club="dfds"/>
+  </joueur>
+  <!--personne n°2-->
+  <joueur>
+    <idJoueur idJ="2"/>
+    <numLicence numLicence="fds"/>
+    <nomJoueur nomJoueur="tre"/>
+    <prenomJoueur prenomJoueur="gfdh"/>
+    <numEloNormal numEloNormal="111"/>
+    <numEloSemiRapide numEloSemiRapide="111"/>
+    <numEloRapide numEloRapide="111"/>
+    <categorie categorie="CadM"/>
+    <dateNais dateNais="2000-01-01"/>
+    <sexe sexe="M"/>
+    <federation federation="fds"/>
+    <ligue ligue="dfd"/>
+    <club club="dfds"/>
+  </joueur>
+  <!--personne n°3-->
+  <joueur>
+    <idJoueur idJ="3"/>
+    <numLicence numLicence="fds"/>
+    <nomJoueur nomJoueur="khjkjg"/>
+    <prenomJoueur prenomJoueur="ghgdh"/>
+    <numEloNormal numEloNormal="111"/>
+    <numEloSemiRapide numEloSemiRapide="111"/>
+    <numEloRapide numEloRapide="111"/>
+    <categorie categorie="BenM"/>
+    <dateNais dateNais="2005-01-01"/>
+    <sexe sexe="M"/>
+    <federation federation="fds"/>
+    <ligue ligue="dfd"/>
+    <club club="dfds"/>
+  </joueur>
+  <!--personne n°4-->
+  <joueur>
+    <idJoueur idJ="4"/>
+    <numLicence numLicence="fds"/>
+    <nomJoueur nomJoueur="khjkjg"/>
+    <prenomJoueur prenomJoueur="ghgdh"/>
+    <numEloNormal numEloNormal="111"/>
+    <numEloSemiRapide numEloSemiRapide="111"/>
+    <numEloRapide numEloRapide="111"/>
+    <categorie categorie="BenM"/>
+    <dateNais dateNais="2005-01-01"/>
+    <sexe sexe="M"/>
+    <federation federation="fds"/>
+    <ligue ligue="dfd"/>
+    <club club="dfds"/>
+  </joueur>
+  <!--personne n°5-->
+  <joueur>
+    <idJoueur idJ="5"/>
+    <numLicence numLicence="fds"/>
+    <nomJoueur nomJoueur="khjkjg"/>
+    <prenomJoueur prenomJoueur="ghgdh"/>
+    <numEloNormal numEloNormal="111"/>
+    <numEloSemiRapide numEloSemiRapide="111"/>
+    <numEloRapide numEloRapide="111"/>
+    <categorie categorie="BenM"/>
+    <dateNais dateNais="2005-01-01"/>
+    <sexe sexe="M"/>
+    <federation federation="fds"/>
+    <ligue ligue="dfd"/>
+    <club club="dfds"/>
+  </joueur>
+  <!--personne n°6-->
+  <joueur>
+    <idJoueur idJ="6"/>
+    <numLicence numLicence="fds"/>
+    <nomJoueur nomJoueur="khjkjg"/>
+    <prenomJoueur prenomJoueur="ghgdh"/>
+    <numEloNormal numEloNormal="111"/>
+    <numEloSemiRapide numEloSemiRapide="111"/>
+    <numEloRapide numEloRapide="111"/>
+    <categorie categorie="BenM"/>
+    <dateNais dateNais="2005-01-01"/>
+    <sexe sexe="M"/>
+    <federation federation="fds"/>
+    <ligue ligue="dfd"/>
+    <club club="dfds"/>
+  </joueur>
+  <!--personne n°7-->
+  <joueur>
+    <idJoueur idJ="7"/>
+    <numLicence numLicence="fds"/>
+    <nomJoueur nomJoueur="khjkjg"/>
+    <prenomJoueur prenomJoueur="ghgdh"/>
+    <numEloNormal numEloNormal="111"/>
+    <numEloSemiRapide numEloSemiRapide="111"/>
+    <numEloRapide numEloRapide="111"/>
+    <categorie categorie="BenM"/>
+    <dateNais dateNais="2005-01-01"/>
+    <sexe sexe="M"/>
+    <federation federation="fds"/>
+    <ligue ligue="dfd"/>
+    <club club="dfds"/>
+  </joueur>
+  <!--personne n°8-->
+  <joueur>
+    <idJoueur idJ="8"/>
+    <numLicence numLicence="fds"/>
+    <nomJoueur nomJoueur="khjkjg"/>
+    <prenomJoueur prenomJoueur="ghgdh"/>
+    <numEloNormal numEloNormal="111"/>
+    <numEloSemiRapide numEloSemiRapide="111"/>
+    <numEloRapide numEloRapide="111"/>
+    <categorie categorie="BenM"/>
+    <dateNais dateNais="2005-01-01"/>
+    <sexe sexe="M"/>
+    <federation federation="fds"/>
+    <ligue ligue="dfd"/>
+    <club club="dfds"/>
+  </joueur>
+  <!--personne n°9-->
+  <joueur>
+    <idJoueur idJ="9"/>
+    <numLicence numLicence="fds"/>
+    <nomJoueur nomJoueur="khjkjg"/>
+    <prenomJoueur prenomJoueur="ghgdh"/>
+    <numEloNormal numEloNormal="111"/>
+    <numEloSemiRapide numEloSemiRapide="111"/>
+    <numEloRapide numEloRapide="111"/>
+    <categorie categorie="BenM"/>
+    <dateNais dateNais="2005-01-01"/>
+    <sexe sexe="M"/>
+    <federation federation="fds"/>
+    <ligue ligue="dfd"/>
+    <club club="dfds"/>
+  </joueur>
+  <!--personne n°10-->
+  <joueur>
+    <idJoueur idJ="10"/>
+    <numLicence numLicence="fds"/>
+    <nomJoueur nomJoueur="khjkjg"/>
+    <prenomJoueur prenomJoueur="ghgdh"/>
+    <numEloNormal numEloNormal="111"/>
+    <numEloSemiRapide numEloSemiRapide="111"/>
+    <numEloRapide numEloRapide="111"/>
+    <categorie categorie="BenM"/>
+    <dateNais dateNais="2005-01-01"/>
+    <sexe sexe="M"/>
+    <federation federation="fds"/>
+    <ligue ligue="dfd"/>
+    <club club="dfds"/>
+  </joueur>
+  <!--personne n°11-->
+  <joueur>
+    <idJoueur idJ="11"/>
+    <numLicence numLicence="fds"/>
+    <nomJoueur nomJoueur="khjkjg"/>
+    <prenomJoueur prenomJoueur="ghgdh"/>
+    <numEloNormal numEloNormal="111"/>
+    <numEloSemiRapide numEloSemiRapide="111"/>
+    <numEloRapide numEloRapide="111"/>
+    <categorie categorie="BenM"/>
+    <dateNais dateNais="2005-01-01"/>
+    <sexe sexe="M"/>
+    <federation federation="fds"/>
+    <ligue ligue="dfd"/>
+    <club club="dfds"/>
+  </joueur>
+  <!--personne n°12-->
+  <joueur>
+    <idJoueur idJ="12"/>
+    <numLicence numLicence="fds"/>
+    <nomJoueur nomJoueur="khjkjg"/>
+    <prenomJoueur prenomJoueur="ghgdh"/>
+    <numEloNormal numEloNormal="111"/>
+    <numEloSemiRapide numEloSemiRapide="111"/>
+    <numEloRapide numEloRapide="111"/>
+    <categorie categorie="BenM"/>
+    <dateNais dateNais="2005-01-01"/>
+    <sexe sexe="M"/>
+    <federation federation="fds"/>
+    <ligue ligue="dfd"/>
+    <club club="dfds"/>
+  </joueur>
+  <!--personne n°13-->
+  <joueur>
+    <idJoueur idJ="13"/>
+    <numLicence numLicence="fds"/>
+    <nomJoueur nomJoueur="khjkjg"/>
+    <prenomJoueur prenomJoueur="ghgdh"/>
+    <numEloNormal numEloNormal="111"/>
+    <numEloSemiRapide numEloSemiRapide="111"/>
+    <numEloRapide numEloRapide="111"/>
+    <categorie categorie="BenM"/>
+    <dateNais dateNais="2005-01-01"/>
+    <sexe sexe="M"/>
+    <federation federation="fds"/>
+    <ligue ligue="dfd"/>
+    <club club="dfds"/>
+  </joueur>
+  <!--personne n°14-->
+  <joueur>
+    <idJoueur idJ="14"/>
+    <numLicence numLicence="fds"/>
+    <nomJoueur nomJoueur="khjkjg"/>
+    <prenomJoueur prenomJoueur="ghgdh"/>
+    <numEloNormal numEloNormal="111"/>
+    <numEloSemiRapide numEloSemiRapide="111"/>
+    <numEloRapide numEloRapide="111"/>
+    <categorie categorie="BenM"/>
+    <dateNais dateNais="2005-01-01"/>
+    <sexe sexe="M"/>
+    <federation federation="fds"/>
+    <ligue ligue="dfd"/>
+    <club club="dfds"/>
+  </joueur>
+  <!--personne n°15-->
+  <joueur>
+    <idJoueur idJ="15"/>
+    <numLicence numLicence="fds"/>
+    <nomJoueur nomJoueur="khjkjg"/>
+    <prenomJoueur prenomJoueur="ghgdh"/>
+    <numEloNormal numEloNormal="111"/>
+    <numEloSemiRapide numEloSemiRapide="111"/>
+    <numEloRapide numEloRapide="111"/>
+    <categorie categorie="BenM"/>
+    <dateNais dateNais="2005-01-01"/>
+    <sexe sexe="M"/>
+    <federation federation="fds"/>
+    <ligue ligue="dfd"/>
+    <club club="dfds"/>
+  </joueur>
+  <!--personne n°16-->
+  <joueur>
+    <idJoueur idJ="16"/>
+    <numLicence numLicence="fds"/>
+    <nomJoueur nomJoueur="khjkjg"/>
+    <prenomJoueur prenomJoueur="ghgdh"/>
+    <numEloNormal numEloNormal="111"/>
+    <numEloSemiRapide numEloSemiRapide="111"/>
+    <numEloRapide numEloRapide="111"/>
+    <categorie categorie="BenM"/>
+    <dateNais dateNais="2005-01-01"/>
+    <sexe sexe="M"/>
+    <federation federation="fds"/>
+    <ligue ligue="dfd"/>
+    <club club="dfds"/>
+  </joueur>
+  <!--personne n°17-->
+  <joueur>
+    <idJoueur idJ="17"/>
+    <numLicence numLicence="fds"/>
+    <nomJoueur nomJoueur="khjkjg"/>
+    <prenomJoueur prenomJoueur="ghgdh"/>
+    <numEloNormal numEloNormal="111"/>
+    <numEloSemiRapide numEloSemiRapide="111"/>
+    <numEloRapide numEloRapide="111"/>
+    <categorie categorie="BenM"/>
+    <dateNais dateNais="2005-01-01"/>
+    <sexe sexe="M"/>
+    <federation federation="fds"/>
+    <ligue ligue="dfd"/>
+    <club club="dfds"/>
+  </joueur>
+  <!--personne n°18-->
+  <joueur>
+    <idJoueur idJ="18"/>
+    <numLicence numLicence="fds"/>
+    <nomJoueur nomJoueur="khjkjg"/>
+    <prenomJoueur prenomJoueur="ghgdh"/>
+    <numEloNormal numEloNormal="111"/>
+    <numEloSemiRapide numEloSemiRapide="111"/>
+    <numEloRapide numEloRapide="111"/>
+    <categorie categorie="BenM"/>
+    <dateNais dateNais="2005-01-01"/>
+    <sexe sexe="M"/>
+    <federation federation="fds"/>
+    <ligue ligue="dfd"/>
+    <club club="dfds"/>
+  </joueur>
+  <!--personne n°19-->
+  <joueur>
+    <idJoueur idJ="19"/>
+    <numLicence numLicence="fds"/>
+    <nomJoueur nomJoueur="khjkjg"/>
+    <prenomJoueur prenomJoueur="ghgdh"/>
+    <numEloNormal numEloNormal="111"/>
+    <numEloSemiRapide numEloSemiRapide="111"/>
+    <numEloRapide numEloRapide="111"/>
+    <categorie categorie="BenM"/>
+    <dateNais dateNais="2005-01-01"/>
+    <sexe sexe="M"/>
+    <federation federation="fds"/>
+    <ligue ligue="dfd"/>
+    <club club="dfds"/>
+  </joueur>
+  <!--personne n°20-->
+  <joueur>
+    <idJoueur idJ="20"/>
+    <numLicence numLicence="fds"/>
+    <nomJoueur nomJoueur="khjkjg"/>
+    <prenomJoueur prenomJoueur="ghgdh"/>
+    <numEloNormal numEloNormal="111"/>
+    <numEloSemiRapide numEloSemiRapide="111"/>
+    <numEloRapide numEloRapide="111"/>
+    <categorie categorie="BenM"/>
+    <dateNais dateNais="2005-01-01"/>
+    <sexe sexe="M"/>
+    <federation federation="fds"/>
+    <ligue ligue="dfd"/>
+    <club club="dfds"/>
+  </joueur>
+  <!--personne n°21-->
+  <joueur>
+    <idJoueur idJ="21"/>
+    <numLicence numLicence="fds"/>
+    <nomJoueur nomJoueur="khjkjg"/>
+    <prenomJoueur prenomJoueur="ghgdh"/>
+    <numEloNormal numEloNormal="111"/>
+    <numEloSemiRapide numEloSemiRapide="111"/>
+    <numEloRapide numEloRapide="111"/>
+    <categorie categorie="BenM"/>
+    <dateNais dateNais="2005-01-01"/>
+    <sexe sexe="M"/>
+    <federation federation="fds"/>
+    <ligue ligue="dfd"/>
+    <club club="dfds"/>
+  </joueur>
+  <!--personne n°22-->
+  <joueur>
+    <idJoueur idJ="22"/>
+    <numLicence numLicence="fds"/>
+    <nomJoueur nomJoueur="khjkjg"/>
+    <prenomJoueur prenomJoueur="ghgdh"/>
+    <numEloNormal numEloNormal="111"/>
+    <numEloSemiRapide numEloSemiRapide="111"/>
+    <numEloRapide numEloRapide="111"/>
+    <categorie categorie="BenM"/>
+    <dateNais dateNais="2005-01-01"/>
+    <sexe sexe="M"/>
+    <federation federation="fds"/>
+    <ligue ligue="dfd"/>
+    <club club="dfds"/>
+  </joueur>
+  <!--personne n°23-->
+  <joueur>
+    <idJoueur idJ="23"/>
+    <numLicence numLicence="fds"/>
+    <nomJoueur nomJoueur="khjkjg"/>
+    <prenomJoueur prenomJoueur="ghgdh"/>
+    <numEloNormal numEloNormal="111"/>
+    <numEloSemiRapide numEloSemiRapide="111"/>
+    <numEloRapide numEloRapide="111"/>
+    <categorie categorie="BenM"/>
+    <dateNais dateNais="2005-01-01"/>
+    <sexe sexe="M"/>
+    <federation federation="fds"/>
+    <ligue ligue="dfd"/>
+    <club club="dfds"/>
+  </joueur>
+  <!--personne n°24-->
+  <joueur>
+    <idJoueur idJ="24"/>
+    <numLicence numLicence="fds"/>
+    <nomJoueur nomJoueur="khjkjg"/>
+    <prenomJoueur prenomJoueur="ghgdh"/>
+    <numEloNormal numEloNormal="111"/>
+    <numEloSemiRapide numEloSemiRapide="111"/>
+    <numEloRapide numEloRapide="111"/>
+    <categorie categorie="BenM"/>
+    <dateNais dateNais="2005-01-01"/>
+    <sexe sexe="M"/>
+    <federation federation="fds"/>
+    <ligue ligue="dfd"/>
+    <club club="dfds"/>
+  </joueur>
+  <!--personne n°25-->
+  <joueur>
+    <idJoueur idJ="25"/>
+    <numLicence numLicence="fds"/>
+    <nomJoueur nomJoueur="khjkjg"/>
+    <prenomJoueur prenomJoueur="ghgdh"/>
+    <numEloNormal numEloNormal="111"/>
+    <numEloSemiRapide numEloSemiRapide="111"/>
+    <numEloRapide numEloRapide="111"/>
+    <categorie categorie="BenM"/>
+    <dateNais dateNais="2005-01-01"/>
+    <sexe sexe="M"/>
+    <federation federation="fds"/>
+    <ligue ligue="dfd"/>
+    <club club="dfds"/>
+  </joueur>
+  <!--personne n°26-->
+  <joueur>
+    <idJoueur idJ="26"/>
+    <numLicence numLicence="fds"/>
+    <nomJoueur nomJoueur="khjkjg"/>
+    <prenomJoueur prenomJoueur="ghgdh"/>
+    <numEloNormal numEloNormal="111"/>
+    <numEloSemiRapide numEloSemiRapide="111"/>
+    <numEloRapide numEloRapide="111"/>
+    <categorie categorie="BenM"/>
+    <dateNais dateNais="2005-01-01"/>
+    <sexe sexe="M"/>
+    <federation federation="fds"/>
+    <ligue ligue="dfd"/>
+    <club club="dfds"/>
+  </joueur>
+  <!--personne n°27-->
+  <joueur>
+    <idJoueur idJ="27"/>
+    <numLicence numLicence="fds"/>
+    <nomJoueur nomJoueur="khjkjg"/>
+    <prenomJoueur prenomJoueur="ghgdh"/>
+    <numEloNormal numEloNormal="111"/>
+    <numEloSemiRapide numEloSemiRapide="111"/>
+    <numEloRapide numEloRapide="111"/>
+    <categorie categorie="BenM"/>
+    <dateNais dateNais="2005-01-01"/>
+    <sexe sexe="M"/>
+    <federation federation="fds"/>
+    <ligue ligue="dfd"/>
+    <club club="dfds"/>
+  </joueur>
+  <!--personne n°28-->
+  <joueur>
+    <idJoueur idJ="28"/>
+    <numLicence numLicence="fds"/>
+    <nomJoueur nomJoueur="khjkjg"/>
+    <prenomJoueur prenomJoueur="ghgdh"/>
+    <numEloNormal numEloNormal="111"/>
+    <numEloSemiRapide numEloSemiRapide="111"/>
+    <numEloRapide numEloRapide="111"/>
+    <categorie categorie="BenM"/>
+    <dateNais dateNais="2005-01-01"/>
+    <sexe sexe="M"/>
+    <federation federation="fds"/>
+    <ligue ligue="dfd"/>
+    <club club="dfds"/>
+  </joueur>
+  <!--personne n°29-->
+  <joueur>
+    <idJoueur idJ="29"/>
+    <numLicence numLicence="fds"/>
+    <nomJoueur nomJoueur="khjkjg"/>
+    <prenomJoueur prenomJoueur="ghgdh"/>
+    <numEloNormal numEloNormal="111"/>
+    <numEloSemiRapide numEloSemiRapide="111"/>
+    <numEloRapide numEloRapide="111"/>
+    <categorie categorie="BenM"/>
+    <dateNais dateNais="2005-01-01"/>
+    <sexe sexe="M"/>
+    <federation federation="fds"/>
+    <ligue ligue="dfd"/>
+    <club club="dfds"/>
   </joueur>
 </joueurs>

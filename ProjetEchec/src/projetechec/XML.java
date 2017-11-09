@@ -160,6 +160,9 @@ public class XML {
     }
     
     public ArrayList<Joueurs> ReadXML(){
+        if(!isInit){
+            this.InitXMLFile();
+        }
         int idJ;
         String numLicenceJ;
         String nomJ;
