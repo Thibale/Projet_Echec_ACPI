@@ -4,13 +4,13 @@
   <joueur>
     <idJoueur idJ="1"/>
     <numLicence numLicence=""/>
-    <nomJoueur nomJoueur="dfg"/>
-    <prenomJoueur prenomJoueur="dfgdg"/>
+    <nomJoueur nomJoueur="f"/>
+    <prenomJoueur prenomJoueur="f"/>
     <numEloNormal numEloNormal="0"/>
     <numEloSemiRapide numEloSemiRapide="0"/>
     <numEloRapide numEloRapide="0"/>
     <categorie categorie=""/>
-    <dateNais dateNais="dfg"/>
+    <dateNais dateNais="f"/>
     <sexe sexe="M"/>
     <federation federation=""/>
     <ligue ligue=""/>
@@ -20,13 +20,13 @@
   <joueur>
     <idJoueur idJ="1"/>
     <numLicence numLicence=""/>
-    <nomJoueur nomJoueur="sdfgsfdgg"/>
-    <prenomJoueur prenomJoueur="dfgdgdsgd"/>
+    <nomJoueur nomJoueur="f"/>
+    <prenomJoueur prenomJoueur="f"/>
     <numEloNormal numEloNormal="0"/>
     <numEloSemiRapide numEloSemiRapide="0"/>
     <numEloRapide numEloRapide="0"/>
     <categorie categorie=""/>
-    <dateNais dateNais="dsfgdfg"/>
+    <dateNais dateNais="f"/>
     <sexe sexe="F"/>
     <federation federation=""/>
     <ligue ligue=""/>

@@ -28,7 +28,7 @@ public class MainMenu extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
-    private void initComponents() {
+    public void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
@@ -428,14 +428,22 @@ public class MainMenu extends javax.swing.JFrame {
         String dateDeNaissance = champDateDeNaissance.getText();
         String sexe = comboBoxSexe.getSelectedItem().toString();
         String licence = champNumLicence.getText();
+        int eloN = Integer.valueOf(champEloNormal.getText());
+        int eloR = Integer.valueOf(champEloRapide.getText());
+        int eloSR = Integer.valueOf(champEloSemiRapide.getText());
+        String fed = champFederation.getText();
+        String lig = champLigue.getText();
+        String numL = champNumLicence.getText();
+        String clb = champClub.getText();
         labelNom.setForeground(Color.black);
         labelPrenom.setForeground(Color.black);
         labelSexe.setForeground(Color.black);
         labelDateDeNaissance.setForeground(Color.black);
+        
         if(verifDonneeEnregistrementJoueur(nom, prenom, dateDeNaissance, sexe)){
-            Joueurs J = new Joueurs(nom,prenom,dateDeNaissance,sexe.charAt(0)); //le sexe vaut 'a' car j'arrive pas à faire la coversion String to Char
-        //RetourCreation.setText(nom + '\n' + prenom + '\n' + dateDeNaissance + '\n' + sexe + '\n' + licence);
-        RetourCreation.setText(J.getNomJ() + '\n' + J.getPrenomJ() + '\n' + J.getDateNaisJ() + '\n' + J.getSexeJ() + '\n'); //test de l'objet
+            Joueurs J = new Joueurs(numL,nom,prenom,eloN,eloSR,eloR,dateDeNaissance,sexe.charAt(0),fed,lig,clb); //le sexe vaut 'a' car j'arrive pas à faire la coversion String to Char
+        RetourCreation.setText(nom + '\n' + prenom + '\n' + dateDeNaissance + '\n' + sexe + '\n' + licence);
+        //RetourCreation.setText(J.getNomJ() + '\n' + J.getPrenomJ() + '\n' + J.getDateNaisJ() + '\n' + J.getSexeJ() + '\n'); //test de l'objet
         //XML xml1 = new XML(); 
         xml1.WriteXML(J);
         }
@@ -467,42 +475,15 @@ public class MainMenu extends javax.swing.JFrame {
         }
         return res;
     }
-    /**t
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
+    /* Ancien Main 
+   public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MainMenu().setVisible(true);
             }
         });
-        //XML xml1 = new XML(); // Création du XML (Demande de confirmation à Flo et Falcone)
     }
-
+    */
     // Variables declaration - do not modify                     
     private javax.swing.JTextArea RetourCreation;
     private javax.swing.JButton boutonEnregistrer;

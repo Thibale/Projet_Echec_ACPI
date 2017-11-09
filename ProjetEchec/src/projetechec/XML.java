@@ -20,7 +20,8 @@ public class XML {
     protected DocumentBuilder builder;
     protected Document document;
     protected Element racine;
-    boolean isInit = false;
+    private boolean isInit = false;
+    private int id = 0;
     
     
     public void InitXMLFile(){
@@ -59,7 +60,7 @@ public class XML {
 			
 	    //Etape 6 : création du nom et du prénom
 	    final Element idJoueur = document.createElement("idJoueur");
-            idJoueur.setAttribute("idJ", String.valueOf(j.getIdJ()));
+            idJoueur.setAttribute("idJ", String.valueOf(id+=1));
 			
 	    final Element numLic = document.createElement("numLicence");
 	    numLic.setAttribute("numLicence", j.getNumLicenceJ());

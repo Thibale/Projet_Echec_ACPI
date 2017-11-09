@@ -3,7 +3,7 @@ package projetechec;
 import java.time.LocalDate;
 import java.time.Period;
 
-public class Joueurs {
+public class Joueurs {  
     private int idJ;
     private String numLicenceJ;
     private String nomJ;
@@ -18,8 +18,8 @@ public class Joueurs {
     private String ligueJ;
     private String clubJ;
     
-    public Joueurs(int id,String numLicence,String nom,String prenom,int numEloNormal,int numEloSemiRapide,int numEloRapide,String dateNais,char sexe,String federation,String ligue,String club){
-        idJ=id;
+    public Joueurs(String numLicence,String nom,String prenom,int numEloNormal,int numEloSemiRapide,int numEloRapide,String dateNais,char sexe,String federation,String ligue,String club){
+        idJ=0;
         numLicenceJ=numLicence;
         nomJ=nom;
         prenomJ=prenom;
@@ -34,7 +34,7 @@ public class Joueurs {
         clubJ=club;
     }
     public Joueurs(String nom, String prenom, String dateN, char sexe){
-        idJ=1;
+        idJ=0;
         numLicenceJ="";
         nomJ=nom;
         prenomJ=prenom;
