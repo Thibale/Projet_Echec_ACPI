@@ -1,9 +1,12 @@
 package projetechec; // t'aura peut être besoin de modifier ça (probablement)
 
 import java.awt.Color;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -447,21 +450,22 @@ public class MainMenu extends javax.swing.JFrame {
             if(verifFormatNomValide(nom)){
                 if(verifFormatPrenomValide(prenom)){
                     if(verifFormatDateValide(dateDeNaissance)){
-                    if(verifFormatEloValide(eloN)){
-                        if(verifFormatEloValide(eloR)){
-                            if(verifFormatEloValide(eloSR)){
-                                if(verifFormatFedValide(fed)){
-                                    if(verifFormatLigueValide(lig)){
-                                        Joueurs J = new Joueurs(numL,nom,prenom,Integer.valueOf(eloN),Integer.valueOf(eloSR),Integer.valueOf(eloR),dateDeNaissance,sexe.charAt(0),fed,lig,clb); //le sexe vaut 'a' car j'arrive pas à faire la coversion String to Char
-                                        RetourCreation.setText(nom + '\n' + prenom + '\n' + dateDeNaissance + '\n' + sexe + '\n' + licence);
-                                        //RetourCreation.setText(J.getNomJ() + '\n' + J.getPrenomJ() + '\n' + J.getDateNaisJ() + '\n' + J.getSexeJ() + '\n'); //test de l'objet
-                                        //XML xml1 = new XML(); 
-                                        xml1.WriteXML(J);
+                        if(verifFormatEloValide(eloN)){
+                            if(verifFormatEloValide(eloR)){
+                                if(verifFormatEloValide(eloSR)){
+                                    if(verifFormatFedValide(fed)){
+                                        if(verifFormatLigueValide(lig)){
+                                            Joueurs J = new Joueurs(numL,nom,prenom,Integer.valueOf(eloN),Integer.valueOf(eloSR),Integer.valueOf(eloR),dateDeNaissance,sexe.charAt(0),fed,lig,clb); //le sexe vaut 'a' car j'arrive pas à faire la coversion String to Char
+                                            RetourCreation.setText(nom + '\n' + prenom + '\n' + dateDeNaissance + '\n' + sexe + '\n' + licence);
+                                            //RetourCreation.setText(J.getNomJ() + '\n' + J.getPrenomJ() + '\n' + J.getDateNaisJ() + '\n' + J.getSexeJ() + '\n'); //test de l'objet
+                                            //XML xml1 = new XML(); 
+                                            xml1.WriteXML(J);
+                                        }
                                     }
                                 }
                             }
-                        }
-                    } }
+                        } 
+                    }
                 }
             }
         }
@@ -475,29 +479,35 @@ public class MainMenu extends javax.swing.JFrame {
     }
     
     private boolean verifFormatDateValide(String date){
-        boolean res = true;
-        /*if(date.length() != 10){
-            res = false;
+        boolean checkFormat;
+
+        if (date.matches("([0-9]{4})-([0-9]{2})-([0-9]{2})"))
+            checkFormat=true;
+        else{
+           checkFormat=false;
+            RetourCreation.setText("Erreur, date invalide");
         }
-        else if (){
-            
+        if(checkFormat){
+            Date datetmp = null;
+            String format = "yyyy-MM-dd";
+            try {
+                SimpleDateFormat sdf = new SimpleDateFormat(format);
+                datetmp = sdf.parse(date);
+                if (!date.equals(sdf.format(datetmp))) {
+                    datetmp = null;
+                }
+            } catch (ParseException ex) {
+                ex.printStackTrace();
+            }
+            if (datetmp == null) {
+                checkFormat = false;
+                RetourCreation.setText("Erreur, date invalide");
+            } else {
+                // Valid date format
+            }
         }
-        return res;*/
-        String myDate = "2007-05-26";
-	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-	sdf.setLenient(true);
-  	Date d = new Date();
-	  	
-  	try {
-	   d = sdf.parse(date );
-	   String t = sdf.format(d);
-	   if(t.compareTo(date) !=  0){
-		  	res=false;
-			RetourCreation.setText("Erreur, date invalide");}  	
-  	} catch (Exception e) {
-		   // --- Gestion mauvaise date
-  	}
-        return res;
+        
+        return checkFormat;
     }
     
     private boolean verifFormatNomValide(String nom){
