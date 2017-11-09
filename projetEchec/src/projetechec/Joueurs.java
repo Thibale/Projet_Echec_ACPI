@@ -33,6 +33,36 @@ public class Joueurs {
         ligueJ=ligue;
         clubJ=club;
     }
+    public Joueurs(int id,String numLicence,String nom,String prenom,int numEloNormal,int numEloSemiRapide,int numEloRapide,String dateNais,char sexe,String federation,String ligue,String club){
+        idJ=id;
+        numLicenceJ=numLicence;
+        nomJ=nom;
+        prenomJ=prenom;
+        numEloNormalJ=numEloNormal;
+        numEloSemiRapideJ=numEloSemiRapide;
+        numEloRapideJ=numEloRapide;
+        categorieJ=this.calculCategorie(sexe,dateNais);
+        dateNaisJ=dateNais;
+        sexeJ=sexe;
+        federationJ=federation;
+        ligueJ=ligue;
+        clubJ=club;
+    }
+    public Joueurs(int id,String numLicence,String nom,String prenom,int numEloNormal,int numEloSemiRapide,int numEloRapide,String cat,String dateNais,char sexe,String federation,String ligue,String club){
+        idJ=id;
+        numLicenceJ=numLicence;
+        nomJ=nom;
+        prenomJ=prenom;
+        numEloNormalJ=numEloNormal;
+        numEloSemiRapideJ=numEloSemiRapide;
+        numEloRapideJ=numEloRapide;
+        categorieJ=cat;
+        dateNaisJ=dateNais;
+        sexeJ=sexe;
+        federationJ=federation;
+        ligueJ=ligue;
+        clubJ=club;
+    }
     public Joueurs(String nom, String prenom, String dateN, char sexe){
         idJ=0;
         numLicenceJ="";
@@ -156,5 +186,9 @@ public class Joueurs {
             cat = cat+"Vet";
         }
         return cat+sexe;
+    }
+    
+    public void JtoString(){
+        System.out.println(this.idJ+this.numLicenceJ+this.nomJ+this.prenomJ+this.numEloNormalJ+this.numEloSemiRapideJ+this.numEloRapideJ+this.categorieJ+this.dateNaisJ+this.sexeJ+this.federationJ+this.ligueJ+this.clubJ);
     }
 }  

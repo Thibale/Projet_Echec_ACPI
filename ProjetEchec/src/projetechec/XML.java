@@ -1,6 +1,10 @@
 package projetechec;
 
 import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -14,6 +18,9 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Comment;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 public class XML {
     protected DocumentBuilderFactory factory;
@@ -23,6 +30,7 @@ public class XML {
     private boolean isInit = false;
     private int id = 0;
     
+    protected NodeList racineNoeuds;
     
     public void InitXMLFile(){
         factory = DocumentBuilderFactory.newInstance();
@@ -30,13 +38,24 @@ public class XML {
         try {
 	    //Etape 2 : création d'un parseur
 	    builder = factory.newDocumentBuilder();
-	    		
-	    //Etape 3 : création d'un Document
-	    document = builder.newDocument();
+	    File f=new File(System.getProperty("user.dir")+"\\Joueurs.xml");
+            if(!f.exists()){
+                //Etape 3 : création d'un Document
+                document = builder.newDocument();
+                //Etape 4 : création de l'Element racine
+                racine = document.createElement("joueurs");
+                document.appendChild(racine);
+            }else{
+                try {
+                    document= builder.parse(f);
+                } catch (SAXException ex) {
+                    Logger.getLogger(XML.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(XML.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                racine = document.getDocumentElement();
+            }
             
-            //Etape 4 : création de l'Element racine
-	    racine = document.createElement("joueurs");
-	    document.appendChild(racine);
         }catch (final ParserConfigurationException e) {
 	    e.printStackTrace();
 	}
@@ -138,5 +157,74 @@ public class XML {
 	catch (TransformerException e) {
 	    e.printStackTrace();
 	}			
+    }
+    
+    public ArrayList<Joueurs> ReadXML(){
+        int idJ;
+        String numLicenceJ;
+        String nomJ;
+        String prenomJ;
+        int numEloNormalJ;
+        int numEloSemiRapideJ;
+        int numEloRapideJ;
+        String categorieJ;
+        String dateNaisJ;
+        char sexeJ;
+        String federationJ;
+        String ligueJ;
+        String clubJ;
+        
+        ArrayList<Joueurs> listJoueurs=new ArrayList<Joueurs>();
+        
+        racineNoeuds = racine.getChildNodes();
+        for (int i = 0; i<racineNoeuds.getLength(); i++) {
+            if(racineNoeuds.item(i).getNodeType() == Node.ELEMENT_NODE) {
+                Element joueur = (Element) racineNoeuds.item(i);
+                
+                Element idtmp = (Element) joueur.getElementsByTagName("idJoueur").item(0);
+                idJ = Integer.valueOf(idtmp.getAttribute("idJ"));
+                
+                Element numLicencetmp = (Element) joueur.getElementsByTagName("numLicence").item(0);
+                numLicenceJ = numLicencetmp.getAttribute("numLicence");
+                
+                Element nomJoueurtmp = (Element) joueur.getElementsByTagName("nomJoueur").item(0);
+                nomJ = nomJoueurtmp.getAttribute("nomJoueur");
+                
+                Element prenomJoueurtmp = (Element) joueur.getElementsByTagName("prenomJoueur").item(0);
+                prenomJ = prenomJoueurtmp.getAttribute("prenomJoueur");
+                
+                Element numEloNormaltmp = (Element) joueur.getElementsByTagName("numEloNormal").item(0);
+                numEloNormalJ = Integer.valueOf(numEloNormaltmp.getAttribute("numEloNormal"));
+                
+                Element numEloSemiRapidetmp = (Element) joueur.getElementsByTagName("numEloSemiRapide").item(0);
+                numEloSemiRapideJ = Integer.valueOf(numEloSemiRapidetmp.getAttribute("numEloSemiRapide"));
+                
+                Element numEloRapidetmp = (Element) joueur.getElementsByTagName("numEloRapide").item(0);
+                numEloRapideJ = Integer.valueOf(numEloRapidetmp.getAttribute("numEloRapide"));
+                
+                Element categorietmp = (Element) joueur.getElementsByTagName("categorie").item(0);
+                categorieJ = categorietmp.getAttribute("categorie");
+                
+                Element dateNaistmp = (Element) joueur.getElementsByTagName("dateNais").item(0);
+                dateNaisJ = dateNaistmp.getAttribute("dateNais");
+                
+                Element sexetmp = (Element) joueur.getElementsByTagName("sexe").item(0);
+                sexeJ = sexetmp.getAttribute("sexe").charAt(0);
+                
+                Element federationtmp = (Element) joueur.getElementsByTagName("federation").item(0);
+                federationJ = federationtmp.getAttribute("federation");
+                
+                Element liguetmp = (Element) joueur.getElementsByTagName("ligue").item(0);
+                ligueJ = liguetmp.getAttribute("ligue");
+                
+                Element clubtmp = (Element) joueur.getElementsByTagName("club").item(0);
+                clubJ = clubtmp.getAttribute("club");
+                
+                Joueurs jtmp= new Joueurs(idJ,numLicenceJ,nomJ,prenomJ,numEloNormalJ,numEloSemiRapideJ,numEloRapideJ,categorieJ,dateNaisJ,sexeJ,federationJ,ligueJ,clubJ);
+                
+                listJoueurs.add(jtmp);
+            }	
+        }
+       return listJoueurs; 
     }
 }

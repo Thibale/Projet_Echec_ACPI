@@ -428,9 +428,9 @@ public class MainMenu extends javax.swing.JFrame {
         String dateDeNaissance = champDateDeNaissance.getText();
         String sexe = comboBoxSexe.getSelectedItem().toString();
         String licence = champNumLicence.getText();
-        int eloN = Integer.valueOf(champEloNormal.getText());
-        int eloR = Integer.valueOf(champEloRapide.getText());
-        int eloSR = Integer.valueOf(champEloSemiRapide.getText());
+        String eloN = champEloNormal.getText();
+        String eloR = champEloRapide.getText();
+        String eloSR = champEloSemiRapide.getText();
         String fed = champFederation.getText();
         String lig = champLigue.getText();
         String numL = champNumLicence.getText();
@@ -441,19 +441,89 @@ public class MainMenu extends javax.swing.JFrame {
         labelDateDeNaissance.setForeground(Color.black);
         
         if(verifDonneeEnregistrementJoueur(nom, prenom, dateDeNaissance, sexe)){
-            Joueurs J = new Joueurs(numL,nom,prenom,eloN,eloSR,eloR,dateDeNaissance,sexe.charAt(0),fed,lig,clb); //le sexe vaut 'a' car j'arrive pas à faire la coversion String to Char
-        RetourCreation.setText(nom + '\n' + prenom + '\n' + dateDeNaissance + '\n' + sexe + '\n' + licence);
-        //RetourCreation.setText(J.getNomJ() + '\n' + J.getPrenomJ() + '\n' + J.getDateNaisJ() + '\n' + J.getSexeJ() + '\n'); //test de l'objet
-        //XML xml1 = new XML(); 
-        xml1.WriteXML(J);
+            if(verifFormatNomValide(nom)){
+                if(verifFormatPrenomValide(prenom)){
+                    if(verifFormatEloValide(eloN)){
+                        if(verifFormatEloValide(eloR)){
+                            if(verifFormatEloValide(eloSR)){
+                                if(verifFormatFedValide(fed)){
+                                    if(verifFormatLigueValide(lig)){
+                                        Joueurs J = new Joueurs(numL,nom,prenom,Integer.valueOf(eloN),Integer.valueOf(eloSR),Integer.valueOf(eloR),dateDeNaissance,sexe.charAt(0),fed,lig,clb); //le sexe vaut 'a' car j'arrive pas à faire la coversion String to Char
+                                        RetourCreation.setText(nom + '\n' + prenom + '\n' + dateDeNaissance + '\n' + sexe + '\n' + licence);
+                                        //RetourCreation.setText(J.getNomJ() + '\n' + J.getPrenomJ() + '\n' + J.getDateNaisJ() + '\n' + J.getSexeJ() + '\n'); //test de l'objet
+                                        //XML xml1 = new XML(); 
+                                        xml1.WriteXML(J);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
         else{
-        RetourCreation.setText("Erreur de Merde");        
+        RetourCreation.setText("Erreur, manque de données");        
         }
     }
 
     private void comboBoxSexeActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+    }
+    /*
+    private boolean verifFormatDateValide(String date){
+        boolean res = true;
+        if(date.length() != 10){
+            res = false;
+        }
+        else if (){
+            
+        }
+        return res;
+    }
+    */
+    private boolean verifFormatNomValide(String nom){
+        boolean res = true;
+        if(!nom.matches("[A-Za-z-]*")){
+            res = false;
+            RetourCreation.setText("Erreur, nom invalide");
+        }
+        return res;
+    }
+    
+    private boolean verifFormatPrenomValide(String prenom){
+        boolean res = true;
+        if(!prenom.matches("[A-Za-z-]*")){
+            res = false;
+            RetourCreation.setText("Erreur, prenom invalide");
+        }
+        return res;
+    }
+    
+    private boolean verifFormatEloValide(String elo){
+        boolean res = true;
+        if(!elo.matches("[0-9]*")){
+            res = false;
+            RetourCreation.setText("Erreur, elo invalide");
+        }
+        return res;
+    }
+    
+    private boolean verifFormatLigueValide(String ligue){
+        boolean res = true;
+        if(!ligue.matches("[A-Za-z-]*") || ligue.length() != 3){
+            res = false;
+            RetourCreation.setText("Erreur, ligue invalide");
+        }
+        return res;
+    }
+    
+    private boolean verifFormatFedValide(String fed){
+        boolean res = true;
+        if(!fed.matches("[A-Za-z-]*") || fed.length() != 3){
+            res = false;
+            RetourCreation.setText("Erreur, fédération invalide");
+        }
+        return res;
     }
     
     private boolean verifDonneeEnregistrementJoueur(String nom, String prenom, String dateDeNaissance, String sexe){
