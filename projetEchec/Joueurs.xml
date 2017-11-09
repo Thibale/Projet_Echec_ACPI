@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<joueurs>
+  <!--personne n°1-->
+  <joueur>
+    <idJoueur idJ="1"/>
+    <numLicence numLicence=""/>
+    <nomJoueur nomJoueur="dfg"/>
+    <prenomJoueur prenomJoueur="dfgdg"/>
+    <numEloNormal numEloNormal="0"/>
+    <numEloSemiRapide numEloSemiRapide="0"/>
+    <numEloRapide numEloRapide="0"/>
+    <categorie categorie=""/>
+    <dateNais dateNais="dfg"/>
+    <sexe sexe="M"/>
+    <federation federation=""/>
+    <ligue ligue=""/>
+    <club club=""/>
+  </joueur>
+  <!--personne n°1-->
+  <joueur>
+    <idJoueur idJ="1"/>
+    <numLicence numLicence=""/>
+    <nomJoueur nomJoueur="sdfgsfdgg"/>
+    <prenomJoueur prenomJoueur="dfgdgdsgd"/>
+    <numEloNormal numEloNormal="0"/>
+    <numEloSemiRapide numEloSemiRapide="0"/>
+    <numEloRapide numEloRapide="0"/>
+    <categorie categorie=""/>
+    <dateNais dateNais="dsfgdfg"/>
+    <sexe sexe="F"/>
+    <federation federation=""/>
+    <ligue ligue=""/>
+    <club club=""/>
+  </joueur>
+</joueurs>
