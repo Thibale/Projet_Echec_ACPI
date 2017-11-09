@@ -52,7 +52,8 @@ public class XML {
 	try {			
 			
 	    //Etape 5 : création d'une personne
-	    final Comment commentaire = document.createComment("personne n°"+j.getIdJ());
+            id+=1;
+	    final Comment commentaire = document.createComment("personne n°"+id);
 	    racine.appendChild(commentaire);
 			
 	    final Element personne = document.createElement("joueur");
@@ -60,7 +61,7 @@ public class XML {
 			
 	    //Etape 6 : création du nom et du prénom
 	    final Element idJoueur = document.createElement("idJoueur");
-            idJoueur.setAttribute("idJ", String.valueOf(id+=1));
+            idJoueur.setAttribute("idJ", String.valueOf(id));
 			
 	    final Element numLic = document.createElement("numLicence");
 	    numLic.setAttribute("numLicence", j.getNumLicenceJ());
