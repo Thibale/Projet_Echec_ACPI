@@ -433,7 +433,7 @@ public class MainMenu extends javax.swing.JFrame {
         labelSexe.setForeground(Color.black);
         labelDateDeNaissance.setForeground(Color.black);
         if(verifDonneeEnregistrementJoueur(nom, prenom, dateDeNaissance, sexe)){
-            Joueurs J = new Joueurs(nom,prenom,dateDeNaissance,sexe); //le sexe vaut 'a' car j'arrive pas à faire la coversion String to Char
+            Joueurs J = new Joueurs(nom,prenom,dateDeNaissance,sexe.charAt(0)); //le sexe vaut 'a' car j'arrive pas à faire la coversion String to Char
         //RetourCreation.setText(nom + '\n' + prenom + '\n' + dateDeNaissance + '\n' + sexe + '\n' + licence);
         RetourCreation.setText(J.getNomJ() + '\n' + J.getPrenomJ() + '\n' + J.getDateNaisJ() + '\n' + J.getSexeJ() + '\n'); //test de l'objet
         //XML xml1 = new XML(); 
