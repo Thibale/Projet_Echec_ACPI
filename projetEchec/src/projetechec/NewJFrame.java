@@ -75,10 +75,10 @@ public class NewJFrame extends javax.swing.JFrame {
         ArrayList<Joueurs> listJ = xml1.ReadXML();
         String tmp="";
         for (int i=0;i<listJ.size();i++){
-          tmp=tmp+"Joueur n°"+(i+1)+System.getProperty("line.separator");
-          tmp=tmp+listJ.get(i).JtoString()+System.getProperty("line.separator");
-          
-       }
+            tmp=tmp+"Joueur n°"+(i+1)+System.getProperty("line.separator");
+            tmp=tmp+listJ.get(i).JtoString()+System.getProperty("line.separator");
+
+        }
         jTextArea1.setText(tmp);//"123"+listJ.get(i).getIdJ()+listJ.get(i).getNumLicenceJ()+listJ.get(i).getNomJ()+listJ.get(i).getPrenomJ()+listJ.get(i).getNumEloNormalJ()+listJ.get(i).getNumEloSemiRapideJ()+listJ.get(i).getNumEloRapideJ()+listJ.get(i).getCategorieJ()+listJ.get(i).getDateNaisJ()+listJ.get(i).getSexeJ()+listJ.get(i).getFederationJ()+listJ.get(i).getLigueJ()+listJ.get(i).getClubJ()
     }//GEN-LAST:event_jButton1ActionPerformed
 

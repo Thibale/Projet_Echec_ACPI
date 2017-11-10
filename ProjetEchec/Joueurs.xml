@@ -32,4 +32,49 @@
     <ligue ligue="AQU"/>
     <club club="Lattes-Echecs"/>
   </joueur>
+<!--personne n°1--><joueur>
+    <idJoueur idJ="1"/>
+    <numLicence numLicence="1485TE"/>
+    <nomJoueur nomJoueur="Durant"/>
+    <prenomJoueur prenomJoueur="Nina"/>
+    <numEloNormal numEloNormal="1587"/>
+    <numEloSemiRapide numEloSemiRapide="2596"/>
+    <numEloRapide numEloRapide="7895"/>
+    <categorie categorie="BenF"/>
+    <dateNais dateNais="2003-11-25"/>
+    <sexe sexe="F"/>
+    <federation federation="ITA"/>
+    <ligue ligue="LAN"/>
+    <club club="Lattes-Echecs"/>
+  </joueur>
+<!--personne n°1--><joueur>
+    <idJoueur idJ="1"/>
+    <numLicence numLicence="1545KL"/>
+    <nomJoueur nomJoueur="Dupont"/>
+    <prenomJoueur prenomJoueur="Marie"/>
+    <numEloNormal numEloNormal="1245"/>
+    <numEloSemiRapide numEloSemiRapide="7852"/>
+    <numEloRapide numEloRapide="1395"/>
+    <categorie categorie="CadM"/>
+    <dateNais dateNais="2000-12-24"/>
+    <sexe sexe="M"/>
+    <federation federation="FRA"/>
+    <ligue ligue="LAN"/>
+    <club club="Echecs Club Montpellier"/>
+  </joueur>
+<!--personne n°1--><joueur>
+    <idJoueur idJ="1"/>
+    <numLicence numLicence="1254GH"/>
+    <nomJoueur nomJoueur="Falco"/>
+    <prenomJoueur prenomJoueur="Mario"/>
+    <numEloNormal numEloNormal="3001"/>
+    <numEloSemiRapide numEloSemiRapide="2296"/>
+    <numEloRapide numEloRapide="1258"/>
+    <categorie categorie="JunM"/>
+    <dateNais dateNais="1999-02-23"/>
+    <sexe sexe="M"/>
+    <federation federation="ITA"/>
+    <ligue ligue="LAN"/>
+    <club club="Lattes-Echecs"/>
+  </joueur>
 </joueurs>
