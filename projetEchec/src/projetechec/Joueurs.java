@@ -121,43 +121,43 @@ public class Joueurs {
         return this.clubJ;
     }
     
-    public void getIdJ(int id){
+    public void setIdJ(int id){
         this.idJ = id;
     }
-    public void getNumLicenceJ(String numLic){
+    public void setNumLicenceJ(String numLic){
         this.numLicenceJ = numLic;
     }
-    public void getNomJ(String nom){
+    public void setNomJ(String nom){
         this.nomJ = nom;
     }
-    public void getPrenomJ(String prenom){
+    public void setPrenomJ(String prenom){
         this.prenomJ = prenom;
     }
-    public void getNumEloNormalJ(int elo){
+    public void setNumEloNormalJ(int elo){
         this.numEloNormalJ = elo;
     }
-    public void getNumEloSemiRapideJ(int elo){
+    public void setNumEloSemiRapideJ(int elo){
         this.numEloSemiRapideJ = elo;
     }
-    public void getNumEloRapideJ(int elo){
+    public void setNumEloRapideJ(int elo){
         this.numEloRapideJ = elo;
     }
-    public void getCategorieJ(String cat){
+    public void setCategorieJ(String cat){
         this.categorieJ = cat;
     }
-    public void getDateNaisJ(String date){
+    public void setDateNaisJ(String date){
         this.dateNaisJ = date;
     }
-    public void getSexeJ(char sexe){
+    public void setSexeJ(char sexe){
         this.sexeJ = sexe;
     }
-    public void getFederationJ(String fed){
+    public void setFederationJ(String fed){
         this.federationJ = fed;
     }
-    public void getLigueJ(String ligue){
+    public void setLigueJ(String ligue){
         this.ligueJ = ligue;
     }
-    public void getClubJ(String club){
+    public void setClubJ(String club){
         this.clubJ = club;
     }
     
@@ -186,6 +186,33 @@ public class Joueurs {
             cat = cat+"Vet";
         }
         return cat+sexe;
+    }
+    
+    public String verrifierContenuJoueur(Joueurs j){
+        if(verifDonneeEnregistrementJoueur(j.getNomJ(), j.getPrenomJ(), j.getDateNaisJ(), j.getSexeJ())){
+            if(verifFormatNomValide(nom)){
+                if(verifFormatPrenomValide(prenom)){
+                    if(verifFormatDateValide(dateDeNaissance)){
+                        if(verifFormatEloValide(eloN)){
+                            if(verifFormatEloValide(eloR)){
+                                if(verifFormatEloValide(eloSR)){
+                                    if(verifFormatFedValide(fed)){
+                                        if(verifFormatLigueValide(lig)){
+                                            Joueurs J = new Joueurs(numL,nom,prenom,Integer.valueOf(eloN),Integer.valueOf(eloSR),Integer.valueOf(eloR),dateDeNaissance,sexe.charAt(0),fed,lig,clb); //le sexe vaut 'a' car j'arrive pas à faire la coversion String to Char
+                                            RetourCreation.setText(nom + '\n' + prenom + '\n' + dateDeNaissance + '\n' + sexe + '\n' + licence);
+                                            //RetourCreation.setText(J.getNomJ() + '\n' + J.getPrenomJ() + '\n' + J.getDateNaisJ() + '\n' + J.getSexeJ() + '\n'); //test de l'objet
+                                            //XML xml1 = new XML(); 
+                                            //xml1.WriteXML(J);
+                                        }
+                                    }
+                                }
+                            }
+                        } 
+                    }
+                }
+            }
+        }
+        return "";
     }
     
     public String JtoString(){

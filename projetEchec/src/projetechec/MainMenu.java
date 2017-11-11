@@ -446,32 +446,11 @@ public class MainMenu extends javax.swing.JFrame {
         labelSexe.setForeground(Color.black);
         labelDateDeNaissance.setForeground(Color.black);
         
-        if(verifDonneeEnregistrementJoueur(nom, prenom, dateDeNaissance, sexe)){
-            if(verifFormatNomValide(nom)){
-                if(verifFormatPrenomValide(prenom)){
-                    if(verifFormatDateValide(dateDeNaissance)){
-                        if(verifFormatEloValide(eloN)){
-                            if(verifFormatEloValide(eloR)){
-                                if(verifFormatEloValide(eloSR)){
-                                    if(verifFormatFedValide(fed)){
-                                        if(verifFormatLigueValide(lig)){
-                                            Joueurs J = new Joueurs(numL,nom,prenom,Integer.valueOf(eloN),Integer.valueOf(eloSR),Integer.valueOf(eloR),dateDeNaissance,sexe.charAt(0),fed,lig,clb); //le sexe vaut 'a' car j'arrive pas à faire la coversion String to Char
-                                            RetourCreation.setText(nom + '\n' + prenom + '\n' + dateDeNaissance + '\n' + sexe + '\n' + licence);
-                                            //RetourCreation.setText(J.getNomJ() + '\n' + J.getPrenomJ() + '\n' + J.getDateNaisJ() + '\n' + J.getSexeJ() + '\n'); //test de l'objet
-                                            //XML xml1 = new XML(); 
-                                            xml1.WriteXML(J);
-                                        }
-                                    }
-                                }
-                            }
-                        } 
-                    }
-                }
-            }
-        }
-        else{
-        RetourCreation.setText("Erreur, manque de données");        
-        }
+        Joueurs J = new Joueurs(numL,nom,prenom,Integer.valueOf(eloN),Integer.valueOf(eloSR),Integer.valueOf(eloR),dateDeNaissance,sexe.charAt(0),fed,lig,clb);
+        RetourCreation.setText(nom + '\n' + prenom + '\n' + dateDeNaissance + '\n' + sexe + '\n' + licence);
+        //RetourCreation.setText(J.getNomJ() + '\n' + J.getPrenomJ() + '\n' + J.getDateNaisJ() + '\n' + J.getSexeJ() + '\n'); //test de l'objet
+        //XML xml1 = new XML(); 
+        //xml1.WriteXML(J);
     }
 
     private void comboBoxSexeActionPerformed(java.awt.event.ActionEvent evt) {
