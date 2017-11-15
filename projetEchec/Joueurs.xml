@@ -77,4 +77,19 @@
     <ligue ligue="LAN"/>
     <club club="Lattes-Echecs"/>
   </joueur>
+<!--personne n°1--><joueur>
+    <idJoueur idJ="1"/>
+    <numLicence numLicence="123F"/>
+    <nomJoueur nomJoueur="Dupond"/>
+    <prenomJoueur prenomJoueur="Jean"/>
+    <numEloNormal numEloNormal="1234"/>
+    <numEloSemiRapide numEloSemiRapide="2310"/>
+    <numEloRapide numEloRapide="1253"/>
+    <categorie categorie="SenM"/>
+    <dateNais dateNais="1990-03-13"/>
+    <sexe sexe="M"/>
+    <federation federation="FRA"/>
+    <ligue ligue="LAN"/>
+    <club club="Montpellier Echec"/>
+  </joueur>
 </joueurs>

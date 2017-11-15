@@ -188,7 +188,7 @@ public class Joueurs {
         return cat+sexe;
     }
     
-    public String verrifierContenuJoueur(Joueurs j){
+    /*public String verrifierContenuJoueur(Joueurs j){
         if(verifDonneeEnregistrementJoueur(j.getNomJ(), j.getPrenomJ(), j.getDateNaisJ(), j.getSexeJ())){
             if(verifFormatNomValide(nom)){
                 if(verifFormatPrenomValide(prenom)){
@@ -213,7 +213,7 @@ public class Joueurs {
             }
         }
         return "";
-    }
+    }*/
     
     public String JtoString(){
         return "Numero Licence: " + this.numLicenceJ +System.getProperty("line.separator")+
