@@ -118,15 +118,33 @@ public class Tournoi {
         return checkFormat;
     }
     
-    public boolean verifDateDebutAvantDateFin(String dateDebut, String dateFin, String messageErreur){
+    public boolean verifDateDebutAvantDateFin(String dateDeb, String dateFi, String messageErreur){
         boolean verif = true;
-        LocalDate dateD = LocalDate.parse(dateDebut);
-        LocalDate dateF = LocalDate.parse(dateFin);
+        LocalDate dateD = LocalDate.parse(dateDeb);
+        LocalDate dateF = LocalDate.parse(dateFi);
         if (dateD.compareTo(dateF) > 0){
             verif = false;
-            messageErreur += "Erreur, date de début plus récente que date de fin";
+            messageErreur += "Erreur, date de début plus récente que date de fin.";
         }
         return verif;
+    }
+    
+    public boolean verifDateDebut(String dateDeb, String messageErreur){
+        boolean verif = true;
+        LocalDate dateD = LocalDate.parse(dateDeb);
+        LocalDate curDate = LocalDate.now();
+        if (dateD.compareTo(curDate) < 0){
+            verif = false;
+            messageErreur += "Erreur, date de début inférieure à la date actuelle.";
+        }
+        return verif;
+    }
+    
+    public String tournoiToString(){
+        return "Tournoi : " + nomTournoi + System.getProperty("line.separator") +
+               "Date de début : " + dateDebut + " Date de fin : " + dateFin + System.getProperty("line.separator") +
+               "Nombre de rondes : " + nbRondes + System.getProperty("line.separator") +
+               "Lieu : " + lieu;
     }
     
     

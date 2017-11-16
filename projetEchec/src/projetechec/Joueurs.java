@@ -215,12 +215,16 @@ public class Joueurs {
         return "";
     }*/
     
-    /*LocalDate ld = LocalDate.parse(date);
-            LocalDate curDate = LocalDate.now();
-            if (ld.compareTo(curDate) > 0){
-                checkFormat = false;
-                messageErreur += "Erreur, date incorrecte";
-            }*/
+    public boolean verifDateNaiss(String dateNaissance, String messageErreur){
+        boolean verif = true;
+        LocalDate dateNaiss = LocalDate.parse(dateNaissance);
+        LocalDate curDate = LocalDate.now();
+        if (dateNaiss.compareTo(curDate) > 0){
+            verif = false;
+            messageErreur += System.getProperty("line.separator") + "Erreur, date de naissance plus récente que la date actuelle.";
+        }
+        return verif;
+    }
     
     public String JtoString(){
         return "Numero Licence: " + this.numLicenceJ +System.getProperty("line.separator")+

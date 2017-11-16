@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <NonVisualComponents>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTextArea" name="jTextArea1">
+          <Properties>
+            <Property name="columns" type="int" value="20"/>
+            <Property name="rows" type="int" value="5"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+  </NonVisualComponents>
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="maleButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="femaleButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="titleMenuLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="121" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="sexeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="eloSemiRapideLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="eloNormalLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="clubLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="ligueLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="federationLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="licenceLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="dateLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="prenomLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="nomLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                              <Component id="noteLabel" min="-2" max="-2" attributes="0"/>
+                                              <Component id="eloRapideLabel" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="nomTextField" min="-2" pref="158" max="-2" attributes="0"/>
+                                          <Component id="prenomTextField" min="-2" pref="158" max="-2" attributes="0"/>
+                                          <Group type="102" attributes="0">
+                                              <Component id="dateTextField" min="-2" pref="158" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="dateFormatLabel" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="licenceTextField" min="-2" pref="158" max="-2" attributes="0"/>
+                                          <Component id="federationTextField" min="-2" pref="158" max="-2" attributes="0"/>
+                                          <Component id="ligueTextField" min="-2" pref="158" max="-2" attributes="0"/>
+                                          <Component id="clubTextField" min="-2" pref="158" max="-2" attributes="0"/>
+                                          <Component id="eloNormalTextField" min="-2" pref="158" max="-2" attributes="0"/>
+                                          <Component id="eloSemiRapideTextField" min="-2" pref="158" max="-2" attributes="0"/>
+                                          <Component id="eloRapideTextField" min="-2" pref="158" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="0" pref="16" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="mainMenuButton" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="clearButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="saveButton" min="-2" pref="114" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="titleMenuLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="nomLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="nomTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="prenomLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="prenomTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="dateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="dateTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="dateFormatLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="sexeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="maleButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="femaleButton" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="licenceLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="licenceTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="federationLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="federationTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="ligueLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="ligueTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="clubLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="clubTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="eloNormalLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="eloNormalTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="eloSemiRapideLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="eloSemiRapideTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="eloRapideLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="eloRapideTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="noteLabel" min="-2" pref="20" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="clearButton" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="24" max="32767" attributes="0"/>
+              <Component id="saveButton" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="mainMenuButton" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="nomLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Nom: *"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="prenomLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Prenom: *"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="dateLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Date de naissance: *"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="sexeLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Sexe: *"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="licenceLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Num&#xe9;ro de licence:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="federationLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="F&#xe9;d&#xe9;ration:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="ligueLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ligue"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="clubLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Club"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="eloNormalLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="N&#xb0; Elo (normal):"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="eloSemiRapideLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="N&#xb0; Elo (Semi rapide):"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="eloRapideLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="N&#xb0; Elo (rapide):"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="saveButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Sauvegarder"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="mainMenuButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Retour Menu Principal"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="nomTextField">
+    </Component>
+    <Component class="javax.swing.JTextField" name="prenomTextField">
+    </Component>
+    <Component class="javax.swing.JTextField" name="dateTextField">
+    </Component>
+    <Component class="javax.swing.JTextField" name="licenceTextField">
+    </Component>
+    <Component class="javax.swing.JTextField" name="federationTextField">
+    </Component>
+    <Component class="javax.swing.JTextField" name="ligueTextField">
+    </Component>
+    <Component class="javax.swing.JTextField" name="clubTextField">
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="maleButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="M"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="femaleButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="F"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="eloNormalTextField">
+    </Component>
+    <Component class="javax.swing.JTextField" name="eloSemiRapideTextField">
+    </Component>
+    <Component class="javax.swing.JTextField" name="eloRapideTextField">
+    </Component>
+    <Component class="javax.swing.JLabel" name="noteLabel">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Ubuntu" size="8" style="3"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="nb: (*) champs obligatoire"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="titleMenuLabel">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Ubuntu" size="15" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Cr&#xe9;ation d&apos;une fiche joueur"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="dateFormatLabel">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Ubuntu" size="12" style="2"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="yyyy-mm-dd"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JToggleButton" name="clearButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Effacer (Clear)"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="clearButtonActionPerformed"/>
+      </Events>
+    </Component>
+  </SubComponents>
+</Form>

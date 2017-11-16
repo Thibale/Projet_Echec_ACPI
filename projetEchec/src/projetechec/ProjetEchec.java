@@ -7,7 +7,7 @@ public class ProjetEchec {
     
     public static void main(String[] args) {
        
-        java.awt.EventQueue.invokeLater(new Runnable() {
+        /*java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MainMenu().setVisible(true);
             }
@@ -30,6 +30,16 @@ public class ProjetEchec {
        for (int i=0;i<aj.size();i++){
            aj.get(i).JtoString();
        }*/
+        XMLTournoi xml = new XMLTournoi();
+        String s = "";
+        Tournoi t = new Tournoi("NomNom", "1990-09-09", "1999-06-10", 2, "Tonnerre");
+        xml.WriteXML(t);
+        ArrayList<Tournoi> at = new ArrayList<Tournoi>();
+        at=xml.ReadXML();
+        for (int i=0;i<at.size();i++){
+            s+= at.get(i).tournoiToString();
+        }
+        System.out.println(s);
     }
     
     

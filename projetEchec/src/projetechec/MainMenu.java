@@ -428,6 +428,33 @@ public class MainMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }                                              
 
+    public String verrifierContenuJoueur(String num, String nom, String prenom, String dateDeNaissance, String sexe, String eloN, String eloR, String eloSR, String fed, String lig, String club){
+        if(verifDonneeEnregistrementJoueur(nom, prenom, dateDeNaissance, sexe)){
+            if(verifFormatNomValide(nom)){
+                if(verifFormatPrenomValide(prenom)){
+                    if(verifFormatDateValide(dateDeNaissance)){
+                        if(verifFormatEloValide(eloN)){
+                            if(verifFormatEloValide(eloR)){
+                                if(verifFormatEloValide(eloSR)){
+                                    if(verifFormatFedValide(fed)){
+                                        if(verifFormatLigueValide(lig)){
+                                            Joueurs J = new Joueurs(num, nom,prenom,Integer.valueOf(eloN),Integer.valueOf(eloSR),Integer.valueOf(eloR),dateDeNaissance,sexe.charAt(0),fed,lig,club); //le sexe vaut 'a' car j'arrive pas à faire la coversion String to Char
+                                            RetourCreation.setText(nom + '\n' + prenom + '\n' + dateDeNaissance + '\n' + sexe + '\n' + num);
+                                            //RetourCreation.setText(J.getNomJ() + '\n' + J.getPrenomJ() + '\n' + J.getDateNaisJ() + '\n' + J.getSexeJ() + '\n'); //test de l'objet
+                                            //XML xml1 = new XML(); 
+                                            //xml1.WriteXML(J);
+                                        }
+                                    }
+                                }
+                            }
+                        } 
+                    }
+                }
+            }
+        }
+        return "";
+    }
+    
     private void boutonEnregistrerActionPerformed(java.awt.event.ActionEvent evt) {                                                  
         String nom = champNom.getText(); //Vérification des champs qui ne peuvent pas être nuls
         String prenom = champPrenom.getText();
@@ -509,28 +536,28 @@ public class MainMenu extends javax.swing.JFrame {
     
     private boolean verifFormatEloValide(String elo){
         boolean res = true;
-        if(!elo.matches("[0-9]*")){
+        /*if(!elo.matches("[0-9]*")){
             res = false;
             RetourCreation.setText("Erreur, elo invalide");
-        }
+        }*/
         return res;
     }
     
     private boolean verifFormatLigueValide(String ligue){
         boolean res = true;
-        if(!ligue.matches("[A-Za-z-]*") || ligue.length() != 3){
+        /*if(!ligue.matches("[A-Za-z-]*") || ligue.length() != 3){
             res = false;
             RetourCreation.setText("Erreur, ligue invalide");
-        }
+        }*/
         return res;
     }
     
     private boolean verifFormatFedValide(String fed){
         boolean res = true;
-        if(!fed.matches("[A-Za-z-]*") || fed.length() != 3){
+        /*if(!fed.matches("[A-Za-z-]*") || fed.length() != 3){
             res = false;
             RetourCreation.setText("Erreur, fédération invalide");
-        }
+        }*/
         return res;
     }
     
