@@ -215,6 +215,13 @@ public class Joueurs {
         return "";
     }*/
     
+    /*LocalDate ld = LocalDate.parse(date);
+            LocalDate curDate = LocalDate.now();
+            if (ld.compareTo(curDate) > 0){
+                checkFormat = false;
+                messageErreur += "Erreur, date incorrecte";
+            }*/
+    
     public String JtoString(){
         return "Numero Licence: " + this.numLicenceJ +System.getProperty("line.separator")+
                 "Nom joueur: " + this.nomJ +System.getProperty("line.separator")+ 
