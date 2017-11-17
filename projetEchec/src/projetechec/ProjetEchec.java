@@ -1,6 +1,9 @@
 package projetechec;
 
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.xml.transform.TransformerException;
 
 public class ProjetEchec {
     
@@ -40,6 +43,13 @@ public class ProjetEchec {
             s+= at.get(i).tournoiToString();
         }
         System.out.println(s);
+        XML xml1 = new XML();
+        try {
+            xml1.supprimerJoueur(2);
+        } catch (TransformerException ex) {
+            Logger.getLogger(ProjetEchec.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("Joueur supprimé");
     }
     
     

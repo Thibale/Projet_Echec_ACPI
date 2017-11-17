@@ -43,7 +43,7 @@ public class XMLTournoi {
                 //Etape 3 : création d'un Document
                 document = builder.newDocument();
                 //Etape 4 : création de l'Element racine
-                racine = document.createElement("tournoi");
+                racine = document.createElement("tournois");
                 document.appendChild(racine);
             }else{
                 try {

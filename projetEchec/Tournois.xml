@@ -1,6 +1,146 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <tournoi>
-  <tournoi>
+<tournoi>
+    <nomTournoi nomTournoi="NomNom"/>
+    <dateDebut dateDebut="1990-09-09"/>
+    <dateFin dateFin="1999-06-10"/>
+    <nbRondes nbRondes="2"/>
+    <lieu lieu="Tonnerre"/>
+  </tournoi>
+<tournoi>
+    <nomTournoi nomTournoi="NomNom"/>
+    <dateDebut dateDebut="1990-09-09"/>
+    <dateFin dateFin="1999-06-10"/>
+    <nbRondes nbRondes="2"/>
+    <lieu lieu="Tonnerre"/>
+  </tournoi>
+<tournoi>
+    <nomTournoi nomTournoi="NomNom"/>
+    <dateDebut dateDebut="1990-09-09"/>
+    <dateFin dateFin="1999-06-10"/>
+    <nbRondes nbRondes="2"/>
+    <lieu lieu="Tonnerre"/>
+  </tournoi>
+<tournoi>
+    <nomTournoi nomTournoi="NomNom"/>
+    <dateDebut dateDebut="1990-09-09"/>
+    <dateFin dateFin="1999-06-10"/>
+    <nbRondes nbRondes="2"/>
+    <lieu lieu="Tonnerre"/>
+  </tournoi>
+<tournoi>
+    <nomTournoi nomTournoi="NomNom"/>
+    <dateDebut dateDebut="1990-09-09"/>
+    <dateFin dateFin="1999-06-10"/>
+    <nbRondes nbRondes="2"/>
+    <lieu lieu="Tonnerre"/>
+  </tournoi>
+<tournoi>
+    <nomTournoi nomTournoi="NomNom"/>
+    <dateDebut dateDebut="1990-09-09"/>
+    <dateFin dateFin="1999-06-10"/>
+    <nbRondes nbRondes="2"/>
+    <lieu lieu="Tonnerre"/>
+  </tournoi>
+<tournoi>
+    <nomTournoi nomTournoi="NomNom"/>
+    <dateDebut dateDebut="1990-09-09"/>
+    <dateFin dateFin="1999-06-10"/>
+    <nbRondes nbRondes="2"/>
+    <lieu lieu="Tonnerre"/>
+  </tournoi>
+<tournoi>
+    <nomTournoi nomTournoi="NomNom"/>
+    <dateDebut dateDebut="1990-09-09"/>
+    <dateFin dateFin="1999-06-10"/>
+    <nbRondes nbRondes="2"/>
+    <lieu lieu="Tonnerre"/>
+  </tournoi>
+<tournoi>
+    <nomTournoi nomTournoi="NomNom"/>
+    <dateDebut dateDebut="1990-09-09"/>
+    <dateFin dateFin="1999-06-10"/>
+    <nbRondes nbRondes="2"/>
+    <lieu lieu="Tonnerre"/>
+  </tournoi>
+<tournoi>
+    <nomTournoi nomTournoi="NomNom"/>
+    <dateDebut dateDebut="1990-09-09"/>
+    <dateFin dateFin="1999-06-10"/>
+    <nbRondes nbRondes="2"/>
+    <lieu lieu="Tonnerre"/>
+  </tournoi>
+<tournoi>
+    <nomTournoi nomTournoi="NomNom"/>
+    <dateDebut dateDebut="1990-09-09"/>
+    <dateFin dateFin="1999-06-10"/>
+    <nbRondes nbRondes="2"/>
+    <lieu lieu="Tonnerre"/>
+  </tournoi>
+<tournoi>
+    <nomTournoi nomTournoi="NomNom"/>
+    <dateDebut dateDebut="1990-09-09"/>
+    <dateFin dateFin="1999-06-10"/>
+    <nbRondes nbRondes="2"/>
+    <lieu lieu="Tonnerre"/>
+  </tournoi>
+<tournoi>
+    <nomTournoi nomTournoi="NomNom"/>
+    <dateDebut dateDebut="1990-09-09"/>
+    <dateFin dateFin="1999-06-10"/>
+    <nbRondes nbRondes="2"/>
+    <lieu lieu="Tonnerre"/>
+  </tournoi>
+<tournoi>
+    <nomTournoi nomTournoi="NomNom"/>
+    <dateDebut dateDebut="1990-09-09"/>
+    <dateFin dateFin="1999-06-10"/>
+    <nbRondes nbRondes="2"/>
+    <lieu lieu="Tonnerre"/>
+  </tournoi>
+<tournoi>
+    <nomTournoi nomTournoi="NomNom"/>
+    <dateDebut dateDebut="1990-09-09"/>
+    <dateFin dateFin="1999-06-10"/>
+    <nbRondes nbRondes="2"/>
+    <lieu lieu="Tonnerre"/>
+  </tournoi>
+<tournoi>
+    <nomTournoi nomTournoi="NomNom"/>
+    <dateDebut dateDebut="1990-09-09"/>
+    <dateFin dateFin="1999-06-10"/>
+    <nbRondes nbRondes="2"/>
+    <lieu lieu="Tonnerre"/>
+  </tournoi>
+<tournoi>
+    <nomTournoi nomTournoi="NomNom"/>
+    <dateDebut dateDebut="1990-09-09"/>
+    <dateFin dateFin="1999-06-10"/>
+    <nbRondes nbRondes="2"/>
+    <lieu lieu="Tonnerre"/>
+  </tournoi>
+<tournoi>
+    <nomTournoi nomTournoi="NomNom"/>
+    <dateDebut dateDebut="1990-09-09"/>
+    <dateFin dateFin="1999-06-10"/>
+    <nbRondes nbRondes="2"/>
+    <lieu lieu="Tonnerre"/>
+  </tournoi>
+<tournoi>
+    <nomTournoi nomTournoi="NomNom"/>
+    <dateDebut dateDebut="1990-09-09"/>
+    <dateFin dateFin="1999-06-10"/>
+    <nbRondes nbRondes="2"/>
+    <lieu lieu="Tonnerre"/>
+  </tournoi>
+<tournoi>
+    <nomTournoi nomTournoi="NomNom"/>
+    <dateDebut dateDebut="1990-09-09"/>
+    <dateFin dateFin="1999-06-10"/>
+    <nbRondes nbRondes="2"/>
+    <lieu lieu="Tonnerre"/>
+  </tournoi>
+<tournoi>
     <nomTournoi nomTournoi="NomNom"/>
     <dateDebut dateDebut="1990-09-09"/>
     <dateFin dateFin="1999-06-10"/>

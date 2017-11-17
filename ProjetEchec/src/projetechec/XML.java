@@ -48,16 +48,13 @@ public class XML {
             }else{
                 try {
                     document= builder.parse(f);
-                } catch (SAXException ex) {
-                    Logger.getLogger(XML.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (IOException ex) {
+                } catch (SAXException | IOException ex) {
                     Logger.getLogger(XML.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 racine = document.getDocumentElement();
             }
             
         }catch (final ParserConfigurationException e) {
-	    e.printStackTrace();
 	}
         
         isInit = true;
@@ -229,5 +226,29 @@ public class XML {
             }	
         }
        return listJoueurs; 
+    }
+    
+    public void supprimerJoueur(int idJoueur) throws TransformerConfigurationException, TransformerException{
+        this.InitXMLFile();
+        racineNoeuds = racine.getChildNodes();
+        Node joueur = document.getElementsByTagName("joueur").item(idJoueur - 1);
+        racine.removeChild(joueur);
+        final TransformerFactory transformerFactory = TransformerFactory.newInstance();
+        final Transformer transformer = transformerFactory.newTransformer();
+        final DOMSource source = new DOMSource(document);
+        final StreamResult sortie = new StreamResult(new File(System.getProperty("user.dir")+"\\Joueurs.xml"));
+        //final StreamResult result = new StreamResult(System.out);
+
+        //prologue
+        transformer.setOutputProperty(OutputKeys.VERSION, "1.0");
+        transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+        transformer.setOutputProperty(OutputKeys.STANDALONE, "yes");			
+
+        //formatage
+        transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+        transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
+
+        //sortie
+        transformer.transform(source, sortie);	
     }
 }
