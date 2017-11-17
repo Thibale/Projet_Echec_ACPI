@@ -73,9 +73,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         titleMenuLabel = new javax.swing.JLabel();
         dateFormatLabel = new javax.swing.JLabel();
         clearButton = new javax.swing.JToggleButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        retourTextArea = new javax.swing.JTextArea();
         jComboBox1 = new javax.swing.JComboBox<>();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        retourTextArea = new javax.swing.JTextArea();
         afficherJoueur = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         AffJTextArea1 = new javax.swing.JTextArea();
@@ -94,7 +94,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         dateFTextField3 = new javax.swing.JTextField();
         nbRTextField4 = new javax.swing.JTextField();
         lieuTextField5 = new javax.swing.JTextField();
-        dateFormatLabel1 = new javax.swing.JLabel();
         dateFormatLabel2 = new javax.swing.JLabel();
         dateFormatLabel3 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
@@ -233,16 +232,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
-        retourTextArea.setColumns(20);
-        retourTextArea.setRows(5);
-        jScrollPane2.setViewportView(retourTextArea);
-
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "M", "F" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
             }
         });
+
+        retourTextArea.setColumns(20);
+        retourTextArea.setRows(5);
+        jScrollPane3.setViewportView(retourTextArea);
 
         javax.swing.GroupLayout creationJoueurLayout = new javax.swing.GroupLayout(creationJoueur);
         creationJoueur.setLayout(creationJoueurLayout);
@@ -258,15 +257,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     .addGroup(creationJoueurLayout.createSequentialGroup()
                         .addGroup(creationJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(noteLabel)
-                            .addGroup(creationJoueurLayout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(creationJoueurLayout.createSequentialGroup()
-                                .addComponent(clearButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(mainMenuButton))
                             .addGroup(creationJoueurLayout.createSequentialGroup()
                                 .addGroup(creationJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(eloSemiRapideLabel)
@@ -295,8 +285,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
                                     .addComponent(clubTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(eloNormalTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(eloSemiRapideTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(eloRapideTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap(13, Short.MAX_VALUE))))
+                                    .addComponent(eloRapideTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(29, Short.MAX_VALUE))
+                    .addGroup(creationJoueurLayout.createSequentialGroup()
+                        .addComponent(clearButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(mainMenuButton)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         creationJoueurLayout.setVerticalGroup(
             creationJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -350,14 +348,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addGroup(creationJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(eloRapideLabel)
                     .addComponent(eloRapideTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(creationJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(clearButton)
                     .addComponent(saveButton)
                     .addComponent(mainMenuButton))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
         AffJTextArea1.setColumns(20);
@@ -448,9 +446,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
-        dateFormatLabel1.setFont(new java.awt.Font("Ubuntu", 2, 12)); // NOI18N
-        dateFormatLabel1.setText("yyyy-mm-dd");
-
         dateFormatLabel2.setFont(new java.awt.Font("Ubuntu", 2, 12)); // NOI18N
         dateFormatLabel2.setText("yyyy-mm-dd");
 
@@ -515,11 +510,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
                         .addGap(109, 109, 109)
                         .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(50, 63, Short.MAX_VALUE))
-            .addGroup(creationTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(creationTournoiLayout.createSequentialGroup()
-                    .addGap(193, 193, 193)
-                    .addComponent(dateFormatLabel1)
-                    .addContainerGap(193, Short.MAX_VALUE)))
         );
         creationTournoiLayout.setVerticalGroup(
             creationTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -544,24 +534,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(creationTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(nbRTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(creationTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel8)))
-                .addGap(18, 18, 18)
-                .addGroup(creationTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel8))
+                .addGap(21, 21, 21)
+                .addGroup(creationTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(lieuTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(25, 25, 25)
                 .addComponent(jButton6)
                 .addGap(34, 34, 34)
                 .addComponent(jButton4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton5)
                 .addGap(89, 89, 89))
-            .addGroup(creationTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(creationTournoiLayout.createSequentialGroup()
-                    .addGap(218, 218, 218)
-                    .addComponent(dateFormatLabel1)
-                    .addContainerGap(218, Short.MAX_VALUE)))
         );
 
         nomTextField1.getAccessibleContext().setAccessibleName("nomT");
@@ -820,7 +804,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel creationTournoi;
     private javax.swing.JTextField dateFTextField3;
     private javax.swing.JLabel dateFormatLabel;
-    private javax.swing.JLabel dateFormatLabel1;
     private javax.swing.JLabel dateFormatLabel2;
     private javax.swing.JLabel dateFormatLabel3;
     private javax.swing.JLabel dateLabel;
@@ -849,7 +832,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel licenceLabel;
     private javax.swing.JTextField licenceTextField;
     private javax.swing.JTextField lieuTextField5;
