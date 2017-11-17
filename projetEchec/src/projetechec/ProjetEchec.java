@@ -30,7 +30,7 @@ public class ProjetEchec {
        for (int i=0;i<aj.size();i++){
            aj.get(i).JtoString();
        }*/
-        XMLTournoi xml = new XMLTournoi();
+/*        XMLTournoi xml = new XMLTournoi();
         String s = "";
         Tournoi t = new Tournoi("NomNom", "1990-09-09", "1999-06-10", 2, "Tonnerre");
         xml.WriteXML(t);
@@ -39,7 +39,7 @@ public class ProjetEchec {
         for (int i=0;i<at.size();i++){
             s+= at.get(i).tournoiToString();
         }
-        System.out.println(s);
+        System.out.println(s);*/
     }
     
     

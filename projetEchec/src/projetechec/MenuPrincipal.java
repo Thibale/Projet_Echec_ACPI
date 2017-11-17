@@ -1,8 +1,8 @@
 
 import java.awt.Color;
+import java.util.ArrayList;
 import projetechec.Joueurs;
 import projetechec.XML;
-import projetechec.XMLTournoi;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -74,14 +74,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
         dateFormatLabel = new javax.swing.JLabel();
         clearButton = new javax.swing.JToggleButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        retourTextArea = new javax.swing.JTextArea();
         jComboBox1 = new javax.swing.JComboBox<>();
         afficherJoueur = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        AffJTextArea1 = new javax.swing.JTextArea();
         jLabel3 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnafficherJ = new javax.swing.JButton();
+        retourMenuAff = new javax.swing.JButton();
         creationTournoi = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -233,9 +233,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
+        retourTextArea.setColumns(20);
+        retourTextArea.setRows(5);
+        jScrollPane2.setViewportView(retourTextArea);
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "M", "F" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -360,24 +360,24 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        AffJTextArea1.setColumns(20);
+        AffJTextArea1.setRows(5);
+        jScrollPane1.setViewportView(AffJTextArea1);
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
         jLabel3.setText("Affichage des joueurs");
 
-        jButton2.setText("Afficher");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnafficherJ.setText("Afficher");
+        btnafficherJ.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnafficherJActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Retour menu principal");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        retourMenuAff.setText("Retour menu principal");
+        retourMenuAff.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                retourMenuAffActionPerformed(evt);
             }
         });
 
@@ -397,10 +397,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addGroup(afficherJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(afficherJoueurLayout.createSequentialGroup()
                         .addGap(99, 99, 99)
-                        .addComponent(jButton2))
+                        .addComponent(btnafficherJ))
                     .addGroup(afficherJoueurLayout.createSequentialGroup()
                         .addGap(68, 68, 68)
-                        .addComponent(jButton3)))
+                        .addComponent(retourMenuAff)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         afficherJoueurLayout.setVerticalGroup(
@@ -411,9 +411,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
+                .addComponent(btnafficherJ)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3)
+                .addComponent(retourMenuAff)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -643,9 +643,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
         eloRapideTextField.setText("");
     }//GEN-LAST:event_clearButtonActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // afficherjoueur
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void btnafficherJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnafficherJActionPerformed
+        ArrayList<Joueurs> listJ = xml1.ReadXML();
+        String tmp="";
+        for (int i=0;i<listJ.size();i++){
+            tmp=tmp+"Joueur n°"+(i+1)+System.getProperty("line.separator");
+            tmp=tmp+listJ.get(i).JtoString()+System.getProperty("line.separator");
+
+        }
+        AffJTextArea1.setText(tmp);
+    }//GEN-LAST:event_btnafficherJActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         creationJoueur.setVisible(false);
@@ -680,7 +687,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         add(menuPrinc);
     }//GEN-LAST:event_mainMenuButtonActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void retourMenuAffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_retourMenuAffActionPerformed
         menuPrinc.setVisible(true);
         creationJoueur.setVisible(false);
         afficherJoueur.setVisible(false);
@@ -689,7 +696,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         remove(creationJoueur);
         remove(afficherJoueur);
         add(menuPrinc);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_retourMenuAffActionPerformed
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         String nom = nomTextField.getText(); //Vérification des champs qui ne peuvent pas être nuls
@@ -709,7 +716,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         dateLabel.setForeground(Color.black);
         
         Joueurs J = new Joueurs(licence,nom,prenom,Integer.valueOf(eloN),Integer.valueOf(eloSR),Integer.valueOf(eloR),dateDeNaissance,sexe.charAt(0),fed,lig,clb);
-        RetourCreation.setText(nom + '\n' + prenom + '\n' + dateDeNaissance + '\n' + sexe + '\n' + licence);
+        retourTextArea.setText(nom + '\n' + prenom + '\n' + dateDeNaissance + '\n' + sexe + '\n' + licence);
     }//GEN-LAST:event_saveButtonActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -800,7 +807,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea AffJTextArea1;
     private javax.swing.JPanel afficherJoueur;
+    private javax.swing.JButton btnafficherJ;
     private javax.swing.JToggleButton clearButton;
     private javax.swing.JLabel clubLabel;
     private javax.swing.JTextField clubTextField;
@@ -825,8 +834,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel federationLabel;
     private javax.swing.JTextField federationTextField;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
@@ -842,8 +849,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JLabel licenceLabel;
     private javax.swing.JTextField licenceTextField;
     private javax.swing.JTextField lieuTextField5;
@@ -858,6 +863,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel noteLabel;
     private javax.swing.JLabel prenomLabel;
     private javax.swing.JTextField prenomTextField;
+    private javax.swing.JButton retourMenuAff;
+    private javax.swing.JTextArea retourTextArea;
     private javax.swing.JButton saveButton;
     private javax.swing.JLabel sexeLabel;
     private javax.swing.JLabel titleMenuLabel;
