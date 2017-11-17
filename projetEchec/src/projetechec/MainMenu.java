@@ -395,7 +395,6 @@ public class MainMenu extends javax.swing.JFrame {
     private void champPrenomActionPerformed(java.awt.event.ActionEvent evt) {                                            
         // TODO add your handling code here:
     }                                           
-
     private void champDateDeNaissanceActionPerformed(java.awt.event.ActionEvent evt) {                                                     
         // TODO add your handling code here:
     }                                                    

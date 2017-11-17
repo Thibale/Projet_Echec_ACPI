@@ -33,7 +33,7 @@ public class ProjetEchec {
        for (int i=0;i<aj.size();i++){
            aj.get(i).JtoString();
        }*/
-        XMLTournoi xml = new XMLTournoi();
+        /*XMLTournoi xml = new XMLTournoi();
         String s = "";
         Tournoi t = new Tournoi("NomNom", "1990-09-09", "1999-06-10", 2, "Tonnerre");
         xml.WriteXML(t);
@@ -41,15 +41,16 @@ public class ProjetEchec {
         at=xml.ReadXML();
         for (int i=0;i<at.size();i++){
             s+= at.get(i).tournoiToString();
-        }
-        System.out.println(s);
+        }*/
+        //System.out.println(s);
         XML xml1 = new XML();
-        try {
+        /*try {
             xml1.supprimerJoueur(2);
         } catch (TransformerException ex) {
             Logger.getLogger(ProjetEchec.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        System.out.println("Joueur supprimé");
+        }*/
+        Joueurs j = xml1.getJoueur(2);
+        System.out.println(j.JtoString());
     }
     
     

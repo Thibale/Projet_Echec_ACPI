@@ -230,7 +230,7 @@ public class XML {
     
     public void supprimerJoueur(int idJoueur) throws TransformerConfigurationException, TransformerException{
         this.InitXMLFile();
-        racineNoeuds = racine.getChildNodes();
+        //racineNoeuds = racine.getChildNodes();
         Node joueur = document.getElementsByTagName("joueur").item(idJoueur - 1);
         racine.removeChild(joueur);
         final TransformerFactory transformerFactory = TransformerFactory.newInstance();
@@ -250,5 +250,67 @@ public class XML {
 
         //sortie
         transformer.transform(source, sortie);	
+    }
+    
+    public Joueurs getJoueur(int idJoueur){
+        int idJ;
+        String numLicenceJ;
+        String nomJ;
+        String prenomJ;
+        int numEloNormalJ;
+        int numEloSemiRapideJ;
+        int numEloRapideJ;
+        String categorieJ;
+        String dateNaisJ;
+        char sexeJ;
+        String federationJ;
+        String ligueJ;
+        String clubJ;
+        this.InitXMLFile();
+        Element joueur = (Element) document.getElementsByTagName("joueur").item(idJoueur - 1);
+            //Element joueur = (Element) racineNoeuds.item(idJoueur);
+        
+            Element idtmp = (Element) joueur.getElementsByTagName("idJoueur").item(0);
+            idJ = Integer.valueOf(idtmp.getAttribute("idJ"));
+
+            Element numLicencetmp = (Element) joueur.getElementsByTagName("numLicence").item(0);
+            numLicenceJ = numLicencetmp.getAttribute("numLicence");
+
+            Element nomJoueurtmp = (Element) joueur.getElementsByTagName("nomJoueur").item(0);
+            nomJ = nomJoueurtmp.getAttribute("nomJoueur");
+
+            Element prenomJoueurtmp = (Element) joueur.getElementsByTagName("prenomJoueur").item(0);
+            prenomJ = prenomJoueurtmp.getAttribute("prenomJoueur");
+
+            Element numEloNormaltmp = (Element) joueur.getElementsByTagName("numEloNormal").item(0);
+            numEloNormalJ = Integer.valueOf(numEloNormaltmp.getAttribute("numEloNormal"));
+
+            Element numEloSemiRapidetmp = (Element) joueur.getElementsByTagName("numEloSemiRapide").item(0);
+            numEloSemiRapideJ = Integer.valueOf(numEloSemiRapidetmp.getAttribute("numEloSemiRapide"));
+
+            Element numEloRapidetmp = (Element) joueur.getElementsByTagName("numEloRapide").item(0);
+            numEloRapideJ = Integer.valueOf(numEloRapidetmp.getAttribute("numEloRapide"));
+
+            Element categorietmp = (Element) joueur.getElementsByTagName("categorie").item(0);
+            categorieJ = categorietmp.getAttribute("categorie");
+
+            Element dateNaistmp = (Element) joueur.getElementsByTagName("dateNais").item(0);
+            dateNaisJ = dateNaistmp.getAttribute("dateNais");
+
+            Element sexetmp = (Element) joueur.getElementsByTagName("sexe").item(0);
+            sexeJ = sexetmp.getAttribute("sexe").charAt(0);
+
+            Element federationtmp = (Element) joueur.getElementsByTagName("federation").item(0);
+            federationJ = federationtmp.getAttribute("federation");
+
+            Element liguetmp = (Element) joueur.getElementsByTagName("ligue").item(0);
+            ligueJ = liguetmp.getAttribute("ligue");
+
+            Element clubtmp = (Element) joueur.getElementsByTagName("club").item(0);
+            clubJ = clubtmp.getAttribute("club");
+
+        Joueurs jtmp= new Joueurs(idJ,numLicenceJ,nomJ,prenomJ,numEloNormalJ,numEloSemiRapideJ,numEloRapideJ,categorieJ,dateNaisJ,sexeJ,federationJ,ligueJ,clubJ);
+
+        return jtmp;
     }
 }
