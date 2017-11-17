@@ -1,3 +1,9 @@
+package projetechec;
+
+
+import java.awt.Color;
+import java.util.ArrayList;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -10,11 +16,18 @@
  */
 public class MenuPrincipal extends javax.swing.JFrame {
 
-    /**
-     * Creates new form InterfaceGraphique
-     */
+    public static XML xml1 = new XML();
+    public static XMLTournoi xml2 = new XMLTournoi();
     public MenuPrincipal() {
         initComponents();
+        menuPrinc.setVisible(true);
+        creationJoueur.setVisible(false);
+        afficherJoueur.setVisible(false);
+        creationTournoi.setVisible(false);
+        remove(creationTournoi);
+        remove(creationJoueur);
+        remove(afficherJoueur);
+        add(menuPrinc);
     }
 
     /**
@@ -26,12 +39,80 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        createPlayer = new javax.swing.JButton();
-        createTournament = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        menuPrinc = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        createTournament = new javax.swing.JButton();
+        createPlayer = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        creationJoueur = new javax.swing.JPanel();
+        nomLabel = new javax.swing.JLabel();
+        prenomLabel = new javax.swing.JLabel();
+        dateLabel = new javax.swing.JLabel();
+        sexeLabel = new javax.swing.JLabel();
+        licenceLabel = new javax.swing.JLabel();
+        federationLabel = new javax.swing.JLabel();
+        ligueLabel = new javax.swing.JLabel();
+        clubLabel = new javax.swing.JLabel();
+        eloNormalLabel = new javax.swing.JLabel();
+        eloRapideLabel = new javax.swing.JLabel();
+        eloSemiRapideLabel = new javax.swing.JLabel();
+        saveButton = new javax.swing.JButton();
+        nomTextField = new javax.swing.JTextField();
+        mainMenuButton = new javax.swing.JButton();
+        prenomTextField = new javax.swing.JTextField();
+        dateTextField = new javax.swing.JTextField();
+        licenceTextField = new javax.swing.JTextField();
+        federationTextField = new javax.swing.JTextField();
+        ligueTextField = new javax.swing.JTextField();
+        clubTextField = new javax.swing.JTextField();
+        eloNormalTextField = new javax.swing.JTextField();
+        eloSemiRapideTextField = new javax.swing.JTextField();
+        eloRapideTextField = new javax.swing.JTextField();
+        noteLabel = new javax.swing.JLabel();
+        titleMenuLabel = new javax.swing.JLabel();
+        dateFormatLabel = new javax.swing.JLabel();
+        clearButton = new javax.swing.JToggleButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        retourTextArea = new javax.swing.JTextArea();
+        afficherJoueur = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        AffJTextArea1 = new javax.swing.JTextArea();
+        jLabel3 = new javax.swing.JLabel();
+        btnafficherJ = new javax.swing.JButton();
+        retourMenuAff = new javax.swing.JButton();
+        creationTournoi = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        nomTextField1 = new javax.swing.JTextField();
+        datedTextField2 = new javax.swing.JTextField();
+        dateFTextField3 = new javax.swing.JTextField();
+        nbRTextField4 = new javax.swing.JTextField();
+        lieuTextField5 = new javax.swing.JTextField();
+        dateFormatLabel2 = new javax.swing.JLabel();
+        dateFormatLabel3 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel2.setText("Veuillez sélectionner un sous menu");
+
+        jLabel1.setFont(new java.awt.Font("Ubuntu", 1, 24)); // NOI18N
+        jLabel1.setText("Menu Principal");
+
+        createTournament.setText("Création d'un tournoi");
+        createTournament.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createTournamentActionPerformed(evt);
+            }
+        });
 
         createPlayer.setText("Création d'un joueur");
         createPlayer.addActionListener(new java.awt.event.ActionListener() {
@@ -40,52 +121,639 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
-        createTournament.setText("Création d'un tournoi");
+        jButton1.setText("Afficher les joueurs");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
-        jLabel1.setFont(new java.awt.Font("Ubuntu", 1, 24)); // NOI18N
-        jLabel1.setText("Menu Principal");
+        javax.swing.GroupLayout menuPrincLayout = new javax.swing.GroupLayout(menuPrinc);
+        menuPrinc.setLayout(menuPrincLayout);
+        menuPrincLayout.setHorizontalGroup(
+            menuPrincLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuPrincLayout.createSequentialGroup()
+                .addContainerGap(115, Short.MAX_VALUE)
+                .addGroup(menuPrincLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(menuPrincLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel2)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(menuPrincLayout.createSequentialGroup()
+                        .addGroup(menuPrincLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(createPlayer, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(createTournament, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(25, 25, 25)))
+                .addGap(108, 108, 108))
+        );
+        menuPrincLayout.setVerticalGroup(
+            menuPrincLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(menuPrincLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addGap(80, 80, 80)
+                .addComponent(createPlayer)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(createTournament)
+                .addContainerGap(140, Short.MAX_VALUE))
+        );
 
-        jLabel2.setText("Veuillez sélectionner un sous menu");
+        nomLabel.setText("Nom: *");
+
+        prenomLabel.setText("Prenom: *");
+
+        dateLabel.setText("Date de naissance: *");
+
+        sexeLabel.setText("Sexe: *");
+
+        licenceLabel.setText("Numéro de licence:");
+
+        federationLabel.setText("Fédération:");
+
+        ligueLabel.setText("Ligue");
+
+        clubLabel.setText("Club");
+
+        eloNormalLabel.setText("N° Elo (normal):");
+
+        eloRapideLabel.setText("N° Elo (rapide):");
+
+        eloSemiRapideLabel.setText("N° Elo (Semi rapide):");
+
+        saveButton.setText("Sauvegarder");
+        saveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveButtonActionPerformed(evt);
+            }
+        });
+
+        nomTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nomTextFieldActionPerformed(evt);
+            }
+        });
+
+        mainMenuButton.setText("Retour Menu Principal");
+        mainMenuButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mainMenuButtonActionPerformed(evt);
+            }
+        });
+
+        dateTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dateTextFieldActionPerformed(evt);
+            }
+        });
+
+        federationTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                federationTextFieldActionPerformed(evt);
+            }
+        });
+
+        noteLabel.setFont(new java.awt.Font("Ubuntu", 3, 8)); // NOI18N
+        noteLabel.setText("nb: (*) champs obligatoire");
+
+        titleMenuLabel.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
+        titleMenuLabel.setText("Création d'une fiche joueur");
+
+        dateFormatLabel.setFont(new java.awt.Font("Ubuntu", 2, 12)); // NOI18N
+        dateFormatLabel.setText("yyyy-mm-dd");
+
+        clearButton.setText("Effacer (Clear)");
+        clearButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearButtonActionPerformed(evt);
+            }
+        });
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "M", "F" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
+        retourTextArea.setColumns(20);
+        retourTextArea.setRows(5);
+        jScrollPane3.setViewportView(retourTextArea);
+
+        javax.swing.GroupLayout creationJoueurLayout = new javax.swing.GroupLayout(creationJoueur);
+        creationJoueur.setLayout(creationJoueurLayout);
+        creationJoueurLayout.setHorizontalGroup(
+            creationJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(creationJoueurLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(creationJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, creationJoueurLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(titleMenuLabel)
+                        .addGap(121, 121, 121))
+                    .addGroup(creationJoueurLayout.createSequentialGroup()
+                        .addGroup(creationJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(noteLabel)
+                            .addGroup(creationJoueurLayout.createSequentialGroup()
+                                .addGroup(creationJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(eloSemiRapideLabel)
+                                    .addComponent(eloNormalLabel)
+                                    .addComponent(clubLabel)
+                                    .addComponent(ligueLabel)
+                                    .addComponent(federationLabel)
+                                    .addComponent(licenceLabel)
+                                    .addComponent(dateLabel)
+                                    .addComponent(prenomLabel)
+                                    .addComponent(nomLabel)
+                                    .addComponent(eloRapideLabel)
+                                    .addComponent(sexeLabel))
+                                .addGap(48, 48, 48)
+                                .addGroup(creationJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(nomTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(prenomTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(creationJoueurLayout.createSequentialGroup()
+                                        .addComponent(dateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(dateFormatLabel))
+                                    .addComponent(licenceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(federationTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(ligueTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(clubTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(eloNormalTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(eloSemiRapideTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(eloRapideTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(29, Short.MAX_VALUE))
+                    .addGroup(creationJoueurLayout.createSequentialGroup()
+                        .addComponent(clearButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(mainMenuButton)
+                        .addGap(0, 0, Short.MAX_VALUE))))
+        );
+        creationJoueurLayout.setVerticalGroup(
+            creationJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(creationJoueurLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(titleMenuLabel)
+                .addGap(2, 2, 2)
+                .addComponent(noteLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(creationJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nomLabel)
+                    .addComponent(nomTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(creationJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(prenomLabel)
+                    .addComponent(prenomTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(creationJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dateLabel)
+                    .addComponent(dateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dateFormatLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(creationJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(sexeLabel)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(creationJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(licenceLabel)
+                    .addComponent(licenceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(creationJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(federationLabel)
+                    .addComponent(federationTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(creationJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ligueLabel)
+                    .addComponent(ligueTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(creationJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(clubLabel)
+                    .addComponent(clubTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(creationJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(eloNormalLabel)
+                    .addComponent(eloNormalTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(creationJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(eloSemiRapideLabel)
+                    .addComponent(eloSemiRapideTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(creationJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(eloRapideLabel)
+                    .addComponent(eloRapideTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(creationJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(clearButton)
+                    .addComponent(saveButton)
+                    .addComponent(mainMenuButton))
+                .addContainerGap(57, Short.MAX_VALUE))
+        );
+
+        AffJTextArea1.setColumns(20);
+        AffJTextArea1.setRows(5);
+        jScrollPane1.setViewportView(AffJTextArea1);
+
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
+        jLabel3.setText("Affichage des joueurs");
+
+        btnafficherJ.setText("Afficher");
+        btnafficherJ.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnafficherJActionPerformed(evt);
+            }
+        });
+
+        retourMenuAff.setText("Retour menu principal");
+        retourMenuAff.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                retourMenuAffActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout afficherJoueurLayout = new javax.swing.GroupLayout(afficherJoueur);
+        afficherJoueur.setLayout(afficherJoueurLayout);
+        afficherJoueurLayout.setHorizontalGroup(
+            afficherJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(afficherJoueurLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, afficherJoueurLayout.createSequentialGroup()
+                .addContainerGap(62, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55))
+            .addGroup(afficherJoueurLayout.createSequentialGroup()
+                .addGroup(afficherJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(afficherJoueurLayout.createSequentialGroup()
+                        .addGap(99, 99, 99)
+                        .addComponent(btnafficherJ))
+                    .addGroup(afficherJoueurLayout.createSequentialGroup()
+                        .addGap(68, 68, 68)
+                        .addComponent(retourMenuAff)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        afficherJoueurLayout.setVerticalGroup(
+            afficherJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(afficherJoueurLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnafficherJ)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(retourMenuAff)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jLabel4.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
+        jLabel4.setText("Création d'un tournoi");
+
+        jLabel5.setText("Nom: *");
+
+        jLabel6.setText("Date debut: *");
+
+        jLabel7.setText("Date fin: *");
+
+        jLabel8.setText("Nombre de rondes: *");
+
+        jLabel9.setText("Lieu:");
+
+        nomTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nomTextField1ActionPerformed(evt);
+            }
+        });
+
+        dateFTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dateFTextField3ActionPerformed(evt);
+            }
+        });
+
+        lieuTextField5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lieuTextField5ActionPerformed(evt);
+            }
+        });
+
+        dateFormatLabel2.setFont(new java.awt.Font("Ubuntu", 2, 12)); // NOI18N
+        dateFormatLabel2.setText("yyyy-mm-dd");
+
+        dateFormatLabel3.setFont(new java.awt.Font("Ubuntu", 2, 12)); // NOI18N
+        dateFormatLabel3.setText("yyyy-mm-dd");
+
+        jButton4.setText("Sauvegarder");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jButton5.setText("Menu principal");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        jButton6.setText("Clean");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout creationTournoiLayout = new javax.swing.GroupLayout(creationTournoi);
+        creationTournoi.setLayout(creationTournoiLayout);
+        creationTournoiLayout.setHorizontalGroup(
+            creationTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, creationTournoiLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addGap(150, 150, 150))
+            .addGroup(creationTournoiLayout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addGroup(creationTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton6)
+                    .addGroup(creationTournoiLayout.createSequentialGroup()
+                        .addGroup(creationTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel9))
+                        .addGap(14, 14, 14)
+                        .addGroup(creationTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton4)
+                            .addComponent(lieuTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nbRTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nomTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(creationTournoiLayout.createSequentialGroup()
+                                .addComponent(datedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(dateFormatLabel2))
+                            .addGroup(creationTournoiLayout.createSequentialGroup()
+                                .addComponent(dateFTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(dateFormatLabel3))))
+                    .addGroup(creationTournoiLayout.createSequentialGroup()
+                        .addGap(109, 109, 109)
+                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(50, 63, Short.MAX_VALUE))
+        );
+        creationTournoiLayout.setVerticalGroup(
+            creationTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(creationTournoiLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(creationTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(creationTournoiLayout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(41, 41, 41)
+                        .addComponent(jLabel5))
+                    .addComponent(nomTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(creationTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(datedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dateFormatLabel2))
+                .addGap(18, 18, 18)
+                .addGroup(creationTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(dateFTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dateFormatLabel3))
+                .addGap(18, 18, 18)
+                .addGroup(creationTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(nbRTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addGap(21, 21, 21)
+                .addGroup(creationTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(lieuTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addComponent(jButton6)
+                .addGap(34, 34, 34)
+                .addComponent(jButton4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton5)
+                .addGap(89, 89, 89))
+        );
+
+        nomTextField1.getAccessibleContext().setAccessibleName("nomT");
+        datedTextField2.getAccessibleContext().setAccessibleName("DateDT");
+        dateFTextField3.getAccessibleContext().setAccessibleName("DateFinT");
+        nbRTextField4.getAccessibleContext().setAccessibleName("nbRonde");
+        lieuTextField5.getAccessibleContext().setAccessibleName("lieuT");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(93, 93, 93))
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(124, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(createTournament, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(createPlayer, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(110, 110, 110))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(creationJoueur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(menuPrinc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(afficherJoueur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(creationTournoi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
-                .addComponent(jLabel2)
-                .addGap(34, 34, 34)
-                .addComponent(createPlayer)
-                .addGap(18, 18, 18)
-                .addComponent(createTournament)
-                .addContainerGap(82, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(creationJoueur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(menuPrinc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(afficherJoueur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(creationTournoi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void createPlayerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createPlayerActionPerformed
-        // TODO add your handling code here:
+        creationJoueur.setVisible(true);
+        menuPrinc.setVisible(false);
+        afficherJoueur.setVisible(false);
+        creationTournoi.setVisible(false);
+        remove(creationTournoi);
+        remove(menuPrinc);
+        remove(afficherJoueur);
+        add(creationJoueur);
     }//GEN-LAST:event_createPlayerActionPerformed
+
+    private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
+        nomTextField.setText("");
+        prenomTextField.setText("");
+        dateTextField.setText("");
+        licenceTextField.setText("");
+        federationTextField.setText("");
+        ligueTextField.setText("");
+        clubTextField.setText("");
+        eloNormalTextField.setText("");
+        eloSemiRapideTextField.setText("");
+        eloRapideTextField.setText("");
+    }//GEN-LAST:event_clearButtonActionPerformed
+
+    private void btnafficherJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnafficherJActionPerformed
+        ArrayList<Joueurs> listJ = xml1.ReadXML();
+        String tmp="";
+        for (int i=0;i<listJ.size();i++){
+            tmp=tmp+"Joueur n°"+(i+1)+System.getProperty("line.separator");
+            tmp=tmp+listJ.get(i).JtoString()+System.getProperty("line.separator");
+
+        }
+        AffJTextArea1.setText(tmp);
+    }//GEN-LAST:event_btnafficherJActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        creationJoueur.setVisible(false);
+        menuPrinc.setVisible(false);
+        afficherJoueur.setVisible(true);
+        creationTournoi.setVisible(false);
+        remove(creationTournoi);
+        remove(menuPrinc);
+        remove(creationJoueur);
+        add(afficherJoueur);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void createTournamentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createTournamentActionPerformed
+        creationJoueur.setVisible(false);
+        menuPrinc.setVisible(false);
+        afficherJoueur.setVisible(false);
+        creationTournoi.setVisible(true);
+        remove(afficherJoueur);
+        remove(menuPrinc);
+        remove(creationJoueur);
+        add(creationTournoi);
+    }//GEN-LAST:event_createTournamentActionPerformed
+
+    private void mainMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainMenuButtonActionPerformed
+        menuPrinc.setVisible(true);
+        creationJoueur.setVisible(false);
+        afficherJoueur.setVisible(false);
+         creationTournoi.setVisible(false);
+        remove(creationTournoi);
+        remove(creationJoueur);
+        remove(afficherJoueur);
+        add(menuPrinc);
+    }//GEN-LAST:event_mainMenuButtonActionPerformed
+
+    private void retourMenuAffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_retourMenuAffActionPerformed
+        menuPrinc.setVisible(true);
+        creationJoueur.setVisible(false);
+        afficherJoueur.setVisible(false);
+        creationTournoi.setVisible(false);
+        remove(creationTournoi);
+        remove(creationJoueur);
+        remove(afficherJoueur);
+        add(menuPrinc);
+    }//GEN-LAST:event_retourMenuAffActionPerformed
+
+    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
+        String nom = nomTextField.getText(); //Vérification des champs qui ne peuvent pas être nuls
+        String prenom = prenomTextField.getText();
+        String dateDeNaissance = dateTextField.getText();
+        String sexe = jComboBox1.getSelectedItem().toString();
+        String licence = licenceTextField.getText();
+        String eloN = eloNormalTextField.getText();
+        String eloR = eloRapideTextField.getText();
+        String eloSR = eloSemiRapideTextField.getText();
+        String fed = federationTextField .getText();
+        String lig = ligueTextField.getText();
+        String clb = clubTextField.getText();
+        nomLabel.setForeground(Color.black);
+        prenomLabel.setForeground(Color.black);
+        sexeLabel.setForeground(Color.black);
+        dateLabel.setForeground(Color.black);
+        
+        Joueurs J = new Joueurs(licence,nom,prenom,Integer.valueOf(eloN),Integer.valueOf(eloSR),Integer.valueOf(eloR),dateDeNaissance,sexe.charAt(0),fed,lig,clb);
+        retourTextArea.setText(nom + '\n' + prenom + '\n' + dateDeNaissance + '\n' + sexe + '\n' + licence);
+    }//GEN-LAST:event_saveButtonActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        nomTextField1.setText("");
+        datedTextField2.setText("");
+        dateFTextField3.setText("");
+        nbRTextField4.setText("");
+        lieuTextField5.setText("");
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        menuPrinc.setVisible(true);
+        creationJoueur.setVisible(false);
+        afficherJoueur.setVisible(false);
+        creationTournoi.setVisible(false);
+        remove(creationTournoi);
+        remove(creationJoueur);
+        remove(afficherJoueur);
+        add(menuPrinc);
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void lieuTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lieuTextField5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lieuTextField5ActionPerformed
+
+    private void dateFTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateFTextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dateFTextField3ActionPerformed
+
+    private void nomTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nomTextField1ActionPerformed
+
+    private void nomTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nomTextFieldActionPerformed
+
+    private void dateTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dateTextFieldActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void federationTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_federationTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_federationTextFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -124,9 +792,65 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea AffJTextArea1;
+    private javax.swing.JPanel afficherJoueur;
+    private javax.swing.JButton btnafficherJ;
+    private javax.swing.JToggleButton clearButton;
+    private javax.swing.JLabel clubLabel;
+    private javax.swing.JTextField clubTextField;
     private javax.swing.JButton createPlayer;
     private javax.swing.JButton createTournament;
+    private javax.swing.JPanel creationJoueur;
+    private javax.swing.JPanel creationTournoi;
+    private javax.swing.JTextField dateFTextField3;
+    private javax.swing.JLabel dateFormatLabel;
+    private javax.swing.JLabel dateFormatLabel2;
+    private javax.swing.JLabel dateFormatLabel3;
+    private javax.swing.JLabel dateLabel;
+    private javax.swing.JTextField dateTextField;
+    private javax.swing.JTextField datedTextField2;
+    private javax.swing.JLabel eloNormalLabel;
+    private javax.swing.JTextField eloNormalTextField;
+    private javax.swing.JLabel eloRapideLabel;
+    private javax.swing.JTextField eloRapideTextField;
+    private javax.swing.JLabel eloSemiRapideLabel;
+    private javax.swing.JTextField eloSemiRapideTextField;
+    private javax.swing.JLabel federationLabel;
+    private javax.swing.JTextField federationTextField;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JLabel licenceLabel;
+    private javax.swing.JTextField licenceTextField;
+    private javax.swing.JTextField lieuTextField5;
+    private javax.swing.JLabel ligueLabel;
+    private javax.swing.JTextField ligueTextField;
+    private javax.swing.JButton mainMenuButton;
+    private javax.swing.JPanel menuPrinc;
+    private javax.swing.JTextField nbRTextField4;
+    private javax.swing.JLabel nomLabel;
+    private javax.swing.JTextField nomTextField;
+    private javax.swing.JTextField nomTextField1;
+    private javax.swing.JLabel noteLabel;
+    private javax.swing.JLabel prenomLabel;
+    private javax.swing.JTextField prenomTextField;
+    private javax.swing.JButton retourMenuAff;
+    private javax.swing.JTextArea retourTextArea;
+    private javax.swing.JButton saveButton;
+    private javax.swing.JLabel sexeLabel;
+    private javax.swing.JLabel titleMenuLabel;
     // End of variables declaration//GEN-END:variables
 }

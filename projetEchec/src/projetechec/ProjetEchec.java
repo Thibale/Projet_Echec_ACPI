@@ -33,7 +33,11 @@ public class ProjetEchec {
        for (int i=0;i<aj.size();i++){
            aj.get(i).JtoString();
        }*/
+<<<<<<< HEAD
         /*XMLTournoi xml = new XMLTournoi();
+=======
+/*        XMLTournoi xml = new XMLTournoi();
+>>>>>>> origin/interation2Flo
         String s = "";
         Tournoi t = new Tournoi("NomNom", "1990-09-09", "1999-06-10", 2, "Tonnerre");
         xml.WriteXML(t);
@@ -41,6 +45,7 @@ public class ProjetEchec {
         at=xml.ReadXML();
         for (int i=0;i<at.size();i++){
             s+= at.get(i).tournoiToString();
+<<<<<<< HEAD
         }*/
         //System.out.println(s);
         XML xml1 = new XML();
@@ -51,6 +56,10 @@ public class ProjetEchec {
         }*/
         Joueurs j = xml1.getJoueur(2);
         System.out.println(j.JtoString());
+=======
+        }
+        System.out.println(s);*/
+>>>>>>> origin/interation2Flo
     }
     
     
