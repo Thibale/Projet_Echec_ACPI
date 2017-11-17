@@ -92,4 +92,19 @@
     <ligue ligue="LAN"/>
     <club club="Montpellier Echec"/>
   </joueur>
+<!--personne n°1--><joueur>
+    <idJoueur idJ="1"/>
+    <numLicence numLicence="4454"/>
+    <nomJoueur nomJoueur="ff"/>
+    <prenomJoueur prenomJoueur="ff"/>
+    <numEloNormal numEloNormal="111"/>
+    <numEloSemiRapide numEloSemiRapide="111"/>
+    <numEloRapide numEloRapide="111"/>
+    <categorie categorie="JunM"/>
+    <dateNais dateNais="1997-12-12"/>
+    <sexe sexe="M"/>
+    <federation federation="lll"/>
+    <ligue ligue="lll"/>
+    <club club="lll"/>
+  </joueur>
 </joueurs>
