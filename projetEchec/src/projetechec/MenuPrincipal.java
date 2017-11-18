@@ -3,9 +3,12 @@ package projetechec;
 
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.xml.transform.TransformerException;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -87,6 +90,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         retourMenuAff = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         affichageJoueurList = new javax.swing.JList<>();
+        supprimerJoueurButton = new javax.swing.JButton();
+        modifierJoueurButton = new javax.swing.JButton();
         creationTournoi = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -393,29 +398,46 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(affichageJoueurList);
 
+        supprimerJoueurButton.setText("Supprimer Joueur");
+        supprimerJoueurButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                supprimerJoueurButtonActionPerformed(evt);
+            }
+        });
+
+        modifierJoueurButton.setText("Modifier Joueur");
+        modifierJoueurButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modifierJoueurButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout afficherJoueurLayout = new javax.swing.GroupLayout(afficherJoueur);
         afficherJoueur.setLayout(afficherJoueurLayout);
         afficherJoueurLayout.setHorizontalGroup(
             afficherJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(afficherJoueurLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, afficherJoueurLayout.createSequentialGroup()
-                .addContainerGap(62, Short.MAX_VALUE)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55))
-            .addGroup(afficherJoueurLayout.createSequentialGroup()
                 .addGroup(afficherJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, afficherJoueurLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(afficherJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(afficherJoueurLayout.createSequentialGroup()
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(afficherJoueurLayout.createSequentialGroup()
-                        .addGap(99, 99, 99)
-                        .addComponent(btnafficherJ))
-                    .addGroup(afficherJoueurLayout.createSequentialGroup()
-                        .addGap(68, 68, 68)
-                        .addComponent(retourMenuAff)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(56, 56, 56)
+                        .addComponent(btnafficherJ)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(supprimerJoueurButton)))
+                .addContainerGap())
+            .addGroup(afficherJoueurLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(retourMenuAff)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(modifierJoueurButton)
+                .addGap(20, 20, 20))
         );
         afficherJoueurLayout.setVerticalGroup(
             afficherJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -427,9 +449,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
                     .addComponent(jScrollPane2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnafficherJ)
+                .addGroup(afficherJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnafficherJ)
+                    .addComponent(supprimerJoueurButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(retourMenuAff)
+                .addGroup(afficherJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(retourMenuAff)
+                    .addComponent(modifierJoueurButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -689,7 +715,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         menuPrinc.setVisible(true);
         creationJoueur.setVisible(false);
         afficherJoueur.setVisible(false);
-         creationTournoi.setVisible(false);
+        creationTournoi.setVisible(false);
         remove(creationTournoi);
         remove(creationJoueur);
         remove(afficherJoueur);
@@ -783,10 +809,29 @@ public class MenuPrincipal extends javax.swing.JFrame {
         ArrayList<Joueurs> listJ = xml1.ReadXML();
         String afftmp="";
         String s = (String) affichageJoueurList.getSelectedValue();
-        String stmp = ""+s.charAt(0);
-        afftmp=listJ.get(Integer.valueOf(stmp)-1).JtoString()+System.getProperty("line.separator");
+        int intTmp = Integer.valueOf(""+s.charAt(0));
+        afftmp=listJ.get(intTmp-1).JtoString()+System.getProperty("line.separator");
         AffJTextArea1.setText(afftmp);
     }//GEN-LAST:event_affichageJoueurListValueChanged
+
+    private void supprimerJoueurButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supprimerJoueurButtonActionPerformed
+        String s = (String) affichageJoueurList.getSelectedValue();
+        int intTmp = Integer.valueOf(""+s.charAt(0));
+        try {
+            xml1.supprimerJoueur(intTmp-1);
+        } catch (TransformerException ex) {
+            Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_supprimerJoueurButtonActionPerformed
+
+    private void modifierJoueurButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifierJoueurButtonActionPerformed
+        ArrayList<Joueurs> listJ = xml1.ReadXML();
+        String s = (String) affichageJoueurList.getSelectedValue();
+        int intTmp = Integer.valueOf(""+s.charAt(0));
+        
+        //Faut pas faire comme ça faut créer un nouveau pannel
+        xml1.modifierJoueur(intTmp-1, listJ.get(intTmp-1));
+    }//GEN-LAST:event_modifierJoueurButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -875,6 +920,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField ligueTextField;
     private javax.swing.JButton mainMenuButton;
     private javax.swing.JPanel menuPrinc;
+    private javax.swing.JButton modifierJoueurButton;
     private javax.swing.JTextField nbRTextField4;
     private javax.swing.JLabel nomLabel;
     private javax.swing.JTextField nomTextField;
@@ -886,6 +932,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextArea retourTextArea;
     private javax.swing.JButton saveButton;
     private javax.swing.JLabel sexeLabel;
+    private javax.swing.JButton supprimerJoueurButton;
     private javax.swing.JLabel titleMenuLabel;
     // End of variables declaration//GEN-END:variables
 }
