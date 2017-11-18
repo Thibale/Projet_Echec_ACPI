@@ -227,6 +227,73 @@ public class XML {
         }
        return listJoueurs; 
     }
+    public void modifierJoueur(int idJoueur, Joueurs j){
+        try {
+            this.InitXMLFile();
+            //racineNoeuds = racine.getChildNodes();
+            Element joueur = (Element) document.getElementsByTagName("joueur").item(idJoueur - 1);
+            racine.removeChild(joueur);
+            //node.setAttribute("attrib", "attrib_value");
+            
+            final Element numLic = (Element) joueur.getElementsByTagName("numLicence").item(0);
+            numLic.setAttribute("numLicence", j.getNumLicenceJ());
+            
+            final Element nomJoueur = (Element) joueur.getElementsByTagName("nomJoueur").item(0);
+            nomJoueur.setAttribute("nomJoueur", j.getNomJ());
+            
+            final Element prenomJoueur = (Element) joueur.getElementsByTagName("prenomJoueur").item(0);
+            prenomJoueur.setAttribute("prenomJoueur", j.getPrenomJ());
+            
+            final Element numEloNorm = (Element) joueur.getElementsByTagName("numEloNormal").item(0);
+            numEloNorm.setAttribute("numEloNormal", String.valueOf(j.getNumEloNormalJ()));
+            
+            final Element numEloSemiRap = (Element) joueur.getElementsByTagName("numEloSemiRapide").item(0);
+            numEloSemiRap.setAttribute("numEloSemiRapide", String.valueOf(j.getNumEloSemiRapideJ()));
+            
+            final Element numEloRap = (Element) joueur.getElementsByTagName("numEloRapide").item(0);
+            numEloRap.setAttribute("numEloRapide", String.valueOf(j.getNumEloRapideJ()));
+            
+            final Element catJ = (Element) joueur.getElementsByTagName("categorie").item(0);
+            catJ.setAttribute("categorie", j.getCategorieJ());
+            
+            final Element dateNaissance = (Element) joueur.getElementsByTagName("dateNais").item(0);
+            dateNaissance.setAttribute("dateNais", String.valueOf(j.getDateNaisJ()));
+            
+            final Element sex = (Element) joueur.getElementsByTagName("sexe").item(0);
+            sex.setAttribute("sexe", String.valueOf(j.getSexeJ()));
+            
+            final Element fede = (Element) joueur.getElementsByTagName("federation").item(0);
+            fede.setAttribute("federation",j.getFederationJ());
+            
+            final Element ligueJoueur = (Element) joueur.getElementsByTagName("ligue").item(0);
+            ligueJoueur.setAttribute("ligue", j.getLigueJ());
+            
+            final Element clubJoueur = (Element) joueur.getElementsByTagName("club").item(0);
+            clubJoueur.setAttribute("club", j.getClubJ());
+            
+            final TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            final Transformer transformer = transformerFactory.newTransformer();
+            final DOMSource source = new DOMSource(document);
+            final StreamResult sortie = new StreamResult(new File(System.getProperty("user.dir")+"\\Joueurs.xml"));
+            //final StreamResult result = new StreamResult(System.out);
+            
+            //prologue
+            transformer.setOutputProperty(OutputKeys.VERSION, "1.0");
+            transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+            transformer.setOutputProperty(OutputKeys.STANDALONE, "yes");
+            
+            //formatage
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+            transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
+            
+            //sortie
+            transformer.transform(source, sortie);
+        } catch (TransformerConfigurationException ex) {
+            Logger.getLogger(XML.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (TransformerException ex) {
+            Logger.getLogger(XML.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
     public void supprimerJoueur(int idJoueur) throws TransformerConfigurationException, TransformerException{
         this.InitXMLFile();
