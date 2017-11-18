@@ -807,7 +807,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void affichageJoueurListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_affichageJoueurListValueChanged
         ArrayList<Joueurs> listJ = xml1.ReadXML();
-        String afftmp="";
+        String afftmp;
         String s = (String) affichageJoueurList.getSelectedValue();
         int intTmp = Integer.valueOf(""+s.charAt(0));
         afftmp=listJ.get(intTmp-1).JtoString()+System.getProperty("line.separator");
