@@ -3,6 +3,9 @@ package projetechec;
 
 import java.awt.Color;
 import java.util.ArrayList;
+import javax.swing.DefaultListModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -82,6 +85,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         btnafficherJ = new javax.swing.JButton();
         retourMenuAff = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        affichageJoueurList = new javax.swing.JList<>();
         creationTournoi = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -379,13 +384,24 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jScrollPane2.setAutoscrolls(true);
+
+        affichageJoueurList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                affichageJoueurListValueChanged(evt);
+            }
+        });
+        jScrollPane2.setViewportView(affichageJoueurList);
+
         javax.swing.GroupLayout afficherJoueurLayout = new javax.swing.GroupLayout(afficherJoueur);
         afficherJoueur.setLayout(afficherJoueurLayout);
         afficherJoueurLayout.setHorizontalGroup(
             afficherJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(afficherJoueurLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
+                .addGap(22, 22, 22)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, afficherJoueurLayout.createSequentialGroup()
                 .addContainerGap(62, Short.MAX_VALUE)
@@ -407,7 +423,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(afficherJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnafficherJ)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -630,13 +648,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void btnafficherJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnafficherJActionPerformed
         ArrayList<Joueurs> listJ = xml1.ReadXML();
+        DefaultListModel listM = new DefaultListModel();
+        affichageJoueurList.setModel(listM);
         String tmp="";
+        String tmpList = "";
         for (int i=0;i<listJ.size();i++){
             tmp=tmp+"Joueur n°"+(i+1)+System.getProperty("line.separator");
+            tmpList =(i+1)+"Joueur n°"+(i+1)+listJ.get(i).getNomJ();
+            listM.addElement(tmpList);
             tmp=tmp+listJ.get(i).JtoString()+System.getProperty("line.separator");
 
         }
         AffJTextArea1.setText(tmp);
+
     }//GEN-LAST:event_btnafficherJActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -755,6 +779,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_federationTextFieldActionPerformed
 
+    private void affichageJoueurListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_affichageJoueurListValueChanged
+        ArrayList<Joueurs> listJ = xml1.ReadXML();
+        String afftmp="";
+        String s = (String) affichageJoueurList.getSelectedValue();
+        String stmp = ""+s.charAt(0);
+        afftmp=listJ.get(Integer.valueOf(stmp)-1).JtoString()+System.getProperty("line.separator");
+        AffJTextArea1.setText(afftmp);
+    }//GEN-LAST:event_affichageJoueurListValueChanged
+
     /**
      * @param args the command line arguments
      */
@@ -793,6 +826,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea AffJTextArea1;
+    private javax.swing.JList<String> affichageJoueurList;
     private javax.swing.JPanel afficherJoueur;
     private javax.swing.JButton btnafficherJ;
     private javax.swing.JToggleButton clearButton;
@@ -832,6 +866,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel licenceLabel;
     private javax.swing.JTextField licenceTextField;
