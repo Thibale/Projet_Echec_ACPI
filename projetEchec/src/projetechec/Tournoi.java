@@ -19,6 +19,14 @@ public class Tournoi {
         nbRondes=nbRoundT;
         lieu=lieuT;
     }
+    
+    public Tournoi(String nomT,String dateDebutT,String dateFinT, String nbRoundT, String lieuT){
+        nomTournoi=nomT;
+        dateDebut=dateDebutT;
+        dateFin=dateFinT;
+        nbRondes=Integer.valueOf(nbRoundT);
+        lieu=lieuT;
+    }
 
     public String getNomTournoi() {
         return nomTournoi;
@@ -61,10 +69,10 @@ public class Tournoi {
     }
     
     //Essayer d'avoir un string d'entrée en variable globale
-    public boolean verifDonneesSensiblesCompletes(String messageErreur){ 
+    public boolean verifDonneesSensiblesCompletes(){ 
         boolean tmp = true;
         String stmp = "";
-        messageErreur = "Données manquantes";
+        //messageErreur = "Données manquantes";
         if("".equals(this.nomTournoi)){
             tmp = false;
             stmp += System.getProperty("line.separator")+"Nom Tournoi manquant";
@@ -82,19 +90,19 @@ public class Tournoi {
             stmp += System.getProperty("line.separator")+"Nombre de rondes manquant";
         }
         if(!tmp){
-            messageErreur = "Données manquantes" + stmp;
+            //messageErreur = "Données manquantes" + stmp;
         }
         return tmp;
     }
     
-    private boolean verifFormatDateValide(String date, String messageErreur){
+    private boolean verifFormatDateValide(String date){
         boolean checkFormat;
 
         if (date.matches("([0-9]{4})-([0-9]{2})-([0-9]{2})"))
             checkFormat=true;
         else{
            checkFormat=false;
-            messageErreur += "Erreur, date invalide format attendu : AAAA-MM-JJ";
+            //messageErreur += "Erreur, date invalide format attendu : AAAA-MM-JJ";
         }
         if(checkFormat){
             Date datetmp = null;
@@ -109,7 +117,7 @@ public class Tournoi {
             }
             if (datetmp == null) {
                 checkFormat = false;
-                messageErreur += "Erreur, date incorrecte";
+                //messageErreur += "Erreur, date incorrecte";
             } else {
                 // Valid date format
             }
@@ -118,24 +126,24 @@ public class Tournoi {
         return checkFormat;
     }
     
-    public boolean verifDateDebutAvantDateFin(String dateDeb, String dateFi, String messageErreur){
+    public boolean verifDateDebutAvantDateFin(String dateDeb, String dateFi){
         boolean verif = true;
         LocalDate dateD = LocalDate.parse(dateDeb);
         LocalDate dateF = LocalDate.parse(dateFi);
         if (dateD.compareTo(dateF) > 0){
             verif = false;
-            messageErreur += "Erreur, date de début plus récente que date de fin.";
+            //messageErreur += "Erreur, date de début plus récente que date de fin.";
         }
         return verif;
     }
     
-    public boolean verifDateDebut(String dateDeb, String messageErreur){
+    public boolean verifDateDebut(String dateDeb){
         boolean verif = true;
         LocalDate dateD = LocalDate.parse(dateDeb);
         LocalDate curDate = LocalDate.now();
         if (dateD.compareTo(curDate) < 0){
             verif = false;
-            messageErreur += "Erreur, date de début inférieure à la date actuelle.";
+            //messageErreur += "Erreur, date de début inférieure à la date actuelle.";
         }
         return verif;
     }
@@ -147,11 +155,4 @@ public class Tournoi {
                "Lieu : " + lieu;
     }
     
-    
-    
-    /*private String nomTournoi;
-    private String dateDebut;
-    private String dateFin;
-    private int nbRondes;
-    private String lieu;*/
 }
