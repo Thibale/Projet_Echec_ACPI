@@ -95,7 +95,7 @@ public class Tournoi {
         return tmp;
     }
     
-    private boolean verifFormatDateValide(String date){
+    public boolean verifFormatDateValide(String date){
         boolean checkFormat;
 
         if (date.matches("([0-9]{4})-([0-9]{2})-([0-9]{2})"))
