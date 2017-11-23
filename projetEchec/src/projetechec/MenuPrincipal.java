@@ -109,6 +109,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        MessageErreurT = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -517,6 +519,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
+        MessageErreurT.setWheelScrollingEnabled(false);
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        MessageErreurT.setViewportView(jTextArea1);
+
         javax.swing.GroupLayout creationTournoiLayout = new javax.swing.GroupLayout(creationTournoi);
         creationTournoi.setLayout(creationTournoiLayout);
         creationTournoiLayout.setHorizontalGroup(
@@ -538,7 +546,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
                             .addComponent(jLabel9))
                         .addGap(14, 14, 14)
                         .addGroup(creationTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton4)
                             .addComponent(lieuTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(nbRTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(nomTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -552,8 +559,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
                                 .addComponent(dateFormatLabel3))))
                     .addGroup(creationTournoiLayout.createSequentialGroup()
                         .addGap(109, 109, 109)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(creationTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton4)
+                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(50, 63, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, creationTournoiLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(MessageErreurT, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         creationTournoiLayout.setVerticalGroup(
             creationTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -585,11 +598,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     .addComponent(lieuTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
                 .addComponent(jButton6)
-                .addGap(34, 34, 34)
+                .addGap(13, 13, 13)
                 .addComponent(jButton4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton5)
-                .addGap(89, 89, 89))
+                .addGap(3, 3, 3)
+                .addComponent(MessageErreurT, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52))
         );
 
         nomTextField1.getAccessibleContext().setAccessibleName("nomT");
@@ -649,7 +664,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void createPlayerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createPlayerActionPerformed
-        creationJoueur.setVisible(true);
+        
         menuPrinc.setVisible(false);
         afficherJoueur.setVisible(false);
         creationTournoi.setVisible(false);
@@ -657,6 +672,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         remove(menuPrinc);
         remove(afficherJoueur);
         add(creationJoueur);
+        creationJoueur.setVisible(true);
     }//GEN-LAST:event_createPlayerActionPerformed
 
     private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
@@ -692,23 +708,24 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         creationJoueur.setVisible(false);
         menuPrinc.setVisible(false);
-        afficherJoueur.setVisible(true);
+       
         creationTournoi.setVisible(false);
         remove(creationTournoi);
         remove(menuPrinc);
         remove(creationJoueur);
         add(afficherJoueur);
+        afficherJoueur.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void createTournamentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createTournamentActionPerformed
         creationJoueur.setVisible(false);
         menuPrinc.setVisible(false);
         afficherJoueur.setVisible(false);
-        creationTournoi.setVisible(true);
         remove(afficherJoueur);
         remove(menuPrinc);
         remove(creationJoueur);
         add(creationTournoi);
+        creationTournoi.setVisible(true);
     }//GEN-LAST:event_createTournamentActionPerformed
 
     private void mainMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainMenuButtonActionPerformed
@@ -720,10 +737,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         remove(creationJoueur);
         remove(afficherJoueur);
         add(menuPrinc);
+        menuPrinc.setVisible(true);
     }//GEN-LAST:event_mainMenuButtonActionPerformed
 
     private void retourMenuAffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_retourMenuAffActionPerformed
-        menuPrinc.setVisible(true);
+
         creationJoueur.setVisible(false);
         afficherJoueur.setVisible(false);
         creationTournoi.setVisible(false);
@@ -731,6 +749,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         remove(creationJoueur);
         remove(afficherJoueur);
         add(menuPrinc);
+        menuPrinc.setVisible(true);
     }//GEN-LAST:event_retourMenuAffActionPerformed
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
@@ -763,7 +782,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        menuPrinc.setVisible(true);
+        
         creationJoueur.setVisible(false);
         afficherJoueur.setVisible(false);
         creationTournoi.setVisible(false);
@@ -771,6 +790,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         remove(creationJoueur);
         remove(afficherJoueur);
         add(menuPrinc);
+        menuPrinc.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -836,13 +856,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    //public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
+        /*try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -862,15 +882,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
+        /*java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MenuPrincipal().setVisible(true);
             }
         });
-    }
+    }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea AffJTextArea1;
+    private javax.swing.JScrollPane MessageErreurT;
     private javax.swing.JList<String> affichageJoueurList;
     private javax.swing.JPanel afficherJoueur;
     private javax.swing.JButton btnafficherJ;
@@ -913,6 +934,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel licenceLabel;
     private javax.swing.JTextField licenceTextField;
     private javax.swing.JTextField lieuTextField5;
