@@ -10,6 +10,11 @@ public class ProjetEchec {
     
     public static void main(String[] args) {
 
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new MenuPrincipal().setVisible(true);
+            }
+        });
     /*java.awt.EventQueue.invokeLater(new Runnable() {
         public void run() {
             new MainMenu().setVisible(true);
@@ -51,7 +56,6 @@ public class ProjetEchec {
     }*/
     Joueurs j = xml1.getJoueur(2);
     System.out.println(j.JtoString());
-    System.out.println("test git");
     }
     //System.out.println(s);
 }
