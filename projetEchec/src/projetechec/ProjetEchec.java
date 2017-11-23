@@ -51,6 +51,7 @@ public class ProjetEchec {
     }*/
     Joueurs j = xml1.getJoueur(2);
     System.out.println(j.JtoString());
+    System.out.println("test git");
     }
     //System.out.println(s);
 }
