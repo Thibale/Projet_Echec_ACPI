@@ -24,6 +24,11 @@ public class Tournoi {
         nomTournoi=nomT;
         dateDebut=dateDebutT;
         dateFin=dateFinT;
+        if("".equals(nbRoundT)){
+            nbRondes=0;
+        }else{
+            nbRondes=Integer.valueOf(nbRoundT);
+        }
         nbRondes=Integer.valueOf(nbRoundT);
         lieu=lieuT;
     }
@@ -68,24 +73,40 @@ public class Tournoi {
         this.lieu = lieu;
     }
     
+    public boolean nomTournoiEstVide(){
+        return "".equals(this.nomTournoi);
+    }
+    
+    public boolean dateDebutEstVide(){
+        return "".equals(this.dateDebut);
+    }
+    
+    public boolean dateFinEstVide(){
+        return "".equals(this.dateFin);
+    }
+    
+    public boolean nbRondesEstVide(){
+        return this.nbRondes == 0;
+    }
+    
     //Essayer d'avoir un string d'entrée en variable globale
     public boolean verifDonneesSensiblesCompletes(){ 
         boolean tmp = true;
         String stmp = "";
         //messageErreur = "Données manquantes";
-        if("".equals(this.nomTournoi)){
+        if(this.nomTournoiEstVide()){
             tmp = false;
             stmp += System.getProperty("line.separator")+"Nom Tournoi manquant";
         }
-        if("".equals(this.dateDebut)){
+        if(this.dateDebutEstVide()){
             tmp = false;
             stmp += System.getProperty("line.separator")+"Date de début manquante";
         }
-        if("".equals(this.dateFin)){
+        if(this.dateFinEstVide()){
             tmp = false;
             stmp += System.getProperty("line.separator")+"Date de fin manquante";
         }
-        if(this.nbRondes == 0){
+        if(this.nbRondesEstVide()){
             tmp = false;
             stmp += System.getProperty("line.separator")+"Nombre de rondes manquant";
         }
@@ -95,34 +116,38 @@ public class Tournoi {
         return tmp;
     }
     
-    private boolean verifFormatDateValide(String date){
+    public boolean verifMatchDate(String date){
+        return date.matches("([0-9]{4})-([0-9]{2})-([0-9]{2})"); 
+        //messageErreur += "Erreur, date invalide format attendu : AAAA-MM-JJ";
+    }
+    
+    public boolean verifDateValide(String date){
+        boolean checkFormat = true;
+        Date datetmp = null;
+        String format = "yyyy-MM-dd";
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat(format);
+            datetmp = sdf.parse(date);
+            if (!date.equals(sdf.format(datetmp))) {
+                datetmp = null;
+            }
+        } catch (ParseException ex) {
+        }
+        if (datetmp == null) {
+            checkFormat = false;
+            //messageErreur += "Erreur, date incorrecte";
+        }
+        return checkFormat;
+    }
+    
+    public boolean verifFormatDateValide(String date){
         boolean checkFormat;
 
-        if (date.matches("([0-9]{4})-([0-9]{2})-([0-9]{2})"))
-            checkFormat=true;
-        else{
-           checkFormat=false;
-            //messageErreur += "Erreur, date invalide format attendu : AAAA-MM-JJ";
-        }
-        if(checkFormat){
-            Date datetmp = null;
-            String format = "yyyy-MM-dd";
-            try {
-                SimpleDateFormat sdf = new SimpleDateFormat(format);
-                datetmp = sdf.parse(date);
-                if (!date.equals(sdf.format(datetmp))) {
-                    datetmp = null;
-                }
-            } catch (ParseException ex) {
-            }
-            if (datetmp == null) {
-                checkFormat = false;
-                //messageErreur += "Erreur, date incorrecte";
-            } else {
-                // Valid date format
-            }
-        }
+        checkFormat = this.verifMatchDate(date);
         
+        if(checkFormat){
+            checkFormat = this.verifDateValide(date);
+        }
         return checkFormat;
     }
     
