@@ -29,7 +29,6 @@ public class Tournoi {
         }else{
             nbRondes=Integer.valueOf(nbRoundT);
         }
-        nbRondes=Integer.valueOf(nbRoundT);
         lieu=lieuT;
     }
 
@@ -89,26 +88,25 @@ public class Tournoi {
         return this.nbRondes == 0;
     }
     
-    //Essayer d'avoir un string d'entrée en variable globale
     public boolean verifDonneesSensiblesCompletes(){ 
         boolean tmp = true;
-        String stmp = "";
+        //String stmp = "";
         //messageErreur = "Données manquantes";
         if(this.nomTournoiEstVide()){
             tmp = false;
-            stmp += System.getProperty("line.separator")+"Nom Tournoi manquant";
+            //stmp += System.getProperty("line.separator")+"Nom Tournoi manquant";
         }
         if(this.dateDebutEstVide()){
             tmp = false;
-            stmp += System.getProperty("line.separator")+"Date de début manquante";
+            //stmp += System.getProperty("line.separator")+"Date de début manquante";
         }
         if(this.dateFinEstVide()){
             tmp = false;
-            stmp += System.getProperty("line.separator")+"Date de fin manquante";
+            //stmp += System.getProperty("line.separator")+"Date de fin manquante";
         }
         if(this.nbRondesEstVide()){
             tmp = false;
-            stmp += System.getProperty("line.separator")+"Nombre de rondes manquant";
+            //stmp += System.getProperty("line.separator")+"Nombre de rondes manquant";
         }
         if(!tmp){
             //messageErreur = "Données manquantes" + stmp;

@@ -94,10 +94,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         modifierJoueurButton = new javax.swing.JButton();
         creationTournoi = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        nom = new javax.swing.JLabel();
+        dated = new javax.swing.JLabel();
+        datef = new javax.swing.JLabel();
+        nbr = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         nomTextField1 = new javax.swing.JTextField();
         datedTextField2 = new javax.swing.JTextField();
@@ -109,6 +109,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        d = new javax.swing.JScrollPane();
+        msgErreurT = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -462,13 +464,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
         jLabel4.setText("Création d'un tournoi");
 
-        jLabel5.setText("Nom: *");
+        nom.setText("Nom: *");
 
-        jLabel6.setText("Date debut: *");
+        dated.setText("Date debut: *");
 
-        jLabel7.setText("Date fin: *");
+        datef.setText("Date fin: *");
 
-        jLabel8.setText("Nombre de rondes: *");
+        nbr.setText("Nombre de rondes: *");
 
         jLabel9.setText("Lieu:");
 
@@ -517,6 +519,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
+        msgErreurT.setColumns(20);
+        msgErreurT.setRows(5);
+        d.setViewportView(msgErreurT);
+
         javax.swing.GroupLayout creationTournoiLayout = new javax.swing.GroupLayout(creationTournoi);
         creationTournoi.setLayout(creationTournoiLayout);
         creationTournoiLayout.setHorizontalGroup(
@@ -526,33 +532,38 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addGap(150, 150, 150))
             .addGroup(creationTournoiLayout.createSequentialGroup()
-                .addGap(46, 46, 46)
                 .addGroup(creationTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton6)
                     .addGroup(creationTournoiLayout.createSequentialGroup()
+                        .addGap(46, 46, 46)
                         .addGroup(creationTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel9))
-                        .addGap(14, 14, 14)
-                        .addGroup(creationTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton4)
-                            .addComponent(lieuTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(nbRTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(nomTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton6)
                             .addGroup(creationTournoiLayout.createSequentialGroup()
-                                .addComponent(datedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(dateFormatLabel2))
+                                .addGroup(creationTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(nom)
+                                    .addComponent(dated)
+                                    .addComponent(datef)
+                                    .addComponent(nbr)
+                                    .addComponent(jLabel9))
+                                .addGap(14, 14, 14)
+                                .addGroup(creationTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButton4)
+                                    .addComponent(lieuTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(nbRTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(nomTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(creationTournoiLayout.createSequentialGroup()
+                                        .addComponent(datedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(dateFormatLabel2))
+                                    .addGroup(creationTournoiLayout.createSequentialGroup()
+                                        .addComponent(dateFTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(dateFormatLabel3))))
                             .addGroup(creationTournoiLayout.createSequentialGroup()
-                                .addComponent(dateFTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(dateFormatLabel3))))
+                                .addGap(109, 109, 109)
+                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(creationTournoiLayout.createSequentialGroup()
-                        .addGap(109, 109, 109)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(137, 137, 137)
+                        .addComponent(d, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(50, 63, Short.MAX_VALUE))
         );
         creationTournoiLayout.setVerticalGroup(
@@ -563,22 +574,22 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     .addGroup(creationTournoiLayout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addGap(41, 41, 41)
-                        .addComponent(jLabel5))
+                        .addComponent(nom))
                     .addComponent(nomTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(creationTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
+                    .addComponent(dated)
                     .addComponent(datedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(dateFormatLabel2))
                 .addGap(18, 18, 18)
                 .addGroup(creationTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(datef, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(dateFTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(dateFormatLabel3))
                 .addGap(18, 18, 18)
                 .addGroup(creationTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(nbRTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
+                    .addComponent(nbr))
                 .addGap(21, 21, 21)
                 .addGroup(creationTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
@@ -589,7 +600,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addComponent(jButton4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton5)
-                .addGap(89, 89, 89))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(d, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         nomTextField1.getAccessibleContext().setAccessibleName("nomT");
@@ -750,8 +762,91 @@ public class MenuPrincipal extends javax.swing.JFrame {
         sexeLabel.setForeground(Color.black);
         dateLabel.setForeground(Color.black);
         
-        Joueurs J = new Joueurs(licence,nom,prenom,Integer.valueOf(eloN),Integer.valueOf(eloSR),Integer.valueOf(eloR),dateDeNaissance,sexe.charAt(0),fed,lig,clb);
-        retourTextArea.setText(nom + '\n' + prenom + '\n' + dateDeNaissance + '\n' + sexe + '\n' + licence);
+        Joueurs j = new Joueurs(licence,nom,prenom,eloN,eloSR,eloR,dateDeNaissance,sexe.charAt(0),fed,lig,clb);
+        String stmp="Données manquantes: ";
+        boolean test = true;
+        if(!j.verifDonneeEnregistrementJoueur())
+        {
+            test= false;
+            if(j.nomEstVide()){
+                nomLabel.setForeground(Color.red);
+                stmp += System.getProperty("line.separator")+"Nom Joueur manquant";
+            } 
+            if(j.prenomEstVide()){
+                prenomLabel.setForeground(Color.red);
+                stmp += System.getProperty("line.separator")+"Prénom Joueur manquant";
+            }
+            if(j.sexeEstVide()){
+                sexeLabel.setForeground(Color.red);
+                stmp += System.getProperty("line.separator")+"Sexe Joueur manquant";
+            }
+            if(j.dateEstVide()){
+                nbr.setForeground(Color.red);
+                stmp += System.getProperty("line.separator")+"Date de naissance manquante";
+            }
+        }else{
+            if(j.verifFormatNomValide()){
+                test= false;
+                nomLabel.setForeground(Color.red);
+                stmp += System.getProperty("line.separator")+"Nom Joueur invalide";
+            }
+            if(j.verifFormatPrenomValide()){
+                test= false;
+                prenomLabel.setForeground(Color.red);
+                stmp += System.getProperty("line.separator")+"Prénom Joueur invalide";
+            }
+        }
+        if(!j.verifFormatDateValide(dateDeNaissance))
+        {
+            test= false;
+            if(!j.verifMatchDate(dateDeNaissance)){
+                dateLabel.setForeground(Color.red);
+                stmp += System.getProperty("line.separator")+"Erreur, date invalide format attendu : AAAA-MM-JJ";
+            }
+            if(!j.verifDateValide(dateDeNaissance)){
+                dateLabel.setForeground(Color.red);
+                stmp += System.getProperty("line.separator")+"Erreur, date incorrecte";
+            }
+        } 
+        if(j.verifFormatDateValide(dateDeNaissance)){
+            if(!j.verifFormatDateValide(dateDeNaissance)){
+                if(!j.verifDateNaiss(dateDeNaissance)){
+                    test= false;
+                    dateLabel.setForeground(Color.red);
+                    stmp += System.getProperty("line.separator")+"Erreur, date de naissance supérieure à la date actuelle.";
+                }
+            }
+        }
+        
+        if(!j.verifFormatEloValide(eloN)){
+            test= false;
+            stmp += System.getProperty("line.separator")+"Erreur, Elo Normal invalide.";
+        }
+        
+        if(!j.verifFormatEloValide(eloR)){
+            test= false;
+            stmp += System.getProperty("line.separator")+"Erreur, Elo Rapide invalide.";
+        }
+        
+        if(!j.verifFormatEloValide(eloSR)){
+            test= false;
+            stmp += System.getProperty("line.separator")+"Erreur, Elo SemiRapide invalide.";
+        }
+        
+        if(!j.verifFormatLigueValide()){
+            test= false;
+            stmp += System.getProperty("line.separator")+"Erreur, ligue invalide.";
+        }
+        
+        if(!j.verifFormatFedValide()){
+            test= false;
+            stmp += System.getProperty("line.separator")+"Erreur, Federation invalide.";
+        }
+                
+        retourTextArea.setText(stmp);
+        if(test){
+            xml1.WriteXML(j);
+        }
     }//GEN-LAST:event_saveButtonActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -774,7 +869,77 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+        String nomTournoi=nomTextField1.getText();
+        String dateDebut= datedTextField2.getText();
+        String dateFin=dateFTextField3.getText();
+        String nbRondes=nbRTextField4.getText();
+        String lieu=lieuTextField5.getText();
+        nom.setForeground(Color.black);
+        dated.setForeground(Color.black);
+        datef.setForeground(Color.black);
+        nbr.setForeground(Color.black);
+        Tournoi t = new Tournoi(nomTournoi,dateDebut,dateFin,nbRondes,lieu);
+        String stmp="Données manquantes: ";
+        boolean test = true;
+        if(!t.verifDonneesSensiblesCompletes())
+        {
+            test= false;
+            if(t.nomTournoiEstVide()){
+                nom.setForeground(Color.red);
+                stmp += System.getProperty("line.separator")+"Nom Tournoi manquant";
+            }   
+            if(t.dateDebutEstVide()){
+                dated.setForeground(Color.red);
+                stmp += System.getProperty("line.separator")+"Date de début manquante";
+            }
+            if(t.dateFinEstVide()){
+                datef.setForeground(Color.red);
+                stmp += System.getProperty("line.separator")+"Date de fin manquante";
+            }
+            if(t.nbRondesEstVide()){
+                nbr.setForeground(Color.red);
+                stmp += System.getProperty("line.separator")+"Nombre de rondes manquant";
+            }
+        }
+        if(!t.verifFormatDateValide(dateDebut))
+        {
+            test= false;
+            if(!t.verifMatchDate(dateDebut)){
+                dated.setForeground(Color.red);
+                stmp += System.getProperty("line.separator")+"Erreur, date invalide format attendu : AAAA-MM-JJ";
+            }
+            if(!t.verifDateValide(dateDebut)){
+                dated.setForeground(Color.red);
+                stmp += System.getProperty("line.separator")+"Erreur, date incorrecte";
+            }
+        } 
+        if(!t.verifFormatDateValide(dateFin))
+        {
+            test= false;
+            if(!t.verifMatchDate(dateFin)){
+                dated.setForeground(Color.red);
+                stmp += System.getProperty("line.separator")+"Erreur, date invalide format attendu : AAAA-MM-JJ";
+            }
+            if(!t.verifDateValide(dateFin)){
+                dated.setForeground(Color.red);
+                stmp += System.getProperty("line.separator")+"Erreur, date incorrecte";
+            }
+        }
+        if(t.verifFormatDateValide(dateDebut) && t.verifFormatDateValide(dateFin)){
+            if(!t.verifDateDebut(dateDebut)){
+                test= false;
+                dated.setForeground(Color.red);
+                stmp += System.getProperty("line.separator")+"Erreur, date de début inférieure à la date actuelle.";
+            }
+            if(!t.verifDateDebutAvantDateFin(dateDebut, dateFin)){
+                test= false;
+                stmp += System.getProperty("line.separator")+"Erreur, date de début plus récente que date de fin.";
+            }
+        }
+        msgErreurT.setText(stmp);
+        if(test){
+            xml2.WriteXML(t);
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void lieuTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lieuTextField5ActionPerformed
@@ -881,13 +1046,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton createTournament;
     private javax.swing.JPanel creationJoueur;
     private javax.swing.JPanel creationTournoi;
+    private javax.swing.JScrollPane d;
     private javax.swing.JTextField dateFTextField3;
     private javax.swing.JLabel dateFormatLabel;
     private javax.swing.JLabel dateFormatLabel2;
     private javax.swing.JLabel dateFormatLabel3;
     private javax.swing.JLabel dateLabel;
     private javax.swing.JTextField dateTextField;
+    private javax.swing.JLabel dated;
     private javax.swing.JTextField datedTextField2;
+    private javax.swing.JLabel datef;
     private javax.swing.JLabel eloNormalLabel;
     private javax.swing.JTextField eloNormalTextField;
     private javax.swing.JLabel eloRapideLabel;
@@ -905,10 +1073,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -921,7 +1085,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton mainMenuButton;
     private javax.swing.JPanel menuPrinc;
     private javax.swing.JButton modifierJoueurButton;
+    private javax.swing.JTextArea msgErreurT;
     private javax.swing.JTextField nbRTextField4;
+    private javax.swing.JLabel nbr;
+    private javax.swing.JLabel nom;
     private javax.swing.JLabel nomLabel;
     private javax.swing.JTextField nomTextField;
     private javax.swing.JTextField nomTextField1;

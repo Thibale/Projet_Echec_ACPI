@@ -1,7 +1,12 @@
 package projetechec;
 
+import java.awt.Color;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
+import java.time.format.DateTimeParseException;
+import java.util.Date;
 
 public class Joueurs {  
     private int idJ;
@@ -18,14 +23,26 @@ public class Joueurs {
     private String ligueJ;
     private String clubJ;
     
-    public Joueurs(String numLicence,String nom,String prenom,int numEloNormal,int numEloSemiRapide,int numEloRapide,String dateNais,char sexe,String federation,String ligue,String club){
+    public Joueurs(String numLicence,String nom,String prenom,String numEloNormal,String numEloSemiRapide,String numEloRapide,String dateNais,char sexe,String federation,String ligue,String club){
         idJ=0;
         numLicenceJ=numLicence;
         nomJ=nom;
         prenomJ=prenom;
-        numEloNormalJ=numEloNormal;
-        numEloSemiRapideJ=numEloSemiRapide;
-        numEloRapideJ=numEloRapide;
+        if("".equals(numEloNormal)){
+            numEloNormalJ=0;
+        }else{
+            numEloNormalJ=Integer.valueOf(numEloNormal);
+        }
+        if("".equals(numEloSemiRapide)){
+            numEloSemiRapideJ=0;
+        }else{
+            numEloSemiRapideJ=Integer.valueOf(numEloSemiRapide);
+        }
+        if("".equals(numEloRapide)){
+            numEloRapideJ=0;
+        }else{
+            numEloRapideJ=Integer.valueOf(numEloRapide);
+        }
         categorieJ=this.calculCategorie(sexe,dateNais);
         dateNaisJ=dateNais;
         sexeJ=sexe;
@@ -162,58 +179,37 @@ public class Joueurs {
     }
     
     public String calculCategorie(char sexe, String date){
-        String cat = "";
-        LocalDate dob = LocalDate.parse(date);
-        LocalDate curDate = LocalDate.now();
-        int age = Period.between(dob, curDate).getYears();
-        if(age < 8){
-            cat = cat+"pPo";
-        }else if(age < 10){
-            cat = cat+"Po";
-        }else if(age < 12){
-            cat = cat+"Pu";
-        }else if(age < 14){
-            cat = cat+"Ben";
-        }else if(age < 16){
-            cat = cat+"Min";
-        }else if(age < 18){
-            cat = cat+"Cad";
-        }else if(age < 20){
-            cat = cat+"Jun";
-        }else if(age < 50){
-            cat = cat+"Sen";
-        }else{
-            cat = cat+"Vet";
+        try{
+            String cat = "";
+            LocalDate dob = LocalDate.parse(date);
+            LocalDate curDate = LocalDate.now();
+            int age = Period.between(dob, curDate).getYears();
+            if(age < 8){
+                cat = cat+"pPo";
+            }else if(age < 10){
+                cat = cat+"Po";
+            }else if(age < 12){
+                cat = cat+"Pu";
+            }else if(age < 14){
+                cat = cat+"Ben";
+            }else if(age < 16){
+                cat = cat+"Min";
+            }else if(age < 18){
+                cat = cat+"Cad";
+            }else if(age < 20){
+                cat = cat+"Jun";
+            }else if(age < 50){
+                cat = cat+"Sen";
+            }else{
+                cat = cat+"Vet";
+            }
+            return cat+sexe;
+        }catch(DateTimeParseException e){
+            
         }
-        return cat+sexe;
+        return null;
     }
     
-    /*public String verrifierContenuJoueur(Joueurs j){
-        if(verifDonneeEnregistrementJoueur(j.getNomJ(), j.getPrenomJ(), j.getDateNaisJ(), j.getSexeJ())){
-            if(verifFormatNomValide(nom)){
-                if(verifFormatPrenomValide(prenom)){
-                    if(verifFormatDateValide(dateDeNaissance)){
-                        if(verifFormatEloValide(eloN)){
-                            if(verifFormatEloValide(eloR)){
-                                if(verifFormatEloValide(eloSR)){
-                                    if(verifFormatFedValide(fed)){
-                                        if(verifFormatLigueValide(lig)){
-                                            Joueurs J = new Joueurs(numL,nom,prenom,Integer.valueOf(eloN),Integer.valueOf(eloSR),Integer.valueOf(eloR),dateDeNaissance,sexe.charAt(0),fed,lig,clb); //le sexe vaut 'a' car j'arrive pas à faire la coversion String to Char
-                                            RetourCreation.setText(nom + '\n' + prenom + '\n' + dateDeNaissance + '\n' + sexe + '\n' + licence);
-                                            //RetourCreation.setText(J.getNomJ() + '\n' + J.getPrenomJ() + '\n' + J.getDateNaisJ() + '\n' + J.getSexeJ() + '\n'); //test de l'objet
-                                            //XML xml1 = new XML(); 
-                                            //xml1.WriteXML(J);
-                                        }
-                                    }
-                                }
-                            }
-                        } 
-                    }
-                }
-            }
-        }
-        return "";
-    }*/
     
     public boolean verifDateNaiss(String dateNaissance){
         boolean verif = true;
@@ -224,6 +220,130 @@ public class Joueurs {
             //messageErreur += System.getProperty("line.separator") + "Erreur, date de naissance plus récente que la date actuelle.";
         }
         return verif;
+    }
+    
+    public boolean verifMatchDate(String date){
+        return date.matches("([0-9]{4})-([0-9]{2})-([0-9]{2})"); 
+        //messageErreur += "Erreur, date invalide format attendu : AAAA-MM-JJ";
+    }
+
+    public boolean verifDateValide(String date){
+        boolean checkFormat = true;
+        Date datetmp = null;
+        String format = "yyyy-MM-dd";
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat(format);
+            datetmp = sdf.parse(date);
+            if (!date.equals(sdf.format(datetmp))) {
+                datetmp = null;
+            }
+        } catch (ParseException ex) {
+        }
+        if (datetmp == null) {
+            checkFormat = false;
+            //messageErreur += "Erreur, date incorrecte";
+        }
+        return checkFormat;
+    }
+
+    public boolean verifFormatDateValide(String date){
+        boolean checkFormat;
+
+        checkFormat = this.verifMatchDate(date);
+
+        if(checkFormat){
+            checkFormat = this.verifDateValide(date);
+        }
+        return checkFormat;
+    }
+    
+    
+    public boolean verifFormatNomValide(){
+        boolean res = true;
+        if(!this.nomJ.matches("[A-Za-z-]*")){
+            res = false;
+            //RetourCreation.setText("Erreur, nom invalide");
+        }
+        return res;
+    }
+    
+    public boolean verifFormatPrenomValide(){
+        boolean res = true;
+        if(!this.prenomJ.matches("[A-Za-z-]*")){
+            res = false;
+            //RetourCreation.setText("Erreur, prenom invalide");
+        }
+        return res;
+    }
+    
+    public boolean verifFormatEloValide(String elo){
+        boolean res = true;
+        if(!"".equals(elo)){
+            if(!elo.matches("[0-9]*")){
+                res = false;
+                //RetourCreation.setText("Erreur, elo invalide");
+            }
+        }
+        return res;
+    }
+    
+    public boolean verifFormatLigueValide(){
+        boolean res = true;
+        if(!"".equals(this.ligueJ)){
+            if(!this.ligueJ.matches("[A-Za-z-]*") || this.ligueJ.length() != 3){
+                res = false;
+                //RetourCreation.setText("Erreur, ligue invalide");
+            }
+        }
+        return res;
+    }
+    
+    public boolean verifFormatFedValide(){
+        boolean res = true;
+        if(!"".equals(this.federationJ)){
+            if(!this.federationJ.matches("[A-Za-z-]*") || this.federationJ.length() != 3){
+                res = false;
+                //RetourCreation.setText("Erreur, fédération invalide");
+            }
+        }
+        return res;
+    }
+    
+    public boolean nomEstVide(){
+        return "".equals(this.nomJ);
+    }
+    
+    public boolean prenomEstVide(){
+        return "".equals(this.prenomJ);
+    }
+    
+    public boolean sexeEstVide(){
+        return "".equals(this.sexeJ);
+    }
+    
+    public boolean dateEstVide(){
+        return "".equals(this.dateNaisJ);
+    }
+    
+    public boolean verifDonneeEnregistrementJoueur(){
+        boolean res = true;
+        if(this.nomEstVide()){
+            res = false;
+            //labelNom.setForeground(Color.red);
+        }
+        if(this.prenomEstVide()){
+            res = false;
+            //labelPrenom.setForeground(Color.red);
+        }
+        if(this.sexeEstVide()){
+            res = false;
+            //labelSexe.setForeground(Color.red);
+        }
+        if(this.dateEstVide()){
+            res = false;
+            //labelDateDeNaissance.setForeground(Color.red);
+        }
+        return res;
     }
     
     public String JtoString(){
