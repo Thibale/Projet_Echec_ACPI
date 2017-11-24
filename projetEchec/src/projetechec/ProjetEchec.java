@@ -54,8 +54,8 @@ public class ProjetEchec {
     } catch (TransformerException ex) {
         Logger.getLogger(ProjetEchec.class.getName()).log(Level.SEVERE, null, ex);
     }*/
-    Joueurs j = xml1.getJoueur(2);
-    System.out.println(j.JtoString());
+    //Joueurs j = xml1.getJoueur(2);
+    //System.out.println(j.JtoString());
     }
     //System.out.println(s);
 }

@@ -14,4 +14,18 @@
     <nbRondes nbRondes="2"/>
     <lieu lieu="Tonnerre"/>
   </tournoi>
+<tournoi>
+    <nomTournoi nomTournoi="Tournoi1"/>
+    <dateDebut dateDebut="2018-01-01"/>
+    <dateFin dateFin="2018-06-10"/>
+    <nbRondes nbRondes="3"/>
+    <lieu lieu=""/>
+  </tournoi>
+<tournoi>
+    <nomTournoi nomTournoi="TournoiJU"/>
+    <dateDebut dateDebut="2018-06-09"/>
+    <dateFin dateFin="2018-07-04"/>
+    <nbRondes nbRondes="16"/>
+    <lieu lieu=""/>
+  </tournoi>
 </tournoi>

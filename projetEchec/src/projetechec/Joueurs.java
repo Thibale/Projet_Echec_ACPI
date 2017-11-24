@@ -43,7 +43,7 @@ public class Joueurs {
         }else{
             numEloRapideJ=Integer.valueOf(numEloRapide);
         }
-        categorieJ=this.calculCategorie(sexe,dateNais);
+        categorieJ=this.calculCategorie(dateNais);
         dateNaisJ=dateNais;
         sexeJ=sexe;
         federationJ=federation;
@@ -58,7 +58,7 @@ public class Joueurs {
         numEloNormalJ=numEloNormal;
         numEloSemiRapideJ=numEloSemiRapide;
         numEloRapideJ=numEloRapide;
-        categorieJ=this.calculCategorie(sexe,dateNais);
+        categorieJ=this.calculCategorie(dateNais);
         dateNaisJ=dateNais;
         sexeJ=sexe;
         federationJ=federation;
@@ -178,9 +178,9 @@ public class Joueurs {
         this.clubJ = club;
     }
     
-    public String calculCategorie(char sexe, String date){
-        try{
-            String cat = "";
+    public String calculCategorie(String date){
+        String cat = "";
+        if(this.verifFormatDateValide(date)){
             LocalDate dob = LocalDate.parse(date);
             LocalDate curDate = LocalDate.now();
             int age = Period.between(dob, curDate).getYears();
@@ -203,11 +203,11 @@ public class Joueurs {
             }else{
                 cat = cat+"Vet";
             }
-            return cat+sexe;
-        }catch(DateTimeParseException e){
-            
+            cat = cat+this.sexeJ;
+        }else{
+            cat = "Categorie non accessible.";
         }
-        return null;
+        return cat;
     }
     
     

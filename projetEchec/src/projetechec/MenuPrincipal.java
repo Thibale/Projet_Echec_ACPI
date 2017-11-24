@@ -785,12 +785,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 stmp += System.getProperty("line.separator")+"Date de naissance manquante";
             }
         }else{
-            if(j.verifFormatNomValide()){
+            if(!j.verifFormatNomValide()){
                 test= false;
                 nomLabel.setForeground(Color.red);
                 stmp += System.getProperty("line.separator")+"Nom Joueur invalide";
             }
-            if(j.verifFormatPrenomValide()){
+            if(!j.verifFormatPrenomValide()){
                 test= false;
                 prenomLabel.setForeground(Color.red);
                 stmp += System.getProperty("line.separator")+"Prénom Joueur invalide";
@@ -809,12 +809,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         } 
         if(j.verifFormatDateValide(dateDeNaissance)){
-            if(!j.verifFormatDateValide(dateDeNaissance)){
-                if(!j.verifDateNaiss(dateDeNaissance)){
-                    test= false;
-                    dateLabel.setForeground(Color.red);
-                    stmp += System.getProperty("line.separator")+"Erreur, date de naissance supérieure à la date actuelle.";
-                }
+            if(!j.verifDateNaiss(dateDeNaissance)){
+                test= false;
+                dateLabel.setForeground(Color.red);
+                stmp += System.getProperty("line.separator")+"Erreur, date de naissance supérieure à la date actuelle.";
             }
         }
         
@@ -845,6 +843,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 
         retourTextArea.setText(stmp);
         if(test){
+            retourTextArea.setText("Joueur créé avec succès !");
             xml1.WriteXML(j);
         }
     }//GEN-LAST:event_saveButtonActionPerformed
@@ -938,6 +937,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         }
         msgErreurT.setText(stmp);
         if(test){
+            msgErreurT.setText("Tournoi créé avec succès !");
             xml2.WriteXML(t);
         }
     }//GEN-LAST:event_jButton4ActionPerformed

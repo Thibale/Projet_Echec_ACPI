@@ -48,10 +48,11 @@ public class XML {
             }else{
                 try {
                     document= builder.parse(f);
+                    racine = document.getDocumentElement();
                 } catch (SAXException | IOException ex) {
-                    Logger.getLogger(XML.class.getName()).log(Level.SEVERE, null, ex);
+                    //Logger.getLogger(XML.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                racine = document.getDocumentElement();
+                
             }
             
         }catch (final ParserConfigurationException e) {

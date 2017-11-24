@@ -107,4 +107,19 @@
     <ligue ligue="lll"/>
     <club club="lll"/>
   </joueur>
+<!--personne n°1--><joueur>
+    <idJoueur idJ="1"/>
+    <numLicence numLicence=""/>
+    <nomJoueur nomJoueur="Falcone"/>
+    <prenomJoueur prenomJoueur="Thibaut"/>
+    <numEloNormal numEloNormal="0"/>
+    <numEloSemiRapide numEloSemiRapide="0"/>
+    <numEloRapide numEloRapide="0"/>
+    <categorie categorie="Sen&#0;"/>
+    <dateNais dateNais="1997-05-13"/>
+    <sexe sexe="M"/>
+    <federation federation=""/>
+    <ligue ligue=""/>
+    <club club=""/>
+  </joueur>
 </joueurs>
