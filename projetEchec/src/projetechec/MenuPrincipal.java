@@ -163,7 +163,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     .addComponent(createTournament, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuPrincLayout.createSequentialGroup()
-                .addContainerGap(264, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(259, 259, 259))
         );
@@ -285,7 +285,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         creationJoueurLayout.setHorizontalGroup(
             creationJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(creationJoueurLayout.createSequentialGroup()
-                .addContainerGap(202, Short.MAX_VALUE)
+                .addContainerGap(1002, Short.MAX_VALUE)
                 .addGroup(creationJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(noteLabel)
                     .addGroup(creationJoueurLayout.createSequentialGroup()
@@ -323,8 +323,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(mainMenuButton)
-                        .addGap(1, 1, 1)))
+                        .addComponent(mainMenuButton)))
                 .addGap(193, 193, 193))
             .addGroup(creationJoueurLayout.createSequentialGroup()
                 .addGap(235, 235, 235)
@@ -454,7 +453,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     .addGroup(afficherJoueurLayout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 554, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 954, Short.MAX_VALUE))
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(afficherJoueurLayout.createSequentialGroup()
                         .addComponent(btnafficherJ, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -464,7 +463,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                         .addComponent(supprimerJoueurButton, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(retourMenuAff, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(435, Short.MAX_VALUE))
         );
         afficherJoueurLayout.setVerticalGroup(
             afficherJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -748,8 +747,90 @@ public class MenuPrincipal extends javax.swing.JFrame {
         sexeLabel.setForeground(Color.black);
         dateLabel.setForeground(Color.black);
         
-        Joueurs J = new Joueurs(licence,nom,prenom,Integer.valueOf(eloN),Integer.valueOf(eloSR),Integer.valueOf(eloR),dateDeNaissance,sexe.charAt(0),fed,lig,clb);
-        retourTextArea.setText(nom + '\n' + prenom + '\n' + dateDeNaissance + '\n' + sexe + '\n' + licence);
+        Joueurs j = new Joueurs(licence,nom,prenom,eloN,eloSR,eloR,dateDeNaissance,sexe.charAt(0),fed,lig,clb);
+        String stmp="Données manquantes: ";
+        boolean test = true;
+        if(!j.verifDonneeEnregistrementJoueur())
+        {
+            test= false;
+            if(j.nomEstVide()){
+                nomLabel.setForeground(Color.red);
+                stmp += System.getProperty("line.separator")+"Nom Joueur manquant";
+            } 
+            if(j.prenomEstVide()){
+                prenomLabel.setForeground(Color.red);
+                stmp += System.getProperty("line.separator")+"Prénom Joueur manquant";
+            }
+            if(j.sexeEstVide()){
+                sexeLabel.setForeground(Color.red);
+                stmp += System.getProperty("line.separator")+"Sexe Joueur manquant";
+            }
+            if(j.dateEstVide()){
+                nbr.setForeground(Color.red);
+                stmp += System.getProperty("line.separator")+"Date de naissance manquante";
+            }
+        }else{
+            if(!j.verifFormatNomValide()){
+                test= false;
+                nomLabel.setForeground(Color.red);
+                stmp += System.getProperty("line.separator")+"Nom Joueur invalide";
+            }
+            if(!j.verifFormatPrenomValide()){
+                test= false;
+                prenomLabel.setForeground(Color.red);
+                stmp += System.getProperty("line.separator")+"Prénom Joueur invalide";
+            }
+        }
+        if(!j.verifFormatDateValide(dateDeNaissance))
+        {
+            test= false;
+            if(!j.verifMatchDate(dateDeNaissance)){
+                dateLabel.setForeground(Color.red);
+                stmp += System.getProperty("line.separator")+"Erreur, date invalide format attendu : AAAA-MM-JJ";
+            }
+            if(!j.verifDateValide(dateDeNaissance)){
+                dateLabel.setForeground(Color.red);
+                stmp += System.getProperty("line.separator")+"Erreur, date incorrecte";
+            }
+        } 
+        if(j.verifFormatDateValide(dateDeNaissance)){
+            if(!j.verifDateNaiss(dateDeNaissance)){
+                test= false;
+                dateLabel.setForeground(Color.red);
+                stmp += System.getProperty("line.separator")+"Erreur, date de naissance supérieure à la date actuelle.";
+            }
+        }
+        
+        if(!j.verifFormatEloValide(eloN)){
+            test= false;
+            stmp += System.getProperty("line.separator")+"Erreur, Elo Normal invalide.";
+        }
+        
+        if(!j.verifFormatEloValide(eloR)){
+            test= false;
+            stmp += System.getProperty("line.separator")+"Erreur, Elo Rapide invalide.";
+        }
+        
+        if(!j.verifFormatEloValide(eloSR)){
+            test= false;
+            stmp += System.getProperty("line.separator")+"Erreur, Elo SemiRapide invalide.";
+        }
+        
+        if(!j.verifFormatLigueValide()){
+            test= false;
+            stmp += System.getProperty("line.separator")+"Erreur, ligue invalide.";
+        }
+        
+        if(!j.verifFormatFedValide()){
+            test= false;
+            stmp += System.getProperty("line.separator")+"Erreur, Federation invalide.";
+        }
+                
+        retourTextArea.setText(stmp);
+        if(test){
+            retourTextArea.setText("Joueur créé avec succès !");
+            xml1.WriteXML(j);
+        }
     }//GEN-LAST:event_saveButtonActionPerformed
 
     private void cleanTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cleanTActionPerformed
@@ -788,32 +869,67 @@ public class MenuPrincipal extends javax.swing.JFrame {
         nbr.setForeground(Color.black);
         Tournoi t = new Tournoi(nomTournoi,dateDebut,dateFin,nbRondes,lieu);
         String stmp="Données manquantes: ";
+        boolean test = true;
         if(!t.verifDonneesSensiblesCompletes())
         {
-            if(!"".equals(nomTournoi)){
+            test= false;
+            if(t.nomTournoiEstVide()){
                 nom.setForeground(Color.red);
                 stmp += System.getProperty("line.separator")+"Nom Tournoi manquant";
             }   
-            if(!"".equals(dateDebut)){
+            if(t.dateDebutEstVide()){
                 dated.setForeground(Color.red);
                 stmp += System.getProperty("line.separator")+"Date de début manquante";
             }
-            if(!"".equals(dateFin)){
+            if(t.dateFinEstVide()){
                 datef.setForeground(Color.red);
                 stmp += System.getProperty("line.separator")+"Date de fin manquante";
             }
-            if(!"".equals(nbRondes)){
+            if(t.nbRondesEstVide()){
                 nbr.setForeground(Color.red);
                 stmp += System.getProperty("line.separator")+"Nombre de rondes manquant";
-            }else{
-                if(!t.verifFormatDateValide(dateDebut))
-                {
-                    
-                }
-            }   
+            }
         }
-        
+        if(!t.verifFormatDateValide(dateDebut))
+        {
+            test= false;
+            if(!t.verifMatchDate(dateDebut)){
+                dated.setForeground(Color.red);
+                stmp += System.getProperty("line.separator")+"Erreur, date invalide format attendu : AAAA-MM-JJ";
+            }
+            if(!t.verifDateValide(dateDebut)){
+                dated.setForeground(Color.red);
+                stmp += System.getProperty("line.separator")+"Erreur, date incorrecte";
+            }
+        } 
+        if(!t.verifFormatDateValide(dateFin))
+        {
+            test= false;
+            if(!t.verifMatchDate(dateFin)){
+                dated.setForeground(Color.red);
+                stmp += System.getProperty("line.separator")+"Erreur, date invalide format attendu : AAAA-MM-JJ";
+            }
+            if(!t.verifDateValide(dateFin)){
+                dated.setForeground(Color.red);
+                stmp += System.getProperty("line.separator")+"Erreur, date incorrecte";
+            }
+        }
+        if(t.verifFormatDateValide(dateDebut) && t.verifFormatDateValide(dateFin)){
+            if(!t.verifDateDebut(dateDebut)){
+                test= false;
+                dated.setForeground(Color.red);
+                stmp += System.getProperty("line.separator")+"Erreur, date de début inférieure à la date actuelle.";
+            }
+            if(!t.verifDateDebutAvantDateFin(dateDebut, dateFin)){
+                test= false;
+                stmp += System.getProperty("line.separator")+"Erreur, date de début plus récente que date de fin.";
+            }
+        }
         msgErreurT.setText(stmp);
+        if(test){
+            msgErreurT.setText("Tournoi créé avec succès !");
+            xml2.WriteXML(t);
+        }
     }//GEN-LAST:event_enregistreTActionPerformed
 
     private void lieuTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lieuTextField5ActionPerformed
