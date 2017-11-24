@@ -160,8 +160,43 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="noteLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="eloSemiRapideLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="eloNormalLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="clubLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="ligueLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="federationLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="licenceLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="dateLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="prenomLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="nomLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="eloRapideLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="sexeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="nomTextField" alignment="0" min="-2" pref="158" max="-2" attributes="0"/>
+                                      <Component id="prenomTextField" alignment="0" min="-2" pref="158" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="dateTextField" min="-2" pref="158" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="dateFormatLabel" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="licenceTextField" alignment="0" min="-2" pref="158" max="-2" attributes="0"/>
+                                      <Component id="federationTextField" alignment="0" min="-2" pref="158" max="-2" attributes="0"/>
+                                      <Component id="ligueTextField" alignment="0" min="-2" pref="158" max="-2" attributes="0"/>
+                                      <Component id="clubTextField" alignment="0" min="-2" pref="158" max="-2" attributes="0"/>
+                                      <Component id="eloNormalTextField" alignment="0" min="-2" pref="158" max="-2" attributes="0"/>
+                                      <Component id="eloSemiRapideTextField" alignment="0" min="-2" pref="158" max="-2" attributes="0"/>
+                                      <Component id="eloRapideTextField" alignment="0" min="-2" pref="158" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Component id="jScrollPane3" alignment="0" min="-2" pref="370" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="dateTextField" min="-2" pref="158" max="-2" attributes="0"/>
+                                  <Component id="clearButton" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="saveButton" min="-2" pref="114" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="mainMenuButton" min="-2" max="-2" attributes="0"/>
                               </Group>
