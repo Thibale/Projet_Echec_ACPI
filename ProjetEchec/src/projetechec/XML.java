@@ -70,9 +70,6 @@ public class XML {
 			
 	    //Etape 5 : création d'une personne
             id+=1;
-	    final Comment commentaire = document.createComment("personne n°"+id);
-	    racine.appendChild(commentaire);
-			
 	    final Element personne = document.createElement("joueur");
 	    racine.appendChild(personne);
 			
@@ -105,7 +102,7 @@ public class XML {
 	    dateNaissance.setAttribute("dateNais", String.valueOf(j.getDateNaisJ()));
             
             final Element sex = document.createElement("sexe");
-            sex.setAttribute("sexe", String.valueOf(j.getSexeJ()));
+            sex.setAttribute("sexe", j.getSexeJ());
 			
 	    final Element fede = document.createElement("federation");
 	    fede.setAttribute("federation",j.getFederationJ());
@@ -154,7 +151,10 @@ public class XML {
 	}
 	catch (TransformerException e) {
 	    e.printStackTrace();
-	}			
+	}
+        catch (NullPointerException e){
+            
+        }
     }
     
     public ArrayList<Joueurs> ReadXML(){
@@ -170,7 +170,7 @@ public class XML {
         int numEloRapideJ;
         String categorieJ;
         String dateNaisJ;
-        char sexeJ;
+        String sexeJ;
         String federationJ;
         String ligueJ;
         String clubJ;
@@ -210,7 +210,7 @@ public class XML {
                 dateNaisJ = dateNaistmp.getAttribute("dateNais");
                 
                 Element sexetmp = (Element) joueur.getElementsByTagName("sexe").item(0);
-                sexeJ = sexetmp.getAttribute("sexe").charAt(0);
+                sexeJ = sexetmp.getAttribute("sexe");
                 
                 Element federationtmp = (Element) joueur.getElementsByTagName("federation").item(0);
                 federationJ = federationtmp.getAttribute("federation");
@@ -261,7 +261,7 @@ public class XML {
             dateNaissance.setAttribute("dateNais", String.valueOf(j.getDateNaisJ()));
             
             final Element sex = (Element) joueur.getElementsByTagName("sexe").item(0);
-            sex.setAttribute("sexe", String.valueOf(j.getSexeJ()));
+            sex.setAttribute("sexe", j.getSexeJ());
             
             final Element fede = (Element) joueur.getElementsByTagName("federation").item(0);
             fede.setAttribute("federation",j.getFederationJ());
@@ -330,7 +330,7 @@ public class XML {
         int numEloRapideJ;
         String categorieJ;
         String dateNaisJ;
-        char sexeJ;
+        String sexeJ;
         String federationJ;
         String ligueJ;
         String clubJ;
@@ -366,7 +366,7 @@ public class XML {
             dateNaisJ = dateNaistmp.getAttribute("dateNais");
 
             Element sexetmp = (Element) joueur.getElementsByTagName("sexe").item(0);
-            sexeJ = sexetmp.getAttribute("sexe").charAt(0);
+            sexeJ = sexetmp.getAttribute("sexe");
 
             Element federationtmp = (Element) joueur.getElementsByTagName("federation").item(0);
             federationJ = federationtmp.getAttribute("federation");

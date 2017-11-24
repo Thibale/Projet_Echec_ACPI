@@ -18,12 +18,12 @@ public class Joueurs {
     private int numEloRapideJ;
     private String categorieJ;
     private String dateNaisJ;
-    private char sexeJ;
+    private String sexeJ;
     private String federationJ;
     private String ligueJ;
     private String clubJ;
     
-    public Joueurs(String numLicence,String nom,String prenom,String numEloNormal,String numEloSemiRapide,String numEloRapide,String dateNais,char sexe,String federation,String ligue,String club){
+    public Joueurs(String numLicence,String nom,String prenom,String numEloNormal,String numEloSemiRapide,String numEloRapide,String dateNais,String sexe,String federation,String ligue,String club){
         idJ=0;
         numLicenceJ=numLicence;
         nomJ=nom;
@@ -31,26 +31,30 @@ public class Joueurs {
         if("".equals(numEloNormal)){
             numEloNormalJ=0;
         }else{
-            numEloNormalJ=Integer.valueOf(numEloNormal);
+            if(this.verifFormatEloValide(numEloNormal)){
+                numEloNormalJ=Integer.valueOf(numEloNormal);
+            }
         }
         if("".equals(numEloSemiRapide)){
             numEloSemiRapideJ=0;
         }else{
-            numEloSemiRapideJ=Integer.valueOf(numEloSemiRapide);
+            if(this.verifFormatEloValide(numEloSemiRapide))
+                numEloSemiRapideJ=Integer.valueOf(numEloSemiRapide);
         }
         if("".equals(numEloRapide)){
             numEloRapideJ=0;
         }else{
-            numEloRapideJ=Integer.valueOf(numEloRapide);
+            if(this.verifFormatEloValide(numEloRapide))
+                numEloRapideJ=Integer.valueOf(numEloRapide);
         }
-        categorieJ=this.calculCategorie(dateNais);
+        categorieJ=this.calculCategorie(sexe,dateNais);
         dateNaisJ=dateNais;
         sexeJ=sexe;
         federationJ=federation;
         ligueJ=ligue;
         clubJ=club;
     }
-    public Joueurs(int id,String numLicence,String nom,String prenom,int numEloNormal,int numEloSemiRapide,int numEloRapide,String dateNais,char sexe,String federation,String ligue,String club){
+    public Joueurs(int id,String numLicence,String nom,String prenom,int numEloNormal,int numEloSemiRapide,int numEloRapide,String dateNais,String sexe,String federation,String ligue,String club){
         idJ=id;
         numLicenceJ=numLicence;
         nomJ=nom;
@@ -58,14 +62,14 @@ public class Joueurs {
         numEloNormalJ=numEloNormal;
         numEloSemiRapideJ=numEloSemiRapide;
         numEloRapideJ=numEloRapide;
-        categorieJ=this.calculCategorie(dateNais);
+        categorieJ=this.calculCategorie(sexe,dateNais);
         dateNaisJ=dateNais;
         sexeJ=sexe;
         federationJ=federation;
         ligueJ=ligue;
         clubJ=club;
     }
-    public Joueurs(int id,String numLicence,String nom,String prenom,int numEloNormal,int numEloSemiRapide,int numEloRapide,String cat,String dateNais,char sexe,String federation,String ligue,String club){
+    public Joueurs(int id,String numLicence,String nom,String prenom,int numEloNormal,int numEloSemiRapide,int numEloRapide,String cat,String dateNais,String sexe,String federation,String ligue,String club){
         idJ=id;
         numLicenceJ=numLicence;
         nomJ=nom;
@@ -80,7 +84,7 @@ public class Joueurs {
         ligueJ=ligue;
         clubJ=club;
     }
-    public Joueurs(String nom, String prenom, String dateN, char sexe){
+    public Joueurs(String nom, String prenom, String dateN, String sexe){
         idJ=0;
         numLicenceJ="";
         nomJ=nom;
@@ -125,7 +129,7 @@ public class Joueurs {
     public String getDateNaisJ(){
         return this.dateNaisJ;
     }
-    public char getSexeJ(){
+    public String getSexeJ(){
         return this.sexeJ;
     }
     public String getFederationJ(){
@@ -165,7 +169,7 @@ public class Joueurs {
     public void setDateNaisJ(String date){
         this.dateNaisJ = date;
     }
-    public void setSexeJ(char sexe){
+    public void setSexeJ(String sexe){
         this.sexeJ = sexe;
     }
     public void setFederationJ(String fed){
@@ -178,7 +182,7 @@ public class Joueurs {
         this.clubJ = club;
     }
     
-    public String calculCategorie(String date){
+    public String calculCategorie(String sexe, String date){
         String cat = "";
         if(this.verifFormatDateValide(date)){
             LocalDate dob = LocalDate.parse(date);
@@ -203,7 +207,7 @@ public class Joueurs {
             }else{
                 cat = cat+"Vet";
             }
-            cat = cat+this.sexeJ;
+            cat = cat+sexe;
         }else{
             cat = "Categorie non accessible.";
         }

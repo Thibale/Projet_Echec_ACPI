@@ -287,55 +287,56 @@ public class MenuPrincipal extends javax.swing.JFrame {
             .addGroup(creationJoueurLayout.createSequentialGroup()
                 .addContainerGap(1002, Short.MAX_VALUE)
                 .addGroup(creationJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(noteLabel)
-                    .addGroup(creationJoueurLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, creationJoueurLayout.createSequentialGroup()
                         .addGroup(creationJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(eloSemiRapideLabel)
-                            .addComponent(eloNormalLabel)
-                            .addComponent(clubLabel)
-                            .addComponent(ligueLabel)
-                            .addComponent(federationLabel)
-                            .addComponent(licenceLabel)
-                            .addComponent(dateLabel)
-                            .addComponent(prenomLabel)
-                            .addComponent(nomLabel)
-                            .addComponent(eloRapideLabel)
-                            .addComponent(sexeLabel))
-                        .addGap(48, 48, 48)
-                        .addGroup(creationJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(nomTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(prenomTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(noteLabel)
                             .addGroup(creationJoueurLayout.createSequentialGroup()
-                                .addComponent(dateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(creationJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(eloSemiRapideLabel)
+                                    .addComponent(eloNormalLabel)
+                                    .addComponent(clubLabel)
+                                    .addComponent(ligueLabel)
+                                    .addComponent(federationLabel)
+                                    .addComponent(licenceLabel)
+                                    .addComponent(dateLabel)
+                                    .addComponent(prenomLabel)
+                                    .addComponent(nomLabel)
+                                    .addComponent(eloRapideLabel)
+                                    .addComponent(sexeLabel))
+                                .addGap(48, 48, 48)
+                                .addGroup(creationJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(nomTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(prenomTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(creationJoueurLayout.createSequentialGroup()
+                                        .addComponent(dateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(dateFormatLabel))
+                                    .addComponent(licenceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(federationTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(ligueTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(clubTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(eloNormalTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(eloSemiRapideTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(eloRapideTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(creationJoueurLayout.createSequentialGroup()
+                                .addComponent(clearButton)
+                                .addGap(18, 18, 18)
+                                .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(dateFormatLabel))
-                            .addComponent(licenceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(federationTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ligueTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(clubTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(eloNormalTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(eloSemiRapideTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(eloRapideTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(creationJoueurLayout.createSequentialGroup()
-                        .addComponent(clearButton)
-                        .addGap(18, 18, 18)
-                        .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(mainMenuButton)))
-                .addGap(193, 193, 193))
-            .addGroup(creationJoueurLayout.createSequentialGroup()
-                .addGap(235, 235, 235)
-                .addComponent(titleMenuLabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(mainMenuButton)))
+                        .addGap(193, 193, 193))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, creationJoueurLayout.createSequentialGroup()
+                        .addComponent(titleMenuLabel)
+                        .addGap(319, 319, 319))))
         );
         creationJoueurLayout.setVerticalGroup(
             creationJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(creationJoueurLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(25, 25, 25)
                 .addComponent(titleMenuLabel)
-                .addGap(40, 40, 40)
+                .addGap(26, 26, 26)
                 .addComponent(noteLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(creationJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -562,12 +563,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
                         .addGroup(creationTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(creationTournoiLayout.createSequentialGroup()
-                                .addComponent(enregistreT, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cleanT, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(menuprincT, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(creationTournoiLayout.createSequentialGroup()
                                 .addGroup(creationTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(nom)
                                     .addComponent(dated)
@@ -589,7 +584,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
                                         .addComponent(dateFormatLabel3))))))
                     .addGroup(creationTournoiLayout.createSequentialGroup()
                         .addGap(319, 319, 319)
-                        .addComponent(jLabel4)))
+                        .addComponent(jLabel4))
+                    .addGroup(creationTournoiLayout.createSequentialGroup()
+                        .addGap(212, 212, 212)
+                        .addComponent(enregistreT, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cleanT, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(menuprincT, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(193, Short.MAX_VALUE))
         );
         creationTournoiLayout.setVerticalGroup(
@@ -664,6 +666,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         eloNormalTextField.setText("");
         eloSemiRapideTextField.setText("");
         eloRapideTextField.setText("");
+        retourTextArea.setText("");
+        nomLabel.setForeground(Color.black);
+        prenomLabel.setForeground(Color.black);
+        sexeLabel.setForeground(Color.black);
+        dateLabel.setForeground(Color.black);
     }//GEN-LAST:event_clearButtonActionPerformed
 
     private void btnafficherJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnafficherJActionPerformed
@@ -673,8 +680,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         String tmp="";
         String tmpList = "";
         for (int i=0;i<listJ.size();i++){
-            tmp=tmp+"Joueur n°"+(i+1)+System.getProperty("line.separator");
-            tmpList =(i+1)+"Joueur n°"+(i+1)+listJ.get(i).getNomJ();
+            tmp=tmp+" Joueur n°"+(i+1)+System.getProperty("line.separator");
+            tmpList =(i+1)+" Joueur n°"+(i+1)+listJ.get(i).getNomJ();
             listM.addElement(tmpList);
             tmp=tmp+listJ.get(i).JtoString()+System.getProperty("line.separator");
 
@@ -707,6 +714,21 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_createTournamentActionPerformed
 
     private void mainMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainMenuButtonActionPerformed
+       nomTextField.setText("");
+        prenomTextField.setText("");
+        dateTextField.setText("");
+        licenceTextField.setText("");
+        federationTextField.setText("");
+        ligueTextField.setText("");
+        clubTextField.setText("");
+        eloNormalTextField.setText("");
+        eloSemiRapideTextField.setText("");
+        eloRapideTextField.setText("");
+        retourTextArea.setText("");
+        nomLabel.setForeground(Color.black);
+        prenomLabel.setForeground(Color.black);
+        sexeLabel.setForeground(Color.black);
+        dateLabel.setForeground(Color.black);
         menuPrinc.setVisible(true);
         creationJoueur.setVisible(false);
         afficherJoueur.setVisible(false);
@@ -728,6 +750,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         remove(afficherJoueur);
         add(menuPrinc);
         menuPrinc.setVisible(true);
+        
     }//GEN-LAST:event_retourMenuAffActionPerformed
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
@@ -747,8 +770,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         sexeLabel.setForeground(Color.black);
         dateLabel.setForeground(Color.black);
         
-        Joueurs j = new Joueurs(licence,nom,prenom,eloN,eloSR,eloR,dateDeNaissance,sexe.charAt(0),fed,lig,clb);
-        String stmp="Données manquantes: ";
+        Joueurs j = new Joueurs(licence,nom,prenom,eloN,eloSR,eloR,dateDeNaissance,sexe,fed,lig,clb);
+        String stmp="Données incorrectes: ";
         boolean test = true;
         if(!j.verifDonneeEnregistrementJoueur())
         {
@@ -839,6 +862,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         dateFTextField3.setText("");
         nbRTextField4.setText("");
         lieuTextField5.setText("");
+        msgErreurT.setText("");
+        nom.setForeground(Color.black);
+        dated.setForeground(Color.black);
+        datef.setForeground(Color.black);
+        nbr.setForeground(Color.black);
     }//GEN-LAST:event_cleanTActionPerformed
 
     private void menuprincTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuprincTActionPerformed
@@ -847,6 +875,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         dateFTextField3.setText("");
         nbRTextField4.setText("");
         lieuTextField5.setText("");
+        msgErreurT.setText("");
+        nom.setForeground(Color.black);
+        dated.setForeground(Color.black);
+        datef.setForeground(Color.black);
+        nbr.setForeground(Color.black);
         creationJoueur.setVisible(false);
         afficherJoueur.setVisible(false);
         creationTournoi.setVisible(false);
@@ -868,7 +901,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         datef.setForeground(Color.black);
         nbr.setForeground(Color.black);
         Tournoi t = new Tournoi(nomTournoi,dateDebut,dateFin,nbRondes,lieu);
-        String stmp="Données manquantes: ";
+        String stmp="Données incorrectes: ";
         boolean test = true;
         if(!t.verifDonneesSensiblesCompletes())
         {
@@ -964,7 +997,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         ArrayList<Joueurs> listJ = xml1.ReadXML();
         String afftmp;
         String s = (String) affichageJoueurList.getSelectedValue();
-        int intTmp = Integer.valueOf(""+s.charAt(0));
+        String tmp = s.split(" ")[0];
+        int intTmp = Integer.valueOf(tmp);
         afftmp=listJ.get(intTmp-1).JtoString()+System.getProperty("line.separator");
         AffJTextArea1.setText(afftmp);
     }//GEN-LAST:event_affichageJoueurListValueChanged

@@ -107,16 +107,137 @@
     <ligue ligue="lll"/>
     <club club="lll"/>
   </joueur>
-<!--personne n°1--><joueur>
+<!--personne n°1-->
+<joueur>
     <idJoueur idJ="1"/>
     <numLicence numLicence=""/>
-    <nomJoueur nomJoueur="Falcone"/>
-    <prenomJoueur prenomJoueur="Thibaut"/>
+    <nomJoueur nomJoueur="dd"/>
+    <prenomJoueur prenomJoueur="dd"/>
     <numEloNormal numEloNormal="0"/>
     <numEloSemiRapide numEloSemiRapide="0"/>
     <numEloRapide numEloRapide="0"/>
-    <categorie categorie="Sen&#0;"/>
-    <dateNais dateNais="1997-05-13"/>
+    <categorie categorie="Junnull"/>
+    <dateNais dateNais="1997-12-12"/>
+    <sexe sexe="F"/>
+    <federation federation=""/>
+    <ligue ligue=""/>
+    <club club=""/>
+  </joueur>
+<joueur>
+    <idJoueur idJ="1"/>
+    <numLicence numLicence=""/>
+    <nomJoueur nomJoueur="dd"/>
+    <prenomJoueur prenomJoueur="dd"/>
+    <numEloNormal numEloNormal="0"/>
+    <numEloSemiRapide numEloSemiRapide="0"/>
+    <numEloRapide numEloRapide="0"/>
+    <categorie categorie="Junnull"/>
+    <dateNais dateNais="1997-12-12"/>
+    <sexe sexe="M"/>
+    <federation federation=""/>
+    <ligue ligue=""/>
+    <club club=""/>
+  </joueur>
+<joueur>
+    <idJoueur idJ="1"/>
+    <numLicence numLicence=""/>
+    <nomJoueur nomJoueur="dd"/>
+    <prenomJoueur prenomJoueur="dd"/>
+    <numEloNormal numEloNormal="0"/>
+    <numEloSemiRapide numEloSemiRapide="0"/>
+    <numEloRapide numEloRapide="0"/>
+    <categorie categorie="Jundd"/>
+    <dateNais dateNais="1997-12-12"/>
+    <sexe sexe="M"/>
+    <federation federation=""/>
+    <ligue ligue=""/>
+    <club club=""/>
+  </joueur>
+<joueur>
+    <idJoueur idJ="1"/>
+    <numLicence numLicence=""/>
+    <nomJoueur nomJoueur="ddd"/>
+    <prenomJoueur prenomJoueur="ddd"/>
+    <numEloNormal numEloNormal="0"/>
+    <numEloSemiRapide numEloSemiRapide="0"/>
+    <numEloRapide numEloRapide="0"/>
+    <categorie categorie="Junnull"/>
+    <dateNais dateNais="1997-12-12"/>
+    <sexe sexe="M"/>
+    <federation federation=""/>
+    <ligue ligue=""/>
+    <club club=""/>
+  </joueur>
+<joueur>
+    <idJoueur idJ="1"/>
+    <numLicence numLicence=""/>
+    <nomJoueur nomJoueur="ggg"/>
+    <prenomJoueur prenomJoueur="ggg"/>
+    <numEloNormal numEloNormal="0"/>
+    <numEloSemiRapide numEloSemiRapide="0"/>
+    <numEloRapide numEloRapide="0"/>
+    <categorie categorie="Vetnull"/>
+    <dateNais dateNais="1665-02-01"/>
+    <sexe sexe="M"/>
+    <federation federation=""/>
+    <ligue ligue=""/>
+    <club club=""/>
+  </joueur>
+<joueur>
+    <idJoueur idJ="1"/>
+    <numLicence numLicence=""/>
+    <nomJoueur nomJoueur="flo"/>
+    <prenomJoueur prenomJoueur="flo"/>
+    <numEloNormal numEloNormal="0"/>
+    <numEloSemiRapide numEloSemiRapide="0"/>
+    <numEloRapide numEloRapide="0"/>
+    <categorie categorie="Sennull"/>
+    <dateNais dateNais="1997-01-01"/>
+    <sexe sexe="F"/>
+    <federation federation=""/>
+    <ligue ligue=""/>
+    <club club=""/>
+  </joueur>
+<joueur>
+    <idJoueur idJ="1"/>
+    <numLicence numLicence=""/>
+    <nomJoueur nomJoueur="flo"/>
+    <prenomJoueur prenomJoueur="floriane"/>
+    <numEloNormal numEloNormal="0"/>
+    <numEloSemiRapide numEloSemiRapide="0"/>
+    <numEloRapide numEloRapide="0"/>
+    <categorie categorie="SenF"/>
+    <dateNais dateNais="1997-01-01"/>
+    <sexe sexe="F"/>
+    <federation federation=""/>
+    <ligue ligue=""/>
+    <club club=""/>
+  </joueur>
+<joueur>
+    <idJoueur idJ="1"/>
+    <numLicence numLicence=""/>
+    <nomJoueur nomJoueur="ccc"/>
+    <prenomJoueur prenomJoueur="ccc"/>
+    <numEloNormal numEloNormal="123"/>
+    <numEloSemiRapide numEloSemiRapide="0"/>
+    <numEloRapide numEloRapide="0"/>
+    <categorie categorie="JunM"/>
+    <dateNais dateNais="1997-12-12"/>
+    <sexe sexe="M"/>
+    <federation federation=""/>
+    <ligue ligue=""/>
+    <club club=""/>
+  </joueur>
+<joueur>
+    <idJoueur idJ="1"/>
+    <numLicence numLicence=""/>
+    <nomJoueur nomJoueur="ff"/>
+    <prenomJoueur prenomJoueur="ff"/>
+    <numEloNormal numEloNormal="123"/>
+    <numEloSemiRapide numEloSemiRapide="0"/>
+    <numEloRapide numEloRapide="0"/>
+    <categorie categorie="JunM"/>
+    <dateNais dateNais="1997-12-12"/>
     <sexe sexe="M"/>
     <federation federation=""/>
     <ligue ligue=""/>
