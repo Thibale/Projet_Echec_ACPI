@@ -893,9 +893,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
             test= false;
             stmp += System.getProperty("line.separator")+"Erreur, Federation invalide.";
         }
-                
-        retourTextArea.setText(stmp);
+        boolean test2 = false;
         if(test){
+            ArrayList<Joueurs> listJ = xml1.ReadXML();
+            if(!j.verifJoueurExistant(listJ)){
+                stmp += System.getProperty("line.separator")+"Erreur, ce joueur existe déjà.";
+            }else{
+                test2 = true;
+            }
+        }
+        retourTextArea.setText(stmp);
+        if(test2){
             retourTextArea.setText("Joueur créé avec succès !");
             xml1.WriteXML(j);
         }

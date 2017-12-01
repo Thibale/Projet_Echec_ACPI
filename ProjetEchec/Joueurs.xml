@@ -243,4 +243,349 @@
     <ligue ligue=""/>
     <club club=""/>
   </joueur>
+<joueur>
+    <idJoueur idJ="1"/>
+    <numLicence numLicence="G67098"/>
+    <nomJoueur nomJoueur="Monestier"/>
+    <prenomJoueur prenomJoueur="Clément"/>
+    <numEloNormal numEloNormal="954"/>
+    <numEloSemiRapide numEloSemiRapide="1403"/>
+    <numEloRapide numEloRapide="2734"/>
+    <categorie categorie="Categorie non accessible."/>
+    <dateNais dateNais="12/08/1960"/>
+    <sexe sexe="M"/>
+    <federation federation="FRA"/>
+    <ligue ligue="LAN"/>
+    <club club="Echec"/>
+  </joueur>
+<joueur>
+    <idJoueur idJ="2"/>
+    <numLicence numLicence="G67098"/>
+    <nomJoueur nomJoueur="Monestier"/>
+    <prenomJoueur prenomJoueur="Clément"/>
+    <numEloNormal numEloNormal="954"/>
+    <numEloSemiRapide numEloSemiRapide="1403"/>
+    <numEloRapide numEloRapide="2734"/>
+    <categorie categorie="Categorie non accessible."/>
+    <dateNais dateNais="12/08/1960"/>
+    <sexe sexe="M"/>
+    <federation federation="FRA"/>
+    <ligue ligue="LAN"/>
+    <club club="Echec"/>
+  </joueur>
+<joueur>
+    <idJoueur idJ="3"/>
+    <numLicence numLicence="G67098"/>
+    <nomJoueur nomJoueur="Monestier"/>
+    <prenomJoueur prenomJoueur="Clément"/>
+    <numEloNormal numEloNormal="954"/>
+    <numEloSemiRapide numEloSemiRapide="1403"/>
+    <numEloRapide numEloRapide="2734"/>
+    <categorie categorie="Categorie non accessible."/>
+    <dateNais dateNais="12/08/1960"/>
+    <sexe sexe="M"/>
+    <federation federation="FRA"/>
+    <ligue ligue="LAN"/>
+    <club club="Echec"/>
+  </joueur>
+<joueur>
+    <idJoueur idJ="4"/>
+    <numLicence numLicence="G67098"/>
+    <nomJoueur nomJoueur="Monestier"/>
+    <prenomJoueur prenomJoueur="Clément"/>
+    <numEloNormal numEloNormal="954"/>
+    <numEloSemiRapide numEloSemiRapide="1403"/>
+    <numEloRapide numEloRapide="2734"/>
+    <categorie categorie="Categorie non accessible."/>
+    <dateNais dateNais="12/08/1960"/>
+    <sexe sexe="M"/>
+    <federation federation="FRA"/>
+    <ligue ligue="LAN"/>
+    <club club="Echec"/>
+  </joueur>
+<joueur>
+    <idJoueur idJ="5"/>
+    <numLicence numLicence="G67098"/>
+    <nomJoueur nomJoueur="Monestier"/>
+    <prenomJoueur prenomJoueur="Clément"/>
+    <numEloNormal numEloNormal="954"/>
+    <numEloSemiRapide numEloSemiRapide="1403"/>
+    <numEloRapide numEloRapide="2734"/>
+    <categorie categorie="Categorie non accessible."/>
+    <dateNais dateNais="12/08/1960"/>
+    <sexe sexe="M"/>
+    <federation federation="FRA"/>
+    <ligue ligue="LAN"/>
+    <club club="Echec"/>
+  </joueur>
+<joueur>
+    <idJoueur idJ="6"/>
+    <numLicence numLicence="G67098"/>
+    <nomJoueur nomJoueur="Monestier"/>
+    <prenomJoueur prenomJoueur="Clément"/>
+    <numEloNormal numEloNormal="954"/>
+    <numEloSemiRapide numEloSemiRapide="1403"/>
+    <numEloRapide numEloRapide="2734"/>
+    <categorie categorie="Categorie non accessible."/>
+    <dateNais dateNais="12/08/1960"/>
+    <sexe sexe="M"/>
+    <federation federation="FRA"/>
+    <ligue ligue="LAN"/>
+    <club club="Echec"/>
+  </joueur>
+<joueur>
+    <idJoueur idJ="7"/>
+    <numLicence numLicence="G67098"/>
+    <nomJoueur nomJoueur="Monestier"/>
+    <prenomJoueur prenomJoueur="Clément"/>
+    <numEloNormal numEloNormal="954"/>
+    <numEloSemiRapide numEloSemiRapide="1403"/>
+    <numEloRapide numEloRapide="2734"/>
+    <categorie categorie="Categorie non accessible."/>
+    <dateNais dateNais="12/08/1960"/>
+    <sexe sexe="M"/>
+    <federation federation="FRA"/>
+    <ligue ligue="LAN"/>
+    <club club="Echec"/>
+  </joueur>
+<joueur>
+    <idJoueur idJ="8"/>
+    <numLicence numLicence="G67098"/>
+    <nomJoueur nomJoueur="Monestier"/>
+    <prenomJoueur prenomJoueur="Clément"/>
+    <numEloNormal numEloNormal="954"/>
+    <numEloSemiRapide numEloSemiRapide="1403"/>
+    <numEloRapide numEloRapide="2734"/>
+    <categorie categorie="Categorie non accessible."/>
+    <dateNais dateNais="12/08/1960"/>
+    <sexe sexe="M"/>
+    <federation federation="FRA"/>
+    <ligue ligue="LAN"/>
+    <club club="Echec"/>
+  </joueur>
+<joueur>
+    <idJoueur idJ="9"/>
+    <numLicence numLicence="G67098"/>
+    <nomJoueur nomJoueur="Monestier"/>
+    <prenomJoueur prenomJoueur="Clément"/>
+    <numEloNormal numEloNormal="954"/>
+    <numEloSemiRapide numEloSemiRapide="1403"/>
+    <numEloRapide numEloRapide="2734"/>
+    <categorie categorie="Categorie non accessible."/>
+    <dateNais dateNais="12/08/1960"/>
+    <sexe sexe="M"/>
+    <federation federation="FRA"/>
+    <ligue ligue="LAN"/>
+    <club club="Echec"/>
+  </joueur>
+<joueur>
+    <idJoueur idJ="10"/>
+    <numLicence numLicence="G67098"/>
+    <nomJoueur nomJoueur="Monestier"/>
+    <prenomJoueur prenomJoueur="Clément"/>
+    <numEloNormal numEloNormal="954"/>
+    <numEloSemiRapide numEloSemiRapide="1403"/>
+    <numEloRapide numEloRapide="2734"/>
+    <categorie categorie="Categorie non accessible."/>
+    <dateNais dateNais="12/08/1960"/>
+    <sexe sexe="M"/>
+    <federation federation="FRA"/>
+    <ligue ligue="LAN"/>
+    <club club="Echec"/>
+  </joueur>
+<joueur>
+    <idJoueur idJ="11"/>
+    <numLicence numLicence="G67098"/>
+    <nomJoueur nomJoueur="Monestier"/>
+    <prenomJoueur prenomJoueur="Clément"/>
+    <numEloNormal numEloNormal="954"/>
+    <numEloSemiRapide numEloSemiRapide="1403"/>
+    <numEloRapide numEloRapide="2734"/>
+    <categorie categorie="Categorie non accessible."/>
+    <dateNais dateNais="12/08/1960"/>
+    <sexe sexe="M"/>
+    <federation federation="FRA"/>
+    <ligue ligue="LAN"/>
+    <club club="Echec"/>
+  </joueur>
+<joueur>
+    <idJoueur idJ="12"/>
+    <numLicence numLicence="G67098"/>
+    <nomJoueur nomJoueur="Monestier"/>
+    <prenomJoueur prenomJoueur="Clément"/>
+    <numEloNormal numEloNormal="954"/>
+    <numEloSemiRapide numEloSemiRapide="1403"/>
+    <numEloRapide numEloRapide="2734"/>
+    <categorie categorie="Categorie non accessible."/>
+    <dateNais dateNais="12/08/1997"/>
+    <sexe sexe="M"/>
+    <federation federation="FRA"/>
+    <ligue ligue="LAN"/>
+    <club club="Echec"/>
+  </joueur>
+<joueur>
+    <idJoueur idJ="1"/>
+    <numLicence numLicence="G67098"/>
+    <nomJoueur nomJoueur="zrga"/>
+    <prenomJoueur prenomJoueur="argaerg"/>
+    <numEloNormal numEloNormal="NC"/>
+    <numEloSemiRapide numEloSemiRapide="NC"/>
+    <numEloRapide numEloRapide="NC"/>
+    <categorie categorie="SePM"/>
+    <dateNais dateNais="12/09/1960"/>
+    <sexe sexe="M"/>
+    <federation federation=""/>
+    <ligue ligue=""/>
+    <club club=""/>
+  </joueur>
+<joueur>
+    <idJoueur idJ="2"/>
+    <numLicence numLicence="G67098"/>
+    <nomJoueur nomJoueur="zrga"/>
+    <prenomJoueur prenomJoueur="argaerg"/>
+    <numEloNormal numEloNormal="NC"/>
+    <numEloSemiRapide numEloSemiRapide="NC"/>
+    <numEloRapide numEloRapide="NC"/>
+    <categorie categorie="SePM"/>
+    <dateNais dateNais="12/09/1960"/>
+    <sexe sexe="M"/>
+    <federation federation=""/>
+    <ligue ligue=""/>
+    <club club=""/>
+  </joueur>
+<joueur>
+    <idJoueur idJ="3"/>
+    <numLicence numLicence="G67098"/>
+    <nomJoueur nomJoueur="zrga"/>
+    <prenomJoueur prenomJoueur="argaerg"/>
+    <numEloNormal numEloNormal="NC"/>
+    <numEloSemiRapide numEloSemiRapide="NC"/>
+    <numEloRapide numEloRapide="NC"/>
+    <categorie categorie="SePM"/>
+    <dateNais dateNais="12/09/1960"/>
+    <sexe sexe="M"/>
+    <federation federation=""/>
+    <ligue ligue=""/>
+    <club club=""/>
+  </joueur>
+<joueur>
+    <idJoueur idJ="4"/>
+    <numLicence numLicence="G67098"/>
+    <nomJoueur nomJoueur="zrga"/>
+    <prenomJoueur prenomJoueur="argaerg"/>
+    <numEloNormal numEloNormal="NC"/>
+    <numEloSemiRapide numEloSemiRapide="NC"/>
+    <numEloRapide numEloRapide="NC"/>
+    <categorie categorie="SePM"/>
+    <dateNais dateNais="12/09/1960"/>
+    <sexe sexe="M"/>
+    <federation federation=""/>
+    <ligue ligue=""/>
+    <club club=""/>
+  </joueur>
+<joueur>
+    <idJoueur idJ="5"/>
+    <numLicence numLicence="G67098"/>
+    <nomJoueur nomJoueur="zrga"/>
+    <prenomJoueur prenomJoueur="argaerg"/>
+    <numEloNormal numEloNormal="NC"/>
+    <numEloSemiRapide numEloSemiRapide="NC"/>
+    <numEloRapide numEloRapide="NC"/>
+    <categorie categorie="SePM"/>
+    <dateNais dateNais="12/09/1960"/>
+    <sexe sexe="M"/>
+    <federation federation=""/>
+    <ligue ligue=""/>
+    <club club=""/>
+  </joueur>
+<joueur>
+    <idJoueur idJ="6"/>
+    <numLicence numLicence="G67098"/>
+    <nomJoueur nomJoueur="zrga"/>
+    <prenomJoueur prenomJoueur="argaerg"/>
+    <numEloNormal numEloNormal="NC"/>
+    <numEloSemiRapide numEloSemiRapide="NC"/>
+    <numEloRapide numEloRapide="NC"/>
+    <categorie categorie="SePM"/>
+    <dateNais dateNais="12/09/1960"/>
+    <sexe sexe="M"/>
+    <federation federation=""/>
+    <ligue ligue=""/>
+    <club club=""/>
+  </joueur>
+<joueur>
+    <idJoueur idJ="7"/>
+    <numLicence numLicence="G67098"/>
+    <nomJoueur nomJoueur="zrga"/>
+    <prenomJoueur prenomJoueur="argaerg"/>
+    <numEloNormal numEloNormal="NC"/>
+    <numEloSemiRapide numEloSemiRapide="NC"/>
+    <numEloRapide numEloRapide="NC"/>
+    <categorie categorie="SePM"/>
+    <dateNais dateNais="12/09/1960"/>
+    <sexe sexe="M"/>
+    <federation federation=""/>
+    <ligue ligue=""/>
+    <club club=""/>
+  </joueur>
+<joueur>
+    <idJoueur idJ="8"/>
+    <numLicence numLicence=""/>
+    <nomJoueur nomJoueur="zrga"/>
+    <prenomJoueur prenomJoueur="argaerg"/>
+    <numEloNormal numEloNormal="NC"/>
+    <numEloSemiRapide numEloSemiRapide="NC"/>
+    <numEloRapide numEloRapide="NC"/>
+    <categorie categorie="SePM"/>
+    <dateNais dateNais="12/09/1960"/>
+    <sexe sexe="M"/>
+    <federation federation=""/>
+    <ligue ligue=""/>
+    <club club=""/>
+  </joueur>
+<joueur>
+    <idJoueur idJ="1"/>
+    <numLicence numLicence="G67098"/>
+    <nomJoueur nomJoueur="dfdff"/>
+    <prenomJoueur prenomJoueur="ffff"/>
+    <numEloNormal numEloNormal="NC"/>
+    <numEloSemiRapide numEloSemiRapide="NC"/>
+    <numEloRapide numEloRapide="NC"/>
+    <categorie categorie="VetM"/>
+    <dateNais dateNais="11/11/1111"/>
+    <sexe sexe="M"/>
+    <federation federation=""/>
+    <ligue ligue=""/>
+    <club club=""/>
+  </joueur>
+<joueur>
+    <idJoueur idJ="1"/>
+    <numLicence numLicence="G67097"/>
+    <nomJoueur nomJoueur="fff"/>
+    <prenomJoueur prenomJoueur="ffff"/>
+    <numEloNormal numEloNormal="NC"/>
+    <numEloSemiRapide numEloSemiRapide="NC"/>
+    <numEloRapide numEloRapide="NC"/>
+    <categorie categorie="VetM"/>
+    <dateNais dateNais="11/11/1111"/>
+    <sexe sexe="M"/>
+    <federation federation=""/>
+    <ligue ligue=""/>
+    <club club=""/>
+  </joueur>
+<joueur>
+    <idJoueur idJ="2"/>
+    <numLicence numLicence=""/>
+    <nomJoueur nomJoueur="fff"/>
+    <prenomJoueur prenomJoueur="ffff"/>
+    <numEloNormal numEloNormal="NC"/>
+    <numEloSemiRapide numEloSemiRapide="NC"/>
+    <numEloRapide numEloRapide="NC"/>
+    <categorie categorie="VetM"/>
+    <dateNais dateNais="11/11/1112"/>
+    <sexe sexe="M"/>
+    <federation federation=""/>
+    <ligue ligue=""/>
+    <club club=""/>
+  </joueur>
 </joueurs>

@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeParseException;
 import java.util.Date;
+import java.util.ArrayList;
 
 public class Joueurs {  
     private int idJ;
@@ -183,9 +184,10 @@ public class Joueurs {
     }
     
     public String calculCategorie(String sexe, String date){
+        String tmp = this.conversionDate(date);
         String cat = "";
         if(this.verifFormatDateValide(date)){
-            LocalDate dob = LocalDate.parse(date);
+            LocalDate dob = LocalDate.parse(tmp);
             LocalDate curDate = LocalDate.now();
             int age = Period.between(dob, curDate).getYears();
             if(age < 8){
@@ -220,11 +222,13 @@ public class Joueurs {
         //FROM JJ/MM/AAAA
         //TO AAAA-MM-JJ
         String tmp = "";
-        tmp = tmp + date.charAt(6) + date.charAt(7) + date.charAt(8) + date.charAt(9);
-        tmp += "-";
-        tmp = tmp + date.charAt(3) + date.charAt(4);
-        tmp += "-";
-        tmp = tmp + date.charAt(0) + date.charAt(1);
+        if(date.length() >= 10){
+            tmp = tmp + date.charAt(6) + date.charAt(7) + date.charAt(8) + date.charAt(9);
+            tmp += "-";
+            tmp = tmp + date.charAt(3) + date.charAt(4);
+            tmp += "-";
+            tmp = tmp + date.charAt(0) + date.charAt(1);
+        }
         //LocalDate dateCorrecte = LocalDate.parse(tmp);
         return tmp;
     }
@@ -315,7 +319,7 @@ public class Joueurs {
     public boolean verifFormatEloValide(String elo){
         boolean res = true;
         if(!"".equals(elo)){
-            if(!elo.matches("([0-9]{4})") || !elo.matches("([0-9]{3})")){
+            if(!elo.matches("[0-9]{4}") && !elo.matches("[0-9]{3}")){
                 res = false;
                 //RetourCreation.setText("Erreur, elo invalide");
             }
@@ -407,12 +411,28 @@ public class Joueurs {
     public boolean verifNumLicenceValide(){
         boolean res = true;
         if(!"".equals(this.numLicenceJ)){
-            if(!this.numLicenceJ.matches("([A-Z]{1})([0-9]{4})")){
+            if(!this.numLicenceJ.matches("[A-Z]{1}[0-9]{5}")){
                 res = false;
                 //RetourCreation.setText("Erreur, fédération invalide");
             }
         }
         return res;
+    }
+    
+    public boolean verifJoueurExistant(ArrayList<Joueurs> j){
+        boolean verif = true;
+        for(int i = 0 ; i < j.size() ; i++){
+            if(!"".equals(this.numLicenceJ)){
+                if(this.numLicenceJ.equals(j.get(i).getNumLicenceJ())){
+                    verif = false;
+                }
+            }else{
+                if(this.nomJ.equals(j.get(i).getNomJ()) && this.prenomJ.equals(j.get(i).getPrenomJ()) && this.dateNaisJ.equals(j.get(i).getDateNaisJ())){
+                    verif = false;
+                }
+            }
+        }
+        return verif;
     }
     
     public String JtoString(){
