@@ -189,37 +189,37 @@ public class MenuPrincipal extends javax.swing.JFrame {
         creationJoueur.setMinimumSize(new java.awt.Dimension(800, 800));
 
         nomLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        nomLabel.setText("Nom: *");
+        nomLabel.setText("Nom : *");
 
         prenomLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        prenomLabel.setText("Prenom: *");
+        prenomLabel.setText("Prenom : *");
 
         dateLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        dateLabel.setText("Date de naissance: *");
+        dateLabel.setText("Date de naissance : *");
 
         sexeLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        sexeLabel.setText("Sexe: *");
+        sexeLabel.setText("Sexe : *");
 
         licenceLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        licenceLabel.setText("Numéro de licence:");
+        licenceLabel.setText("Numéro de licence :");
 
         federationLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        federationLabel.setText("Fédération:");
+        federationLabel.setText("Fédération :");
 
         ligueLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        ligueLabel.setText("Ligue");
+        ligueLabel.setText("Ligue :");
 
         clubLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        clubLabel.setText("Club");
+        clubLabel.setText("Club :");
 
         eloNormalLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        eloNormalLabel.setText("N° Elo (normal):");
+        eloNormalLabel.setText("Elo (Classique) :");
 
         eloRapideLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        eloRapideLabel.setText("N° Elo (rapide):");
+        eloRapideLabel.setText("Elo (rapide) :");
 
         eloSemiRapideLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        eloSemiRapideLabel.setText("N° Elo (Semi rapide):");
+        eloSemiRapideLabel.setText("Elo (Semi rapide) :");
 
         saveButton.setText("Sauvegarder");
         saveButton.addActionListener(new java.awt.event.ActionListener() {
@@ -254,13 +254,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
 
         noteLabel.setFont(new java.awt.Font("Ubuntu", 3, 12)); // NOI18N
-        noteLabel.setText("nb: (*) champs obligatoire");
+        noteLabel.setText("nb : (*) champs obligatoire");
 
         titleMenuLabel.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         titleMenuLabel.setText("Création d'une fiche joueur");
 
         dateFormatLabel.setFont(new java.awt.Font("Ubuntu", 2, 12)); // NOI18N
-        dateFormatLabel.setText("yyyy-mm-dd");
+        dateFormatLabel.setText("JJ/MM/AAAA");
 
         clearButton.setText("Effacer (Clear)");
         clearButton.addActionListener(new java.awt.event.ActionListener() {
@@ -285,7 +285,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         creationJoueurLayout.setHorizontalGroup(
             creationJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(creationJoueurLayout.createSequentialGroup()
-                .addContainerGap(1002, Short.MAX_VALUE)
+                .addContainerGap(998, Short.MAX_VALUE)
                 .addGroup(creationJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, creationJoueurLayout.createSequentialGroup()
                         .addGroup(creationJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -493,15 +493,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
         jLabel4.setText("Création d'un tournoi");
 
-        nom.setText("Nom: *");
+        nom.setText("Nom : *");
 
-        dated.setText("Date debut: *");
+        dated.setText("Date debut : *");
 
-        datef.setText("Date fin: *");
+        datef.setText("Date fin : *");
 
-        nbr.setText("Nombre de rondes: *");
+        nbr.setText("Nombre de rondes : *");
 
-        lieu.setText("Lieu:");
+        lieu.setText("Lieu :");
 
         nomTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -522,10 +522,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
 
         dateFormatLabel2.setFont(new java.awt.Font("Ubuntu", 2, 12)); // NOI18N
-        dateFormatLabel2.setText("yyyy-mm-dd");
+        dateFormatLabel2.setText("JJ/MM/AAAA");
 
         dateFormatLabel3.setFont(new java.awt.Font("Ubuntu", 2, 12)); // NOI18N
-        dateFormatLabel3.setText("yyyy-mm-dd");
+        dateFormatLabel3.setText("JJ/MM/AAAA");
 
         enregistreT.setText("Sauvegarder");
         enregistreT.addActionListener(new java.awt.event.ActionListener() {
@@ -804,12 +804,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 stmp += System.getProperty("line.separator")+"Prénom Joueur invalide";
             }
         }
+        
+        if(!j.verifNumLicenceValide()){
+            test = false;
+            stmp += System.getProperty("line.separator")+"Erreur, Format de licence incorrecte, format attendu : A12345";
+        }
+        
         if(!j.verifFormatDateValide(dateDeNaissance))
         {
-            test= false;
+            test = false;
             if(!j.verifMatchDate(dateDeNaissance)){
                 dateLabel.setForeground(Color.red);
-                stmp += System.getProperty("line.separator")+"Erreur, date invalide format attendu : AAAA-MM-JJ";
+                stmp += System.getProperty("line.separator")+"Erreur, date invalide format attendu : JJ/MM/AAAA";
             }
             if(!j.verifDateValide(dateDeNaissance)){
                 dateLabel.setForeground(Color.red);
@@ -826,7 +832,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
         
         if(!j.verifFormatEloValide(eloN)){
             test= false;
-            stmp += System.getProperty("line.separator")+"Erreur, Elo Normal invalide.";
+            stmp += System.getProperty("line.separator")+"Erreur, Elo Classique invalide.";
+        }
+        
+        if(!j.verifFormatEloPositif(eloN)){
+            test= false;
+            stmp += System.getProperty("line.separator")+"Erreur, Elo Classique négatif.";
+        }
+        
+        if(!j.verifFormatElo900To3000(eloN)){
+            test= false;
+            stmp += System.getProperty("line.separator")+"Erreur, Elo Classique doit être compris entre 900 et 3000.";
         }
         
         if(!j.verifFormatEloValide(eloR)){
@@ -834,9 +850,29 @@ public class MenuPrincipal extends javax.swing.JFrame {
             stmp += System.getProperty("line.separator")+"Erreur, Elo Rapide invalide.";
         }
         
+        if(!j.verifFormatEloPositif(eloR)){
+            test= false;
+            stmp += System.getProperty("line.separator")+"Erreur, Elo Rapide négatif.";
+        }
+        
+        if(!j.verifFormatElo900To3000(eloR)){
+            test= false;
+            stmp += System.getProperty("line.separator")+"Erreur, Elo Rapide doit être compris entre 900 et 3000.";
+        }
+        
         if(!j.verifFormatEloValide(eloSR)){
             test= false;
             stmp += System.getProperty("line.separator")+"Erreur, Elo SemiRapide invalide.";
+        }
+        
+        if(!j.verifFormatEloPositif(eloSR)){
+            test= false;
+            stmp += System.getProperty("line.separator")+"Erreur, Elo SemiRapide négatif.";
+        }
+        
+        if(!j.verifFormatElo900To3000(eloSR)){
+            test= false;
+            stmp += System.getProperty("line.separator")+"Erreur, Elo SemiRapide doit être compris entre 900 et 3000.";
         }
         
         if(!j.verifFormatLigueValide()){
@@ -928,7 +964,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             test= false;
             if(!t.verifMatchDate(dateDebut)){
                 dated.setForeground(Color.red);
-                stmp += System.getProperty("line.separator")+"Erreur, date invalide format attendu : AAAA-MM-JJ";
+                stmp += System.getProperty("line.separator")+"Erreur, date invalide format attendu : JJ/MM/AAAA";
             }
             if(!t.verifDateValide(dateDebut)){
                 dated.setForeground(Color.red);
@@ -940,7 +976,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             test= false;
             if(!t.verifMatchDate(dateFin)){
                 dated.setForeground(Color.red);
-                stmp += System.getProperty("line.separator")+"Erreur, date invalide format attendu : AAAA-MM-JJ";
+                stmp += System.getProperty("line.separator")+"Erreur, date invalide format attendu : JJ/MM/AAAA";
             }
             if(!t.verifDateValide(dateFin)){
                 dated.setForeground(Color.red);
@@ -957,6 +993,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 test= false;
                 stmp += System.getProperty("line.separator")+"Erreur, date de début plus récente que date de fin.";
             }
+        }
+        if(!t.verifNbRondes()){
+            test = false;
+            stmp += System.getProperty("line.separator")+"Erreur, le nombre de rondes doit être positif.";
         }
         msgErreurT.setText(stmp);
         if(test){

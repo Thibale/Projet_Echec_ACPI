@@ -165,9 +165,9 @@ public class XML {
         String numLicenceJ;
         String nomJ;
         String prenomJ;
-        int numEloNormalJ;
-        int numEloSemiRapideJ;
-        int numEloRapideJ;
+        String numEloNormalJ;
+        String numEloSemiRapideJ;
+        String numEloRapideJ;
         String categorieJ;
         String dateNaisJ;
         String sexeJ;
@@ -195,13 +195,13 @@ public class XML {
                 prenomJ = prenomJoueurtmp.getAttribute("prenomJoueur");
                 
                 Element numEloNormaltmp = (Element) joueur.getElementsByTagName("numEloNormal").item(0);
-                numEloNormalJ = Integer.valueOf(numEloNormaltmp.getAttribute("numEloNormal"));
+                numEloNormalJ = numEloNormaltmp.getAttribute("numEloNormal");
                 
                 Element numEloSemiRapidetmp = (Element) joueur.getElementsByTagName("numEloSemiRapide").item(0);
-                numEloSemiRapideJ = Integer.valueOf(numEloSemiRapidetmp.getAttribute("numEloSemiRapide"));
+                numEloSemiRapideJ = numEloSemiRapidetmp.getAttribute("numEloSemiRapide");
                 
                 Element numEloRapidetmp = (Element) joueur.getElementsByTagName("numEloRapide").item(0);
-                numEloRapideJ = Integer.valueOf(numEloRapidetmp.getAttribute("numEloRapide"));
+                numEloRapideJ = numEloRapidetmp.getAttribute("numEloRapide");
                 
                 Element categorietmp = (Element) joueur.getElementsByTagName("categorie").item(0);
                 categorieJ = categorietmp.getAttribute("categorie");
@@ -325,9 +325,9 @@ public class XML {
         String numLicenceJ;
         String nomJ;
         String prenomJ;
-        int numEloNormalJ;
-        int numEloSemiRapideJ;
-        int numEloRapideJ;
+        String numEloNormalJ;
+        String numEloSemiRapideJ;
+        String numEloRapideJ;
         String categorieJ;
         String dateNaisJ;
         String sexeJ;
@@ -351,13 +351,13 @@ public class XML {
             prenomJ = prenomJoueurtmp.getAttribute("prenomJoueur");
 
             Element numEloNormaltmp = (Element) joueur.getElementsByTagName("numEloNormal").item(0);
-            numEloNormalJ = Integer.valueOf(numEloNormaltmp.getAttribute("numEloNormal"));
+            numEloNormalJ = numEloNormaltmp.getAttribute("numEloNormal");
 
             Element numEloSemiRapidetmp = (Element) joueur.getElementsByTagName("numEloSemiRapide").item(0);
-            numEloSemiRapideJ = Integer.valueOf(numEloSemiRapidetmp.getAttribute("numEloSemiRapide"));
+            numEloSemiRapideJ = numEloSemiRapidetmp.getAttribute("numEloSemiRapide");
 
             Element numEloRapidetmp = (Element) joueur.getElementsByTagName("numEloRapide").item(0);
-            numEloRapideJ = Integer.valueOf(numEloRapidetmp.getAttribute("numEloRapide"));
+            numEloRapideJ = numEloRapidetmp.getAttribute("numEloRapide");
 
             Element categorietmp = (Element) joueur.getElementsByTagName("categorie").item(0);
             categorieJ = categorietmp.getAttribute("categorie");

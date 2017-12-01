@@ -114,19 +114,44 @@ public class Tournoi {
         return tmp;
     }
     
+    public boolean verifNbRondes(){
+        boolean verif = true;
+        if(!"".equals(this.nbRondes)){
+            if(!String.valueOf(this.nbRondes).matches("[^-]*")){
+                verif = false;
+                //RetourCreation.setText("Erreur, elo invalide");
+            }
+        }
+        return verif;
+    }
+    
+    public String conversionDate(String date){
+        //FROM JJ/MM/AAAA
+        //TO AAAA-MM-JJ
+        String tmp = "";
+        tmp = tmp + date.charAt(6) + date.charAt(7) + date.charAt(8) + date.charAt(9);
+        tmp += "-";
+        tmp = tmp + date.charAt(3) + date.charAt(4);
+        tmp += "-";
+        tmp = tmp + date.charAt(0) + date.charAt(1);
+        //LocalDate dateCorrecte = LocalDate.parse(tmp);
+        return tmp;
+    }
+    
     public boolean verifMatchDate(String date){
-        return date.matches("([0-9]{4})-([0-9]{2})-([0-9]{2})"); 
+        return date.matches("([0-9]{2})/([0-9]{2})/([0-9]{4})"); 
         //messageErreur += "Erreur, date invalide format attendu : AAAA-MM-JJ";
     }
     
     public boolean verifDateValide(String date){
+        String tmp = this.conversionDate(date);
         boolean checkFormat = true;
         Date datetmp = null;
         String format = "yyyy-MM-dd";
         try {
             SimpleDateFormat sdf = new SimpleDateFormat(format);
-            datetmp = sdf.parse(date);
-            if (!date.equals(sdf.format(datetmp))) {
+            datetmp = sdf.parse(tmp);
+            if (!tmp.equals(sdf.format(datetmp))) {
                 datetmp = null;
             }
         } catch (ParseException ex) {
@@ -150,9 +175,11 @@ public class Tournoi {
     }
     
     public boolean verifDateDebutAvantDateFin(String dateDeb, String dateFi){
+        String tmpD = this.conversionDate(dateDeb);
+        String tmpF = this.conversionDate(dateFi);
         boolean verif = true;
-        LocalDate dateD = LocalDate.parse(dateDeb);
-        LocalDate dateF = LocalDate.parse(dateFi);
+        LocalDate dateD = LocalDate.parse(tmpD);
+        LocalDate dateF = LocalDate.parse(tmpF);
         if (dateD.compareTo(dateF) > 0){
             verif = false;
             //messageErreur += "Erreur, date de début plus récente que date de fin.";
@@ -161,8 +188,9 @@ public class Tournoi {
     }
     
     public boolean verifDateDebut(String dateDeb){
+        String tmp = this.conversionDate(dateDeb);
         boolean verif = true;
-        LocalDate dateD = LocalDate.parse(dateDeb);
+        LocalDate dateD = LocalDate.parse(tmp);
         LocalDate curDate = LocalDate.now();
         if (dateD.compareTo(curDate) < 0){
             verif = false;

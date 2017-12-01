@@ -35,4 +35,18 @@
     <nbRondes nbRondes="5"/>
     <lieu lieu="nimes"/>
   </tournoi>
+<tournoi>
+    <nomTournoi nomTournoi="TTT"/>
+    <dateDebut dateDebut="13/05/2018"/>
+    <dateFin dateFin="13/05/2018"/>
+    <nbRondes nbRondes="-1"/>
+    <lieu lieu=""/>
+  </tournoi>
+<tournoi>
+    <nomTournoi nomTournoi="TTT"/>
+    <dateDebut dateDebut="12/04/2018"/>
+    <dateFin dateFin="12/02/2019"/>
+    <nbRondes nbRondes="1"/>
+    <lieu lieu=""/>
+  </tournoi>
 </tournoi>

@@ -13,9 +13,9 @@ public class Joueurs {
     private String numLicenceJ;
     private String nomJ;
     private String prenomJ;
-    private int numEloNormalJ;
-    private int numEloSemiRapideJ;
-    private int numEloRapideJ;
+    private String numEloNormalJ;
+    private String numEloSemiRapideJ;
+    private String numEloRapideJ;
     private String categorieJ;
     private String dateNaisJ;
     private String sexeJ;
@@ -29,23 +29,23 @@ public class Joueurs {
         nomJ=nom;
         prenomJ=prenom;
         if("".equals(numEloNormal)){
-            numEloNormalJ=0;
+            numEloNormalJ="NC";
         }else{
             if(this.verifFormatEloValide(numEloNormal)){
-                numEloNormalJ=Integer.valueOf(numEloNormal);
+                numEloNormalJ=numEloNormal;
             }
         }
         if("".equals(numEloSemiRapide)){
-            numEloSemiRapideJ=0;
+            numEloSemiRapideJ="NC";
         }else{
             if(this.verifFormatEloValide(numEloSemiRapide))
-                numEloSemiRapideJ=Integer.valueOf(numEloSemiRapide);
+                numEloSemiRapideJ=numEloSemiRapide;
         }
         if("".equals(numEloRapide)){
-            numEloRapideJ=0;
+            numEloRapideJ="NC";
         }else{
             if(this.verifFormatEloValide(numEloRapide))
-                numEloRapideJ=Integer.valueOf(numEloRapide);
+                numEloRapideJ=numEloRapide;
         }
         categorieJ=this.calculCategorie(sexe,dateNais);
         dateNaisJ=dateNais;
@@ -54,7 +54,7 @@ public class Joueurs {
         ligueJ=ligue;
         clubJ=club;
     }
-    public Joueurs(int id,String numLicence,String nom,String prenom,int numEloNormal,int numEloSemiRapide,int numEloRapide,String dateNais,String sexe,String federation,String ligue,String club){
+    public Joueurs(int id,String numLicence,String nom,String prenom,String numEloNormal,String numEloSemiRapide,String numEloRapide,String dateNais,String sexe,String federation,String ligue,String club){
         idJ=id;
         numLicenceJ=numLicence;
         nomJ=nom;
@@ -69,7 +69,7 @@ public class Joueurs {
         ligueJ=ligue;
         clubJ=club;
     }
-    public Joueurs(int id,String numLicence,String nom,String prenom,int numEloNormal,int numEloSemiRapide,int numEloRapide,String cat,String dateNais,String sexe,String federation,String ligue,String club){
+    public Joueurs(int id,String numLicence,String nom,String prenom,String numEloNormal,String numEloSemiRapide,String numEloRapide,String cat,String dateNais,String sexe,String federation,String ligue,String club){
         idJ=id;
         numLicenceJ=numLicence;
         nomJ=nom;
@@ -89,9 +89,9 @@ public class Joueurs {
         numLicenceJ="";
         nomJ=nom;
         prenomJ=prenom;
-        numEloNormalJ=0;
-        numEloSemiRapideJ=0;
-        numEloRapideJ=0;
+        numEloNormalJ="NC";
+        numEloSemiRapideJ="NC";
+        numEloRapideJ="NC";
         categorieJ="";
         dateNaisJ=dateN;
         sexeJ=sexe;
@@ -114,13 +114,13 @@ public class Joueurs {
     public String getPrenomJ(){
         return this.prenomJ;
     }
-    public int getNumEloNormalJ(){
+    public String getNumEloNormalJ(){
         return this.numEloNormalJ;
     }
-    public int getNumEloSemiRapideJ(){
+    public String getNumEloSemiRapideJ(){
         return this.numEloSemiRapideJ;
     }
-    public int getNumEloRapideJ(){
+    public String getNumEloRapideJ(){
         return this.numEloRapideJ;
     }
     public String getCategorieJ(){
@@ -154,13 +154,13 @@ public class Joueurs {
     public void setPrenomJ(String prenom){
         this.prenomJ = prenom;
     }
-    public void setNumEloNormalJ(int elo){
+    public void setNumEloNormalJ(String elo){
         this.numEloNormalJ = elo;
     }
-    public void setNumEloSemiRapideJ(int elo){
+    public void setNumEloSemiRapideJ(String elo){
         this.numEloSemiRapideJ = elo;
     }
-    public void setNumEloRapideJ(int elo){
+    public void setNumEloRapideJ(String elo){
         this.numEloRapideJ = elo;
     }
     public void setCategorieJ(String cat){
@@ -204,6 +204,8 @@ public class Joueurs {
                 cat = cat+"Jun";
             }else if(age < 50){
                 cat = cat+"Sen";
+            }else if(age < 60){
+                cat = cat+"SeP";
             }else{
                 cat = cat+"Vet";
             }
@@ -214,10 +216,23 @@ public class Joueurs {
         return cat;
     }
     
+    public String conversionDate(String date){
+        //FROM JJ/MM/AAAA
+        //TO AAAA-MM-JJ
+        String tmp = "";
+        tmp = tmp + date.charAt(6) + date.charAt(7) + date.charAt(8) + date.charAt(9);
+        tmp += "-";
+        tmp = tmp + date.charAt(3) + date.charAt(4);
+        tmp += "-";
+        tmp = tmp + date.charAt(0) + date.charAt(1);
+        //LocalDate dateCorrecte = LocalDate.parse(tmp);
+        return tmp;
+    }
     
     public boolean verifDateNaiss(String dateNaissance){
+        String tmp = this.conversionDate(dateNaissance);
         boolean verif = true;
-        LocalDate dateNaiss = LocalDate.parse(dateNaissance);
+        LocalDate dateNaiss = LocalDate.parse(tmp);
         LocalDate curDate = LocalDate.now();
         if (dateNaiss.compareTo(curDate) > 0){
             verif = false;
@@ -227,18 +242,19 @@ public class Joueurs {
     }
     
     public boolean verifMatchDate(String date){
-        return date.matches("([0-9]{4})-([0-9]{2})-([0-9]{2})"); 
-        //messageErreur += "Erreur, date invalide format attendu : AAAA-MM-JJ";
+        return date.matches("([0-9]{2})/([0-9]{2})/([0-9]{4})"); 
+        //messageErreur += "Erreur, date invalide format attendu : JJ-MM-AAAA";
     }
 
     public boolean verifDateValide(String date){
+        String tmp =  this.conversionDate(date);
         boolean checkFormat = true;
         Date datetmp = null;
         String format = "yyyy-MM-dd";
         try {
             SimpleDateFormat sdf = new SimpleDateFormat(format);
-            datetmp = sdf.parse(date);
-            if (!date.equals(sdf.format(datetmp))) {
+            datetmp = sdf.parse(tmp);
+            if (!tmp.equals(sdf.format(datetmp))) {
                 datetmp = null;
             }
         } catch (ParseException ex) {
@@ -283,7 +299,29 @@ public class Joueurs {
     public boolean verifFormatEloValide(String elo){
         boolean res = true;
         if(!"".equals(elo)){
-            if(!elo.matches("[0-9]*")){
+            if(!elo.matches("([0-9]{4})") || !elo.matches("([0-9]{3})")){
+                res = false;
+                //RetourCreation.setText("Erreur, elo invalide");
+            }
+        }
+        return res;
+    }
+    
+    public boolean verifFormatEloPositif(String elo){
+        boolean res = true;
+        if(!"".equals(elo)){
+            if(!elo.matches("[^-]*")){
+                res = false;
+                //RetourCreation.setText("Erreur, elo invalide");
+            }
+        }
+        return res;
+    }
+    
+    public boolean verifFormatElo900To3000(String elo){
+        boolean res = true;
+        if((!"".equals(elo)) && verifFormatEloValide(elo)){
+            if(Integer.valueOf(elo) < 900 || Integer.valueOf(elo) > 3000){
                 res = false;
                 //RetourCreation.setText("Erreur, elo invalide");
             }
@@ -350,18 +388,29 @@ public class Joueurs {
         return res;
     }
     
+    public boolean verifNumLicenceValide(){
+        boolean res = true;
+        if(!"".equals(this.numLicenceJ)){
+            if(!this.numLicenceJ.matches("([A-Z]{1})([0-9]{4})")){
+                res = false;
+                //RetourCreation.setText("Erreur, fédération invalide");
+            }
+        }
+        return res;
+    }
+    
     public String JtoString(){
-        return "Numero Licence: " + this.numLicenceJ +System.getProperty("line.separator")+
-                "Nom joueur: " + this.nomJ +System.getProperty("line.separator")+ 
-                "Prenom joueur: " + this.prenomJ +System.getProperty("line.separator")+
-                "Numero Elo Normal: " + this.numEloNormalJ +System.getProperty("line.separator")+
-                "Numero Elo SemiRapide: "+ this.numEloSemiRapideJ +System.getProperty("line.separator")+
-                "Numero Elo Rapide:  " + this.numEloRapideJ +System.getProperty("line.separator")+
-                "Categorie: "+this.categorieJ +System.getProperty("line.separator")+
-                "Date Naissance: " + this.dateNaisJ +System.getProperty("line.separator")+
-                "Sexe: " + this.sexeJ +System.getProperty("line.separator")+
-                "Federation: " + this.federationJ +System.getProperty("line.separator")+
-                "Ligue: " + this.ligueJ +System.getProperty("line.separator")+
-                "Club: "+ this.clubJ+System.getProperty("line.separator");
+        return  "Numero Licence : " + this.numLicenceJ +System.getProperty("line.separator")+
+                "Nom joueur : " + this.nomJ +System.getProperty("line.separator")+ 
+                "Prénom joueur : " + this.prenomJ +System.getProperty("line.separator")+
+                "Elo Classique : " + this.numEloNormalJ +System.getProperty("line.separator")+
+                "Elo SemiRapide : "+ this.numEloSemiRapideJ +System.getProperty("line.separator")+
+                "Elo Rapide :  " + this.numEloRapideJ +System.getProperty("line.separator")+
+                "Categorie : "+this.categorieJ +System.getProperty("line.separator")+
+                "Date Naissance : " + this.dateNaisJ +System.getProperty("line.separator")+
+                "Sexe : " + this.sexeJ +System.getProperty("line.separator")+
+                "Fédération : " + this.federationJ +System.getProperty("line.separator")+
+                "Ligue : " + this.ligueJ +System.getProperty("line.separator")+
+                "Club : "+ this.clubJ+System.getProperty("line.separator");
     }
 }  

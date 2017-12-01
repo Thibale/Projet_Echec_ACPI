@@ -28,7 +28,7 @@ public class XMLTournoi {
     protected Document document;
     protected Element racine;
     private boolean isInit = false;
-    private int id = 0;
+    //private int id = 0;
     
     protected NodeList racineNoeuds;
     
