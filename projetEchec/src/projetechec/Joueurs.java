@@ -280,20 +280,36 @@ public class Joueurs {
     
     public boolean verifFormatNomValide(){
         boolean res = true;
-        if(!this.nomJ.matches("[A-Za-z-]*")){
+        if(!this.nomJ.matches("\\p{L}*")){
             res = false;
             //RetourCreation.setText("Erreur, nom invalide");
         }
         return res;
     }
     
+    public boolean verifTailleNomJoueur(){
+        boolean verif = true;
+        if(this.nomJ.length() > 50){
+            verif = false;
+        }
+        return verif;
+    }
+    
     public boolean verifFormatPrenomValide(){
         boolean res = true;
-        if(!this.prenomJ.matches("[A-Za-z-]*")){
+        if(!this.prenomJ.matches("\\p{L}*")){
             res = false;
             //RetourCreation.setText("Erreur, prenom invalide");
         }
         return res;
+    }
+    
+    public boolean verifTaillePrenomJoueur(){
+        boolean verif = true;
+        if(this.prenomJ.length() > 50){
+            verif = false;
+        }
+        return verif;
     }
     
     public boolean verifFormatEloValide(String elo){

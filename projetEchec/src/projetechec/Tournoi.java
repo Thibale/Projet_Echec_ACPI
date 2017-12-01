@@ -114,6 +114,14 @@ public class Tournoi {
         return tmp;
     }
     
+    public boolean verifTailleNomTournoi(){
+        boolean verif = true;
+        if(this.nomTournoi.length() > 50){
+            verif = false;
+        }
+        return verif;
+    }
+    
     public boolean verifNbRondes(){
         boolean verif = true;
         if(!"".equals(this.nbRondes)){

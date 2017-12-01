@@ -234,7 +234,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
-        mainMenuButton.setText("Retour Menu Principal");
+        mainMenuButton.setText("Menu Principal");
         mainMenuButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mainMenuButtonActionPerformed(evt);
@@ -262,7 +262,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         dateFormatLabel.setFont(new java.awt.Font("Ubuntu", 2, 12)); // NOI18N
         dateFormatLabel.setText("JJ/MM/AAAA");
 
-        clearButton.setText("Effacer (Clear)");
+        clearButton.setText("Réinitialiser");
         clearButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 clearButtonActionPerformed(evt);
@@ -319,13 +319,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
                                     .addComponent(eloNormalTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(eloSemiRapideTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(eloRapideTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(creationJoueurLayout.createSequentialGroup()
-                                .addComponent(clearButton)
-                                .addGap(18, 18, 18)
-                                .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(mainMenuButton)))
+                            .addGroup(creationJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, creationJoueurLayout.createSequentialGroup()
+                                    .addComponent(clearButton, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(mainMenuButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(193, 193, 193))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, creationJoueurLayout.createSequentialGroup()
                         .addComponent(titleMenuLabel)
@@ -387,10 +388,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(creationJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(clearButton)
-                    .addComponent(saveButton)
-                    .addComponent(mainMenuButton))
-                .addContainerGap(314, Short.MAX_VALUE))
+                    .addComponent(clearButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mainMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(292, Short.MAX_VALUE))
         );
 
         getContentPane().add(creationJoueur, java.awt.BorderLayout.PAGE_START);
@@ -559,8 +560,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
             .addGroup(creationTournoiLayout.createSequentialGroup()
                 .addGroup(creationTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(creationTournoiLayout.createSequentialGroup()
+                        .addGap(319, 319, 319)
+                        .addComponent(jLabel4))
+                    .addGroup(creationTournoiLayout.createSequentialGroup()
                         .addGap(221, 221, 221)
-                        .addGroup(creationTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(creationTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(creationTournoiLayout.createSequentialGroup()
+                                .addComponent(cleanT, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(enregistreT, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(menuprincT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(creationTournoiLayout.createSequentialGroup()
                                 .addGroup(creationTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -581,18 +591,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
                                     .addGroup(creationTournoiLayout.createSequentialGroup()
                                         .addComponent(dateFTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(dateFormatLabel3))))))
-                    .addGroup(creationTournoiLayout.createSequentialGroup()
-                        .addGap(319, 319, 319)
-                        .addComponent(jLabel4))
-                    .addGroup(creationTournoiLayout.createSequentialGroup()
-                        .addGap(212, 212, 212)
-                        .addComponent(enregistreT, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cleanT, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(menuprincT, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(193, Short.MAX_VALUE))
+                                        .addComponent(dateFormatLabel3)))))))
+                .addContainerGap(210, Short.MAX_VALUE))
         );
         creationTournoiLayout.setVerticalGroup(
             creationTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -624,11 +624,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(creationTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(creationTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(menuprincT, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cleanT, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(enregistreT, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(creationTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(enregistreT, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cleanT, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(menuprincT, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(389, 389, 389))
         );
 
@@ -805,6 +804,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         }
         
+        if(!j.verifTailleNomJoueur()){
+            nomLabel.setForeground(Color.red);
+            stmp += System.getProperty("line.separator")+"Nom de joueur limité à 50 caractères.";
+        }
+        
+        if(!j.verifTaillePrenomJoueur()){
+            prenomLabel.setForeground(Color.red);
+            stmp += System.getProperty("line.separator")+"Prénom de joueur limité à 50 caractères.";
+        }
+        
         if(!j.verifNumLicenceValide()){
             test = false;
             stmp += System.getProperty("line.separator")+"Erreur, Format de licence incorrecte, format attendu : A12345";
@@ -945,7 +954,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             if(t.nomTournoiEstVide()){
                 nom.setForeground(Color.red);
                 stmp += System.getProperty("line.separator")+"Nom Tournoi manquant";
-            }   
+            }
             if(t.dateDebutEstVide()){
                 dated.setForeground(Color.red);
                 stmp += System.getProperty("line.separator")+"Date de début manquante";
@@ -958,6 +967,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 nbr.setForeground(Color.red);
                 stmp += System.getProperty("line.separator")+"Nombre de rondes manquant";
             }
+        }
+        if(!t.verifTailleNomTournoi()){
+            nom.setForeground(Color.red);
+            stmp += System.getProperty("line.separator")+"Nom de tournoi limité à 50 caractères.";
         }
         if(!t.verifFormatDateValide(dateDebut))
         {
