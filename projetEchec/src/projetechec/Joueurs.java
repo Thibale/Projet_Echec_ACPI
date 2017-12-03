@@ -229,7 +229,6 @@ public class Joueurs {
             tmp += "-";
             tmp = tmp + date.charAt(0) + date.charAt(1);
         }
-        //LocalDate dateCorrecte = LocalDate.parse(tmp);
         return tmp;
     }
     
@@ -391,19 +390,15 @@ public class Joueurs {
         boolean res = true;
         if(this.nomEstVide()){
             res = false;
-            //labelNom.setForeground(Color.red);
         }
         if(this.prenomEstVide()){
             res = false;
-            //labelPrenom.setForeground(Color.red);
         }
         if(this.sexeEstVide()){
             res = false;
-            //labelSexe.setForeground(Color.red);
         }
         if(this.dateEstVide()){
             res = false;
-            //labelDateDeNaissance.setForeground(Color.red);
         }
         return res;
     }
