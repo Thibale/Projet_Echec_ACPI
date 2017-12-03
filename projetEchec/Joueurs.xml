@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<joueurs id="4">
+<joueurs id="5">
   <joueur>
     <idJoueur idJ="1"/>
     <numLicence numLicence="1278FE"/>
@@ -31,7 +31,7 @@
     <club club="Lattes-Echecs"/>
   </joueur>
   <joueur>
-    <idJoueur idJ="1"/>
+    <idJoueur idJ="3"/>
     <numLicence numLicence="1485TE"/>
     <nomJoueur nomJoueur="Durant"/>
     <prenomJoueur prenomJoueur="Nina"/>
@@ -55,6 +55,21 @@
     <numEloRapide numEloRapide="NC"/>
     <categorie categorie="SenM"/>
     <dateNais dateNais="13/05/1997"/>
+    <sexe sexe="M"/>
+    <federation federation=""/>
+    <ligue ligue=""/>
+    <club club=""/>
+  </joueur>
+<joueur>
+    <idJoueur idJ="5"/>
+    <numLicence numLicence=""/>
+    <nomJoueur nomJoueur="Falcone"/>
+    <prenomJoueur prenomJoueur="Thibaut"/>
+    <numEloNormal numEloNormal="NC"/>
+    <numEloSemiRapide numEloSemiRapide="NC"/>
+    <numEloRapide numEloRapide="NC"/>
+    <categorie categorie="JunM"/>
+    <dateNais dateNais="13/05/1998"/>
     <sexe sexe="M"/>
     <federation federation=""/>
     <ligue ligue=""/>
