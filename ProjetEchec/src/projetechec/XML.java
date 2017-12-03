@@ -28,7 +28,7 @@ public class XML {
     protected Document document;
     protected Element racine;
     private boolean isInit = false;
-    private int id = 0;
+    private static int id;
     
     protected NodeList racineNoeuds;
     
@@ -44,11 +44,14 @@ public class XML {
                 document = builder.newDocument();
                 //Etape 4 : création de l'Element racine
                 racine = document.createElement("joueurs");
+                racine.setAttribute("id", "0");
+                id = 0;
                 document.appendChild(racine);
             }else{
                 try {
                     document= builder.parse(f);
                     racine = document.getDocumentElement();
+                    id = Integer.valueOf(racine.getAttribute("id"));
                 } catch (SAXException | IOException ex) {
                     //Logger.getLogger(XML.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -69,10 +72,12 @@ public class XML {
 	try {			
 			
 	    //Etape 5 : création d'une personne
-            id+=1;
+            id = id + 1;
 	    final Element personne = document.createElement("joueur");
 	    racine.appendChild(personne);
 			
+            racine.setAttribute("id", String.valueOf(id));
+            
 	    //Etape 6 : création du nom et du prénom
 	    final Element idJoueur = document.createElement("idJoueur");
             idJoueur.setAttribute("idJ", String.valueOf(id));
