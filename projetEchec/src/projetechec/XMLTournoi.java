@@ -155,4 +155,76 @@ public class XMLTournoi {
         }
        return listTournoi; 
     }
+    
+    public void ecrireJoueurDansTournoi(ArrayList<Joueurs> jList, int index){
+        try {
+            this.InitXMLFile();
+            
+            Element tournoi = (Element) document.getElementsByTagName("tournoi").item(index - 1);
+            Element joueursOld = (Element) tournoi.getElementsByTagName("joueurs").item(0);
+            tournoi.removeChild(joueursOld);
+            Element joueurs = document.createElement("joueurs");
+            
+            for (Joueurs joueurNouveau : jList) {
+                Element joueur = document.createElement("joueur");
+                joueurs.appendChild(joueur);
+                
+                Element idJoueur = document.createElement("idJoueur");
+                idJoueur.setAttribute("idJ", String.valueOf(id));
+                
+                Element numLic = document.createElement("numLicence");
+                numLic.setAttribute("numLicence", joueurNouveau.getNumLicenceJ());
+                
+                Element nomJoueur = document.createElement("nomJoueur");
+                nomJoueur.setAttribute("nomJoueur", joueurNouveau.getNomJ());
+                
+                Element prenomJoueur = document.createElement("prenomJoueur");
+                prenomJoueur.setAttribute("prenomJoueur", joueurNouveau.getPrenomJ());
+                
+                Element numEloNorm = document.createElement("numEloNormal");
+                numEloNorm.setAttribute("numEloNormal", String.valueOf(joueurNouveau.getNumEloNormalJ()));
+                
+                Element numEloSemiRap = document.createElement("numEloSemiRapide");
+                numEloSemiRap.setAttribute("numEloSemiRapide", String.valueOf(joueurNouveau.getNumEloSemiRapideJ()));
+                
+                Element numEloRap = document.createElement("numEloRapide");
+                numEloRap.setAttribute("numEloRapide", String.valueOf(joueurNouveau.getNumEloRapideJ()));
+                
+                Element catJ = document.createElement("categorie");
+                catJ.setAttribute("categorie", joueurNouveau.getCategorieJ());
+                
+                Element dateNaissance = document.createElement("dateNais");
+                dateNaissance.setAttribute("dateNais", String.valueOf(joueurNouveau.getDateNaisJ()));
+                
+                Element sex = document.createElement("sexe");
+                sex.setAttribute("sexe", joueurNouveau.getSexeJ());
+                
+                Element fede = document.createElement("federation");
+                fede.setAttribute("federation",joueurNouveau.getFederationJ());
+                
+                Element ligueJoueur = document.createElement("ligue");
+                ligueJoueur.setAttribute("ligue", joueurNouveau.getLigueJ());
+                
+                Element clubJoueur = document.createElement("club");
+                clubJoueur.setAttribute("club", joueurNouveau.getClubJ());
+            }
+            
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            DOMSource source = new DOMSource(document);
+            StreamResult sortie = new StreamResult(new File(System.getProperty("user.dir")+"\\Tournois.xml"));
+            
+            //Propriétés du fichier
+            transformer.setOutputProperty(OutputKeys.METHOD, "xml");
+            transformer.setOutputProperty(OutputKeys.VERSION, "1.0");
+            transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+            transformer.setOutputProperty(OutputKeys.STANDALONE, "yes");
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+            transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
+            
+            transformer.transform(source, sortie);	
+        } catch (TransformerException ex) {
+            Logger.getLogger(XMLTournoi.class.getName()).log(Level.SEVERE, null, ex);
+        }  
+    }
 }
