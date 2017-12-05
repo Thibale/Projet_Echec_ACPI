@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<tournois id="1">
+<tournois id="2">
   <tournoi>
     <nomTournoi nomTournoi="Tournoi 1"/>
     <dateDebut dateDebut="13/05/2018"/>
     <dateFin dateFin="14/05/2018"/>
     <nbRondes nbRondes="17"/>
     <lieu lieu="Montpellier"/>
+    <joueurs/>
+  </tournoi>
+<tournoi>
+    <nomTournoi nomTournoi="T2"/>
+    <dateDebut dateDebut="12/12/2018"/>
+    <dateFin dateFin="12/12/2019"/>
+    <nbRondes nbRondes="3"/>
+    <lieu lieu=""/>
     <joueurs/>
   </tournoi>
 </tournois>
