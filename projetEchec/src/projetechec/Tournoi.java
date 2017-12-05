@@ -3,6 +3,7 @@ package projetechec;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Tournoi {
@@ -11,6 +12,7 @@ public class Tournoi {
     private String dateFin;
     private int nbRondes;
     private String lieu;
+    private ArrayList<Joueurs> joueurs;
     
     public Tournoi(String nomT,String dateDebutT,String dateFinT, int nbRoundT, String lieuT){
         nomTournoi=nomT;
@@ -212,6 +214,14 @@ public class Tournoi {
                "Date de début : " + dateDebut + " Date de fin : " + dateFin + System.getProperty("line.separator") +
                "Nombre de rondes : " + nbRondes + System.getProperty("line.separator") +
                "Lieu : " + lieu;
+    }
+    
+    public void setJoueurs(ArrayList<Joueurs> jList){
+        this.joueurs = jList;
+    }
+    
+    public ArrayList<Joueurs> getJoueurs(){
+        return this.joueurs;
     }
     
 }

@@ -10,12 +10,10 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-import org.w3c.dom.Comment;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -27,8 +25,9 @@ public class XMLTournoi {
     protected DocumentBuilder builder;
     protected Document document;
     protected Element racine;
+    
     private boolean isInit = false;
-    //private int id = 0;
+    private static int id;
     
     protected NodeList racineNoeuds;
     
@@ -36,29 +35,29 @@ public class XMLTournoi {
         factory = DocumentBuilderFactory.newInstance();
         
         try {
-	    //Etape 2 : création d'un parseur
+            //Création ou lecture du fichier XML
 	    builder = factory.newDocumentBuilder();
-	    File f=new File(System.getProperty("user.dir")+"\\Tournois.xml");
-            if(!f.exists()){
-                //Etape 3 : création d'un Document
+	    File fileXML = new File(System.getProperty("user.dir")+"\\Tournois.xml");
+            
+            if(!fileXML.exists()){
+                
                 document = builder.newDocument();
-                //Etape 4 : création de l'Element racine
                 racine = document.createElement("tournois");
+                racine.setAttribute("id", "0");
+                id = 0;
                 document.appendChild(racine);
+                
             }else{
-                try {
-                    document= builder.parse(f);
-                } catch (SAXException ex) {
-                    Logger.getLogger(XMLTournoi.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (IOException ex) {
-                    Logger.getLogger(XMLTournoi.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                
+                document = builder.parse(fileXML);
                 racine = document.getDocumentElement();
+                id = Integer.valueOf(racine.getAttribute("id"));
+                
             }
             
-        }catch (final ParserConfigurationException e) {
-	    e.printStackTrace();
-	}
+	} catch (SAXException | IOException | ParserConfigurationException ex) {
+            Logger.getLogger(XML.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         isInit = true;
     }
@@ -68,72 +67,66 @@ public class XMLTournoi {
             this.InitXMLFile();
         }
         
-	try {			
+	try {	
+            
+            id = id + 1;
+            racine.setAttribute("id", String.valueOf(id));
 			
-	    //Etape 5 : création d'une personne	
-	    final Element personne = document.createElement("tournoi");
+	    Element personne = document.createElement("tournoi");
 	    racine.appendChild(personne);
-			
-	    //Etape 6 : création du nom et du prénom	
-	    final Element nomTournoi = document.createElement("nomTournoi");
+				
+	    Element nomTournoi = document.createElement("nomTournoi");
 	    nomTournoi.setAttribute("nomTournoi", t.getNomTournoi());
             
-            final Element dateDebut = document.createElement("dateDebut");
+            Element dateDebut = document.createElement("dateDebut");
             dateDebut.setAttribute("dateDebut", t.getDateDebut());
 			
-	    final Element dateFin = document.createElement("dateFin");
+	    Element dateFin = document.createElement("dateFin");
 	    dateFin.setAttribute("dateFin", t.getDateFin());
             
-            final Element nbRondes = document.createElement("nbRondes");
+            Element nbRondes = document.createElement("nbRondes");
             nbRondes.setAttribute("nbRondes", String.valueOf(t.getNbRondes()));
 			
-            final Element lieu = document.createElement("lieu");
+            Element lieu = document.createElement("lieu");
 	    lieu.setAttribute("lieu", t.getLieu());
+            
+            Element joueurs = document.createElement("joueurs");
 			
 	    personne.appendChild(nomTournoi);
 	    personne.appendChild(dateDebut);
             personne.appendChild(dateFin);
 	    personne.appendChild(nbRondes);
             personne.appendChild(lieu);
+            personne.appendChild(joueurs);
 	    
-            //Etape 8 : affichage
-	    final TransformerFactory transformerFactory = TransformerFactory.newInstance();
-	    final Transformer transformer = transformerFactory.newTransformer();
-	    final DOMSource source = new DOMSource(document);
-	    final StreamResult sortie = new StreamResult(new File(System.getProperty("user.dir")+"\\Tournois.xml"));
-	    //final StreamResult result = new StreamResult(System.out);
-			
-	    //prologue
+	    TransformerFactory transformerFactory = TransformerFactory.newInstance();
+	    Transformer transformer = transformerFactory.newTransformer();
+	    DOMSource source = new DOMSource(document);
+	    StreamResult sortie = new StreamResult(new File(System.getProperty("user.dir")+"\\Tournois.xml"));
+	   
+            //Propriétés du fichier
+            transformer.setOutputProperty(OutputKeys.METHOD, "xml");
 	    transformer.setOutputProperty(OutputKeys.VERSION, "1.0");
 	    transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
 	    transformer.setOutputProperty(OutputKeys.STANDALONE, "yes");			
-	    		
-	    //formatage
 	    transformer.setOutputProperty(OutputKeys.INDENT, "yes");
 	    transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
 			
-	    //sortie
 	    transformer.transform(source, sortie);	
+	} catch (TransformerException | NullPointerException e) {
 	}
-	catch (TransformerConfigurationException e) {
-	    e.printStackTrace();
-	}
-	catch (TransformerException e) {
-	    e.printStackTrace();
-	}			
     }
     
     public ArrayList<Tournoi> ReadXML(){
-        //if(!isInit){
-            this.InitXMLFile();
-        //}
+        this.InitXMLFile();
+        
         String nomTournoi;
         String dateDebut;
         String dateFin;
         int nbRondes;
         String lieu;
         
-        ArrayList<Tournoi> listTournoi=new ArrayList<Tournoi>();
+        ArrayList<Tournoi> listTournoi=new ArrayList<>();
         
         racineNoeuds = racine.getChildNodes();
         for (int i = 0; i<racineNoeuds.getLength(); i++) {

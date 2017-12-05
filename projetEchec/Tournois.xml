@@ -1,52 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<tournoi>
-<tournoi>
-    <nomTournoi nomTournoi="NomNom"/>
-    <dateDebut dateDebut="1990-09-09"/>
-    <dateFin dateFin="1999-06-10"/>
-    <nbRondes nbRondes="2"/>
-    <lieu lieu="Tonnerre"/>
-  </tournoi>
-<tournoi>
-    <nomTournoi nomTournoi="NomNom"/>
-    <dateDebut dateDebut="1990-09-09"/>
-    <dateFin dateFin="1999-06-10"/>
-    <nbRondes nbRondes="2"/>
-    <lieu lieu="Tonnerre"/>
-  </tournoi>
-<tournoi>
-    <nomTournoi nomTournoi="Tournoi1"/>
-    <dateDebut dateDebut="2018-01-01"/>
-    <dateFin dateFin="2018-06-10"/>
-    <nbRondes nbRondes="3"/>
-    <lieu lieu=""/>
-  </tournoi>
-<tournoi>
-    <nomTournoi nomTournoi="TournoiJU"/>
-    <dateDebut dateDebut="2018-06-09"/>
-    <dateFin dateFin="2018-07-04"/>
-    <nbRondes nbRondes="16"/>
-    <lieu lieu=""/>
-  </tournoi>
-<tournoi>
-    <nomTournoi nomTournoi="ffff"/>
-    <dateDebut dateDebut="2017-11-24"/>
-    <dateFin dateFin="2017-11-25"/>
-    <nbRondes nbRondes="5"/>
-    <lieu lieu="nimes"/>
-  </tournoi>
-<tournoi>
-    <nomTournoi nomTournoi="TTT"/>
+<tournois id="1">
+  <tournoi>
+    <nomTournoi nomTournoi="Tournoi 1"/>
     <dateDebut dateDebut="13/05/2018"/>
-    <dateFin dateFin="13/05/2018"/>
-    <nbRondes nbRondes="-1"/>
-    <lieu lieu=""/>
+    <dateFin dateFin="14/05/2018"/>
+    <nbRondes nbRondes="17"/>
+    <lieu lieu="Montpellier"/>
+    <joueurs/>
   </tournoi>
-<tournoi>
-    <nomTournoi nomTournoi="TTT"/>
-    <dateDebut dateDebut="12/04/2018"/>
-    <dateFin dateFin="12/02/2019"/>
-    <nbRondes nbRondes="1"/>
-    <lieu lieu=""/>
-  </tournoi>
-</tournoi>
+</tournois>
