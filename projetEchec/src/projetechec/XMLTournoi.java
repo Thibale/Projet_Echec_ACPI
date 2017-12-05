@@ -227,4 +227,62 @@ public class XMLTournoi {
             Logger.getLogger(XMLTournoi.class.getName()).log(Level.SEVERE, null, ex);
         }  
     }
+    
+    public ArrayList<Joueurs> getJoueursFromTournoi(int index){
+        ArrayList<Joueurs> jList = new ArrayList<>();
+        
+        this.InitXMLFile();
+        
+        Element tournoi = (Element) document.getElementsByTagName("tournoi").item(index - 1);
+        Element joueurs = (Element) tournoi.getElementsByTagName("joueurs").item(0);
+        NodeList list = joueurs.getElementsByTagName("joueurs");
+        for (int i = 0; i < list.getLength(); i++) {
+            Element joueur = (Element) joueurs.getElementsByTagName("joueur").item(i);
+                
+            Element idtmp = (Element) joueur.getElementsByTagName("idJoueur").item(0);
+            int idJ = Integer.valueOf(idtmp.getAttribute("idJ"));
+
+            Element numLicencetmp = (Element) joueur.getElementsByTagName("numLicence").item(0);
+            String numLicenceJ = numLicencetmp.getAttribute("numLicence");
+
+            Element nomJoueurtmp = (Element) joueur.getElementsByTagName("nomJoueur").item(0);
+            String nomJ = nomJoueurtmp.getAttribute("nomJoueur");
+
+            Element prenomJoueurtmp = (Element) joueur.getElementsByTagName("prenomJoueur").item(0);
+            String prenomJ = prenomJoueurtmp.getAttribute("prenomJoueur");
+
+            Element numEloNormaltmp = (Element) joueur.getElementsByTagName("numEloNormal").item(0);
+            String numEloNormalJ = numEloNormaltmp.getAttribute("numEloNormal");
+
+            Element numEloSemiRapidetmp = (Element) joueur.getElementsByTagName("numEloSemiRapide").item(0);
+            String numEloSemiRapideJ = numEloSemiRapidetmp.getAttribute("numEloSemiRapide");
+
+            Element numEloRapidetmp = (Element) joueur.getElementsByTagName("numEloRapide").item(0);
+            String numEloRapideJ = numEloRapidetmp.getAttribute("numEloRapide");
+
+            Element categorietmp = (Element) joueur.getElementsByTagName("categorie").item(0);
+            String categorieJ = categorietmp.getAttribute("categorie");
+
+            Element dateNaistmp = (Element) joueur.getElementsByTagName("dateNais").item(0);
+            String dateNaisJ = dateNaistmp.getAttribute("dateNais");
+
+            Element sexetmp = (Element) joueur.getElementsByTagName("sexe").item(0);
+            String sexeJ = sexetmp.getAttribute("sexe");
+
+            Element federationtmp = (Element) joueur.getElementsByTagName("federation").item(0);
+            String federationJ = federationtmp.getAttribute("federation");
+
+            Element liguetmp = (Element) joueur.getElementsByTagName("ligue").item(0);
+            String ligueJ = liguetmp.getAttribute("ligue");
+
+            Element clubtmp = (Element) joueur.getElementsByTagName("club").item(0);
+            String clubJ = clubtmp.getAttribute("club");
+
+            Joueurs jtmp= new Joueurs(idJ,numLicenceJ,nomJ,prenomJ,numEloNormalJ,numEloSemiRapideJ,numEloRapideJ,categorieJ,dateNaisJ,sexeJ,federationJ,ligueJ,clubJ);
+
+            jList.add(jtmp);
+        }
+        
+        return jList;
+    }
 }
