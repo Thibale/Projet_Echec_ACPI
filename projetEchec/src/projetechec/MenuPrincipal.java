@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import javax.swing.ListModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.xml.transform.TransformerException;
@@ -26,6 +27,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
     public static XMLTournoi xml2 = new XMLTournoi();
     
     public static int idTournoiCourant = -1;
+    public static int idJoueurDedans = -1;
+    public static int idJoueurDehors = -1;
+    public static ArrayList<Joueurs> joueursDedans;
+    public static ArrayList<Joueurs> joueursDehors;
     
     public MenuPrincipal() {
         initComponents();
@@ -131,12 +136,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
         ecranTournoiMenuPrincjButton = new javax.swing.JButton();
         ajoutJoueurTournoi = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        ajoutJoueurTounroiJoueurDehorsjList = new javax.swing.JList<>();
         jScrollPane7 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList<>();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        ajoutJoueurTounroiJoueurDedansjList = new javax.swing.JList<>();
+        ajoutJoueurTournoiAjouterjButton = new javax.swing.JButton();
+        AjouteJoueurTournoiRemovejButton = new javax.swing.JButton();
+        AjoutJoueurTournoiRetourjButton = new javax.swing.JButton();
+        ajoutJoueurTournoiConfirmerjButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(800, 800));
@@ -321,7 +327,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         creationJoueurLayout.setHorizontalGroup(
             creationJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(creationJoueurLayout.createSequentialGroup()
-                .addContainerGap(998, Short.MAX_VALUE)
+                .addContainerGap(1798, Short.MAX_VALUE)
                 .addGroup(creationJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, creationJoueurLayout.createSequentialGroup()
                         .addGroup(creationJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -491,7 +497,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     .addGroup(afficherJoueurLayout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 954, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1354, Short.MAX_VALUE))
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(afficherJoueurLayout.createSequentialGroup()
                         .addComponent(btnafficherJ, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -501,7 +507,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                         .addComponent(supprimerJoueurButton, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(retourMenuAff, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(435, Short.MAX_VALUE))
+                .addContainerGap(835, Short.MAX_VALUE))
         );
         afficherJoueurLayout.setVerticalGroup(
             afficherJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -773,33 +779,70 @@ public class MenuPrincipal extends javax.swing.JFrame {
         ajoutJoueurTournoi.setMaximumSize(new java.awt.Dimension(800, 800));
         ajoutJoueurTournoi.setMinimumSize(new java.awt.Dimension(800, 800));
 
-        jScrollPane6.setViewportView(jList1);
+        ajoutJoueurTounroiJoueurDehorsjList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                ajoutJoueurTounroiJoueurDehorsjListValueChanged(evt);
+            }
+        });
+        jScrollPane6.setViewportView(ajoutJoueurTounroiJoueurDehorsjList);
 
-        jScrollPane7.setViewportView(jList2);
+        ajoutJoueurTounroiJoueurDedansjList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                ajoutJoueurTounroiJoueurDedansjListValueChanged(evt);
+            }
+        });
+        jScrollPane7.setViewportView(ajoutJoueurTounroiJoueurDedansjList);
 
-        jButton2.setText("jButton2");
+        ajoutJoueurTournoiAjouterjButton.setText("Ajouter");
+        ajoutJoueurTournoiAjouterjButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ajoutJoueurTournoiAjouterjButtonActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("jButton3");
+        AjouteJoueurTournoiRemovejButton.setText("Enlever");
+        AjouteJoueurTournoiRemovejButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AjouteJoueurTournoiRemovejButtonActionPerformed(evt);
+            }
+        });
 
-        jButton4.setText("jButton4");
+        AjoutJoueurTournoiRetourjButton.setText("Retour");
+        AjoutJoueurTournoiRetourjButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AjoutJoueurTournoiRetourjButtonActionPerformed(evt);
+            }
+        });
+
+        ajoutJoueurTournoiConfirmerjButton.setText("Confirmer");
+        ajoutJoueurTournoiConfirmerjButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ajoutJoueurTournoiConfirmerjButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout ajoutJoueurTournoiLayout = new javax.swing.GroupLayout(ajoutJoueurTournoi);
         ajoutJoueurTournoi.setLayout(ajoutJoueurTournoiLayout);
         ajoutJoueurTournoiLayout.setHorizontalGroup(
             ajoutJoueurTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ajoutJoueurTournoiLayout.createSequentialGroup()
-                .addGap(110, 110, 110)
-                .addGroup(ajoutJoueurTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(ajoutJoueurTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(ajoutJoueurTournoiLayout.createSequentialGroup()
+                        .addGap(110, 110, 110)
                         .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(52, 52, 52)
                         .addGroup(ajoutJoueurTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2)
-                            .addComponent(jButton3))
-                        .addGap(42, 42, 42)
-                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(163, Short.MAX_VALUE))
+                            .addComponent(ajoutJoueurTournoiAjouterjButton)
+                            .addComponent(AjouteJoueurTournoiRemovejButton))
+                        .addGap(42, 42, 42))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ajoutJoueurTournoiLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(ajoutJoueurTournoiConfirmerjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)))
+                .addGroup(ajoutJoueurTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(AjoutJoueurTournoiRetourjButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(167, Short.MAX_VALUE))
         );
         ajoutJoueurTournoiLayout.setVerticalGroup(
             ajoutJoueurTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -812,11 +855,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
                             .addComponent(jScrollPane6)))
                     .addGroup(ajoutJoueurTournoiLayout.createSequentialGroup()
                         .addGap(166, 166, 166)
-                        .addComponent(jButton2)
+                        .addComponent(ajoutJoueurTournoiAjouterjButton)
                         .addGap(110, 110, 110)
-                        .addComponent(jButton3)))
+                        .addComponent(AjouteJoueurTournoiRemovejButton)))
                 .addGap(41, 41, 41)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(ajoutJoueurTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(AjoutJoueurTournoiRetourjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ajoutJoueurTournoiConfirmerjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(292, Short.MAX_VALUE))
         );
 
@@ -1418,8 +1463,144 @@ public class MenuPrincipal extends javax.swing.JFrame {
         remove(ecranTournoi);
         remove(menuPrinc);
         add(ajoutJoueurTournoi);
+        
+        ArrayList<Joueurs> listJ = xml2.getJoueursFromTournoi(MenuPrincipal.idTournoiCourant-1);
+        DefaultListModel listM = new DefaultListModel();
+        ajoutJoueurTounroiJoueurDedansjList.setModel(listM);
+        String tmp="";
+        String tmpList = "";
+        for (int i=0;i<listJ.size();i++){
+            //tmp=tmp+" Tournoi n°"+(i+1)+System.getProperty("line.separator");
+            tmpList =(i+1)+" "+listJ.get(i).getNumLicenceJ()+ " " +listJ.get(i).getNomJ()+ " " +listJ.get(i).getPrenomJ();
+            listM.addElement(tmpList);
+        }
+        
+        ArrayList<Joueurs> listJ2 = xml1.ReadXML();
+        for (Joueurs listJ1 : listJ) {
+            for (Joueurs listJ21 : listJ2){
+                if(!"".equals(listJ1.getNumLicenceJ())){
+                    if(listJ1.getNumLicenceJ().equals(listJ21.getNumLicenceJ())){
+                        listJ2.remove(listJ21);
+                    }
+                }else{
+                    if(listJ1.getNomJ().equals(listJ21.getNomJ()) && listJ1.getPrenomJ().equals(listJ21.getPrenomJ()) && listJ1.getDateNaisJ().equals(listJ21.getDateNaisJ())){
+                        listJ2.remove(listJ21);
+                    }
+                }
+            }
+        }
+        DefaultListModel listM2 = new DefaultListModel();
+        ajoutJoueurTounroiJoueurDehorsjList.setModel(listM2);
+        String tmpList2 = "";
+        for (int i=0;i<listJ2.size();i++){
+            //tmp=tmp+" Tournoi n°"+(i+1)+System.getProperty("line.separator");
+            tmpList2 =(i+1)+" "+listJ2.get(i).getNumLicenceJ()+ " " +listJ2.get(i).getNomJ()+ " " +listJ2.get(i).getPrenomJ();
+            listM2.addElement(tmpList2);
+        }
+        MenuPrincipal.joueursDedans = listJ;
+        MenuPrincipal.joueursDehors = listJ2;
+        
+        
+        
         ajoutJoueurTournoi.setVisible(true);
     }//GEN-LAST:event_ajouterJoueurjButtonActionPerformed
+
+    private void AjoutJoueurTournoiRetourjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AjoutJoueurTournoiRetourjButtonActionPerformed
+        selectionTournoi.setVisible(false);
+        creationJoueur.setVisible(false);
+        afficherJoueur.setVisible(false);
+        creationTournoi.setVisible(false);
+        menuPrinc.setVisible(false);
+        ajoutJoueurTournoi.setVisible(false);     
+        remove(selectionTournoi);
+        remove(creationJoueur);
+        remove(afficherJoueur);
+        remove(creationTournoi);
+        remove(menuPrinc);
+        remove(ajoutJoueurTournoi);
+        add(ecranTournoi);
+        ecranTournoi.setVisible(true);
+    }//GEN-LAST:event_AjoutJoueurTournoiRetourjButtonActionPerformed
+
+    private void ajoutJoueurTounroiJoueurDehorsjListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_ajoutJoueurTounroiJoueurDehorsjListValueChanged
+        ArrayList<Joueurs> listJ = MenuPrincipal.joueursDehors;
+        String afftmp;
+        String s = (String) ajoutJoueurTounroiJoueurDehorsjList.getSelectedValue();
+        if(s != null && !s.isEmpty()){
+            String tmp = ""+s.charAt(0);
+            MenuPrincipal.idJoueurDehors = Integer.valueOf(tmp);
+        }
+    }//GEN-LAST:event_ajoutJoueurTounroiJoueurDehorsjListValueChanged
+
+    private void ajoutJoueurTournoiAjouterjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajoutJoueurTournoiAjouterjButtonActionPerformed
+        if(MenuPrincipal.idJoueurDehors != -1){
+            MenuPrincipal.joueursDedans.add(MenuPrincipal.joueursDehors.get(MenuPrincipal.idJoueurDehors-1));
+            MenuPrincipal.joueursDehors.remove(MenuPrincipal.idJoueurDehors-1);
+            
+            DefaultListModel listM = new DefaultListModel();
+            ajoutJoueurTounroiJoueurDedansjList.setModel(listM);
+            String tmp="";
+            String tmpList = "";
+            for (int i=0;i<MenuPrincipal.joueursDedans.size();i++){
+                //tmp=tmp+" Tournoi n°"+(i+1)+System.getProperty("line.separator");
+                tmpList =(i+1)+" "+MenuPrincipal.joueursDedans.get(i).getNumLicenceJ()+ " " +MenuPrincipal.joueursDedans.get(i).getNomJ()+ " " +MenuPrincipal.joueursDedans.get(i).getPrenomJ();
+                listM.addElement(tmpList);
+            }
+            
+            DefaultListModel listM2 = new DefaultListModel();
+            ajoutJoueurTounroiJoueurDehorsjList.setModel(listM2);
+            String tmpList2 = "";
+            for (int i=0;i<MenuPrincipal.joueursDehors.size();i++){
+                //tmp=tmp+" Tournoi n°"+(i+1)+System.getProperty("line.separator");
+                tmpList2 =(i+1)+" "+MenuPrincipal.joueursDehors.get(i).getNumLicenceJ()+ " " +MenuPrincipal.joueursDehors.get(i).getNomJ()+ " " +MenuPrincipal.joueursDehors.get(i).getPrenomJ();
+                listM2.addElement(tmpList2);
+            }
+            
+            MenuPrincipal.idJoueurDehors = -1;
+        }
+    }//GEN-LAST:event_ajoutJoueurTournoiAjouterjButtonActionPerformed
+
+    private void ajoutJoueurTounroiJoueurDedansjListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_ajoutJoueurTounroiJoueurDedansjListValueChanged
+        ArrayList<Joueurs> listJ = MenuPrincipal.joueursDedans;
+        String afftmp;
+        String s = (String) ajoutJoueurTounroiJoueurDedansjList.getSelectedValue();
+        if(s != null && !s.isEmpty()){
+            String tmp = ""+s.charAt(0);
+            MenuPrincipal.idJoueurDedans = Integer.valueOf(tmp);
+        }
+    }//GEN-LAST:event_ajoutJoueurTounroiJoueurDedansjListValueChanged
+
+    private void AjouteJoueurTournoiRemovejButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AjouteJoueurTournoiRemovejButtonActionPerformed
+        if(MenuPrincipal.idJoueurDedans != -1){
+            MenuPrincipal.joueursDehors.add(MenuPrincipal.joueursDedans.get(MenuPrincipal.idJoueurDedans-1));
+            MenuPrincipal.joueursDedans.remove(MenuPrincipal.idJoueurDedans-1);
+            
+            DefaultListModel listM = new DefaultListModel();
+            ajoutJoueurTounroiJoueurDehorsjList.setModel(listM);
+            String tmp="";
+            String tmpList = "";
+            for (int i=0;i<MenuPrincipal.joueursDehors.size();i++){
+                //tmp=tmp+" Tournoi n°"+(i+1)+System.getProperty("line.separator");
+                tmpList =(i+1)+" "+MenuPrincipal.joueursDehors.get(i).getNumLicenceJ()+ " " +MenuPrincipal.joueursDehors.get(i).getNomJ()+ " " +MenuPrincipal.joueursDehors.get(i).getPrenomJ();
+                listM.addElement(tmpList);
+            }
+            
+            DefaultListModel listM2 = new DefaultListModel();
+            ajoutJoueurTounroiJoueurDedansjList.setModel(listM2);
+            String tmpList2 = "";
+            for (int i=0;i<MenuPrincipal.joueursDedans.size();i++){
+                //tmp=tmp+" Tournoi n°"+(i+1)+System.getProperty("line.separator");
+                tmpList2 =(i+1)+" "+MenuPrincipal.joueursDedans.get(i).getNumLicenceJ()+ " " +MenuPrincipal.joueursDedans.get(i).getNomJ()+ " " +MenuPrincipal.joueursDedans.get(i).getPrenomJ();
+                listM2.addElement(tmpList2);
+            }
+            
+            MenuPrincipal.idJoueurDedans = -1;
+        }
+    }//GEN-LAST:event_AjouteJoueurTournoiRemovejButtonActionPerformed
+
+    private void ajoutJoueurTournoiConfirmerjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajoutJoueurTournoiConfirmerjButtonActionPerformed
+        xml2.ecrireJoueurDansTournoi(joueursDedans, idTournoiCourant-1);
+    }//GEN-LAST:event_ajoutJoueurTournoiConfirmerjButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1459,11 +1640,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea AffJTextArea1;
+    private javax.swing.JButton AjoutJoueurTournoiRetourjButton;
+    private javax.swing.JButton AjouteJoueurTournoiRemovejButton;
     private javax.swing.JButton SelectionTournoi;
     private javax.swing.JButton SelectionTournoiMenuPrincjButton;
     private javax.swing.JList<String> affichageJoueurList;
     private javax.swing.JPanel afficherJoueur;
+    private javax.swing.JList<String> ajoutJoueurTounroiJoueurDedansjList;
+    private javax.swing.JList<String> ajoutJoueurTounroiJoueurDehorsjList;
     private javax.swing.JPanel ajoutJoueurTournoi;
+    private javax.swing.JButton ajoutJoueurTournoiAjouterjButton;
+    private javax.swing.JButton ajoutJoueurTournoiConfirmerjButton;
     private javax.swing.JButton ajouterJoueurjButton;
     private javax.swing.JButton btnafficherJ;
     private javax.swing.JButton cleanT;
@@ -1495,16 +1682,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel federationLabel;
     private javax.swing.JTextField federationTextField;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JList<String> jList2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;

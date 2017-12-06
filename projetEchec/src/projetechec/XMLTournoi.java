@@ -160,7 +160,7 @@ public class XMLTournoi {
         try {
             this.InitXMLFile();
             
-            Element tournoi = (Element) document.getElementsByTagName("tournoi").item(index - 1);
+            Element tournoi = (Element) document.getElementsByTagName("tournoi").item(index);
             Element joueursOld = (Element) tournoi.getElementsByTagName("joueurs").item(0);
             tournoi.removeChild(joueursOld);
             Element joueurs = document.createElement("joueurs");
@@ -207,6 +207,20 @@ public class XMLTournoi {
                 
                 Element clubJoueur = document.createElement("club");
                 clubJoueur.setAttribute("club", joueurNouveau.getClubJ());
+                
+                joueur.appendChild(idJoueur);
+                joueur.appendChild(numLic);
+                joueur.appendChild(nomJoueur);
+                joueur.appendChild(prenomJoueur);
+                joueur.appendChild(numEloNorm);
+                joueur.appendChild(numEloSemiRap);
+                joueur.appendChild(numEloRap);
+                joueur.appendChild(catJ);
+                joueur.appendChild(dateNaissance);
+                joueur.appendChild(sex);
+                joueur.appendChild(fede);
+                joueur.appendChild(ligueJoueur);
+                joueur.appendChild(clubJoueur);
             }
             
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
@@ -233,7 +247,7 @@ public class XMLTournoi {
         
         this.InitXMLFile();
         
-        Element tournoi = (Element) document.getElementsByTagName("tournoi").item(index - 1);
+        Element tournoi = (Element) document.getElementsByTagName("tournoi").item(index);
         Element joueurs = (Element) tournoi.getElementsByTagName("joueurs").item(0);
         NodeList list = joueurs.getElementsByTagName("joueurs");
         for (int i = 0; i < list.getLength(); i++) {

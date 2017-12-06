@@ -6,7 +6,7 @@
     <dateFin dateFin="14/05/2018"/>
     <nbRondes nbRondes="17"/>
     <lieu lieu="Montpellier"/>
-    <joueurs/>
+    <joueurs/>     
   </tournoi>
 <tournoi>
     <nomTournoi nomTournoi="T2"/>
