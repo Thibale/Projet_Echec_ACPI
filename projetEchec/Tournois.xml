@@ -7,6 +7,7 @@
     <nbRondes nbRondes="17"/>
     <lieu lieu="Montpellier"/>
          
+  
   <joueurs>
       <joueur>
         <idJoueur idJ="2"/>
@@ -40,18 +41,18 @@
       </joueur>
       <joueur>
         <idJoueur idJ="2"/>
-        <numLicence numLicence="1485TE"/>
-        <nomJoueur nomJoueur="Durant"/>
-        <prenomJoueur prenomJoueur="Nina"/>
-        <numEloNormal numEloNormal="1587"/>
-        <numEloSemiRapide numEloSemiRapide="2596"/>
-        <numEloRapide numEloRapide="7895"/>
-        <categorie categorie="BenF"/>
-        <dateNais dateNais="2003-11-25"/>
+        <numLicence numLicence=""/>
+        <nomJoueur nomJoueur="Cousin"/>
+        <prenomJoueur prenomJoueur="Charlotte"/>
+        <numEloNormal numEloNormal="NC"/>
+        <numEloSemiRapide numEloSemiRapide="NC"/>
+        <numEloRapide numEloRapide="NC"/>
+        <categorie categorie="SenF"/>
+        <dateNais dateNais="16/11/1990"/>
         <sexe sexe="F"/>
-        <federation federation="ITA"/>
-        <ligue ligue="LAN"/>
-        <club club="Lattes-Echecs"/>
+        <federation federation=""/>
+        <ligue ligue=""/>
+        <club club=""/>
       </joueur>
     </joueurs>
   </tournoi>
