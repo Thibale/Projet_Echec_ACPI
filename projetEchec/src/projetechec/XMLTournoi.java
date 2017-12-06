@@ -164,6 +164,7 @@ public class XMLTournoi {
             Element joueursOld = (Element) tournoi.getElementsByTagName("joueurs").item(0);
             tournoi.removeChild(joueursOld);
             Element joueurs = document.createElement("joueurs");
+            tournoi.appendChild(joueurs);
             
             for (Joueurs joueurNouveau : jList) {
                 Element joueur = document.createElement("joueur");
@@ -249,7 +250,7 @@ public class XMLTournoi {
         
         Element tournoi = (Element) document.getElementsByTagName("tournoi").item(index);
         Element joueurs = (Element) tournoi.getElementsByTagName("joueurs").item(0);
-        NodeList list = joueurs.getElementsByTagName("joueurs");
+        NodeList list = joueurs.getElementsByTagName("joueur");
         for (int i = 0; i < list.getLength(); i++) {
             Element joueur = (Element) joueurs.getElementsByTagName("joueur").item(i);
                 

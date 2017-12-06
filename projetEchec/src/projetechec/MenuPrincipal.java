@@ -1476,19 +1476,25 @@ public class MenuPrincipal extends javax.swing.JFrame {
         }
         
         ArrayList<Joueurs> listJ2 = xml1.ReadXML();
+        ArrayList<Integer> toRemove = new ArrayList<>();
         for (Joueurs listJ1 : listJ) {
-            for (Joueurs listJ21 : listJ2){
+            for (int i = 0; i<listJ2.size(); i++){
                 if(!"".equals(listJ1.getNumLicenceJ())){
-                    if(listJ1.getNumLicenceJ().equals(listJ21.getNumLicenceJ())){
-                        listJ2.remove(listJ21);
+                    if(listJ1.getNumLicenceJ().equals(listJ2.get(i).getNumLicenceJ())){
+                        toRemove.add(i);
                     }
                 }else{
-                    if(listJ1.getNomJ().equals(listJ21.getNomJ()) && listJ1.getPrenomJ().equals(listJ21.getPrenomJ()) && listJ1.getDateNaisJ().equals(listJ21.getDateNaisJ())){
-                        listJ2.remove(listJ21);
+                    if(listJ1.getNomJ().equals(listJ2.get(i).getNomJ()) && listJ1.getPrenomJ().equals(listJ2.get(i).getPrenomJ()) && listJ1.getDateNaisJ().equals(listJ2.get(i).getDateNaisJ())){
+                        toRemove.add(i);
                     }
                 }
             }
         }
+        for (int i = toRemove.size()-1; i >= 0; i--){
+            listJ2.remove(i);
+        }
+        
+        
         DefaultListModel listM2 = new DefaultListModel();
         ajoutJoueurTounroiJoueurDehorsjList.setModel(listM2);
         String tmpList2 = "";
