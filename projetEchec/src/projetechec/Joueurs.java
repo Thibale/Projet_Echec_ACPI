@@ -317,8 +317,12 @@ public class Joueurs {
     
     public boolean verifFormatEloValide(String elo){
         boolean res = true;
+        if("NC".equals(elo)){
+            elo = "";
+        }
         if(!"".equals(elo)){
-            if(!elo.matches("[0-9]{4}") && !elo.matches("[0-9]{3}")){
+
+            if((!elo.matches("[0-9]{4}") && !elo.matches("[0-9]{3}"))){
                 res = false;
                 //RetourCreation.setText("Erreur, elo invalide");
             }
@@ -328,6 +332,9 @@ public class Joueurs {
     
     public boolean verifFormatEloPositif(String elo){
         boolean res = true;
+        if("NC".equals(elo)){
+            elo = "";
+        }
         if(!"".equals(elo)){
             if(!elo.matches("[^-]*")){
                 res = false;
@@ -339,6 +346,9 @@ public class Joueurs {
     
     public boolean verifFormatElo900To3000(String elo){
         boolean res = true;
+        if("NC".equals(elo)){
+            elo = "";
+        }
         if((!"".equals(elo)) && verifFormatEloValide(elo)){
             if(Integer.valueOf(elo) < 900 || Integer.valueOf(elo) > 3000){
                 res = false;
