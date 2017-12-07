@@ -227,43 +227,73 @@ public class XML {
         
         try {
             Element joueur = (Element) document.getElementsByTagName("joueur").item(idJoueur - 1);
-            racine.removeChild(joueur);
+            //racine.removeChild(joueur);
+            
             
             final Element numLic = (Element) joueur.getElementsByTagName("numLicence").item(0);
             numLic.setAttribute("numLicence", j.getNumLicenceJ());
+            //joueur.removeChild(joueur.getElementsByTagName("numLicence").item(0));
+            
             
             final Element nomJoueur = (Element) joueur.getElementsByTagName("nomJoueur").item(0);
             nomJoueur.setAttribute("nomJoueur", j.getNomJ());
+            //joueur.removeChild(joueur.getElementsByTagName("nomJoueur").item(0));
+            
             
             final Element prenomJoueur = (Element) joueur.getElementsByTagName("prenomJoueur").item(0);
             prenomJoueur.setAttribute("prenomJoueur", j.getPrenomJ());
+            //joueur.removeChild(joueur.getElementsByTagName("prenomJoueur").item(0));
             
             final Element numEloNorm = (Element) joueur.getElementsByTagName("numEloNormal").item(0);
             numEloNorm.setAttribute("numEloNormal", String.valueOf(j.getNumEloNormalJ()));
+            //joueur.removeChild(joueur.getElementsByTagName("numEloNormal").item(0));  
             
             final Element numEloSemiRap = (Element) joueur.getElementsByTagName("numEloSemiRapide").item(0);
             numEloSemiRap.setAttribute("numEloSemiRapide", String.valueOf(j.getNumEloSemiRapideJ()));
+            //joueur.removeChild(joueur.getElementsByTagName("numEloSemiRapide").item(0));
             
             final Element numEloRap = (Element) joueur.getElementsByTagName("numEloRapide").item(0);
             numEloRap.setAttribute("numEloRapide", String.valueOf(j.getNumEloRapideJ()));
+            //joueur.removeChild(joueur.getElementsByTagName("numEloRapide").item(0));
             
             final Element catJ = (Element) joueur.getElementsByTagName("categorie").item(0);
             catJ.setAttribute("categorie", j.getCategorieJ());
+            //joueur.removeChild(joueur.getElementsByTagName("categorie").item(0));
             
             final Element dateNaissance = (Element) joueur.getElementsByTagName("dateNais").item(0);
             dateNaissance.setAttribute("dateNais", String.valueOf(j.getDateNaisJ()));
+            //joueur.removeChild(joueur.getElementsByTagName("dateNais").item(0));   
+            
             
             final Element sex = (Element) joueur.getElementsByTagName("sexe").item(0);
             sex.setAttribute("sexe", j.getSexeJ());
+            //joueur.removeChild(joueur.getElementsByTagName("sexe").item(0));
             
             final Element fede = (Element) joueur.getElementsByTagName("federation").item(0);
             fede.setAttribute("federation",j.getFederationJ());
+            //joueur.removeChild(joueur.getElementsByTagName("federation").item(0));
             
             final Element ligueJoueur = (Element) joueur.getElementsByTagName("ligue").item(0);
             ligueJoueur.setAttribute("ligue", j.getLigueJ());
+            //joueur.removeChild(joueur.getElementsByTagName("ligue").item(0));
             
             final Element clubJoueur = (Element) joueur.getElementsByTagName("club").item(0);
             clubJoueur.setAttribute("club", j.getClubJ());
+            //joueur.removeChild(joueur.getElementsByTagName("dateNais").item(0));
+            
+            
+            /*joueur.appendChild(numLic);
+            joueur.appendChild(nomJoueur);
+	    joueur.appendChild(prenomJoueur);
+            joueur.appendChild(numEloNorm);
+	    joueur.appendChild(numEloSemiRap);
+            joueur.appendChild(numEloRap);
+	    joueur.appendChild(catJ);
+            joueur.appendChild(dateNaissance);
+	    joueur.appendChild(sex);
+            joueur.appendChild(fede);
+	    joueur.appendChild(ligueJoueur);
+            joueur.appendChild(clubJoueur);*/
             
             
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
@@ -288,7 +318,7 @@ public class XML {
     
     public void supprimerJoueur(int idJoueur) throws TransformerConfigurationException, TransformerException{
         this.InitXMLFile();
-
+        System.out.println(idJoueur);
         Node joueur = document.getElementsByTagName("joueur").item(idJoueur - 1);
         racine.removeChild(joueur);
 
