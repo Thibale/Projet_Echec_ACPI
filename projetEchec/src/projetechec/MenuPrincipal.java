@@ -206,7 +206,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         dateFormatLabel5 = new javax.swing.JLabel();
         SauvModif = new javax.swing.JButton();
         menuprincT1 = new javax.swing.JButton();
-        cleanT1 = new javax.swing.JButton();
         jScrollPane10 = new javax.swing.JScrollPane();
         msgErreurT1 = new javax.swing.JTextArea();
 
@@ -1181,7 +1180,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         modifierTournoiJPanel.setMinimumSize(new java.awt.Dimension(800, 800));
 
         jLabel5.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
-        jLabel5.setText("Création d'un tournoi");
+        jLabel5.setText("Modification d'un tournoi");
 
         nom1.setText("Nom : *");
 
@@ -1231,13 +1230,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
-        cleanT1.setText("Réinitialiser");
-        cleanT1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cleanT1ActionPerformed(evt);
-            }
-        });
-
         msgErreurT1.setColumns(20);
         msgErreurT1.setRows(5);
         jScrollPane10.setViewportView(msgErreurT1);
@@ -1253,13 +1245,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
                         .addComponent(jLabel5))
                     .addGroup(modifierTournoiJPanelLayout.createSequentialGroup()
                         .addGap(221, 221, 221)
-                        .addGroup(modifierTournoiJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(modifierTournoiJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(modifierTournoiJPanelLayout.createSequentialGroup()
-                                .addComponent(cleanT1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(33, 33, 33)
                                 .addComponent(SauvModif, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(menuprincT1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(60, 60, 60)
+                                .addComponent(menuprincT1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(modifierTournoiJPanelLayout.createSequentialGroup()
                                 .addGroup(modifierTournoiJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1313,9 +1304,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(modifierTournoiJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(modifierTournoiJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(SauvModif, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cleanT1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(menuprincT1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(389, 389, 389))
         );
@@ -2397,11 +2387,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_lieuTextField6ActionPerformed
 
     private void SauvModifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SauvModifActionPerformed
-        String nomTournoi=nomTextField1.getText();
-        String dateDebut= datedTextField2.getText();
-        String dateFin=dateFTextField3.getText();
-        String nbRondes=nbRTextField4.getText();
-        String lieu=lieuTextField5.getText();
+        String nomTournoi=nomTextField3.getText();
+        String dateDebut= datedTextField3.getText();
+        String dateFin=dateFTextField4.getText();
+        String nbRondes=nbRTextField5.getText();
+        String lieu=lieuTextField6.getText();
         nom.setForeground(Color.black);
         dated.setForeground(Color.black);
         datef.setForeground(Color.black);
@@ -2473,20 +2463,41 @@ public class MenuPrincipal extends javax.swing.JFrame {
             test = false;
             stmp += System.getProperty("line.separator")+"Erreur, le nombre de rondes doit Ãªtre positif.";
         }
-        msgErreurT.setText(stmp);
+        msgErreurT1.setText(stmp);
         if(test){
-            msgErreurT.setText("Tournoi modifié!");
+            msgErreurT1.setText("Tournoi modifié!");
             xml2.modifierTournoi(IDT,t);
         }
     }//GEN-LAST:event_SauvModifActionPerformed
 
     private void menuprincT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuprincT1ActionPerformed
-        // TODO add your handling code here:
+         nomTextField1.setText("");
+        datedTextField2.setText("");
+        dateFTextField3.setText("");
+        nbRTextField4.setText("");
+        lieuTextField5.setText("");
+        msgErreurT.setText("");
+        nom.setForeground(Color.black);
+        dated.setForeground(Color.black);
+        datef.setForeground(Color.black);
+        nbr.setForeground(Color.black);
+        selectionTournoi.setVisible(false);
+        creationJoueur.setVisible(false);
+        afficherJoueur.setVisible(false);
+        creationTournoi.setVisible(false);
+        ecranTournoi.setVisible(false);
+        ajoutJoueurTournoi.setVisible(false);
+        modifierTournoiJPanel.setVisible(false);
+        remove(selectionTournoi);
+        remove(creationJoueur);
+        remove(afficherJoueur);
+        remove(creationTournoi);
+        remove(ecranTournoi);
+        remove(ajoutJoueurTournoi);
+        remove(modifierTournoiJPanel);
+        add(menuPrinc);
+        menuPrinc.setVisible(true);
     }//GEN-LAST:event_menuprincT1ActionPerformed
-
-    private void cleanT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cleanT1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cleanT1ActionPerformed
     private void accesModifTournoi(int idT, Tournoi T){
         
         selectionTournoi.setVisible(false);
@@ -2569,7 +2580,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel ajoutJoueurTournoiMessagejLabel;
     private javax.swing.JButton ajouterJoueurjButton;
     private javax.swing.JButton cleanT;
-    private javax.swing.JButton cleanT1;
     private javax.swing.JToggleButton clearButton;
     private javax.swing.JToggleButton clearButton1;
     private javax.swing.JLabel clubLabel;

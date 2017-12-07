@@ -48,8 +48,8 @@
     <nomTournoi nomTournoi="T2"/>
     <dateDebut dateDebut="12/12/2018"/>
     <dateFin dateFin="12/12/2019"/>
-    <nbRondes nbRondes="3"/>
-    <lieu lieu=""/>
+    <nbRondes nbRondes="5"/>
+    <lieu lieu="bla"/>
     
   <joueurs>
       <joueur>
