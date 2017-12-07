@@ -130,7 +130,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Afficher les joueurs"/>
+            <Property name="text" type="java.lang.String" value="Gestion des joueurs"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
@@ -138,7 +138,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="SelectionTournoi">
           <Properties>
-            <Property name="text" type="java.lang.String" value="S&#xe9;lectionner un tournoi"/>
+            <Property name="text" type="java.lang.String" value="Gestion des tournois"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SelectionTournoiActionPerformed"/>

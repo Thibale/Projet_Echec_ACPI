@@ -241,14 +241,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Afficher les joueurs");
+        jButton1.setText("Gestion des joueurs");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        SelectionTournoi.setText("S�lectionner un tournoi");
+        SelectionTournoi.setText("Gestion des tournois");
         SelectionTournoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SelectionTournoiActionPerformed(evt);
@@ -2406,6 +2406,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         dated.setForeground(Color.black);
         datef.setForeground(Color.black);
         nbr.setForeground(Color.black);
+        
         Tournoi t = new Tournoi(nomTournoi,dateDebut,dateFin,nbRondes,lieu);
         String stmp="Données incorrectes: ";
         boolean test = true;
@@ -2474,7 +2475,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         }
         msgErreurT.setText(stmp);
         if(test){
-            msgErreurT.setText("Tournoi créé avec succès !");
+            msgErreurT.setText("Tournoi modifi�!");
             xml2.modifierTournoi(IDT,t);
         }
     }//GEN-LAST:event_SauvModifActionPerformed

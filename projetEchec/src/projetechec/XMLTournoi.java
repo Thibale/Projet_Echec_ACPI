@@ -330,20 +330,20 @@ public class XMLTournoi {
         try {
             Element tournoi = (Element) document.getElementsByTagName("tournoi").item(idTournoi - 1);
             
-            Element nomTournoi = (Element) tournoi.getElementsByTagName("nomTournoi").item(0);
+            final Element nomTournoi = (Element) tournoi.getElementsByTagName("nomTournoi").item(0);
             nomTournoi.setAttribute("nomTournoi", t.getNomTournoi());
            
-            Element dateDebut = (Element) tournoi.getElementsByTagName("dateDebut").item(0);
+            final Element dateDebut = (Element) tournoi.getElementsByTagName("dateDebut").item(0);
             dateDebut.setAttribute("dateDebut", t.getDateDebut());
             
-            Element dateFin = (Element) tournoi.getElementsByTagName("dateFin").item(0);
-            dateFin.setAttribute("dateFin", t.getDateFin());
+            final Element dateFin = (Element) tournoi.getElementsByTagName("dateFin").item(0);
+            dateFin.setAttribute("dateFin",t.getDateFin());
             
-            Element nbRondes = (Element) tournoi.getElementsByTagName("nbRondes").item(0);
+            final Element nbRondes = (Element) tournoi.getElementsByTagName("nbRondes").item(0);
             nbRondes.setAttribute("nbRondes", String.valueOf(t.getNbRondes()));
             
-            Element lieu = (Element) tournoi.getElementsByTagName("lieu").item(0);
-            lieu.setAttribute("lieu", String.valueOf(t.getLieu()));
+            final Element lieu = (Element) tournoi.getElementsByTagName("lieu").item(0);
+            lieu.setAttribute("lieu", t.getLieu());
             
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
 	    Transformer transformer = transformerFactory.newTransformer();
