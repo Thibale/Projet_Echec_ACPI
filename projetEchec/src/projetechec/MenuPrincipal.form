@@ -165,7 +165,7 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace pref="1798" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -526,15 +526,18 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jScrollPane1" pref="1354" max="32767" attributes="0"/>
                       </Group>
-                      <Component id="jLabel3" alignment="2" min="-2" pref="207" max="-2" attributes="0"/>
-                      <Group type="102" alignment="2" attributes="0">
-                          <Component id="btnafficherJ" min="-2" pref="151" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                          <Component id="modifierJoueurButton" min="-2" pref="136" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                          <Component id="supprimerJoueurButton" min="-2" pref="151" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="retourMenuAff" min="-2" pref="211" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="2" attributes="0">
+                              <Component id="jLabel3" alignment="2" min="-2" pref="207" max="-2" attributes="0"/>
+                              <Group type="102" alignment="2" attributes="0">
+                                  <Component id="modifierJoueurButton" min="-2" pref="136" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                                  <Component id="supprimerJoueurButton" min="-2" pref="151" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="retourMenuAff" min="-2" pref="211" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
                   </Group>
                   <EmptySpace pref="835" max="32767" attributes="0"/>
@@ -553,7 +556,6 @@
                   </Group>
                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btnafficherJ" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                       <Component id="modifierJoueurButton" alignment="3" min="-2" pref="51" max="-2" attributes="0"/>
                       <Component id="retourMenuAff" alignment="3" min="-2" pref="51" max="-2" attributes="0"/>
                       <Component id="supprimerJoueurButton" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
@@ -587,14 +589,6 @@
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="Affichage des joueurs"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnafficherJ">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Afficher"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnafficherJActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="retourMenuAff">
           <Properties>
@@ -905,25 +899,34 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="209" max="32767" attributes="0"/>
-                  <Component id="selectionTournoiSelectionnerjButton" min="-2" pref="110" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="177" max="-2" attributes="0"/>
-                  <Component id="SelectionTournoiMenuPrincjButton" min="-2" pref="115" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="189" max="-2" attributes="0"/>
-              </Group>
-              <Group type="102" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
                           <Component id="jScrollPane5" min="-2" pref="281" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
+                          <Component id="jScrollPane9" min="-2" pref="284" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="183" max="-2" attributes="0"/>
-                          <Component id="selectionTournoiMessagejLabel" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="183" max="-2" attributes="0"/>
+                                  <Component id="selectionTournoiMessagejLabel" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
+                                  <Component id="selectionTournoiSelectionnerjButton" min="-2" pref="110" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                                  <Component id="modifierTournoi" min="-2" pref="114" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="supprimerTournoi" min="-2" pref="104" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="SelectionTournoiMenuPrincjButton" min="-2" pref="146" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="103" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -931,15 +934,20 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
-                  <Component id="jScrollPane5" pref="329" max="32767" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="selectionTournoiMessagejLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="selectionTournoiSelectionnerjButton" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
-                      <Component id="SelectionTournoiMenuPrincjButton" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jScrollPane9" max="32767" attributes="0"/>
+                      <Component id="jScrollPane5" pref="394" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="298" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="selectionTournoiMessagejLabel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="SelectionTournoiMenuPrincjButton" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
+                      <Component id="supprimerTournoi" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
+                      <Component id="selectionTournoiSelectionnerjButton" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
+                      <Component id="modifierTournoi" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="265" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -984,6 +992,37 @@
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="selectionTournoiMessagejLabel">
+        </Component>
+        <Component class="javax.swing.JButton" name="supprimerTournoi">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Supprimer"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="supprimerTournoiActionPerformed"/>
+          </Events>
+        </Component>
+        <Container class="javax.swing.JScrollPane" name="jScrollPane9">
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JTextArea" name="affichageTournois">
+              <Properties>
+                <Property name="columns" type="int" value="20"/>
+                <Property name="rows" type="int" value="5"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Component class="javax.swing.JButton" name="modifierTournoi">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Modifier"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="modifierTournoiActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -1558,6 +1597,228 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mainMenuButton1ActionPerformed"/>
           </Events>
         </Component>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JPanel" name="modifierTournoiJPanel">
+      <Properties>
+        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[800, 800]"/>
+        </Property>
+        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[800, 800]"/>
+        </Property>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
+          <BorderConstraints direction="After"/>
+        </Constraint>
+      </Constraints>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="319" max="-2" attributes="0"/>
+                          <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="221" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="cleanT1" min="-2" pref="116" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="SauvModif" min="-2" pref="114" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="menuprincT1" max="32767" attributes="0"/>
+                              </Group>
+                              <Component id="jScrollPane10" alignment="0" min="-2" pref="369" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="nom1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="dated1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="datef1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="nbr1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lieu1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="lieuTextField6" alignment="0" min="-2" pref="158" max="-2" attributes="0"/>
+                                      <Component id="nbRTextField5" alignment="0" min="-2" pref="158" max="-2" attributes="0"/>
+                                      <Component id="nomTextField3" alignment="0" min="-2" pref="158" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="datedTextField3" min="-2" pref="158" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="dateFormatLabel4" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="dateFTextField4" min="-2" pref="158" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="dateFormatLabel5" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <EmptySpace pref="210" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                  <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="nom1" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="nomTextField3" alignment="1" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="dated1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="datedTextField3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="dateFormatLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="datef1" alignment="3" max="32767" attributes="0"/>
+                      <Component id="dateFTextField4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="dateFormatLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="nbRTextField5" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="nbr1" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lieu1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lieuTextField6" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="jScrollPane10" min="-2" pref="79" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="SauvModif" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
+                      <Component id="cleanT1" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
+                      <Component id="menuprincT1" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="389" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="jLabel5">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="15" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Cr&#xe9;ation d&apos;un tournoi"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="nom1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Nom : *"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="dated1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Date debut : *"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="datef1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Date fin : *"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="nbr1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Nombre de rondes : *"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lieu1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Lieu :"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="nomTextField3">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nomTextField3ActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="datedTextField3">
+        </Component>
+        <Component class="javax.swing.JTextField" name="dateFTextField4">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dateFTextField4ActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="nbRTextField5">
+        </Component>
+        <Component class="javax.swing.JTextField" name="lieuTextField6">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="lieuTextField6ActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="dateFormatLabel4">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Ubuntu" size="12" style="2"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="JJ/MM/AAAA"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="dateFormatLabel5">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Ubuntu" size="12" style="2"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="JJ/MM/AAAA"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="SauvModif">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Sauvegarder"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SauvModifActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="menuprincT1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Menu principal"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuprincT1ActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="cleanT1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="R&#xe9;initialiser"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cleanT1ActionPerformed"/>
+          </Events>
+        </Component>
+        <Container class="javax.swing.JScrollPane" name="jScrollPane10">
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JTextArea" name="msgErreurT1">
+              <Properties>
+                <Property name="columns" type="int" value="20"/>
+                <Property name="rows" type="int" value="5"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
       </SubComponents>
     </Container>
   </SubComponents>

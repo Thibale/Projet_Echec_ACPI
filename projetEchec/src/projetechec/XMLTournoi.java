@@ -10,6 +10,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
@@ -299,5 +300,68 @@ public class XMLTournoi {
         }
         
         return jList;
+    }
+    public void supprimerTournoi(int idTournoi) throws TransformerConfigurationException, TransformerException{
+        this.InitXMLFile();
+        System.out.println(idTournoi);
+        Node tournoi = document.getElementsByTagName("tournoi").item(idTournoi - 1);
+        racine.removeChild(tournoi);
+
+        TransformerFactory transformerFactory = TransformerFactory.newInstance();
+        Transformer transformer = transformerFactory.newTransformer();
+        DOMSource source = new DOMSource(document);
+        StreamResult sortie = new StreamResult(new File(System.getProperty("user.dir")+"\\Tournois.xml"));
+
+
+        //Propriétés du fichier
+        transformer.setOutputProperty(OutputKeys.METHOD, "xml");
+        transformer.setOutputProperty(OutputKeys.VERSION, "1.0");
+        transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+        transformer.setOutputProperty(OutputKeys.STANDALONE, "yes");			
+        transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+        transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
+        
+        transformer.transform(source, sortie);	
+    }
+     public void modifierTournoi(int idTournoi, Tournoi t){
+        
+        this.InitXMLFile();
+        
+        try {
+            Element tournoi = (Element) document.getElementsByTagName("tournoi").item(idTournoi - 1);
+            
+            Element nomTournoi = (Element) tournoi.getElementsByTagName("nomTournoi").item(0);
+            nomTournoi.setAttribute("nomTournoi", t.getNomTournoi());
+           
+            Element dateDebut = (Element) tournoi.getElementsByTagName("dateDebut").item(0);
+            dateDebut.setAttribute("dateDebut", t.getDateDebut());
+            
+            Element dateFin = (Element) tournoi.getElementsByTagName("dateFin").item(0);
+            dateFin.setAttribute("dateFin", t.getDateFin());
+            
+            Element nbRondes = (Element) tournoi.getElementsByTagName("nbRondes").item(0);
+            nbRondes.setAttribute("nbRondes", String.valueOf(t.getNbRondes()));
+            
+            Element lieu = (Element) tournoi.getElementsByTagName("lieu").item(0);
+            lieu.setAttribute("lieu", String.valueOf(t.getLieu()));
+            
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+	    Transformer transformer = transformerFactory.newTransformer();
+	    DOMSource source = new DOMSource(document);
+	    StreamResult sortie = new StreamResult(new File(System.getProperty("user.dir")+"\\Tournois.xml"));
+	
+            
+            //Propriétés du fichier
+            transformer.setOutputProperty(OutputKeys.METHOD, "xml");
+	    transformer.setOutputProperty(OutputKeys.VERSION, "1.0");
+	    transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+	    transformer.setOutputProperty(OutputKeys.STANDALONE, "yes");			
+	    transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+	    transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
+
+            transformer.transform(source, sortie);
+
+        } catch (TransformerException ex) {
+        }
     }
 }
