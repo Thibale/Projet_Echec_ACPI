@@ -3,6 +3,7 @@ package projetechec;
 
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
@@ -2067,8 +2068,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 }
             }
         }
+        Collections.sort(toRemove);
         for (int i = toRemove.size()-1; i >= 0; i--){
-            listJ2.remove(listJ2.get(toRemove.get(i)));
+            int integer = toRemove.get(i);
+            Joueurs j = listJ2.get(integer);
+            listJ2.remove(j);
         }
         
         
