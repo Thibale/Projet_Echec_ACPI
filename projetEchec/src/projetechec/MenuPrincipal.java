@@ -148,6 +148,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jScrollPane9 = new javax.swing.JScrollPane();
         affichageTournois = new javax.swing.JTextArea();
         modifierTournoi = new javax.swing.JButton();
+        afficheTournoiTitre = new javax.swing.JLabel();
         ecranTournoi = new javax.swing.JPanel();
         ajouterJoueurjButton = new javax.swing.JButton();
         ecranTournoiMenuPrincjButton = new javax.swing.JButton();
@@ -799,6 +800,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
+        afficheTournoiTitre.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        afficheTournoiTitre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        afficheTournoiTitre.setText("Affichage des joueurs");
+
         javax.swing.GroupLayout selectionTournoiLayout = new javax.swing.GroupLayout(selectionTournoi);
         selectionTournoi.setLayout(selectionTournoiLayout);
         selectionTournoiLayout.setHorizontalGroup(
@@ -825,11 +830,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(SelectionTournoiMenuPrincjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(103, Short.MAX_VALUE))
+            .addGroup(selectionTournoiLayout.createSequentialGroup()
+                .addGap(290, 290, 290)
+                .addComponent(afficheTournoiTitre, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         selectionTournoiLayout.setVerticalGroup(
             selectionTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, selectionTournoiLayout.createSequentialGroup()
-                .addGap(68, 68, 68)
+                .addContainerGap()
+                .addComponent(afficheTournoiTitre, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
                 .addGroup(selectionTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane9)
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE))
@@ -2637,6 +2648,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton SelectionTournoiMenuPrincjButton;
     private javax.swing.JList<String> affichageJoueurList;
     private javax.swing.JTextArea affichageTournois;
+    private javax.swing.JLabel afficheTournoiTitre;
     private javax.swing.JPanel afficherJoueur;
     private javax.swing.JList<String> ajoutJoueurTounroiJoueurDedansjList;
     private javax.swing.JList<String> ajoutJoueurTounroiJoueurDehorsjList;
