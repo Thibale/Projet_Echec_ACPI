@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<joueurs id="7">
+<joueurs id="9">
   <joueur>
     <idJoueur idJ="1"/>
     <numLicence numLicence="1278FE"/>
@@ -32,15 +32,15 @@
   </joueur>
   <joueur>
     <idJoueur idJ="3"/>
-    <numLicence numLicence="1485TE"/>
+    <numLicence numLicence="T12344"/>
     <nomJoueur nomJoueur="Durant"/>
     <prenomJoueur prenomJoueur="Nina"/>
     <numEloNormal numEloNormal="1587"/>
     <numEloSemiRapide numEloSemiRapide="2596"/>
-    <numEloRapide numEloRapide="7895"/>
-    <categorie categorie="BenF"/>
-    <dateNais dateNais="2003-11-25"/>
-    <sexe sexe="F"/>
+    <numEloRapide numEloRapide="2888"/>
+    <categorie categorie="MinM"/>
+    <dateNais dateNais="25/11/2003"/>
+    <sexe sexe="M"/>
     <federation federation="ITA"/>
     <ligue ligue="LAN"/>
     <club club="Lattes-Echecs"/>
@@ -86,6 +86,22 @@
     <categorie categorie="SenF"/>
     <dateNais dateNais="16/11/1990"/>
     <sexe sexe="F"/>
+    <federation federation=""/>
+    <ligue ligue=""/>
+    <club club=""/>
+  </joueur>
+
+<joueur>
+    <idJoueur idJ="8"/>
+    <numLicence numLicence=""/>
+    <nomJoueur nomJoueur="fdhdf dfhsdh"/>
+    <prenomJoueur prenomJoueur="tgjfrj"/>
+    <numEloNormal numEloNormal="NC"/>
+    <numEloSemiRapide numEloSemiRapide="NC"/>
+    <numEloRapide numEloRapide="NC"/>
+    <categorie categorie="SenM"/>
+    <dateNais dateNais="12/12/1990"/>
+    <sexe sexe="M"/>
     <federation federation=""/>
     <ligue ligue=""/>
     <club club=""/>

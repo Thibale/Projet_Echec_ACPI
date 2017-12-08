@@ -25,7 +25,7 @@ public class XML {
     protected DocumentBuilderFactory factory;
     protected DocumentBuilder builder;
     protected Document document;
-    protected Element racine;
+    protected Element racine; 
     
     private boolean isInit = false;
     private static int id;

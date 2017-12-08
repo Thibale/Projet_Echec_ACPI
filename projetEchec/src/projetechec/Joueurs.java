@@ -283,7 +283,7 @@ public class Joueurs {
     
     public boolean verifFormatNomValide(){
         boolean res = true;
-        if(!this.nomJ.matches("\\p{L}*")){
+        if(!this.nomJ.matches("\\p{L}*\\s\\p{L}*") && !this.nomJ.matches("\\p{L}*[-]\\p{L}*") && !this.nomJ.matches("\\p{L}*")){
             res = false;
             //RetourCreation.setText("Erreur, nom invalide");
         }
@@ -300,7 +300,7 @@ public class Joueurs {
     
     public boolean verifFormatPrenomValide(){
         boolean res = true;
-        if(!this.prenomJ.matches("\\p{L}*")){
+        if(!this.prenomJ.matches("\\p{L}*\\s\\p{L}*") && !this.prenomJ.matches("\\p{L}*[-]\\p{L}*") && !this.prenomJ.matches("\\p{L}*")){
             res = false;
             //RetourCreation.setText("Erreur, prenom invalide");
         }

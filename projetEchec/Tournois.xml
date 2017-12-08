@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<tournois id="4">
+<tournois id="5">
   <tournoi>
     <nomTournoi nomTournoi="Tournoi 1"/>
     <dateDebut dateDebut="13/05/2018"/>
@@ -7,13 +7,9 @@
     <nbRondes nbRondes="17"/>
     <lieu lieu="Montpellier"/>
   
-  
-  
-  
-  
   <joueurs>
       <joueur>
-        <idJoueur idJ="2"/>
+        <idJoueur idJ="5"/>
         <numLicence numLicence="1485TE"/>
         <nomJoueur nomJoueur="Durant"/>
         <prenomJoueur prenomJoueur="Nina"/>
@@ -28,7 +24,7 @@
         <club club="Lattes-Echecs"/>
       </joueur>
       <joueur>
-        <idJoueur idJ="2"/>
+        <idJoueur idJ="5"/>
         <numLicence numLicence=""/>
         <nomJoueur nomJoueur="Falcone"/>
         <prenomJoueur prenomJoueur="Thibaut"/>
@@ -42,6 +38,51 @@
         <ligue ligue=""/>
         <club club=""/>
       </joueur>
+      <joueur>
+        <idJoueur idJ="5"/>
+        <numLicence numLicence="1278FE"/>
+        <nomJoueur nomJoueur="Pierre"/>
+        <prenomJoueur prenomJoueur="Dupond"/>
+        <numEloNormal numEloNormal="1783"/>
+        <numEloSemiRapide numEloSemiRapide="1960"/>
+        <numEloRapide numEloRapide="1664"/>
+        <categorie categorie="SenM"/>
+        <dateNais dateNais="1968-08-17"/>
+        <sexe sexe="M"/>
+        <federation federation="FRA"/>
+        <ligue ligue="LAN"/>
+        <club club="Echecs Club Montpellier"/>
+      </joueur>
+      <joueur>
+        <idJoueur idJ="5"/>
+        <numLicence numLicence="1495DA"/>
+        <nomJoueur nomJoueur="BALAIS"/>
+        <prenomJoueur prenomJoueur="Andre"/>
+        <numEloNormal numEloNormal="2385"/>
+        <numEloSemiRapide numEloSemiRapide="1904"/>
+        <numEloRapide numEloRapide="1980"/>
+        <categorie categorie="PoM"/>
+        <dateNais dateNais="2008-07-01"/>
+        <sexe sexe="M"/>
+        <federation federation="ESP"/>
+        <ligue ligue="AQU"/>
+        <club club="Lattes-Echecs"/>
+      </joueur>
+      <joueur>
+        <idJoueur idJ="5"/>
+        <numLicence numLicence="T12344"/>
+        <nomJoueur nomJoueur="Durant"/>
+        <prenomJoueur prenomJoueur="Nina"/>
+        <numEloNormal numEloNormal="1587"/>
+        <numEloSemiRapide numEloSemiRapide="2596"/>
+        <numEloRapide numEloRapide="2888"/>
+        <categorie categorie="MinM"/>
+        <dateNais dateNais="25/11/2003"/>
+        <sexe sexe="M"/>
+        <federation federation="ITA"/>
+        <ligue ligue="LAN"/>
+        <club club="Lattes-Echecs"/>
+      </joueur>
     </joueurs>
   </tournoi>
 <tournoi>
@@ -49,8 +90,7 @@
     <dateDebut dateDebut="12/12/2018"/>
     <dateFin dateFin="12/12/2019"/>
     <nbRondes nbRondes="5"/>
-    <lieu lieu="bla"/>
-    
+    <lieu lieu="bla"/> 
   <joueurs>
       <joueur>
         <idJoueur idJ="2"/>
@@ -69,6 +109,4 @@
       </joueur>
     </joueurs>
   </tournoi>
-
-
 </tournois>

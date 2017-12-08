@@ -93,14 +93,14 @@ public class Tournoi {
     public boolean verifDonneesSensiblesCompletes(){ 
         boolean tmp = true;
         //String stmp = "";
-        //messageErreur = "Données manquantes";
+        //messageErreur = "DonnÃ©es manquantes";
         if(this.nomTournoiEstVide()){
             tmp = false;
             //stmp += System.getProperty("line.separator")+"Nom Tournoi manquant";
         }
         if(this.dateDebutEstVide()){
             tmp = false;
-            //stmp += System.getProperty("line.separator")+"Date de début manquante";
+            //stmp += System.getProperty("line.separator")+"Date de dÃ©but manquante";
         }
         if(this.dateFinEstVide()){
             tmp = false;
@@ -111,7 +111,7 @@ public class Tournoi {
             //stmp += System.getProperty("line.separator")+"Nombre de rondes manquant";
         }
         if(!tmp){
-            //messageErreur = "Données manquantes" + stmp;
+            //messageErreur = "DonnÃ©es manquantes" + stmp;
         }
         return tmp;
     }
@@ -192,7 +192,7 @@ public class Tournoi {
         LocalDate dateF = LocalDate.parse(tmpF);
         if (dateD.compareTo(dateF) > 0){
             verif = false;
-            //messageErreur += "Erreur, date de début plus récente que date de fin.";
+            //messageErreur += "Erreur, date de dÃ©but plus rÃ©cente que date de fin.";
         }
         return verif;
     }
@@ -204,7 +204,7 @@ public class Tournoi {
         LocalDate curDate = LocalDate.now();
         if (dateD.compareTo(curDate) < 0){
             verif = false;
-            //messageErreur += "Erreur, date de début inférieure à la date actuelle.";
+            //messageErreur += "Erreur, date de dÃ©but infÃ©rieure Ã  la date actuelle.";
         }
         return verif;
     }
@@ -225,7 +225,7 @@ public class Tournoi {
     }
     public String TtoString(){
         return  "Nom tournoi : " + this.nomTournoi +System.getProperty("line.separator")+
-                "Date de d�but : " + this.dateDebut +System.getProperty("line.separator")+ 
+                "Date de début : " + this.dateDebut +System.getProperty("line.separator")+ 
                 "Date de fin : " + this.dateFin +System.getProperty("line.separator")+
                 "Nombre de rondes : " + this.nbRondes +System.getProperty("line.separator")+
                 "Lieu : "+ this.lieu +System.getProperty("line.separator");
