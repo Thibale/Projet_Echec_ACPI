@@ -159,6 +159,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         AjoutJoueurTournoiRetourjButton = new javax.swing.JButton();
         ajoutJoueurTournoiConfirmerjButton = new javax.swing.JButton();
         ajoutJoueurTournoiMessagejLabel = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         modifierJoueur = new javax.swing.JPanel();
         nomLabel1 = new javax.swing.JLabel();
         prenomLabel1 = new javax.swing.JLabel();
@@ -920,6 +922,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jLabel6.setText("Joueur déjà présent dans le tournoi");
+
+        jLabel7.setText("Joueur qui ne sont pas dans le tournoi");
+
         javax.swing.GroupLayout ajoutJoueurTournoiLayout = new javax.swing.GroupLayout(ajoutJoueurTournoi);
         ajoutJoueurTournoi.setLayout(ajoutJoueurTournoiLayout);
         ajoutJoueurTournoiLayout.setHorizontalGroup(
@@ -927,32 +933,44 @@ public class MenuPrincipal extends javax.swing.JFrame {
             .addGroup(ajoutJoueurTournoiLayout.createSequentialGroup()
                 .addGroup(ajoutJoueurTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(ajoutJoueurTournoiLayout.createSequentialGroup()
-                        .addGap(110, 110, 110)
+                        .addContainerGap()
                         .addGroup(ajoutJoueurTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(ajoutJoueurTournoiLayout.createSequentialGroup()
-                                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(52, 52, 52)
+                                .addComponent(jLabel7)
+                                .addGap(42, 42, 42))
+                            .addGroup(ajoutJoueurTournoiLayout.createSequentialGroup()
+                                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(33, 33, 33)))
+                        .addGroup(ajoutJoueurTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(ajoutJoueurTournoiLayout.createSequentialGroup()
                                 .addGroup(ajoutJoueurTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(ajoutJoueurTournoiAjouterjButton)
                                     .addComponent(AjouteJoueurTournoiRemovejButton))
-                                .addGap(42, 42, 42)
-                                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(40, 40, 40)
+                                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(ajoutJoueurTournoiLayout.createSequentialGroup()
-                                .addComponent(ajoutJoueurTournoiConfirmerjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(51, 51, 51)
-                                .addComponent(AjoutJoueurTournoiRetourjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(131, 131, 131))))
+                                .addGap(122, 122, 122)
+                                .addComponent(jLabel6))))
                     .addGroup(ajoutJoueurTournoiLayout.createSequentialGroup()
                         .addGap(221, 221, 221)
-                        .addComponent(ajoutJoueurTournoiMessagejLabel)))
-                .addContainerGap(167, Short.MAX_VALUE))
+                        .addComponent(ajoutJoueurTournoiMessagejLabel))
+                    .addGroup(ajoutJoueurTournoiLayout.createSequentialGroup()
+                        .addGap(149, 149, 149)
+                        .addComponent(ajoutJoueurTournoiConfirmerjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(47, 47, 47)
+                        .addComponent(AjoutJoueurTournoiRetourjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(246, Short.MAX_VALUE))
         );
         ajoutJoueurTournoiLayout.setVerticalGroup(
             ajoutJoueurTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ajoutJoueurTournoiLayout.createSequentialGroup()
                 .addGroup(ajoutJoueurTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(ajoutJoueurTournoiLayout.createSequentialGroup()
-                        .addGap(127, 127, 127)
+                        .addGap(107, 107, 107)
+                        .addGroup(ajoutJoueurTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(ajoutJoueurTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
                             .addComponent(jScrollPane6)))
@@ -2651,6 +2669,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane2;
