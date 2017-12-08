@@ -149,6 +149,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         ecranTournoi = new javax.swing.JPanel();
         ajouterJoueurjButton = new javax.swing.JButton();
         ecranTournoiMenuPrincjButton = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
         ajoutJoueurTournoi = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
         ajoutJoueurTounroiJoueurDehorsjList = new javax.swing.JList<>();
@@ -854,16 +855,21 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jLabel8.setText("Cette page affichera plus tard les différentes fonctionnalités du tournoi (départage etc...)");
+
         javax.swing.GroupLayout ecranTournoiLayout = new javax.swing.GroupLayout(ecranTournoi);
         ecranTournoi.setLayout(ecranTournoiLayout);
         ecranTournoiLayout.setHorizontalGroup(
             ecranTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ecranTournoiLayout.createSequentialGroup()
                 .addGap(67, 67, 67)
-                .addComponent(ajouterJoueurjButton)
-                .addGap(18, 18, 18)
-                .addComponent(ecranTournoiMenuPrincjButton)
-                .addContainerGap(487, Short.MAX_VALUE))
+                .addGroup(ecranTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8)
+                    .addGroup(ecranTournoiLayout.createSequentialGroup()
+                        .addComponent(ajouterJoueurjButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(ecranTournoiMenuPrincjButton)))
+                .addContainerGap(300, Short.MAX_VALUE))
         );
         ecranTournoiLayout.setVerticalGroup(
             ecranTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -872,7 +878,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addGroup(ecranTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ajouterJoueurjButton)
                     .addComponent(ecranTournoiMenuPrincjButton))
-                .addContainerGap(736, Short.MAX_VALUE))
+                .addGap(69, 69, 69)
+                .addComponent(jLabel8)
+                .addContainerGap(653, Short.MAX_VALUE))
         );
 
         getContentPane().add(ecranTournoi, java.awt.BorderLayout.CENTER);
@@ -2671,6 +2679,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane2;
