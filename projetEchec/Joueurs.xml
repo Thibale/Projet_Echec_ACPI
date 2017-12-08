@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<joueurs id="9">
+<joueurs id="10">
   <joueur>
     <idJoueur idJ="1"/>
     <numLicence numLicence="G25489"/>
@@ -91,20 +91,7 @@
     <club club=""/>
   </joueur>
 
-<joueur>
-    <idJoueur idJ="8"/>
-    <numLicence numLicence=""/>
-    <nomJoueur nomJoueur="Bertrand"/>
-    <prenomJoueur prenomJoueur="Floriane"/>
-    <numEloNormal numEloNormal="NC"/>
-    <numEloSemiRapide numEloSemiRapide="NC"/>
-    <numEloRapide numEloRapide="NC"/>
-    <categorie categorie="SenF"/>
-    <dateNais dateNais="12/12/1990"/>
-    <sexe sexe="F"/>
-    <federation federation=""/>
-    <ligue ligue=""/>
-    <club club=""/>
-  </joueur>
+
+
 
 </joueurs>
