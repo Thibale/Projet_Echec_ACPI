@@ -27,6 +27,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     public static XMLTournoi xml2 = new XMLTournoi();
     
     public static int idTournoiCourant = -1;
+    public static int idJoueurCourant = -1;
     public static int idJoueurDedans = -1;
     public static int idJoueurDehors = -1;
     public static ArrayList<Joueurs> joueursDedans;
@@ -117,6 +118,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         affichageJoueurList = new javax.swing.JList<>();
         supprimerJoueurButton = new javax.swing.JButton();
         modifierJoueurButton = new javax.swing.JButton();
+        ErreurSelectJoueur = new javax.swing.JLabel();
         creationTournoi = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         nom = new javax.swing.JLabel();
@@ -577,6 +579,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
                         .addGap(35, 35, 35)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(1677, Short.MAX_VALUE))
+            .addGroup(afficherJoueurLayout.createSequentialGroup()
+                .addGap(207, 207, 207)
+                .addComponent(ErreurSelectJoueur)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         afficherJoueurLayout.setVerticalGroup(
             afficherJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -587,12 +593,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addGroup(afficherJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
+                .addGap(7, 7, 7)
+                .addComponent(ErreurSelectJoueur)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(afficherJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(modifierJoueurButton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(retourMenuAff, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(supprimerJoueurButton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(374, Short.MAX_VALUE))
+                .addContainerGap(388, Short.MAX_VALUE))
         );
 
         getContentPane().add(afficherJoueur, java.awt.BorderLayout.PAGE_END);
@@ -1496,6 +1504,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void retourMenuAffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_retourMenuAffActionPerformed
 
+        ErreurSelectJoueur.setText("");
+        
         selectionTournoi.setVisible(false);
         creationJoueur.setVisible(false);
         afficherJoueur.setVisible(false);
@@ -1841,13 +1851,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void affichageJoueurListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_affichageJoueurListValueChanged
         ArrayList<Joueurs> listJ = xml1.ReadXML();
         String afftmp;
-        int intTmp = -1;
         String s = (String) affichageJoueurList.getSelectedValue();
         if(s != null && !s.isEmpty()){
-            intTmp = Integer.valueOf(s.split(" ")[0]);
+            idJoueurCourant = Integer.valueOf(s.split(" ")[0]);
         }
-        if(intTmp != -1){
-            afftmp=listJ.get(intTmp-1).JtoString()+System.getProperty("line.separator");
+        if(idJoueurCourant != -1){
+            afftmp=listJ.get(idJoueurCourant-1).JtoString()+System.getProperty("line.separator");
             AffJTextArea1.setText(afftmp);
         }
         
@@ -1855,33 +1864,41 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_affichageJoueurListValueChanged
 
     private void supprimerJoueurButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supprimerJoueurButtonActionPerformed
-        String s = (String) affichageJoueurList.getSelectedValue();
-        if(s != null && !s.isEmpty()){
-            int intTmp = Integer.valueOf(s.split(" ")[0]);
-            try {
-                xml1.supprimerJoueur(intTmp);
-            } catch (TransformerException ex) {
-                Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        if(MenuPrincipal.idJoueurCourant == -1){
+            ErreurSelectJoueur.setText("Veuillez sélectionner un joueur");
+        }else{
+            String s = (String) affichageJoueurList.getSelectedValue();
+            if(s != null && !s.isEmpty()){
+                int intTmp = Integer.valueOf(s.split(" ")[0]);
+                try {
+                    xml1.supprimerJoueur(intTmp);
+                } catch (TransformerException ex) {
+                    Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
             }
-            
+            refreshAffichage();
         }
-        refreshAffichage();
     }//GEN-LAST:event_supprimerJoueurButtonActionPerformed
 
     private void modifierJoueurButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifierJoueurButtonActionPerformed
-        ArrayList<Joueurs> listJ = xml1.ReadXML();
-        String s = (String) affichageJoueurList.getSelectedValue();
-        int intTmp = -1;
-        if(s != null && !s.isEmpty()){
-            intTmp = Integer.valueOf(s.split(" ")[0]);
+        if(MenuPrincipal.idJoueurCourant == -1){
+            ErreurSelectJoueur.setText("Veuillez sélectionner un joueur");
+        }else{
+            ArrayList<Joueurs> listJ = xml1.ReadXML();
+            String s = (String) affichageJoueurList.getSelectedValue();
+            int intTmp = -1;
+            if(s != null && !s.isEmpty()){
+                intTmp = Integer.valueOf(s.split(" ")[0]);
+            }
+            if(intTmp != -1){
+                //Faut pas faire comme ça faut créer un nouveau pannel
+                xml1.modifierJoueur(intTmp, listJ.get(intTmp-1));
+                accesModifJoueur(intTmp, listJ.get(intTmp-1));
+            }
+
+            refreshAffichage();
         }
-        if(intTmp != -1){
-            //Faut pas faire comme ça faut créer un nouveau pannel
-            xml1.modifierJoueur(intTmp, listJ.get(intTmp-1));
-            accesModifJoueur(intTmp, listJ.get(intTmp-1));
-        }
-        
-        refreshAffichage();
     }//GEN-LAST:event_modifierJoueurButtonActionPerformed
 
     private void SelectionTournoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectionTournoiActionPerformed
@@ -1909,8 +1926,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
             tmp=tmp+" Tournoi n°"+(i+1)+System.getProperty("line.separator");
             tmpList =(i+1)+" Tournoi n°"+(i+1)+" "+listT.get(i).getNomTournoi();
             listM.addElement(tmpList);
+            tmp=tmp+listT.get(i).TtoString()+System.getProperty("line.separator");
         }
-        
+        affichageTournois.setText(tmp);
         selectionTournoi.setVisible(true);
         
         
@@ -2378,40 +2396,48 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_mainMenuButton1ActionPerformed
 
     private void supprimerTournoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supprimerTournoiActionPerformed
-        String s = (String) selectionTournoijList.getSelectedValue();
-        if(s != null && !s.isEmpty()){
-            int intTmp = Integer.valueOf(s.split(" ")[0]);
-            try { 
-                xml2.supprimerTournoi(intTmp);
-            } catch (TransformerException ex) {
-                Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        if(MenuPrincipal.idTournoiCourant == -1){
+            selectionTournoiMessagejLabel.setText("Veuillez sélectionner un tournoi");
+        }else{
+            String s = (String) selectionTournoijList.getSelectedValue();
+            if(s != null && !s.isEmpty()){
+                int intTmp = Integer.valueOf(s.split(" ")[0]);
+                try { 
+                    xml2.supprimerTournoi(intTmp);
+                } catch (TransformerException ex) {
+                    Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                ArrayList<Tournoi> listT = xml2.ReadXML();
+                DefaultListModel listM = new DefaultListModel();
+                selectionTournoijList.setModel(listM);
+                String tmp="";
+                String tmpList = "";
+                for (int i=0;i<listT.size();i++){
+                    tmp=tmp+" Tournoi n°"+(i+1)+System.getProperty("line.separator");
+                    tmpList =(i+1)+" Tournoi n°"+(i+1)+" "+listT.get(i).getNomTournoi();
+                    listM.addElement(tmpList);
+                }
+                affichageTournois.setText("");
             }
-            ArrayList<Tournoi> listT = xml2.ReadXML();
-            DefaultListModel listM = new DefaultListModel();
-            selectionTournoijList.setModel(listM);
-            String tmp="";
-            String tmpList = "";
-            for (int i=0;i<listT.size();i++){
-                tmp=tmp+" Tournoi n°"+(i+1)+System.getProperty("line.separator");
-                tmpList =(i+1)+" Tournoi n°"+(i+1)+" "+listT.get(i).getNomTournoi();
-                listM.addElement(tmpList);
-            }
-            affichageTournois.setText("");
         }
     }//GEN-LAST:event_supprimerTournoiActionPerformed
 
     private void modifierTournoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifierTournoiActionPerformed
-        ArrayList<Tournoi> listT = xml2.ReadXML();
-        String s = (String) selectionTournoijList.getSelectedValue();
-        int intTmp = -1;
-        if(s != null && !s.isEmpty()){
-            intTmp = Integer.valueOf(s.split(" ")[0]);
+        if(MenuPrincipal.idTournoiCourant == -1){
+            selectionTournoiMessagejLabel.setText("Veuillez sélectionner un tournoi");
+        }else{
+            ArrayList<Tournoi> listT = xml2.ReadXML();
+            String s = (String) selectionTournoijList.getSelectedValue();
+            int intTmp = -1;
+            if(s != null && !s.isEmpty()){
+                intTmp = Integer.valueOf(s.split(" ")[0]);
 
-        }
-        if(intTmp != -1){
-            //Faut pas faire comme ça faut créer un nouveau pannel
-            xml2.modifierTournoi(intTmp, listT.get(intTmp-1));
-            accesModifTournoi(intTmp, listT.get(intTmp-1));
+            }
+            if(intTmp != -1){
+                //Faut pas faire comme ça faut créer un nouveau pannel
+                xml2.modifierTournoi(intTmp, listT.get(intTmp-1));
+                accesModifTournoi(intTmp, listT.get(intTmp-1));
+            }
         }
     }//GEN-LAST:event_modifierTournoiActionPerformed
 
@@ -2514,12 +2540,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_SauvModifActionPerformed
 
     private void menuprincT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuprincT1ActionPerformed
-         nomTextField1.setText("");
-        datedTextField2.setText("");
-        dateFTextField3.setText("");
-        nbRTextField4.setText("");
-        lieuTextField5.setText("");
-        msgErreurT.setText("");
+
+        msgErreurT1.setText("");
         nom.setForeground(Color.black);
         dated.setForeground(Color.black);
         datef.setForeground(Color.black);
@@ -2609,6 +2631,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextArea AffJTextArea1;
     private javax.swing.JButton AjoutJoueurTournoiRetourjButton;
     private javax.swing.JButton AjouteJoueurTournoiRemovejButton;
+    private javax.swing.JLabel ErreurSelectJoueur;
     private javax.swing.JButton SauvModif;
     private javax.swing.JButton SelectionTournoi;
     private javax.swing.JButton SelectionTournoiMenuPrincjButton;

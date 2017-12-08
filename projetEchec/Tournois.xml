@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<tournois id="5">
+<tournois id="6">
   <tournoi>
     <nomTournoi nomTournoi="Tournoi 1"/>
     <dateDebut dateDebut="13/05/2018"/>
@@ -90,7 +90,7 @@
     <dateDebut dateDebut="12/12/2018"/>
     <dateFin dateFin="12/12/2019"/>
     <nbRondes nbRondes="5"/>
-    <lieu lieu="bla"/> 
+    <lieu lieu="Nîmes"/> 
   <joueurs>
       <joueur>
         <idJoueur idJ="2"/>
@@ -108,5 +108,13 @@
         <club club=""/>
       </joueur>
     </joueurs>
+  </tournoi>
+<tournoi>
+    <nomTournoi nomTournoi="T3"/>
+    <dateDebut dateDebut="09/12/2017"/>
+    <dateFin dateFin="10/12/2017"/>
+    <nbRondes nbRondes="5"/>
+    <lieu lieu="Montpellier"/>
+    <joueurs/>
   </tournoi>
 </tournois>

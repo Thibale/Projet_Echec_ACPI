@@ -2,14 +2,14 @@
 <joueurs id="9">
   <joueur>
     <idJoueur idJ="1"/>
-    <numLicence numLicence="1278FE"/>
+    <numLicence numLicence="G25489"/>
     <nomJoueur nomJoueur="Pierre"/>
     <prenomJoueur prenomJoueur="Dupond"/>
     <numEloNormal numEloNormal="1783"/>
     <numEloSemiRapide numEloSemiRapide="1960"/>
     <numEloRapide numEloRapide="1664"/>
-    <categorie categorie="SenM"/>
-    <dateNais dateNais="1968-08-17"/>
+    <categorie categorie="SePM"/>
+    <dateNais dateNais="17/08/1960"/>
     <sexe sexe="M"/>
     <federation federation="FRA"/>
     <ligue ligue="LAN"/>
@@ -17,14 +17,14 @@
   </joueur>
   <joueur>
     <idJoueur idJ="2"/>
-    <numLicence numLicence="1495DA"/>
-    <nomJoueur nomJoueur="BALAIS"/>
+    <numLicence numLicence="A14732"/>
+    <nomJoueur nomJoueur="Balais"/>
     <prenomJoueur prenomJoueur="Andre"/>
     <numEloNormal numEloNormal="2385"/>
     <numEloSemiRapide numEloSemiRapide="1904"/>
     <numEloRapide numEloRapide="1980"/>
-    <categorie categorie="PoM"/>
-    <dateNais dateNais="2008-07-01"/>
+    <categorie categorie="pPoM"/>
+    <dateNais dateNais="01/07/2014"/>
     <sexe sexe="M"/>
     <federation federation="ESP"/>
     <ligue ligue="AQU"/>
@@ -63,7 +63,7 @@
 <joueur>
     <idJoueur idJ="5"/>
     <numLicence numLicence=""/>
-    <nomJoueur nomJoueur="Falcone"/>
+    <nomJoueur nomJoueur="Gigi"/>
     <prenomJoueur prenomJoueur="Thibaut"/>
     <numEloNormal numEloNormal="NC"/>
     <numEloSemiRapide numEloSemiRapide="NC"/>
@@ -94,14 +94,14 @@
 <joueur>
     <idJoueur idJ="8"/>
     <numLicence numLicence=""/>
-    <nomJoueur nomJoueur="fdhdf dfhsdh"/>
-    <prenomJoueur prenomJoueur="tgjfrj"/>
+    <nomJoueur nomJoueur="Bertrand"/>
+    <prenomJoueur prenomJoueur="Floriane"/>
     <numEloNormal numEloNormal="NC"/>
     <numEloSemiRapide numEloSemiRapide="NC"/>
     <numEloRapide numEloRapide="NC"/>
-    <categorie categorie="SenM"/>
+    <categorie categorie="SenF"/>
     <dateNais dateNais="12/12/1990"/>
-    <sexe sexe="M"/>
+    <sexe sexe="F"/>
     <federation federation=""/>
     <ligue ligue=""/>
     <club club=""/>
