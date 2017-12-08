@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<joueurs id="6">
+<joueurs id="7">
   <joueur>
     <idJoueur idJ="1"/>
     <numLicence numLicence="1278FE"/>
@@ -90,4 +90,5 @@
     <ligue ligue=""/>
     <club club=""/>
   </joueur>
+
 </joueurs>

@@ -31,8 +31,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
     public static int idJoueurDehors = -1;
     public static ArrayList<Joueurs> joueursDedans;
     public static ArrayList<Joueurs> joueursDehors;
+    
     public static int IDJ;
     public static Joueurs Jmodif;
+    
+    public static int IDT;
+    public static Tournoi Tmodif;
+    
     public static boolean confirmed = false;
     
     public MenuPrincipal() {
@@ -42,7 +47,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         afficherJoueur.setVisible(false);
         creationTournoi.setVisible(false);
         ecranTournoi.setVisible(false);
-        ajoutJoueurTournoi.setVisible(false);     
+        ajoutJoueurTournoi.setVisible(false);  
+        modifierTournoiJPanel.setVisible(false); 
         remove(selectionTournoi);
         remove(creationJoueur);
         remove(afficherJoueur);
@@ -50,6 +56,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         remove(ecranTournoi);
         remove(ajoutJoueurTournoi);
         remove(modifierJoueur);
+        remove(modifierTournoiJPanel);
         add(menuPrinc);
         menuPrinc.setVisible(true);
     }
@@ -105,7 +112,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         AffJTextArea1 = new javax.swing.JTextArea();
         jLabel3 = new javax.swing.JLabel();
-        btnafficherJ = new javax.swing.JButton();
         retourMenuAff = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         affichageJoueurList = new javax.swing.JList<>();
@@ -136,6 +142,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         selectionTournoijList = new javax.swing.JList<>();
         selectionTournoiSelectionnerjButton = new javax.swing.JButton();
         selectionTournoiMessagejLabel = new javax.swing.JLabel();
+        supprimerTournoi = new javax.swing.JButton();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        affichageTournois = new javax.swing.JTextArea();
+        modifierTournoi = new javax.swing.JButton();
         ecranTournoi = new javax.swing.JPanel();
         ajouterJoueurjButton = new javax.swing.JButton();
         ecranTournoiMenuPrincjButton = new javax.swing.JButton();
@@ -180,6 +190,24 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jScrollPane8 = new javax.swing.JScrollPane();
         retourTextArea1 = new javax.swing.JTextArea();
         mainMenuButton1 = new javax.swing.JButton();
+        modifierTournoiJPanel = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        nom1 = new javax.swing.JLabel();
+        dated1 = new javax.swing.JLabel();
+        datef1 = new javax.swing.JLabel();
+        nbr1 = new javax.swing.JLabel();
+        lieu1 = new javax.swing.JLabel();
+        nomTextField3 = new javax.swing.JTextField();
+        datedTextField3 = new javax.swing.JTextField();
+        dateFTextField4 = new javax.swing.JTextField();
+        nbRTextField5 = new javax.swing.JTextField();
+        lieuTextField6 = new javax.swing.JTextField();
+        dateFormatLabel4 = new javax.swing.JLabel();
+        dateFormatLabel5 = new javax.swing.JLabel();
+        SauvModif = new javax.swing.JButton();
+        menuprincT1 = new javax.swing.JButton();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        msgErreurT1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(800, 800));
@@ -212,14 +240,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Afficher les joueurs");
+        jButton1.setText("Gestion des joueurs");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        SelectionTournoi.setText("S�lectionner un tournoi");
+        SelectionTournoi.setText("Gestion des tournois");
         SelectionTournoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SelectionTournoiActionPerformed(evt);
@@ -364,7 +392,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         creationJoueurLayout.setHorizontalGroup(
             creationJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(creationJoueurLayout.createSequentialGroup()
-                .addContainerGap(1798, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(creationJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, creationJoueurLayout.createSequentialGroup()
                         .addGroup(creationJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -487,13 +515,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Affichage des joueurs");
 
-        btnafficherJ.setText("Afficher");
-        btnafficherJ.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnafficherJActionPerformed(evt);
-            }
-        });
-
         retourMenuAff.setText("Retour menu principal");
         retourMenuAff.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -535,15 +556,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1354, Short.MAX_VALUE))
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(afficherJoueurLayout.createSequentialGroup()
-                        .addComponent(btnafficherJ, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
-                        .addComponent(modifierJoueurButton, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(supprimerJoueurButton, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(retourMenuAff, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(afficherJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(afficherJoueurLayout.createSequentialGroup()
+                                .addComponent(modifierJoueurButton, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(25, 25, 25)
+                                .addComponent(supprimerJoueurButton, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(retourMenuAff, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(835, Short.MAX_VALUE))
         );
         afficherJoueurLayout.setVerticalGroup(
@@ -557,7 +579,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addGroup(afficherJoueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnafficherJ, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(modifierJoueurButton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(retourMenuAff, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(supprimerJoueurButton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -742,38 +763,67 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
+        supprimerTournoi.setText("Supprimer");
+        supprimerTournoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                supprimerTournoiActionPerformed(evt);
+            }
+        });
+
+        affichageTournois.setColumns(20);
+        affichageTournois.setRows(5);
+        jScrollPane9.setViewportView(affichageTournois);
+
+        modifierTournoi.setText("Modifier");
+        modifierTournoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modifierTournoiActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout selectionTournoiLayout = new javax.swing.GroupLayout(selectionTournoi);
         selectionTournoi.setLayout(selectionTournoiLayout);
         selectionTournoiLayout.setHorizontalGroup(
             selectionTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, selectionTournoiLayout.createSequentialGroup()
-                .addContainerGap(209, Short.MAX_VALUE)
-                .addComponent(selectionTournoiSelectionnerjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(177, 177, 177)
-                .addComponent(SelectionTournoiMenuPrincjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(189, 189, 189))
             .addGroup(selectionTournoiLayout.createSequentialGroup()
-                .addGroup(selectionTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(selectionTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(selectionTournoiLayout.createSequentialGroup()
                         .addGap(76, 76, 76)
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(62, 62, 62)
+                        .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(selectionTournoiLayout.createSequentialGroup()
-                        .addGap(183, 183, 183)
-                        .addComponent(selectionTournoiMessagejLabel)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(selectionTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(selectionTournoiLayout.createSequentialGroup()
+                                .addGap(183, 183, 183)
+                                .addComponent(selectionTournoiMessagejLabel))
+                            .addGroup(selectionTournoiLayout.createSequentialGroup()
+                                .addGap(84, 84, 84)
+                                .addComponent(selectionTournoiSelectionnerjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(29, 29, 29)
+                                .addComponent(modifierTournoi, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(supprimerTournoi, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(SelectionTournoiMenuPrincjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(103, Short.MAX_VALUE))
         );
         selectionTournoiLayout.setVerticalGroup(
             selectionTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, selectionTournoiLayout.createSequentialGroup()
                 .addGap(68, 68, 68)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(selectionTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane9)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
                 .addComponent(selectionTournoiMessagejLabel)
-                .addGap(5, 5, 5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(selectionTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SelectionTournoiMenuPrincjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(supprimerTournoi, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(selectionTournoiSelectionnerjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(SelectionTournoiMenuPrincjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(298, 298, 298))
+                    .addComponent(modifierTournoi, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(265, 265, 265))
         );
 
         getContentPane().add(selectionTournoi, java.awt.BorderLayout.LINE_START);
@@ -1126,6 +1176,142 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         getContentPane().add(modifierJoueur, java.awt.BorderLayout.PAGE_START);
 
+        modifierTournoiJPanel.setMaximumSize(new java.awt.Dimension(800, 800));
+        modifierTournoiJPanel.setMinimumSize(new java.awt.Dimension(800, 800));
+
+        jLabel5.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
+        jLabel5.setText("Modification d'un tournoi");
+
+        nom1.setText("Nom : *");
+
+        dated1.setText("Date debut : *");
+
+        datef1.setText("Date fin : *");
+
+        nbr1.setText("Nombre de rondes : *");
+
+        lieu1.setText("Lieu :");
+
+        nomTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nomTextField3ActionPerformed(evt);
+            }
+        });
+
+        dateFTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dateFTextField4ActionPerformed(evt);
+            }
+        });
+
+        lieuTextField6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lieuTextField6ActionPerformed(evt);
+            }
+        });
+
+        dateFormatLabel4.setFont(new java.awt.Font("Ubuntu", 2, 12)); // NOI18N
+        dateFormatLabel4.setText("JJ/MM/AAAA");
+
+        dateFormatLabel5.setFont(new java.awt.Font("Ubuntu", 2, 12)); // NOI18N
+        dateFormatLabel5.setText("JJ/MM/AAAA");
+
+        SauvModif.setText("Sauvegarder");
+        SauvModif.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SauvModifActionPerformed(evt);
+            }
+        });
+
+        menuprincT1.setText("Menu principal");
+        menuprincT1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuprincT1ActionPerformed(evt);
+            }
+        });
+
+        msgErreurT1.setColumns(20);
+        msgErreurT1.setRows(5);
+        jScrollPane10.setViewportView(msgErreurT1);
+
+        javax.swing.GroupLayout modifierTournoiJPanelLayout = new javax.swing.GroupLayout(modifierTournoiJPanel);
+        modifierTournoiJPanel.setLayout(modifierTournoiJPanelLayout);
+        modifierTournoiJPanelLayout.setHorizontalGroup(
+            modifierTournoiJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(modifierTournoiJPanelLayout.createSequentialGroup()
+                .addGroup(modifierTournoiJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(modifierTournoiJPanelLayout.createSequentialGroup()
+                        .addGap(319, 319, 319)
+                        .addComponent(jLabel5))
+                    .addGroup(modifierTournoiJPanelLayout.createSequentialGroup()
+                        .addGap(221, 221, 221)
+                        .addGroup(modifierTournoiJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(modifierTournoiJPanelLayout.createSequentialGroup()
+                                .addGap(33, 33, 33)
+                                .addComponent(SauvModif, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(60, 60, 60)
+                                .addComponent(menuprincT1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(modifierTournoiJPanelLayout.createSequentialGroup()
+                                .addGroup(modifierTournoiJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(nom1)
+                                    .addComponent(dated1)
+                                    .addComponent(datef1)
+                                    .addComponent(nbr1)
+                                    .addComponent(lieu1))
+                                .addGap(14, 14, 14)
+                                .addGroup(modifierTournoiJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lieuTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(nbRTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(nomTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(modifierTournoiJPanelLayout.createSequentialGroup()
+                                        .addComponent(datedTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(dateFormatLabel4))
+                                    .addGroup(modifierTournoiJPanelLayout.createSequentialGroup()
+                                        .addComponent(dateFTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(dateFormatLabel5)))))))
+                .addContainerGap(210, Short.MAX_VALUE))
+        );
+        modifierTournoiJPanelLayout.setVerticalGroup(
+            modifierTournoiJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(modifierTournoiJPanelLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jLabel5)
+                .addGap(27, 27, 27)
+                .addGroup(modifierTournoiJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(nom1)
+                    .addComponent(nomTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(modifierTournoiJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dated1)
+                    .addComponent(datedTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dateFormatLabel4))
+                .addGap(18, 18, 18)
+                .addGroup(modifierTournoiJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(datef1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(dateFTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dateFormatLabel5))
+                .addGap(18, 18, 18)
+                .addGroup(modifierTournoiJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(nbRTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nbr1))
+                .addGap(21, 21, 21)
+                .addGroup(modifierTournoiJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lieu1)
+                    .addComponent(lieuTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(modifierTournoiJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(SauvModif, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(menuprincT1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(389, 389, 389))
+        );
+
+        getContentPane().add(modifierTournoiJPanel, java.awt.BorderLayout.LINE_END);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -1199,23 +1385,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         sexeLabel.setForeground(Color.black);
         dateLabel.setForeground(Color.black);
     }//GEN-LAST:event_clearButtonActionPerformed
-
-    private void btnafficherJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnafficherJActionPerformed
-        ArrayList<Joueurs> listJ = xml1.ReadXML();
-        DefaultListModel listM = new DefaultListModel();
-        affichageJoueurList.setModel(listM);
-        String tmp="";
-        String tmpList = "";
-        for (int i=0;i<listJ.size();i++){
-            tmp=tmp+" Joueur n°"+(i+1)+System.getProperty("line.separator");
-            tmpList =(i+1)+" Joueur n°"+(i+1)+listJ.get(i).getNomJ();
-            listM.addElement(tmpList);
-            tmp=tmp+listJ.get(i).JtoString()+System.getProperty("line.separator");
-
-        }
-        AffJTextArea1.setText(tmp);
-
-    }//GEN-LAST:event_btnafficherJActionPerformed
 
     private void refreshAffichage(){
         ArrayList<Joueurs> listJ = xml1.ReadXML();
@@ -1761,9 +1930,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         if(s != null && !s.isEmpty()){
             String tmp = ""+s.charAt(0);
             MenuPrincipal.idTournoiCourant = Integer.valueOf(tmp);
+            afftmp=listT.get(Integer.valueOf(tmp)-1).TtoString()+System.getProperty("line.separator");
+            affichageTournois.setText(afftmp);
         }
-        //afftmp=listT.get(intTmp-1).JtoString()+System.getProperty("line.separator");
-        //AffJTextArea1.setText(afftmp);
+        
     }//GEN-LAST:event_selectionTournoijListValueChanged
 
     private void ecranTournoiMenuPrincjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ecranTournoiMenuPrincjButtonActionPerformed
@@ -1827,7 +1997,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         }
         for (int i = toRemove.size()-1; i >= 0; i--){
-            listJ2.remove(i);
+            listJ2.remove(listJ2.get(toRemove.get(i)));
         }
         
         
@@ -2166,6 +2336,196 @@ public class MenuPrincipal extends javax.swing.JFrame {
         menuPrinc.setVisible(true);
     }//GEN-LAST:event_mainMenuButton1ActionPerformed
 
+    private void supprimerTournoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supprimerTournoiActionPerformed
+        String s = (String) selectionTournoijList.getSelectedValue();
+        if(s != null && !s.isEmpty()){
+            int intTmp = Integer.valueOf(""+s.charAt(0));
+            try {
+                xml2.supprimerTournoi(intTmp);
+            } catch (TransformerException ex) {
+                Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            ArrayList<Tournoi> listT = xml2.ReadXML();
+            DefaultListModel listM = new DefaultListModel();
+            selectionTournoijList.setModel(listM);
+            String tmp="";
+            String tmpList = "";
+            for (int i=0;i<listT.size();i++){
+                tmp=tmp+" Tournoi n°"+(i+1)+System.getProperty("line.separator");
+                tmpList =(i+1)+" Tournoi n°"+(i+1)+listT.get(i).getNomTournoi();
+                listM.addElement(tmpList);
+            }
+            affichageTournois.setText("");
+        }
+    }//GEN-LAST:event_supprimerTournoiActionPerformed
+
+    private void modifierTournoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifierTournoiActionPerformed
+        ArrayList<Tournoi> listT = xml2.ReadXML();
+        String s = (String) selectionTournoijList.getSelectedValue();
+        int intTmp = -1;
+        if(s != null && !s.isEmpty()){
+            String tmp = ""+s.charAt(0);
+            intTmp = Integer.valueOf(tmp);
+        }
+        if(intTmp != -1){
+            //Faut pas faire comme ça faut créer un nouveau pannel
+            xml2.modifierTournoi(intTmp, listT.get(intTmp-1));
+            accesModifTournoi(intTmp, listT.get(intTmp-1));
+        }
+    }//GEN-LAST:event_modifierTournoiActionPerformed
+
+    private void nomTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomTextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nomTextField3ActionPerformed
+
+    private void dateFTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateFTextField4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dateFTextField4ActionPerformed
+
+    private void lieuTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lieuTextField6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lieuTextField6ActionPerformed
+
+    private void SauvModifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SauvModifActionPerformed
+        String nomTournoi=nomTextField3.getText();
+        String dateDebut= datedTextField3.getText();
+        String dateFin=dateFTextField4.getText();
+        String nbRondes=nbRTextField5.getText();
+        String lieu=lieuTextField6.getText();
+        nom.setForeground(Color.black);
+        dated.setForeground(Color.black);
+        datef.setForeground(Color.black);
+        nbr.setForeground(Color.black);
+        
+        Tournoi t = new Tournoi(nomTournoi,dateDebut,dateFin,nbRondes,lieu);
+        String stmp="Données incorrectes: ";
+        boolean test = true;
+        if(!t.verifDonneesSensiblesCompletes())
+        {
+            test= false;
+            if(t.nomTournoiEstVide()){
+                nom.setForeground(Color.red);
+                stmp += System.getProperty("line.separator")+"Nom Tournoi manquant";
+            }
+            if(t.dateDebutEstVide()){
+                dated.setForeground(Color.red);
+                stmp += System.getProperty("line.separator")+"Date de début manquante";
+            }
+            if(t.dateFinEstVide()){
+                datef.setForeground(Color.red);
+                stmp += System.getProperty("line.separator")+"Date de fin manquante";
+            }
+            if(t.nbRondesEstVide()){
+                nbr.setForeground(Color.red);
+                stmp += System.getProperty("line.separator")+"Nombre de rondes manquant";
+            }
+        }
+        if(!t.verifTailleNomTournoi()){
+            nom.setForeground(Color.red);
+            stmp += System.getProperty("line.separator")+"Nom de tournoi limité à 50 caractères.";
+        }
+        if(!t.verifFormatDateValide(dateDebut))
+        {
+            test= false;
+            if(!t.verifMatchDate(dateDebut)){
+                dated.setForeground(Color.red);
+                stmp += System.getProperty("line.separator")+"Erreur, date invalide format attendu : JJ/MM/AAAA";
+            }
+            if(!t.verifDateValide(dateDebut)){
+                dated.setForeground(Color.red);
+                stmp += System.getProperty("line.separator")+"Erreur, date incorrecte";
+            }
+        } 
+        if(!t.verifFormatDateValide(dateFin))
+        {
+            test= false;
+            if(!t.verifMatchDate(dateFin)){
+                dated.setForeground(Color.red);
+                stmp += System.getProperty("line.separator")+"Erreur, date invalide format attendu : JJ/MM/AAAA";
+            }
+            if(!t.verifDateValide(dateFin)){
+                dated.setForeground(Color.red);
+                stmp += System.getProperty("line.separator")+"Erreur, date incorrecte";
+            }
+        }
+        if(t.verifFormatDateValide(dateDebut) && t.verifFormatDateValide(dateFin)){
+            if(!t.verifDateDebut(dateDebut)){
+                test= false;
+                dated.setForeground(Color.red);
+                stmp += System.getProperty("line.separator")+"Erreur, date de début inférieure à la date actuelle.";
+            }
+            if(!t.verifDateDebutAvantDateFin(dateDebut, dateFin)){
+                test= false;
+                stmp += System.getProperty("line.separator")+"Erreur, date de début plus récente que date de fin.";
+            }
+        }
+        if(!t.verifNbRondes()){
+            test = false;
+            stmp += System.getProperty("line.separator")+"Erreur, le nombre de rondes doit être positif.";
+        }
+        msgErreurT1.setText(stmp);
+        if(test){
+            msgErreurT1.setText("Tournoi modifi�!");
+            xml2.modifierTournoi(IDT,t);
+        }
+    }//GEN-LAST:event_SauvModifActionPerformed
+
+    private void menuprincT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuprincT1ActionPerformed
+         nomTextField1.setText("");
+        datedTextField2.setText("");
+        dateFTextField3.setText("");
+        nbRTextField4.setText("");
+        lieuTextField5.setText("");
+        msgErreurT.setText("");
+        nom.setForeground(Color.black);
+        dated.setForeground(Color.black);
+        datef.setForeground(Color.black);
+        nbr.setForeground(Color.black);
+        selectionTournoi.setVisible(false);
+        creationJoueur.setVisible(false);
+        afficherJoueur.setVisible(false);
+        creationTournoi.setVisible(false);
+        ecranTournoi.setVisible(false);
+        ajoutJoueurTournoi.setVisible(false);
+        modifierTournoiJPanel.setVisible(false);
+        remove(selectionTournoi);
+        remove(creationJoueur);
+        remove(afficherJoueur);
+        remove(creationTournoi);
+        remove(ecranTournoi);
+        remove(ajoutJoueurTournoi);
+        remove(modifierTournoiJPanel);
+        add(menuPrinc);
+        menuPrinc.setVisible(true);
+    }//GEN-LAST:event_menuprincT1ActionPerformed
+    private void accesModifTournoi(int idT, Tournoi T){
+        
+        selectionTournoi.setVisible(false);
+        menuPrinc.setVisible(false);
+        afficherJoueur.setVisible(false);
+        creationTournoi.setVisible(false);
+        ecranTournoi.setVisible(false);
+        ajoutJoueurTournoi.setVisible(false);
+        modifierJoueur.setVisible(false);
+        remove(selectionTournoi);
+        remove(menuPrinc);
+        remove(afficherJoueur);
+        remove(creationTournoi);
+        remove(ecranTournoi);
+        remove(ajoutJoueurTournoi);
+        remove(creationJoueur);
+        add(modifierTournoiJPanel);
+        nomTextField3.setText(T.getNomTournoi());
+        datedTextField3.setText(T.getDateDebut());
+        dateFTextField4.setText(T.getDateFin());
+        nbRTextField5.setText(""+T.getNbRondes());
+        lieuTextField6.setText(T.getLieu());
+        retourTextArea1.setText("");
+        IDT = idT;
+        Tmodif = T;
+        
+        modifierTournoiJPanel.setVisible(true);
+    }
     /**
      * @param args the command line arguments
      */
@@ -2206,9 +2566,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextArea AffJTextArea1;
     private javax.swing.JButton AjoutJoueurTournoiRetourjButton;
     private javax.swing.JButton AjouteJoueurTournoiRemovejButton;
+    private javax.swing.JButton SauvModif;
     private javax.swing.JButton SelectionTournoi;
     private javax.swing.JButton SelectionTournoiMenuPrincjButton;
     private javax.swing.JList<String> affichageJoueurList;
+    private javax.swing.JTextArea affichageTournois;
     private javax.swing.JPanel afficherJoueur;
     private javax.swing.JList<String> ajoutJoueurTounroiJoueurDedansjList;
     private javax.swing.JList<String> ajoutJoueurTounroiJoueurDehorsjList;
@@ -2217,7 +2579,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton ajoutJoueurTournoiConfirmerjButton;
     private javax.swing.JLabel ajoutJoueurTournoiMessagejLabel;
     private javax.swing.JButton ajouterJoueurjButton;
-    private javax.swing.JButton btnafficherJ;
     private javax.swing.JButton cleanT;
     private javax.swing.JToggleButton clearButton;
     private javax.swing.JToggleButton clearButton1;
@@ -2230,17 +2591,23 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel creationJoueur;
     private javax.swing.JPanel creationTournoi;
     private javax.swing.JTextField dateFTextField3;
+    private javax.swing.JTextField dateFTextField4;
     private javax.swing.JLabel dateFormatLabel;
     private javax.swing.JLabel dateFormatLabel1;
     private javax.swing.JLabel dateFormatLabel2;
     private javax.swing.JLabel dateFormatLabel3;
+    private javax.swing.JLabel dateFormatLabel4;
+    private javax.swing.JLabel dateFormatLabel5;
     private javax.swing.JLabel dateLabel;
     private javax.swing.JLabel dateLabel1;
     private javax.swing.JTextField dateTextField;
     private javax.swing.JTextField dateTextField1;
     private javax.swing.JLabel dated;
+    private javax.swing.JLabel dated1;
     private javax.swing.JTextField datedTextField2;
+    private javax.swing.JTextField datedTextField3;
     private javax.swing.JLabel datef;
+    private javax.swing.JLabel datef1;
     private javax.swing.JPanel ecranTournoi;
     private javax.swing.JButton ecranTournoiMenuPrincjButton;
     private javax.swing.JLabel eloNormalLabel;
@@ -2267,7 +2634,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -2275,12 +2644,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JLabel licenceLabel;
     private javax.swing.JLabel licenceLabel1;
     private javax.swing.JTextField licenceTextField;
     private javax.swing.JTextField licenceTextField1;
     private javax.swing.JLabel lieu;
+    private javax.swing.JLabel lieu1;
     private javax.swing.JTextField lieuTextField5;
+    private javax.swing.JTextField lieuTextField6;
     private javax.swing.JLabel ligueLabel;
     private javax.swing.JLabel ligueLabel1;
     private javax.swing.JTextField ligueTextField;
@@ -2289,17 +2661,25 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton mainMenuButton1;
     private javax.swing.JPanel menuPrinc;
     private javax.swing.JButton menuprincT;
+    private javax.swing.JButton menuprincT1;
     private javax.swing.JPanel modifierJoueur;
     private javax.swing.JButton modifierJoueurButton;
+    private javax.swing.JButton modifierTournoi;
+    private javax.swing.JPanel modifierTournoiJPanel;
     private javax.swing.JTextArea msgErreurT;
+    private javax.swing.JTextArea msgErreurT1;
     private javax.swing.JTextField nbRTextField4;
+    private javax.swing.JTextField nbRTextField5;
     private javax.swing.JLabel nbr;
+    private javax.swing.JLabel nbr1;
     private javax.swing.JLabel nom;
+    private javax.swing.JLabel nom1;
     private javax.swing.JLabel nomLabel;
     private javax.swing.JLabel nomLabel1;
     private javax.swing.JTextField nomTextField;
     private javax.swing.JTextField nomTextField1;
     private javax.swing.JTextField nomTextField2;
+    private javax.swing.JTextField nomTextField3;
     private javax.swing.JLabel noteLabel;
     private javax.swing.JLabel noteLabel1;
     private javax.swing.JLabel prenomLabel;
@@ -2318,6 +2698,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel sexeLabel;
     private javax.swing.JLabel sexeLabel1;
     private javax.swing.JButton supprimerJoueurButton;
+    private javax.swing.JButton supprimerTournoi;
     private javax.swing.JLabel titleMenuLabel;
     private javax.swing.JLabel titleMenuLabel1;
     // End of variables declaration//GEN-END:variables

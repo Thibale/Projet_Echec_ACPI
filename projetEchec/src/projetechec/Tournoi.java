@@ -223,5 +223,11 @@ public class Tournoi {
     public ArrayList<Joueurs> getJoueurs(){
         return this.joueurs;
     }
-    
+    public String TtoString(){
+        return  "Nom tournoi : " + this.nomTournoi +System.getProperty("line.separator")+
+                "Date de début : " + this.dateDebut +System.getProperty("line.separator")+ 
+                "Date de fin : " + this.dateFin +System.getProperty("line.separator")+
+                "Nombre de rondes : " + this.nbRondes +System.getProperty("line.separator")+
+                "Lieu : "+ this.lieu +System.getProperty("line.separator");
+    }
 }
