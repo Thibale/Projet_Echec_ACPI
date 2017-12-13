@@ -213,7 +213,7 @@ public class XML {
                 Element clubtmp = (Element) joueur.getElementsByTagName("club").item(0);
                 clubJ = clubtmp.getAttribute("club");
                 
-                Joueurs jtmp= new Joueurs(idJ,numLicenceJ,nomJ,prenomJ,numEloNormalJ,numEloSemiRapideJ,numEloRapideJ,categorieJ,dateNaisJ,sexeJ,federationJ,ligueJ,clubJ);
+                Joueurs jtmp= new Joueurs(numLicenceJ,nomJ,prenomJ,numEloNormalJ,numEloSemiRapideJ,numEloRapideJ,categorieJ,dateNaisJ,sexeJ,federationJ,ligueJ,clubJ);
                 
                 listJoueurs.add(jtmp);
             }	
@@ -397,7 +397,7 @@ public class XML {
         Element clubtmp = (Element) joueur.getElementsByTagName("club").item(0);
         clubJ = clubtmp.getAttribute("club");
 
-        Joueurs jtmp= new Joueurs(idJ,numLicenceJ,nomJ,prenomJ,numEloNormalJ,numEloSemiRapideJ,numEloRapideJ,categorieJ,dateNaisJ,sexeJ,federationJ,ligueJ,clubJ);
+        Joueurs jtmp= new Joueurs(numLicenceJ,nomJ,prenomJ,numEloNormalJ,numEloSemiRapideJ,numEloRapideJ,categorieJ,dateNaisJ,sexeJ,federationJ,ligueJ,clubJ);
 
         return jtmp;
     }

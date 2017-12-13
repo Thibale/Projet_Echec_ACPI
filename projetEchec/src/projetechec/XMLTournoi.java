@@ -294,7 +294,7 @@ public class XMLTournoi {
             Element clubtmp = (Element) joueur.getElementsByTagName("club").item(0);
             String clubJ = clubtmp.getAttribute("club");
 
-            Joueurs jtmp= new Joueurs(idJ,numLicenceJ,nomJ,prenomJ,numEloNormalJ,numEloSemiRapideJ,numEloRapideJ,categorieJ,dateNaisJ,sexeJ,federationJ,ligueJ,clubJ);
+            Joueurs jtmp= new Joueurs(numLicenceJ,nomJ,prenomJ,numEloNormalJ,numEloSemiRapideJ,numEloRapideJ,categorieJ,dateNaisJ,sexeJ,federationJ,ligueJ,clubJ);
 
             jList.add(jtmp);
         }

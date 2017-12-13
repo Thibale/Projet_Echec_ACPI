@@ -24,7 +24,7 @@ public class Joueurs {
     private String ligueJ;
     private String clubJ;
     
-    public Joueurs(String numLicence,String nom,String prenom,String numEloNormal,String numEloSemiRapide,String numEloRapide,String dateNais,String sexe,String federation,String ligue,String club){
+    public Joueurs(String numLicence,String nom,String prenom,String numEloNormal,String numEloSemiRapide,String numEloRapide,String cat,String dateNais,String sexe,String federation,String ligue,String club){
         idJ=0;
         numLicenceJ=numLicence;
         nomJ=nom;
@@ -32,52 +32,18 @@ public class Joueurs {
         if("".equals(numEloNormal)){
             numEloNormalJ="NC";
         }else{
-            if(this.verifFormatEloValide(numEloNormal)){
-                numEloNormalJ=numEloNormal;
-            }
+            numEloNormalJ=numEloNormal;
         }
         if("".equals(numEloSemiRapide)){
             numEloSemiRapideJ="NC";
         }else{
-            if(this.verifFormatEloValide(numEloSemiRapide))
-                numEloSemiRapideJ=numEloSemiRapide;
+            numEloRapideJ=numEloRapide;
         }
         if("".equals(numEloRapide)){
             numEloRapideJ="NC";
         }else{
-            if(this.verifFormatEloValide(numEloRapide))
-                numEloRapideJ=numEloRapide;
-        }
-        categorieJ=this.calculCategorie(sexe,dateNais);
-        dateNaisJ=dateNais;
-        sexeJ=sexe;
-        federationJ=federation;
-        ligueJ=ligue;
-        clubJ=club;
-    }
-    public Joueurs(int id,String numLicence,String nom,String prenom,String numEloNormal,String numEloSemiRapide,String numEloRapide,String dateNais,String sexe,String federation,String ligue,String club){
-        idJ=id;
-        numLicenceJ=numLicence;
-        nomJ=nom;
-        prenomJ=prenom;
-        numEloNormalJ=numEloNormal;
-        numEloSemiRapideJ=numEloSemiRapide;
-        numEloRapideJ=numEloRapide;
-        categorieJ=this.calculCategorie(sexe,dateNais);
-        dateNaisJ=dateNais;
-        sexeJ=sexe;
-        federationJ=federation;
-        ligueJ=ligue;
-        clubJ=club;
-    }
-    public Joueurs(int id,String numLicence,String nom,String prenom,String numEloNormal,String numEloSemiRapide,String numEloRapide,String cat,String dateNais,String sexe,String federation,String ligue,String club){
-        idJ=id;
-        numLicenceJ=numLicence;
-        nomJ=nom;
-        prenomJ=prenom;
-        numEloNormalJ=numEloNormal;
-        numEloSemiRapideJ=numEloSemiRapide;
-        numEloRapideJ=numEloRapide;
+            numEloRapideJ=numEloRapide;
+        }      
         categorieJ=cat;
         dateNaisJ=dateNais;
         sexeJ=sexe;
@@ -85,24 +51,8 @@ public class Joueurs {
         ligueJ=ligue;
         clubJ=club;
     }
-    public Joueurs(String nom, String prenom, String dateN, String sexe){
-        idJ=0;
-        numLicenceJ="";
-        nomJ=nom;
-        prenomJ=prenom;
-        numEloNormalJ="NC";
-        numEloSemiRapideJ="NC";
-        numEloRapideJ="NC";
-        categorieJ="";
-        dateNaisJ=dateN;
-        sexeJ=sexe;
-        federationJ="";
-        ligueJ="";
-        clubJ="";
-    }
-    
-    /* Assesseurs */
-
+   
+    // Assesseurs
     public int getIdJ(){
         return this.idJ;
     }
@@ -181,263 +131,6 @@ public class Joueurs {
     }
     public void setClubJ(String club){
         this.clubJ = club;
-    }
-    
-    public String calculCategorie(String sexe, String date){
-        String tmp = this.conversionDate(date);
-        String cat = "";
-        if(this.verifFormatDateValide(date)){
-            LocalDate dob = LocalDate.parse(tmp);
-            LocalDate curDate = LocalDate.now();
-            int age = Period.between(dob, curDate).getYears();
-            if(age < 8){
-                cat = cat+"pPo";
-            }else if(age < 10){
-                cat = cat+"Po";
-            }else if(age < 12){
-                cat = cat+"Pu";
-            }else if(age < 14){
-                cat = cat+"Ben";
-            }else if(age < 16){
-                cat = cat+"Min";
-            }else if(age < 18){
-                cat = cat+"Cad";
-            }else if(age < 20){
-                cat = cat+"Jun";
-            }else if(age < 50){
-                cat = cat+"Sen";
-            }else if(age < 60){
-                cat = cat+"SeP";
-            }else{
-                cat = cat+"Vet";
-            }
-            cat = cat+sexe;
-        }else{
-            cat = "Categorie non accessible.";
-        }
-        return cat;
-    }
-    
-    public String conversionDate(String date){
-        //FROM JJ/MM/AAAA
-        //TO AAAA-MM-JJ
-        String tmp = "";
-        if(date.length() >= 10){
-            tmp = tmp + date.charAt(6) + date.charAt(7) + date.charAt(8) + date.charAt(9);
-            tmp += "-";
-            tmp = tmp + date.charAt(3) + date.charAt(4);
-            tmp += "-";
-            tmp = tmp + date.charAt(0) + date.charAt(1);
-        }
-        return tmp;
-    }
-    
-    public boolean verifDateNaiss(String dateNaissance){
-        String tmp = this.conversionDate(dateNaissance);
-        boolean verif = true;
-        LocalDate dateNaiss = LocalDate.parse(tmp);
-        LocalDate curDate = LocalDate.now();
-        if (dateNaiss.compareTo(curDate) > 0){
-            verif = false;
-            //messageErreur += System.getProperty("line.separator") + "Erreur, date de naissance plus récente que la date actuelle.";
-        }
-        return verif;
-    }
-    
-    public boolean verifMatchDate(String date){
-        return date.matches("([0-9]{2})/([0-9]{2})/([0-9]{4})"); 
-        //messageErreur += "Erreur, date invalide format attendu : JJ-MM-AAAA";
-    }
-
-    public boolean verifDateValide(String date){
-        String tmp =  this.conversionDate(date);
-        boolean checkFormat = true;
-        Date datetmp = null;
-        String format = "yyyy-MM-dd";
-        try {
-            SimpleDateFormat sdf = new SimpleDateFormat(format);
-            datetmp = sdf.parse(tmp);
-            if (!tmp.equals(sdf.format(datetmp))) {
-                datetmp = null;
-            }
-        } catch (ParseException ex) {
-        }
-        if (datetmp == null) {
-            checkFormat = false;
-            //messageErreur += "Erreur, date incorrecte";
-        }
-        return checkFormat;
-    }
-
-    public boolean verifFormatDateValide(String date){
-        boolean checkFormat;
-
-        checkFormat = this.verifMatchDate(date);
-
-        if(checkFormat){
-            checkFormat = this.verifDateValide(date);
-        }
-        return checkFormat;
-    }
-    
-    
-    public boolean verifFormatNomValide(){
-        boolean res = true;
-        if(!this.nomJ.matches("\\p{L}*\\s\\p{L}*") && !this.nomJ.matches("\\p{L}*[-]\\p{L}*") && !this.nomJ.matches("\\p{L}*")){
-            res = false;
-            //RetourCreation.setText("Erreur, nom invalide");
-        }
-        return res;
-    }
-    
-    public boolean verifTailleNomJoueur(){
-        boolean verif = true;
-        if(this.nomJ.length() > 50){
-            verif = false;
-        }
-        return verif;
-    }
-    
-    public boolean verifFormatPrenomValide(){
-        boolean res = true;
-        if(!this.prenomJ.matches("\\p{L}*\\s\\p{L}*") && !this.prenomJ.matches("\\p{L}*[-]\\p{L}*") && !this.prenomJ.matches("\\p{L}*")){
-            res = false;
-            //RetourCreation.setText("Erreur, prenom invalide");
-        }
-        return res;
-    }
-    
-    public boolean verifTaillePrenomJoueur(){
-        boolean verif = true;
-        if(this.prenomJ.length() > 50){
-            verif = false;
-        }
-        return verif;
-    }
-    
-    public boolean verifFormatEloValide(String elo){
-        boolean res = true;
-        if("NC".equals(elo)){
-            elo = "";
-        }
-        if(!"".equals(elo)){
-
-            if((!elo.matches("[0-9]{4}") && !elo.matches("[0-9]{3}"))){
-                res = false;
-                //RetourCreation.setText("Erreur, elo invalide");
-            }
-        }
-        return res;
-    }
-    
-    public boolean verifFormatEloPositif(String elo){
-        boolean res = true;
-        if("NC".equals(elo)){
-            elo = "";
-        }
-        if(!"".equals(elo)){
-            if(!elo.matches("[^-]*")){
-                res = false;
-                //RetourCreation.setText("Erreur, elo invalide");
-            }
-        }
-        return res;
-    }
-    
-    public boolean verifFormatElo900To3000(String elo){
-        boolean res = true;
-        if("NC".equals(elo)){
-            elo = "";
-        }
-        if((!"".equals(elo)) && verifFormatEloValide(elo)){
-            if(Integer.valueOf(elo) < 900 || Integer.valueOf(elo) > 3000){
-                res = false;
-                //RetourCreation.setText("Erreur, elo invalide");
-            }
-        }
-        return res;
-    }
-    
-    public boolean verifFormatLigueValide(){
-        boolean res = true;
-        if(!"".equals(this.ligueJ)){
-            if(!this.ligueJ.matches("[A-Za-z-]*") || this.ligueJ.length() != 3){
-                res = false;
-                //RetourCreation.setText("Erreur, ligue invalide");
-            }
-        }
-        return res;
-    }
-    
-    public boolean verifFormatFedValide(){
-        boolean res = true;
-        if(!"".equals(this.federationJ)){
-            if(!this.federationJ.matches("[A-Za-z-]*") || this.federationJ.length() != 3){
-                res = false;
-                //RetourCreation.setText("Erreur, fédération invalide");
-            }
-        }
-        return res;
-    }
-    
-    public boolean nomEstVide(){
-        return "".equals(this.nomJ);
-    }
-    
-    public boolean prenomEstVide(){
-        return "".equals(this.prenomJ);
-    }
-    
-    public boolean sexeEstVide(){
-        return "".equals(this.sexeJ);
-    }
-    
-    public boolean dateEstVide(){
-        return "".equals(this.dateNaisJ);
-    }
-    
-    public boolean verifDonneeEnregistrementJoueur(){
-        boolean res = true;
-        if(this.nomEstVide()){
-            res = false;
-        }
-        if(this.prenomEstVide()){
-            res = false;
-        }
-        if(this.sexeEstVide()){
-            res = false;
-        }
-        if(this.dateEstVide()){
-            res = false;
-        }
-        return res;
-    }
-    
-    public boolean verifNumLicenceValide(){
-        boolean res = true;
-        if(!"".equals(this.numLicenceJ)){
-            if(!this.numLicenceJ.matches("[A-Z]{1}[0-9]{5}")){
-                res = false;
-                //RetourCreation.setText("Erreur, fédération invalide");
-            }
-        }
-        return res;
-    }
-    
-    public boolean verifJoueurExistant(ArrayList<Joueurs> j){
-        boolean verif = true;
-        for(int i = 0 ; i < j.size() ; i++){
-            if(!"".equals(this.numLicenceJ)){
-                if(this.numLicenceJ.equals(j.get(i).getNumLicenceJ())){
-                    verif = false;
-                }
-            }else{
-                if(this.nomJ.equals(j.get(i).getNomJ()) && this.prenomJ.equals(j.get(i).getPrenomJ()) && this.dateNaisJ.equals(j.get(i).getDateNaisJ())){
-                    verif = false;
-                }
-            }
-        }
-        return verif;
     }
     
     public String JtoString(){

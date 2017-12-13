@@ -12,18 +12,9 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.xml.transform.TransformerException;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author aaraby
- */
 public class MenuPrincipal extends javax.swing.JFrame {
 
+    private static ControllerJoueur controllerJoueur= new ControllerJoueur();
     public static XML xml1 = new XML();
     public static XMLTournoi xml2 = new XMLTournoi();
     
@@ -1536,7 +1527,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_retourMenuAffActionPerformed
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-        String nom = nomTextField.getText(); //Vérification des champs qui ne peuvent pas être nuls
+        String nom = nomTextField.getText();
         String prenom = prenomTextField.getText();
         String dateDeNaissance = dateTextField.getText();
         String sexe = jComboBox1.getSelectedItem().toString();
@@ -1552,161 +1543,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         sexeLabel.setForeground(Color.black);
         dateLabel.setForeground(Color.black);
         
-        Joueurs j = new Joueurs(licence,nom,prenom,eloN,eloSR,eloR,dateDeNaissance,sexe,fed,lig,clb);
-        String stmp="Données incorrectes: ";
-        boolean test = true;
-        if(!j.verifDonneeEnregistrementJoueur())
-        {
-            test= false;
-            if(j.nomEstVide()){
-                nomLabel.setForeground(Color.red);
-                stmp += System.getProperty("line.separator")+"Nom Joueur manquant";
-            } 
-            if(j.prenomEstVide()){
-                prenomLabel.setForeground(Color.red);
-                stmp += System.getProperty("line.separator")+"Prénom Joueur manquant";
-            }
-            if(j.sexeEstVide()){
-                sexeLabel.setForeground(Color.red);
-                stmp += System.getProperty("line.separator")+"Sexe Joueur manquant";
-            }
-            if(j.dateEstVide()){
-                nbr.setForeground(Color.red);
-                stmp += System.getProperty("line.separator")+"Date de naissance manquante";
-            }
-        }else{
-            if(!j.verifFormatNomValide()){
-                test= false;
-                nomLabel.setForeground(Color.red);
-                stmp += System.getProperty("line.separator")+"Nom Joueur invalide";
-            }
-            if(!j.verifFormatPrenomValide()){
-                test= false;
-                prenomLabel.setForeground(Color.red);
-                stmp += System.getProperty("line.separator")+"Prénom Joueur invalide";
-            }
-        }
-        
-        if(!j.verifTailleNomJoueur()){
-            nomLabel.setForeground(Color.red);
-            stmp += System.getProperty("line.separator")+"Nom de joueur limité à 50 caractères.";
-        }
-        
-        if(!j.verifTaillePrenomJoueur()){
-            prenomLabel.setForeground(Color.red);
-            stmp += System.getProperty("line.separator")+"Prénom de joueur limité à 50 caractères.";
-        }
-        
-        if(!j.verifNumLicenceValide()){
-            test = false;
-            stmp += System.getProperty("line.separator")+"Erreur, Format de licence incorrecte, format attendu : A12345";
-        }
-        
-        if(!j.verifFormatDateValide(dateDeNaissance))
-        {
-            test = false;
-            if(!j.verifMatchDate(dateDeNaissance)){
-                dateLabel.setForeground(Color.red);
-                stmp += System.getProperty("line.separator")+"Erreur, date invalide format attendu : JJ/MM/AAAA";
-            }else{
-                if(!j.verifDateValide(dateDeNaissance)){
-                    dateLabel.setForeground(Color.red);
-                    stmp += System.getProperty("line.separator")+"Erreur, date incorrecte";
-                }
-            }
-        } 
-        if(j.verifFormatDateValide(dateDeNaissance)){
-            if(!j.verifDateNaiss(dateDeNaissance)){
-                test= false;
-                dateLabel.setForeground(Color.red);
-                stmp += System.getProperty("line.separator")+"Erreur, date de naissance supérieure à la date actuelle.";
-            }
-        }
-        
-        if(!j.verifFormatEloValide(eloN)){
-            test= false;
-            stmp += System.getProperty("line.separator")+"Erreur, Elo Classique invalide.";
-        }
-        
-        if(!j.verifFormatEloPositif(eloN)){
-            test= false;
-            stmp += System.getProperty("line.separator")+"Erreur, Elo Classique négatif.";
-        }
-        
-        if(!j.verifFormatElo900To3000(eloN)){
-            test= false;
-            stmp += System.getProperty("line.separator")+"Erreur, Elo Classique doit être compris entre 900 et 3000.";
-        }
-        
-        if(!j.verifFormatEloValide(eloR)){
-            test= false;
-            stmp += System.getProperty("line.separator")+"Erreur, Elo Rapide invalide.";
-        }
-        
-        if(!j.verifFormatEloPositif(eloR)){
-            test= false;
-            stmp += System.getProperty("line.separator")+"Erreur, Elo Rapide négatif.";
-        }
-        
-        if(!j.verifFormatElo900To3000(eloR)){
-            test= false;
-            stmp += System.getProperty("line.separator")+"Erreur, Elo Rapide doit être compris entre 900 et 3000.";
-        }
-        
-        if(!j.verifFormatEloValide(eloSR)){
-            test= false;
-            stmp += System.getProperty("line.separator")+"Erreur, Elo SemiRapide invalide.";
-        }
-        
-        if(!j.verifFormatEloPositif(eloSR)){
-            test= false;
-            stmp += System.getProperty("line.separator")+"Erreur, Elo SemiRapide négatif.";
-        }
-        
-        if(!j.verifFormatElo900To3000(eloSR)){
-            test= false;
-            stmp += System.getProperty("line.separator")+"Erreur, Elo SemiRapide doit être compris entre 900 et 3000.";
-        }
-        
-        if(!j.verifFormatLigueValide()){
-            test= false;
-            stmp += System.getProperty("line.separator")+"Erreur, ligue invalide.";
-        }
-        
-        if(!j.verifFormatFedValide()){
-            test= false;
-            stmp += System.getProperty("line.separator")+"Erreur, Federation invalide.";
-        }
-        boolean test2 = false;
-        if(test){
-            ArrayList<Joueurs> listJ = xml1.ReadXML();
-            if(!j.verifJoueurExistant(listJ)){
-                stmp += System.getProperty("line.separator")+"Erreur, ce joueur existe déjà .";
-            }else{
-                test2 = true;
-            }
-        }
-        retourTextArea.setText(stmp);
-        if(test2){
-            retourTextArea.setText("Joueur créé avec succès !");
-            xml1.WriteXML(j);
-            nomTextField.setText("");
-            prenomTextField.setText("");
-            dateTextField.setText("");
-            licenceTextField.setText("");
-            federationTextField.setText("");
-            ligueTextField.setText("");
-            clubTextField.setText("");
-            eloNormalTextField.setText("");
-            eloSemiRapideTextField.setText("");
-            eloRapideTextField.setText("");
-            nomLabel.setForeground(Color.black);
-            prenomLabel.setForeground(Color.black);
-            sexeLabel.setForeground(Color.black);
-            dateLabel.setForeground(Color.black);
-        }
+        Joueurs j = controllerJoueur.creerJoueur(licence,nom,prenom,eloN,eloSR,eloR,dateDeNaissance,sexe,fed,lig,clb);
+        controllerJoueur.saveJoueur(j, nomLabel, prenomLabel, sexeLabel, dateLabel, retourTextArea);
     }//GEN-LAST:event_saveButtonActionPerformed
-
+    
     private void cleanTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cleanTActionPerformed
         nomTextField1.setText("");
         datedTextField2.setText("");
@@ -2201,7 +2041,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_ajoutJoueurTournoiConfirmerjButtonActionPerformed
 
     private void saveButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButton1ActionPerformed
-        //Bouton de sauvegarde lors d'une modif
+        /*//Bouton de sauvegarde lors d'une modif
         String nom = nomTextField2.getText(); //Vérification des champs qui ne peuvent pas être nuls
         String prenom = prenomTextField1.getText();
         String dateDeNaissance = dateTextField1.getText();
@@ -2352,12 +2192,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 test2 = true;
             }
         }*/
-        retourTextArea1.setText(stmp);
+        /*retourTextArea1.setText(stmp);
         if(test){
             retourTextArea1.setText("Joueur modifié !");
             xml1.modifierJoueur(IDJ, j);
         }
-        //xml1.modifierJoueur(IDJ, Jmodif);
+        //xml1.modifierJoueur(IDJ, Jmodif);*/
     }//GEN-LAST:event_saveButton1ActionPerformed
 
     private void nomTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomTextField2ActionPerformed
