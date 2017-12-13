@@ -255,158 +255,169 @@ public class ControllerJoueur {
         }
         return cat;
     }
-    public void saveJoueur(Joueurs j, JLabel nomLabel, JLabel prenomLabel, JLabel sexeLabel, JLabel dateLabel, JTextArea retour ){
+    
+    public boolean allVerifJoueur(Joueurs j, JLabel nomLabel, JLabel prenomLabel, JLabel sexeLabel, JLabel dateLabel, JTextArea retour){
         String stmp="Données incorrectes: ";
-        boolean test = true;
+        boolean verif = true;
         if(!verifDonneeEnregistrementJoueur(j))
         {
-            test= false;
+            verif= false;
             if(stringEstVide(j.getNomJ())){
                 nomLabel.setForeground(Color.red);
-                stmp += System.getProperty("line.separator")+"Nom Joueur manquant";
+                stmp += System.lineSeparator()+"Nom Joueur manquant";
             } 
             if(stringEstVide(j.getPrenomJ())){
                 prenomLabel.setForeground(Color.red);
-                stmp += System.getProperty("line.separator")+"Prénom Joueur manquant";
+                stmp += System.lineSeparator()+"Prénom Joueur manquant";
             }
             if(stringEstVide(j.getSexeJ())){
                 sexeLabel.setForeground(Color.red);
-                stmp += System.getProperty("line.separator")+"Sexe Joueur manquant";
+                stmp += System.lineSeparator()+"Sexe Joueur manquant";
             }
             if(stringEstVide(j.getDateNaisJ())){
                 dateLabel.setForeground(Color.red);
-                stmp += System.getProperty("line.separator")+"Date de naissance manquante";
+                stmp += System.lineSeparator()+"Date de naissance manquante";
             }
         }else{
             if(!verifFormatNomValide(j.getNomJ())){
-                test= false;
+                verif= false;
                 nomLabel.setForeground(Color.red);
-                stmp += System.getProperty("line.separator")+"Nom Joueur invalide";
+                stmp += System.lineSeparator()+"Nom Joueur invalide";
             }
             if(!verifFormatNomValide(j.getPrenomJ())){
-                test= false;
+                verif= false;
                 prenomLabel.setForeground(Color.red);
-                stmp += System.getProperty("line.separator")+"Prénom Joueur invalide";
+                stmp += System.lineSeparator()+"Prénom Joueur invalide";
             }
         }
         
         if(!verifTailleNomJoueur(j.getNomJ())){
             nomLabel.setForeground(Color.red);
-            stmp += System.getProperty("line.separator")+"Nom de joueur limité à 50 caractères.";
+            stmp += System.lineSeparator()+"Nom de joueur limité à 50 caractères.";
         }
         
         if(!verifTailleNomJoueur(j.getPrenomJ())){
             prenomLabel.setForeground(Color.red);
-            stmp += System.getProperty("line.separator")+"Prénom de joueur limité à 50 caractères.";
+            stmp += System.lineSeparator()+"Prénom de joueur limité à 50 caractères.";
         }
         
         if(!verifNumLicenceValide(j.getNumLicenceJ())){
-            test = false;
-            stmp += System.getProperty("line.separator")+"Erreur, Format de licence incorrecte, format attendu : A12345";
+            verif = false;
+            stmp += System.lineSeparator()+"Erreur, Format de licence incorrecte, format attendu : A12345";
         }
         
         if(!verifFormatDateValide(j.getDateNaisJ()))
         {
-            test = false;
+            verif = false;
             if(!verifMatchDate(j.getDateNaisJ())){
                 dateLabel.setForeground(Color.red);
-                stmp += System.getProperty("line.separator")+"Erreur, date invalide format attendu : JJ/MM/AAAA";
+                stmp += System.lineSeparator()+"Erreur, date invalide format attendu : JJ/MM/AAAA";
             }else{
                 if(!verifDateValide(j.getDateNaisJ())){
                     dateLabel.setForeground(Color.red);
-                    stmp += System.getProperty("line.separator")+"Erreur, date incorrecte";
+                    stmp += System.lineSeparator()+"Erreur, date incorrecte";
                 }
             }
         } 
         else{
             if(!verifDateNaiss(j.getDateNaisJ())){
-                test= false;
+                verif= false;
                 dateLabel.setForeground(Color.red);
-                stmp += System.getProperty("line.separator")+"Erreur, date de naissance supérieure à la date actuelle.";
+                stmp += System.lineSeparator()+"Erreur, date de naissance supérieure à la date actuelle.";
             }
         }
         
         if(!verifFormatEloValide(j.getNumEloNormalJ())){
-            test= false;
-            stmp += System.getProperty("line.separator")+"Erreur, Elo Classique invalide.";
+            verif= false;
+            stmp += System.lineSeparator()+"Erreur, Elo Classique invalide.";
         }
         
         if(!verifFormatEloPositif(j.getNumEloNormalJ())){
-            test= false;
-            stmp += System.getProperty("line.separator")+"Erreur, Elo Classique négatif.";
+            verif= false;
+            stmp += System.lineSeparator()+"Erreur, Elo Classique négatif.";
         }
         
         if(!verifFormatElo900To3000(j.getNumEloNormalJ())){
-            test= false;
-            stmp += System.getProperty("line.separator")+"Erreur, Elo Classique doit être compris entre 900 et 3000.";
+            verif= false;
+            stmp += System.lineSeparator()+"Erreur, Elo Classique doit être compris entre 900 et 3000.";
         }
         
         if(!verifFormatEloValide(j.getNumEloRapideJ())){
-            test= false;
-            stmp += System.getProperty("line.separator")+"Erreur, Elo Rapide invalide.";
+            verif= false;
+            stmp += System.lineSeparator()+"Erreur, Elo Rapide invalide.";
         }
         
         if(!verifFormatEloPositif(j.getNumEloRapideJ())){
-            test= false;
-            stmp += System.getProperty("line.separator")+"Erreur, Elo Rapide négatif.";
+            verif= false;
+            stmp += System.lineSeparator()+"Erreur, Elo Rapide négatif.";
         }
         
         if(!verifFormatElo900To3000(j.getNumEloRapideJ())){
-            test= false;
-            stmp += System.getProperty("line.separator")+"Erreur, Elo Rapide doit être compris entre 900 et 3000.";
+            verif= false;
+            stmp += System.lineSeparator()+"Erreur, Elo Rapide doit être compris entre 900 et 3000.";
         }
         
         if(!verifFormatEloValide(j.getNumEloSemiRapideJ())){
-            test= false;
-            stmp += System.getProperty("line.separator")+"Erreur, Elo SemiRapide invalide.";
+            verif= false;
+            stmp += System.lineSeparator()+"Erreur, Elo SemiRapide invalide.";
         }
         
         if(!verifFormatEloPositif(j.getNumEloSemiRapideJ())){
-            test= false;
-            stmp += System.getProperty("line.separator")+"Erreur, Elo SemiRapide négatif.";
+            verif= false;
+            stmp += System.lineSeparator()+"Erreur, Elo SemiRapide négatif.";
         }
         
         if(!verifFormatElo900To3000(j.getNumEloSemiRapideJ())){
-            test= false;
-            stmp += System.getProperty("line.separator")+"Erreur, Elo SemiRapide doit être compris entre 900 et 3000.";
+            verif= false;
+            stmp += System.lineSeparator()+"Erreur, Elo SemiRapide doit être compris entre 900 et 3000.";
         }
         
         if(!verifFormatLigueFedValide(j.getLigueJ())){
-            test= false;
-            stmp += System.getProperty("line.separator")+"Erreur, ligue invalide.";
+            verif= false;
+            stmp += System.lineSeparator()+"Erreur, ligue invalide.";
         }
         
         if(!verifFormatLigueFedValide(j.getFederationJ())){
-            test= false;
-            stmp += System.getProperty("line.separator")+"Erreur, Federation invalide.";
+            verif= false;
+            stmp += System.lineSeparator()+"Erreur, Federation invalide.";
         }
-        boolean test2 = false;
-        if(test){
+        
+        if(verif){
+            
             ArrayList<Joueurs> listJ = xmlJoueur.ReadXML();
-            if(!verifJoueurExistantDansList(listJ,j)){
-                stmp += System.getProperty("line.separator")+"Erreur, ce joueur existe déjà .";
+            if(verifJoueurExistantDansList(listJ,j)){
+                stmp += System.lineSeparator()+"Erreur, ce joueur existe déjà .";
             }else{
-                test2 = true;
+                verif = true;
             }
         }
         retour.setText(stmp);
-        if(test2){
+      
+        return verif;
+    }
+    
+    public boolean saveJoueur(Joueurs j, JLabel nomLabel, JLabel prenomLabel, JLabel sexeLabel, JLabel dateLabel, JTextArea retour){
+        
+        boolean verif = allVerifJoueur(j, nomLabel, prenomLabel, sexeLabel, dateLabel, retour);        
+        
+        if(verif){
             retour.setText("Joueur créé avec succès !");
             xmlJoueur.WriteXML(j);
-            /*nomTextField.setText("");
-            prenomTextField.setText("");
-            dateTextField.setText("");
-            licenceTextField.setText("");
-            federationTextField.setText("");
-            ligueTextField.setText("");
-            clubTextField.setText("");
-            eloNormalTextField.setText("");
-            eloSemiRapideTextField.setText("");
-            eloRapideTextField.setText("");
-            nomLabel.setForeground(Color.black);
-            prenomLabel.setForeground(Color.black);
-            sexeLabel.setForeground(Color.black);
-            dateLabel.setForeground(Color.black);*/
+            return true;
         }
+        return false;
     }
+    
+    public boolean modifieJoueur(Joueurs j, int idJ, JLabel nomLabel, JLabel prenomLabel, JLabel sexeLabel, JLabel dateLabel, JTextArea retour){
+        
+        boolean verif = allVerifJoueur(j, nomLabel, prenomLabel, sexeLabel, dateLabel, retour);        
+        
+        if(verif){
+            retour.setText("Joueur modifié !");
+            xmlJoueur.modifierJoueur(idJ, j);
+            return true;
+        }
+        return false;
+    }
+    
 }

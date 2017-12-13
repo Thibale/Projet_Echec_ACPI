@@ -14,6 +14,7 @@
   
   
   
+  
   <joueurs>
       <joueur>
         <idJoueur idJ="6"/>
@@ -47,18 +48,33 @@
       </joueur>
       <joueur>
         <idJoueur idJ="6"/>
-        <numLicence numLicence=""/>
-        <nomJoueur nomJoueur="Gigi"/>
-        <prenomJoueur prenomJoueur="Thibaut"/>
-        <numEloNormal numEloNormal="NC"/>
-        <numEloSemiRapide numEloSemiRapide="NC"/>
-        <numEloRapide numEloRapide="NC"/>
-        <categorie categorie="JunM"/>
-        <dateNais dateNais="13/05/1998"/>
+        <numLicence numLicence="G25489"/>
+        <nomJoueur nomJoueur="Pierre"/>
+        <prenomJoueur prenomJoueur="Dupond"/>
+        <numEloNormal numEloNormal="1783"/>
+        <numEloSemiRapide numEloSemiRapide="1960"/>
+        <numEloRapide numEloRapide="1664"/>
+        <categorie categorie="SePM"/>
+        <dateNais dateNais="17/08/1960"/>
         <sexe sexe="M"/>
-        <federation federation=""/>
-        <ligue ligue=""/>
-        <club club=""/>
+        <federation federation="FRA"/>
+        <ligue ligue="LAN"/>
+        <club club="Echecs Club Montpellier"/>
+      </joueur>
+      <joueur>
+        <idJoueur idJ="6"/>
+        <numLicence numLicence="T12344"/>
+        <nomJoueur nomJoueur="Durant"/>
+        <prenomJoueur prenomJoueur="Nina"/>
+        <numEloNormal numEloNormal="1587"/>
+        <numEloSemiRapide numEloSemiRapide="2596"/>
+        <numEloRapide numEloRapide="2888"/>
+        <categorie categorie="MinM"/>
+        <dateNais dateNais="25/11/2003"/>
+        <sexe sexe="M"/>
+        <federation federation="ITA"/>
+        <ligue ligue="LAN"/>
+        <club club="Lattes-Echecs"/>
       </joueur>
     </joueurs>
   </tournoi>
@@ -68,9 +84,11 @@
     <dateFin dateFin="12/12/2019"/>
     <nbRondes nbRondes="5"/>
     <lieu lieu="Nîmes"/> 
+  
+  
   <joueurs>
       <joueur>
-        <idJoueur idJ="2"/>
+        <idJoueur idJ="6"/>
         <numLicence numLicence=""/>
         <nomJoueur nomJoueur="Cousin"/>
         <prenomJoueur prenomJoueur="Charlotte"/>
@@ -83,6 +101,36 @@
         <federation federation=""/>
         <ligue ligue=""/>
         <club club=""/>
+      </joueur>
+      <joueur>
+        <idJoueur idJ="6"/>
+        <numLicence numLicence=""/>
+        <nomJoueur nomJoueur="Falcone"/>
+        <prenomJoueur prenomJoueur="Thibaut"/>
+        <numEloNormal numEloNormal="NC"/>
+        <numEloSemiRapide numEloSemiRapide="NC"/>
+        <numEloRapide numEloRapide="NC"/>
+        <categorie categorie="SenM"/>
+        <dateNais dateNais="13/05/1997"/>
+        <sexe sexe="M"/>
+        <federation federation=""/>
+        <ligue ligue=""/>
+        <club club=""/>
+      </joueur>
+      <joueur>
+        <idJoueur idJ="6"/>
+        <numLicence numLicence="T12344"/>
+        <nomJoueur nomJoueur="Durant"/>
+        <prenomJoueur prenomJoueur="Nina"/>
+        <numEloNormal numEloNormal="1587"/>
+        <numEloSemiRapide numEloSemiRapide="2596"/>
+        <numEloRapide numEloRapide="2888"/>
+        <categorie categorie="MinM"/>
+        <dateNais dateNais="25/11/2003"/>
+        <sexe sexe="M"/>
+        <federation federation="ITA"/>
+        <ligue ligue="LAN"/>
+        <club club="Lattes-Echecs"/>
       </joueur>
     </joueurs>
   </tournoi>

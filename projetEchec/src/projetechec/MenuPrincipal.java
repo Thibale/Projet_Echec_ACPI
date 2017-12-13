@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import javax.swing.JPanel;
 import javax.swing.ListModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -35,23 +36,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     
     public MenuPrincipal() {
         initComponents();
-        selectionTournoi.setVisible(false);
-        creationJoueur.setVisible(false);
-        afficherJoueur.setVisible(false);
-        creationTournoi.setVisible(false);
-        ecranTournoi.setVisible(false);
-        ajoutJoueurTournoi.setVisible(false);  
-        modifierTournoiJPanel.setVisible(false); 
-        remove(selectionTournoi);
-        remove(creationJoueur);
-        remove(afficherJoueur);
-        remove(creationTournoi);
-        remove(ecranTournoi);
-        remove(ajoutJoueurTournoi);
-        remove(modifierJoueur);
-        remove(modifierTournoiJPanel);
-        add(menuPrinc);
-        menuPrinc.setVisible(true);
+        initPanel(menuPrinc);
     }
 
     /**
@@ -1349,45 +1334,43 @@ public class MenuPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void createPlayerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createPlayerActionPerformed
+    public void initPanel(JPanel panel){
         
-        selectionTournoi.setVisible(false);
         menuPrinc.setVisible(false);
+        creationJoueur.setVisible(false);
         afficherJoueur.setVisible(false);
         creationTournoi.setVisible(false);
+        selectionTournoi.setVisible(false);
         ecranTournoi.setVisible(false);
         ajoutJoueurTournoi.setVisible(false);
         modifierJoueur.setVisible(false);
-        remove(selectionTournoi);
+        modifierTournoiJPanel.setVisible(false);
+        
         remove(menuPrinc);
+        remove(creationJoueur);
         remove(afficherJoueur);
         remove(creationTournoi);
+        remove(selectionTournoi);
         remove(ecranTournoi);
         remove(ajoutJoueurTournoi);
         remove(modifierJoueur);
-        add(creationJoueur);
-        creationJoueur.setVisible(true);
+        remove(modifierTournoiJPanel);
+        
+        panel.setVisible(true);
+        add(panel);
+        
+    }
+        
+    private void createPlayerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createPlayerActionPerformed
+        
+        initPanel(creationJoueur);
+        
     }//GEN-LAST:event_createPlayerActionPerformed
 
     private void accesModifJoueur(int idJ, Joueurs J){
         
-        selectionTournoi.setVisible(false);
-        menuPrinc.setVisible(false);
-        afficherJoueur.setVisible(false);
-        creationTournoi.setVisible(false);
-        ecranTournoi.setVisible(false);
-        ajoutJoueurTournoi.setVisible(false);
-        modifierJoueur.setVisible(false);
-        remove(selectionTournoi);
-        remove(menuPrinc);
-        remove(afficherJoueur);
-        remove(creationTournoi);
-        remove(ecranTournoi);
-        remove(ajoutJoueurTournoi);
-        remove(creationJoueur);
-        add(modifierJoueur);
+        initPanel(modifierJoueur);
         
-        modifierJoueur.setVisible(true);
         nomTextField2.setText(J.getNomJ());
         prenomTextField1.setText(J.getPrenomJ());
         dateTextField1.setText(J.getDateNaisJ());
@@ -1403,21 +1386,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         Jmodif = J;
     }
     private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
-        nomTextField.setText("");
-        prenomTextField.setText("");
-        dateTextField.setText("");
-        licenceTextField.setText("");
-        federationTextField.setText("");
-        ligueTextField.setText("");
-        clubTextField.setText("");
-        eloNormalTextField.setText("");
-        eloSemiRapideTextField.setText("");
-        eloRapideTextField.setText("");
-        retourTextArea.setText("");
-        nomLabel.setForeground(Color.black);
-        prenomLabel.setForeground(Color.black);
-        sexeLabel.setForeground(Color.black);
-        dateLabel.setForeground(Color.black);
+        resetInfoJoueur();
     }//GEN-LAST:event_clearButtonActionPerformed
 
     private void refreshAffichage(){
@@ -1434,47 +1403,55 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         }
         AffJTextArea1.setText(tmp);
-
     }
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        selectionTournoi.setVisible(false);
-        creationJoueur.setVisible(false);
-        creationTournoi.setVisible(false);
-        menuPrinc.setVisible(false);
-        ecranTournoi.setVisible(false);
-        ajoutJoueurTournoi.setVisible(false);     
-        remove(selectionTournoi);
-        remove(creationJoueur);
-        remove(creationTournoi);
-        remove(menuPrinc);
-        remove(ecranTournoi);
-        remove(ajoutJoueurTournoi);
-        add(afficherJoueur);
         refreshAffichage();
-        
-        afficherJoueur.setVisible(true);
+        initPanel(afficherJoueur);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void createTournamentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createTournamentActionPerformed
-        selectionTournoi.setVisible(false);
-        creationJoueur.setVisible(false);
-        afficherJoueur.setVisible(false);
-        menuPrinc.setVisible(false);
-        ecranTournoi.setVisible(false);
-        ajoutJoueurTournoi.setVisible(false);     
-        remove(selectionTournoi);
-        remove(creationJoueur);
-        remove(afficherJoueur);
-        remove(menuPrinc);
-        remove(ecranTournoi);
-        remove(ajoutJoueurTournoi);
-        add(creationTournoi);
-        creationTournoi.setVisible(true);
+        initPanel(creationTournoi);
     }//GEN-LAST:event_createTournamentActionPerformed
 
     private void mainMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainMenuButtonActionPerformed
-       nomTextField.setText("");
+        resetInfoJoueur();
+        initPanel(menuPrinc);
+    }//GEN-LAST:event_mainMenuButtonActionPerformed
+
+    private void retourMenuAffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_retourMenuAffActionPerformed
+
+        ErreurSelectJoueur.setText("");
+        
+        initPanel(menuPrinc);
+        
+    }//GEN-LAST:event_retourMenuAffActionPerformed
+
+    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
+               
+        String nom = nomTextField.getText();
+        String prenom = prenomTextField.getText();
+        String dateDeNaissance = dateTextField.getText();
+        String sexe = jComboBox1.getSelectedItem().toString();
+        String licence = licenceTextField.getText();
+        String eloN = eloNormalTextField.getText();
+        String eloR = eloRapideTextField.getText();
+        String eloSR = eloSemiRapideTextField.getText();
+        String fed = federationTextField .getText();
+        String lig = ligueTextField.getText();
+        String clb = clubTextField.getText();
+        
+        Joueurs j = controllerJoueur.creerJoueur(licence,nom,prenom,eloN,eloSR,eloR,dateDeNaissance,sexe,fed,lig,clb);
+        boolean estCree = controllerJoueur.saveJoueur(j, nomLabel, prenomLabel, sexeLabel, dateLabel, retourTextArea);
+        if(estCree){
+            resetInfoJoueur();
+            retourTextArea.setText("Joueur créé avec succès !");
+        }
+        
+    }//GEN-LAST:event_saveButtonActionPerformed
+    
+    public void resetInfoJoueur(){
+        nomTextField.setText("");
         prenomTextField.setText("");
         dateTextField.setText("");
         licenceTextField.setText("");
@@ -1489,63 +1466,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         prenomLabel.setForeground(Color.black);
         sexeLabel.setForeground(Color.black);
         dateLabel.setForeground(Color.black);
-        selectionTournoi.setVisible(false);
-        creationJoueur.setVisible(false);
-        afficherJoueur.setVisible(false);
-        creationTournoi.setVisible(false);
-        ecranTournoi.setVisible(false);
-        ajoutJoueurTournoi.setVisible(false);     
-        remove(selectionTournoi);
-        remove(creationJoueur);
-        remove(afficherJoueur);
-        remove(creationTournoi);
-        remove(ecranTournoi);
-        remove(ajoutJoueurTournoi);
-        add(menuPrinc);
-        menuPrinc.setVisible(true);
-    }//GEN-LAST:event_mainMenuButtonActionPerformed
-
-    private void retourMenuAffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_retourMenuAffActionPerformed
-
-        ErreurSelectJoueur.setText("");
-        
-        selectionTournoi.setVisible(false);
-        creationJoueur.setVisible(false);
-        afficherJoueur.setVisible(false);
-        creationTournoi.setVisible(false);
-        ecranTournoi.setVisible(false);
-        ajoutJoueurTournoi.setVisible(false);     
-        remove(selectionTournoi);
-        remove(creationJoueur);
-        remove(afficherJoueur);
-        remove(creationTournoi);
-        remove(ecranTournoi);
-        remove(ajoutJoueurTournoi);
-        add(menuPrinc);
-        menuPrinc.setVisible(true);
-        
-    }//GEN-LAST:event_retourMenuAffActionPerformed
-
-    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-        String nom = nomTextField.getText();
-        String prenom = prenomTextField.getText();
-        String dateDeNaissance = dateTextField.getText();
-        String sexe = jComboBox1.getSelectedItem().toString();
-        String licence = licenceTextField.getText();
-        String eloN = eloNormalTextField.getText();
-        String eloR = eloRapideTextField.getText();
-        String eloSR = eloSemiRapideTextField.getText();
-        String fed = federationTextField .getText();
-        String lig = ligueTextField.getText();
-        String clb = clubTextField.getText();
-        nomLabel.setForeground(Color.black);
-        prenomLabel.setForeground(Color.black);
-        sexeLabel.setForeground(Color.black);
-        dateLabel.setForeground(Color.black);
-        
-        Joueurs j = controllerJoueur.creerJoueur(licence,nom,prenom,eloN,eloSR,eloR,dateDeNaissance,sexe,fed,lig,clb);
-        controllerJoueur.saveJoueur(j, nomLabel, prenomLabel, sexeLabel, dateLabel, retourTextArea);
-    }//GEN-LAST:event_saveButtonActionPerformed
+    }
     
     private void cleanTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cleanTActionPerformed
         nomTextField1.setText("");
@@ -1571,20 +1492,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         dated.setForeground(Color.black);
         datef.setForeground(Color.black);
         nbr.setForeground(Color.black);
-        selectionTournoi.setVisible(false);
-        creationJoueur.setVisible(false);
-        afficherJoueur.setVisible(false);
-        creationTournoi.setVisible(false);
-        ecranTournoi.setVisible(false);
-        ajoutJoueurTournoi.setVisible(false);     
-        remove(selectionTournoi);
-        remove(creationJoueur);
-        remove(afficherJoueur);
-        remove(creationTournoi);
-        remove(ecranTournoi);
-        remove(ajoutJoueurTournoi);
-        add(menuPrinc);
-        menuPrinc.setVisible(true);
+        
+        initPanel(menuPrinc);
     }//GEN-LAST:event_menuprincTActionPerformed
 
     private void enregistreTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enregistreTActionPerformed
@@ -1708,8 +1617,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
             idJoueurCourant = Integer.valueOf(s.split(" ")[0]);
         }
         if(idJoueurCourant != -1){
-            afftmp=listJ.get(idJoueurCourant-1).JtoString()+System.getProperty("line.separator");
-            AffJTextArea1.setText(afftmp);
+            try{
+                afftmp=listJ.get(idJoueurCourant-1).JtoString()+System.getProperty("line.separator");
+                AffJTextArea1.setText(afftmp);
+            }catch(IndexOutOfBoundsException e){}
         }
         
         
@@ -1754,19 +1665,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_modifierJoueurButtonActionPerformed
 
     private void SelectionTournoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectionTournoiActionPerformed
-        menuPrinc.setVisible(false);
-        creationJoueur.setVisible(false);
-        afficherJoueur.setVisible(false);
-        creationTournoi.setVisible(false);
-        ecranTournoi.setVisible(false);
-        ajoutJoueurTournoi.setVisible(false);     
-        remove(menuPrinc);
-        remove(creationJoueur);
-        remove(afficherJoueur);
-        remove(creationTournoi);
-        remove(ecranTournoi);
-        remove(ajoutJoueurTournoi);
-        add(selectionTournoi);
+
         idTournoiCourant = -1;
         
         ArrayList<Tournoi> listT = xml2.ReadXML();
@@ -1781,10 +1680,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
             tmp=tmp+listT.get(i).TtoString()+System.getProperty("line.separator");
         }
         affichageTournois.setText(tmp);
-        selectionTournoi.setVisible(true);
         
-        
-        //AffJTextArea1.setText(tmp);
+        initPanel(selectionTournoi);
 
     }//GEN-LAST:event_SelectionTournoiActionPerformed
 
@@ -1792,23 +1689,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         selectionTournoijList.setModel(new DefaultListModel());
         selectionTournoiMessagejLabel.setText("");
         
-        selectionTournoi.setVisible(false);
-        creationJoueur.setVisible(false);
-        afficherJoueur.setVisible(false);
-        creationTournoi.setVisible(false);
-        ecranTournoi.setVisible(false);
-        ajoutJoueurTournoi.setVisible(false);     
-        remove(selectionTournoi);
-        remove(creationJoueur);
-        remove(afficherJoueur);
-        remove(creationTournoi);
-        remove(ecranTournoi);
-        remove(ajoutJoueurTournoi);
-        add(menuPrinc);
-        
         idTournoiCourant = -1;
         
-        menuPrinc.setVisible(true);
+        initPanel(menuPrinc);
     }//GEN-LAST:event_SelectionTournoiMenuPrincjButtonActionPerformed
 
     private void selectionTournoiSelectionnerjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectionTournoiSelectionnerjButtonActionPerformed
@@ -1817,21 +1700,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         }else{
             selectionTournoijList.setModel(new DefaultListModel());
 
-            selectionTournoi.setVisible(false);
-            creationJoueur.setVisible(false);
-            afficherJoueur.setVisible(false);
-            creationTournoi.setVisible(false);
-            menuPrinc.setVisible(false);
-            ajoutJoueurTournoi.setVisible(false);     
-            remove(selectionTournoi);
-            remove(creationJoueur);
-            remove(afficherJoueur);
-            remove(creationTournoi);
-            remove(menuPrinc);
-            remove(ajoutJoueurTournoi);
-            add(ecranTournoi);
             selectionTournoiMessagejLabel.setText("");
-            ecranTournoi.setVisible(true);
+            
+            initPanel(ecranTournoi);
         }
     }//GEN-LAST:event_selectionTournoiSelectionnerjButtonActionPerformed
 
@@ -1849,38 +1720,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_selectionTournoijListValueChanged
 
     private void ecranTournoiMenuPrincjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ecranTournoiMenuPrincjButtonActionPerformed
-        selectionTournoi.setVisible(false);
-        creationJoueur.setVisible(false);
-        afficherJoueur.setVisible(false);
-        creationTournoi.setVisible(false);
-        ecranTournoi.setVisible(false);
-        ajoutJoueurTournoi.setVisible(false);     
-        remove(selectionTournoi);
-        remove(creationJoueur);
-        remove(afficherJoueur);
-        remove(creationTournoi);
-        remove(ecranTournoi);
-        remove(ajoutJoueurTournoi);
-        add(menuPrinc);
         
         idTournoiCourant = -1;
-        menuPrinc.setVisible(true);
+        
+        initPanel(menuPrinc);
     }//GEN-LAST:event_ecranTournoiMenuPrincjButtonActionPerformed
 
     private void ajouterJoueurjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajouterJoueurjButtonActionPerformed
-        selectionTournoi.setVisible(false);
-        creationJoueur.setVisible(false);
-        afficherJoueur.setVisible(false);
-        creationTournoi.setVisible(false);
-        ecranTournoi.setVisible(false);
-        menuPrinc.setVisible(false);     
-        remove(selectionTournoi);
-        remove(creationJoueur);
-        remove(afficherJoueur);
-        remove(creationTournoi);
-        remove(ecranTournoi);
-        remove(menuPrinc);
-        add(ajoutJoueurTournoi);
         
         ArrayList<Joueurs> listJ = xml2.getJoueursFromTournoi(MenuPrincipal.idTournoiCourant-1);
         DefaultListModel listM = new DefaultListModel();
@@ -1929,7 +1775,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         
         
         
-        ajoutJoueurTournoi.setVisible(true);
+        initPanel(ajoutJoueurTournoi);
     }//GEN-LAST:event_ajouterJoueurjButtonActionPerformed
 
     private void AjoutJoueurTournoiRetourjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AjoutJoueurTournoiRetourjButtonActionPerformed
@@ -1937,22 +1783,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
             confirmed = true;
             ajoutJoueurTournoiMessagejLabel.setText("Vous n'avez pas enregistré, appuyez de nouveau sur retour pour annuler");
         }else{
-            selectionTournoi.setVisible(false);
-            creationJoueur.setVisible(false);
-            afficherJoueur.setVisible(false);
-            creationTournoi.setVisible(false);
-            menuPrinc.setVisible(false);
-            ajoutJoueurTournoi.setVisible(false);     
-            remove(selectionTournoi);
-            remove(creationJoueur);
-            remove(afficherJoueur);
-            remove(creationTournoi);
-            remove(menuPrinc);
-            remove(ajoutJoueurTournoi);
-            add(ecranTournoi);
             ajoutJoueurTournoiMessagejLabel.setText("");
             confirmed = false;
-            ecranTournoi.setVisible(true);
+            
+            initPanel(ecranTournoi);
         }
     }//GEN-LAST:event_AjoutJoueurTournoiRetourjButtonActionPerformed
 
@@ -2040,9 +1874,29 @@ public class MenuPrincipal extends javax.swing.JFrame {
         confirmed = true;
     }//GEN-LAST:event_ajoutJoueurTournoiConfirmerjButtonActionPerformed
 
+    public void resetInfoModifJoueur(){
+        nomTextField2.setText("");
+        prenomTextField1.setText("");
+        dateTextField1.setText("");
+        licenceTextField1.setText("");
+        federationTextField1.setText("");
+        ligueTextField1.setText("");
+        clubTextField1.setText("");
+        eloNormalTextField1.setText("");
+        eloSemiRapideTextField1.setText("");
+        eloRapideTextField1.setText("");
+        retourTextArea1.setText("");
+        nomLabel1.setForeground(Color.black);
+        prenomLabel1.setForeground(Color.black);
+        sexeLabel1.setForeground(Color.black);
+        dateLabel1.setForeground(Color.black);
+    }
+    
     private void saveButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButton1ActionPerformed
-        /*//Bouton de sauvegarde lors d'une modif
-        String nom = nomTextField2.getText(); //Vérification des champs qui ne peuvent pas être nuls
+        
+        boolean estCree;
+        
+        String nom = nomTextField2.getText();
         String prenom = prenomTextField1.getText();
         String dateDeNaissance = dateTextField1.getText();
         String sexe = jComboBox2.getSelectedItem().toString();
@@ -2050,154 +1904,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
         String eloN = eloNormalTextField1.getText();
         String eloR = eloRapideTextField1.getText();
         String eloSR = eloSemiRapideTextField1.getText();
-        String fed = federationTextField1 .getText();
+        String fed = federationTextField1.getText();
         String lig = ligueTextField1.getText();
         String clb = clubTextField1.getText();
-        nomLabel1.setForeground(Color.black);
-        prenomLabel1.setForeground(Color.black);
-        sexeLabel1.setForeground(Color.black);
-        dateLabel1.setForeground(Color.black);
         
-        Joueurs j = new Joueurs(licence,nom,prenom,eloN,eloSR,eloR,dateDeNaissance,sexe,fed,lig,clb);
-        String stmp="Données incorrectes: ";
-        boolean test = true;
-        if(!j.verifDonneeEnregistrementJoueur())
-        {
-            test= false;
-            if(j.nomEstVide()){
-                nomLabel1.setForeground(Color.red);
-                stmp += System.getProperty("line.separator")+"Nom Joueur manquant";
-            } 
-            if(j.prenomEstVide()){
-                prenomLabel1.setForeground(Color.red);
-                stmp += System.getProperty("line.separator")+"Prénom Joueur manquant";
-            }
-            if(j.sexeEstVide()){
-                sexeLabel1.setForeground(Color.red);
-                stmp += System.getProperty("line.separator")+"Sexe Joueur manquant";
-            }
-            if(j.dateEstVide()){
-                dateLabel1.setForeground(Color.red);
-                stmp += System.getProperty("line.separator")+"Date de naissance manquante";
-            }
-        }else{
-            if(!j.verifFormatNomValide()){
-                test= false;
-                nomLabel1.setForeground(Color.red);
-                stmp += System.getProperty("line.separator")+"Nom Joueur invalide";
-            }
-            if(!j.verifFormatPrenomValide()){
-                test= false;
-                prenomLabel1.setForeground(Color.red);
-                stmp += System.getProperty("line.separator")+"Prénom Joueur invalide";
-            }
-        }
-        
-        if(!j.verifTailleNomJoueur()){
-            nomLabel1.setForeground(Color.red);
-            stmp += System.getProperty("line.separator")+"Nom de joueur limité à 50 caractères.";
-        }
-        
-        if(!j.verifTaillePrenomJoueur()){
-            prenomLabel1.setForeground(Color.red);
-            stmp += System.getProperty("line.separator")+"Prénom de joueur limité à 50 caractères.";
-        }
-        
-        if(!j.verifNumLicenceValide()){
-            test = false;
-            stmp += System.getProperty("line.separator")+"Erreur, Format de licence incorrecte, format attendu : A12345";
-        }
-        
-        if(!j.verifFormatDateValide(dateDeNaissance))
-        {
-            test = false;
-            if(!j.verifMatchDate(dateDeNaissance)){
-                dateLabel1.setForeground(Color.red);
-                stmp += System.getProperty("line.separator")+"Erreur, date invalide format attendu : JJ/MM/AAAA";
-            }else{
-                if(!j.verifDateValide(dateDeNaissance)){
-                    dateLabel1.setForeground(Color.red);
-                    stmp += System.getProperty("line.separator")+"Erreur, date incorrecte";
-                }
-            }
-        } 
-        if(j.verifFormatDateValide(dateDeNaissance)){
-            if(!j.verifDateNaiss(dateDeNaissance)){
-                test= false;
-                dateLabel1.setForeground(Color.red);
-                stmp += System.getProperty("line.separator")+"Erreur, date de naissance supérieure à la date actuelle.";
-            }
-        }
-        
-        if(!j.verifFormatEloValide(eloN)){
-            test= false;
-            stmp += System.getProperty("line.separator")+"Erreur, Elo Classique invalide.";
-        }
-        
-        if(!j.verifFormatEloPositif(eloN)){
-            test= false;
-            stmp += System.getProperty("line.separator")+"Erreur, Elo Classique négatif.";
-        }
-        
-        if(!j.verifFormatElo900To3000(eloN)){
-            test= false;
-            stmp += System.getProperty("line.separator")+"Erreur, Elo Classique doit être compris entre 900 et 3000.";
-        }
-        
-        if(!j.verifFormatEloValide(eloR)){
-            test= false;
-            stmp += System.getProperty("line.separator")+"Erreur, Elo Rapide invalide.";
-        }
-        
-        if(!j.verifFormatEloPositif(eloR)){
-            test= false;
-            stmp += System.getProperty("line.separator")+"Erreur, Elo Rapide négatif.";
-        }
-        
-        if(!j.verifFormatElo900To3000(eloR)){
-            test= false;
-            stmp += System.getProperty("line.separator")+"Erreur, Elo Rapide doit être compris entre 900 et 3000.";
-        }
-        
-        if(!j.verifFormatEloValide(eloSR)){
-            test= false;
-            stmp += System.getProperty("line.separator")+"Erreur, Elo SemiRapide invalide.";
-        }
-        
-        if(!j.verifFormatEloPositif(eloSR)){
-            test= false;
-            stmp += System.getProperty("line.separator")+"Erreur, Elo SemiRapide négatif.";
-        }
-        
-        if(!j.verifFormatElo900To3000(eloSR)){
-            test= false;
-            stmp += System.getProperty("line.separator")+"Erreur, Elo SemiRapide doit être compris entre 900 et 3000.";
-        }
-        
-        if(!j.verifFormatLigueValide()){
-            test= false;
-            stmp += System.getProperty("line.separator")+"Erreur, ligue invalide.";
-        }
-        
-        if(!j.verifFormatFedValide()){
-            test= false;
-            stmp += System.getProperty("line.separator")+"Erreur, Federation invalide.";
-        }
-        boolean test2 = false;
-      /*  if(test){
-            ArrayList<Joueurs> listJ = xml1.ReadXML();
-            if(!j.verifJoueurExistant(listJ)){
-                stmp += System.getProperty("line.separator")+"Erreur, ce joueur existe déjà .";
-            }else{
-                test2 = true;
-            }
-        }*/
-        /*retourTextArea1.setText(stmp);
-        if(test){
+        Joueurs j = controllerJoueur.creerJoueur(licence,nom,prenom,eloN,eloSR,eloR,dateDeNaissance,sexe,fed,lig,clb);
+        estCree = controllerJoueur.modifieJoueur(j, IDJ, nomLabel1, prenomLabel1, sexeLabel1, dateLabel1, retourTextArea1);
+        if(estCree){
+            resetInfoModifJoueur();
             retourTextArea1.setText("Joueur modifié !");
-            xml1.modifierJoueur(IDJ, j);
         }
-        //xml1.modifierJoueur(IDJ, Jmodif);*/
+        
     }//GEN-LAST:event_saveButton1ActionPerformed
 
     private void nomTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomTextField2ActionPerformed
@@ -2217,37 +1934,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
     private void mainMenuButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainMenuButton1ActionPerformed
-        nomTextField2.setText("");
-        prenomTextField1.setText("");
-        dateTextField1.setText("");
-        licenceTextField1.setText("");
-        federationTextField1.setText("");
-        ligueTextField1.setText("");
-        clubTextField1.setText("");
-        eloNormalTextField1.setText("");
-        eloSemiRapideTextField1.setText("");
-        eloRapideTextField1.setText("");
-        retourTextArea1.setText("");
-        nomLabel1.setForeground(Color.black);
-        prenomLabel1.setForeground(Color.black);
-        sexeLabel1.setForeground(Color.black);
-        dateLabel1.setForeground(Color.black);
-        selectionTournoi.setVisible(false);
-        creationJoueur.setVisible(false);
-        afficherJoueur.setVisible(false);
-        creationTournoi.setVisible(false);
-        ecranTournoi.setVisible(false);
-        ajoutJoueurTournoi.setVisible(false);
-        modifierJoueur.setVisible(false);
-        remove(selectionTournoi);
-        remove(creationJoueur);
-        remove(afficherJoueur);
-        remove(creationTournoi);
-        remove(ecranTournoi);
-        remove(ajoutJoueurTournoi);
-        remove(modifierJoueur);
-        add(menuPrinc);
-        menuPrinc.setVisible(true);
+        resetInfoModifJoueur();
+        
+        initPanel(menuPrinc);
     }//GEN-LAST:event_mainMenuButton1ActionPerformed
 
     private void supprimerTournoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supprimerTournoiActionPerformed
@@ -2401,40 +2090,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
         dated.setForeground(Color.black);
         datef.setForeground(Color.black);
         nbr.setForeground(Color.black);
-        selectionTournoi.setVisible(false);
-        creationJoueur.setVisible(false);
-        afficherJoueur.setVisible(false);
-        creationTournoi.setVisible(false);
-        ecranTournoi.setVisible(false);
-        ajoutJoueurTournoi.setVisible(false);
-        modifierTournoiJPanel.setVisible(false);
-        remove(selectionTournoi);
-        remove(creationJoueur);
-        remove(afficherJoueur);
-        remove(creationTournoi);
-        remove(ecranTournoi);
-        remove(ajoutJoueurTournoi);
-        remove(modifierTournoiJPanel);
-        add(menuPrinc);
-        menuPrinc.setVisible(true);
+        
+        initPanel(menuPrinc);
     }//GEN-LAST:event_menuprincT1ActionPerformed
     private void accesModifTournoi(int idT, Tournoi T){
         
-        selectionTournoi.setVisible(false);
-        menuPrinc.setVisible(false);
-        afficherJoueur.setVisible(false);
-        creationTournoi.setVisible(false);
-        ecranTournoi.setVisible(false);
-        ajoutJoueurTournoi.setVisible(false);
-        modifierJoueur.setVisible(false);
-        remove(selectionTournoi);
-        remove(menuPrinc);
-        remove(afficherJoueur);
-        remove(creationTournoi);
-        remove(ecranTournoi);
-        remove(ajoutJoueurTournoi);
-        remove(creationJoueur);
-        add(modifierTournoiJPanel);
+
         nomTextField3.setText(T.getNomTournoi());
         datedTextField3.setText(T.getDateDebut());
         dateFTextField4.setText(T.getDateFin());
@@ -2444,43 +2105,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         IDT = idT;
         Tmodif = T;
         
-        modifierTournoiJPanel.setVisible(true);
+        initPanel(modifierTournoiJPanel);
     }
-    /**
-     * @param args the command line arguments
-     */
-    //public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        /*try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        /*java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MenuPrincipal().setVisible(true);
-            }
-        });
-    }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea AffJTextArea1;

@@ -37,7 +37,7 @@ public class Joueurs {
         if("".equals(numEloSemiRapide)){
             numEloSemiRapideJ="NC";
         }else{
-            numEloRapideJ=numEloRapide;
+            numEloSemiRapideJ=numEloSemiRapide;
         }
         if("".equals(numEloRapide)){
             numEloRapideJ="NC";
@@ -134,17 +134,17 @@ public class Joueurs {
     }
     
     public String JtoString(){
-        return  "Numero Licence : " + this.numLicenceJ +System.getProperty("line.separator")+
-                "Nom joueur : " + this.nomJ +System.getProperty("line.separator")+ 
-                "Prénom joueur : " + this.prenomJ +System.getProperty("line.separator")+
-                "Elo Classique : " + this.numEloNormalJ +System.getProperty("line.separator")+
-                "Elo SemiRapide : "+ this.numEloSemiRapideJ +System.getProperty("line.separator")+
-                "Elo Rapide :  " + this.numEloRapideJ +System.getProperty("line.separator")+
-                "Categorie : "+this.categorieJ +System.getProperty("line.separator")+
-                "Date Naissance : " + this.dateNaisJ +System.getProperty("line.separator")+
-                "Sexe : " + this.sexeJ +System.getProperty("line.separator")+
-                "Fédération : " + this.federationJ +System.getProperty("line.separator")+
-                "Ligue : " + this.ligueJ +System.getProperty("line.separator")+
-                "Club : "+ this.clubJ+System.getProperty("line.separator");
+        return  "Numero Licence : " + this.numLicenceJ +System.lineSeparator()+
+                "Nom joueur : " + this.nomJ +System.lineSeparator()+ 
+                "Prénom joueur : " + this.prenomJ +System.lineSeparator()+
+                "Elo Classique : " + this.numEloNormalJ +System.lineSeparator()+
+                "Elo SemiRapide : "+ this.numEloSemiRapideJ +System.lineSeparator()+
+                "Elo Rapide :  " + this.numEloRapideJ +System.lineSeparator()+
+                "Categorie : "+this.categorieJ +System.lineSeparator()+
+                "Date Naissance : " + this.dateNaisJ +System.lineSeparator()+
+                "Sexe : " + this.sexeJ +System.lineSeparator()+
+                "Fédération : " + this.federationJ +System.lineSeparator()+
+                "Ligue : " + this.ligueJ +System.lineSeparator()+
+                "Club : "+ this.clubJ+System.lineSeparator();
     }
 }  
