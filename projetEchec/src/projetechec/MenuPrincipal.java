@@ -1663,9 +1663,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
             refreshAffichage();
         }
     }//GEN-LAST:event_modifierJoueurButtonActionPerformed
-
+  
     private void SelectionTournoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectionTournoiActionPerformed
-       
+/*       
         idTournoiCourant = -1;
         
         ArrayList<Tournoi> listT = xml2.ReadXML();
@@ -1681,8 +1681,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         }
         affichageTournois.setText(tmp);
         initPanel(selectionTournoi);
-
-/*     
+*/
+    
         System.out.println();
         idTournoiCourant = -1;
         selectionTournoijList.setModel(ControllerTournoi.SelectionTournoiT());
@@ -1690,15 +1690,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
         affichageTournois.setText(ControllerTournoi.SelectionTournoiS());
         System.out.println(ControllerTournoi.SelectionTournoiS());
         initPanel(selectionTournoi);
-*/
     }//GEN-LAST:event_SelectionTournoiActionPerformed
 
     private void SelectionTournoiMenuPrincjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectionTournoiMenuPrincjButtonActionPerformed
+        //n'appelle rien d'extérieur à l'interface, on n'a pas dbesoi de le mettre dans le controller du coup ?
+        
         selectionTournoijList.setModel(new DefaultListModel());
         selectionTournoiMessagejLabel.setText("");
-        
         idTournoiCourant = -1;
-        
         initPanel(menuPrinc);
     }//GEN-LAST:event_SelectionTournoiMenuPrincjButtonActionPerformed
 
@@ -1947,6 +1946,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         initPanel(menuPrinc);
     }//GEN-LAST:event_mainMenuButton1ActionPerformed
 
+    
     private void supprimerTournoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supprimerTournoiActionPerformed
         if(MenuPrincipal.idTournoiCourant == -1){
             selectionTournoiMessagejLabel.setText("Veuillez sélectionner un tournoi");

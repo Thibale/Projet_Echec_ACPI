@@ -39,6 +39,11 @@ public class ControllerTournoi {
         DefaultListModel res ;
         ArrayList<Tournoi> listT = xmlTournoi.ReadXML();
         DefaultListModel listM = new DefaultListModel();
+                String tmpList = "";
+        for (int i=0;i<listT.size();i++){
+            tmpList =(i+1)+" Tournoi n°"+(i+1)+" "+listT.get(i).getNomTournoi();
+            listM.addElement(tmpList);
+        }
         return listM;
     } 
     
