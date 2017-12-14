@@ -1665,7 +1665,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_modifierJoueurButtonActionPerformed
 
     private void SelectionTournoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectionTournoiActionPerformed
-
+       
         idTournoiCourant = -1;
         
         ArrayList<Tournoi> listT = xml2.ReadXML();
@@ -1680,9 +1680,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
             tmp=tmp+listT.get(i).TtoString()+System.getProperty("line.separator");
         }
         affichageTournois.setText(tmp);
-        
         initPanel(selectionTournoi);
 
+/*     
+        System.out.println();
+        idTournoiCourant = -1;
+        selectionTournoijList.setModel(ControllerTournoi.SelectionTournoiT());
+
+        affichageTournois.setText(ControllerTournoi.SelectionTournoiS());
+        System.out.println(ControllerTournoi.SelectionTournoiS());
+        initPanel(selectionTournoi);
+*/
     }//GEN-LAST:event_SelectionTournoiActionPerformed
 
     private void SelectionTournoiMenuPrincjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectionTournoiMenuPrincjButtonActionPerformed
