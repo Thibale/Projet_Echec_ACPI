@@ -7,8 +7,11 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.DefaultListModel;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JTextArea;
 
 public class ControllerJoueur {
@@ -16,9 +19,6 @@ public class ControllerJoueur {
     private static ControllerBD controllerBD = new ControllerBD();
     
     private static int idJoueurCourant = -1;
-
-   
-    public static XML xmlJoueur = new XML();
     
     public static int idTournoiCourant = -1;
     public static int idJoueurDedans = -1;
@@ -32,9 +32,10 @@ public class ControllerJoueur {
         return idJoueurCourant;
     }
     
-    public Boolean creerJoueur(String[] infosJoueur, JLabel nomLabel, JLabel prenomLabel, JLabel sexeLabel, JLabel dateLabel, JTextArea retour){
-        if(!infosJoueur[3].equals("") && !infosJoueur[8].equals("")){
-            infosJoueur[7] = this.calculCategorie(infosJoueur[3], infosJoueur[8]);
+    public Boolean creerJoueur(Map<String, String> infosJoueur, JLabel nomLabel, JLabel prenomLabel, JLabel sexeLabel, JLabel dateLabel, JTextArea retour){
+        if(!infosJoueur.get("dateNaissance").equals("") && !infosJoueur.get("sexe").equals("")){
+            String cat = this.calculCategorie(infosJoueur.get("dateNaissance"), infosJoueur.get("sexe"));
+            infosJoueur.put("categorie", cat);
         }
         Joueurs j=new Joueurs(infosJoueur);
         Boolean isSave = saveJoueur(j, nomLabel, prenomLabel, sexeLabel, dateLabel, retour, infosJoueur);
@@ -211,25 +212,27 @@ public class ControllerJoueur {
     
     ////Verifier que le joueur existe dans list
     public boolean verifJoueurExistantDansList(ArrayList<Joueurs> jList, Joueurs j){
-        boolean verif = false;
-        for(int i = 0 ; i < jList.size() ; i++){
-            verif = verifJoueurExistant(j,jList.get(i));
+        boolean trouve = false;
+        int i = 0;
+        while(!trouve && i < jList.size()){
+            trouve = verifJoueurExistant(j,jList.get(i));
+            i++;
         }
-        return verif;
+        return trouve;
     }
     
     //Verifier que le joueur existe
     public boolean verifJoueurExistant(Joueurs j, Joueurs j2){
         boolean verif = false;
         if(!"".equals(j.getNumLicenceJ())){
-                if(j.getNumLicenceJ().equals(j2.getNumLicenceJ())){
-                    verif = true;
-                }
-            }else{
-                if(j.getNomJ().equals(j2.getNomJ()) && j.getPrenomJ().equals(j2.getPrenomJ()) && j.getDateNaisJ().equals(j2.getDateNaisJ())){
-                    verif = true;
-                }
+            if(j.getNumLicenceJ().equals(j2.getNumLicenceJ())){
+                verif = true;
             }
+        }
+        if(j.getNomJ().equals(j2.getNomJ()) && j.getPrenomJ().equals(j2.getPrenomJ()) && j.getDateNaisJ().equals(j2.getDateNaisJ())){
+            verif = true;
+        }
+        
         return verif;
     }
     
@@ -400,6 +403,7 @@ public class ControllerJoueur {
             ArrayList<Joueurs> listJ = this.lireJoueur();
             if(verifJoueurExistantDansList(listJ,j)){
                 stmp += System.lineSeparator()+"Erreur, ce joueur existe déjà .";
+                verif = false;
             }else{
                 verif = true;
             }
@@ -409,7 +413,7 @@ public class ControllerJoueur {
         return verif;
     }
     
-    public boolean saveJoueur(Joueurs j, JLabel nomLabel, JLabel prenomLabel, JLabel sexeLabel, JLabel dateLabel, JTextArea retour, String[] informationsJoueur){
+    public boolean saveJoueur(Joueurs j, JLabel nomLabel, JLabel prenomLabel, JLabel sexeLabel, JLabel dateLabel, JTextArea retour, Map<String, String> informationsJoueur){
         
         boolean verif = allVerifJoueur(j, nomLabel, prenomLabel, sexeLabel, dateLabel, retour);        
         
@@ -428,7 +432,6 @@ public class ControllerJoueur {
         if(verif){
             retour.setText("Joueur modifié !");
             controllerBD.modifierJoueurs(idJ, getInfosJoueur(j));
-            xmlJoueur.modifierJoueur(idJ, j);
             return true;
         }
         return false;
@@ -441,7 +444,7 @@ public class ControllerJoueur {
         String tmpList;
         for (int i = 0; i < listJ.size(); i++){
             tmp = tmp + " Joueur n°" + (i+1) + System.lineSeparator();
-            tmpList = (i+1) + " " + listJ.get(i).getNomJ() + " " + listJ.get(i).getPrenomJ();
+            tmpList = (listJ.get(i).getIdJ()) + " " + listJ.get(i).getNomJ() + " " + listJ.get(i).getPrenomJ();
             listM.addElement(tmpList);
             tmp = tmp + listJ.get(i).JtoString() + System.lineSeparator();
 
@@ -451,28 +454,28 @@ public class ControllerJoueur {
         return listM;
     }
     
-    public String[] getInfosJoueur(Joueurs joueur){
-        String[] infos = new String[12];
-        infos[0] = joueur.getNumLicenceJ();
-        infos[1] = joueur.getNomJ();
-        infos[2] = joueur.getPrenomJ();
-        infos[3] = joueur.getDateNaisJ();
-        infos[4] = joueur.getNumEloNormalJ();
-        infos[5] = joueur.getNumEloRapideJ();
-        infos[6] = joueur.getNumEloSemiRapideJ();
-        infos[7] = joueur.getCategorieJ();
-        infos[8] = joueur.getSexeJ();
-        infos[9] = joueur.getFederationJ();
-        infos[10] = joueur.getLigueJ();
-        infos[11] = joueur.getClubJ();
+    public Map<String, String> getInfosJoueur(Joueurs joueur){
+        Map<String, String> map = new HashMap<>();
+        map.put("numLicence", joueur.getNumLicenceJ());
+        map.put("nom", joueur.getNomJ());
+        map.put("prenom", joueur.getPrenomJ());
+        map.put("dateNaissance", joueur.getDateNaisJ());
+        map.put("eloClassique", joueur.getNumEloNormalJ());
+        map.put("eloRapide", joueur.getNumEloRapideJ());
+        map.put("eloSemiRapide", joueur.getNumEloSemiRapideJ());
+        map.put("categorie", joueur.getCategorieJ());
+        map.put("sexe", joueur.getSexeJ());
+        map.put("federation", joueur.getFederationJ());
+        map.put("ligue", joueur.getLigueJ());
+        map.put("club", joueur.getClubJ());
         
-        return infos;
+        return map;
     }
     
     public ArrayList<Joueurs> lireJoueur(){
         ArrayList<Joueurs> listJoueurs=new ArrayList<>();
         
-        ArrayList<String[]> listInfosJoueurs = controllerBD.lireJoueurs();
+        ArrayList<Map<String, String>> listInfosJoueurs = controllerBD.lireJoueurs();
         
         for(int i = 0; i < listInfosJoueurs.size() ; i++){
             Joueurs jtmp= new Joueurs(listInfosJoueurs.get(i));
@@ -483,9 +486,34 @@ public class ControllerJoueur {
         return listJoueurs;
     }
     
-    public ArrayList<String[]> lireJoueurInStringList(){
+    public ArrayList<Map<String, String>> lireJoueurInStringList(){
         return controllerBD.lireJoueurs();
     }
     
+    public void joueurListGetSelectedJoueur(JList joueurList, JTextArea textArea){
+        String s = (String) joueurList.getSelectedValue();
+        if(s != null && !s.isEmpty()){
+            idJoueurCourant = Integer.valueOf(s.split(" ")[0]);
+        }
+    }
     
+    public void setInfoJoueurInTextArea(JList joueurList, JTextArea textArea){
+        if(idJoueurCourant != -1){
+            ArrayList<Joueurs> listJ = lireJoueur();
+            boolean trouve = false;
+            int i = -1;
+            while(!trouve && i < listJ.size()-1){
+                i++;
+                if(listJ.get(i).getIdJ() == idJoueurCourant){
+                    trouve = true;
+                }
+            }
+            String afftmp = listJ.get(i).JtoString()+System.lineSeparator();
+            textArea.setText(afftmp);
+        }
+    }
+    
+    public void supprimerJoueurSelectionne(){
+        controllerBD.supprimerJoueurs(idJoueurCourant);
+    }
 }

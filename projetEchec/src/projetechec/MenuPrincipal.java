@@ -4,6 +4,8 @@ package projetechec;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
@@ -14,7 +16,6 @@ import javax.xml.transform.TransformerException;
 public class MenuPrincipal extends javax.swing.JFrame {
 
     private static ControllerJoueur controllerJoueur= new ControllerJoueur();
-    public static XML xml1 = new XML();
     public static XMLTournoi xml2 = new XMLTournoi();
     
     public static int idTournoiCourant = -1;
@@ -1277,24 +1278,23 @@ public class MenuPrincipal extends javax.swing.JFrame {
         initPanel(creationJoueur);
     }//GEN-LAST:event_createPlayerActionPerformed
 
-    private void accesModifJoueur(int idJ, String[] infos){
+    private void accesModifJoueur(int idJ, Map<String, String> infos){
         
         initPanel(modifierJoueur);
         
-        nomTextField2.setText(infos[1]);
-        prenomTextField1.setText(infos[2]);
-        dateTextField1.setText(infos[3]);
-        licenceTextField1.setText(infos[0]);
-        federationTextField1.setText(infos[10]);
-        ligueTextField1.setText(infos[11]);
-        clubTextField1.setText(infos[12]);
-        eloNormalTextField1.setText(infos[3]);
-        eloSemiRapideTextField1.setText(infos[4]);
-        eloRapideTextField1.setText(infos[5]);
+        nomTextField2.setText(infos.get("nom"));
+        prenomTextField1.setText(infos.get("prenom"));
+        dateTextField1.setText(infos.get("dateNaissance"));
+        licenceTextField1.setText(infos.get("numLicence"));
+        federationTextField1.setText(infos.get("federation"));
+        ligueTextField1.setText(infos.get("ligue"));
+        clubTextField1.setText(infos.get("club"));
+        eloNormalTextField1.setText(infos.get("eloClassique"));
+        eloSemiRapideTextField1.setText(infos.get("eloSemiRapide"));
+        eloRapideTextField1.setText(infos.get("eloRapide"));
         retourTextArea1.setText("");
         
         IDJ = idJ;
-        //Jmodif = J;
     }
     private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
         resetInfoJoueur();
@@ -1325,19 +1325,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_retourMenuAffActionPerformed
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-        String[] infosJoueurs = new String[12]; 
+        Map<String, String> infosJoueurs = new HashMap<>(); 
         
-        infosJoueurs[0] = licenceTextField.getText();
-        infosJoueurs[1] = nomTextField.getText();
-        infosJoueurs[2] = prenomTextField.getText();
-        infosJoueurs[4] = eloNormalTextField.getText();
-        infosJoueurs[5] = eloRapideTextField.getText();
-        infosJoueurs[6] = eloSemiRapideTextField.getText();
-        infosJoueurs[3] = dateTextField.getText();
-        infosJoueurs[8] = jComboBox1.getSelectedItem().toString();
-        infosJoueurs[9] = federationTextField .getText();
-        infosJoueurs[10] = ligueTextField.getText();
-        infosJoueurs[11] = clubTextField.getText();
+        infosJoueurs.put("numLicence", licenceTextField.getText());
+        infosJoueurs.put("nom", nomTextField.getText());
+        infosJoueurs.put("prenom", prenomTextField.getText());
+        infosJoueurs.put("eloClassique", eloNormalTextField.getText());
+        infosJoueurs.put("eloRapide", eloRapideTextField.getText());
+        infosJoueurs.put("eloSemiRapide", eloSemiRapideTextField.getText());
+        infosJoueurs.put("dateNaissance", dateTextField.getText());
+        infosJoueurs.put("sexe", jComboBox1.getSelectedItem().toString());
+        infosJoueurs.put("federation", federationTextField .getText());
+        infosJoueurs.put("ligue", ligueTextField.getText());
+        infosJoueurs.put("club", clubTextField.getText());
                 
         boolean estCree = controllerJoueur.creerJoueur(infosJoueurs, nomLabel, prenomLabel, sexeLabel, dateLabel, retourTextArea);
         
@@ -1480,24 +1480,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_enregistreTActionPerformed
 
     private void affichageJoueurListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_affichageJoueurListValueChanged
-        refreshAffichage(AffJTextArea1);       
+        controllerJoueur.joueurListGetSelectedJoueur(affichageJoueurList, AffJTextArea1); 
+        controllerJoueur.setInfoJoueurInTextArea(affichageJoueurList, AffJTextArea1); 
     }//GEN-LAST:event_affichageJoueurListValueChanged
 
     private void supprimerJoueurButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supprimerJoueurButtonActionPerformed
-        //mettre autre part
         if(ControllerJoueur.getIdJoueurCourant() == -1){
             ErreurSelectJoueur.setText("Veuillez sélectionner un joueur");
         }else{
-            String s = (String) affichageJoueurList.getSelectedValue();
-            if(s != null && !s.isEmpty()){
-                int intTmp = Integer.valueOf(s.split(" ")[0]);
-                try {
-                    xml1.supprimerJoueur(intTmp);
-                } catch (TransformerException ex) {
-                    Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
-            }
+            controllerJoueur.joueurListGetSelectedJoueur(affichageJoueurList, AffJTextArea1);
+            controllerJoueur.supprimerJoueurSelectionne();
             refreshAffichage(AffJTextArea1);
         }
     }//GEN-LAST:event_supprimerJoueurButtonActionPerformed
@@ -1506,7 +1498,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         if(ControllerJoueur.getIdJoueurCourant()== -1){
             ErreurSelectJoueur.setText("Veuillez sélectionner un joueur");
         }else{
-            ArrayList<String[]> listeInfoJoueurs= controllerJoueur.lireJoueurInStringList();
+            ArrayList<Map<String, String>> listeInfoJoueurs= controllerJoueur.lireJoueurInStringList();
             String s = (String) affichageJoueurList.getSelectedValue();
             int intTmp = -1;
             if(s != null && !s.isEmpty()){
@@ -1595,7 +1587,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             listM.addElement(tmpList);
         }
         
-        ArrayList<Joueurs> listJ2 = xml1.ReadXML();
+        ArrayList<Joueurs> listJ2 = controllerJoueur.lireJoueur();
         ArrayList<Integer> toRemove = new ArrayList<>();
         for (Joueurs listJ1 : listJ) {
             for (int i = 0; i<listJ2.size(); i++){

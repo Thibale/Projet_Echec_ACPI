@@ -1,6 +1,10 @@
 package projetechec;
 
+import java.util.Map;
+
 public class Joueurs {
+        
+    private int idJ;
     private String numLicenceJ;
     private String nomJ;
     private String prenomJ;
@@ -13,62 +17,41 @@ public class Joueurs {
     private String federationJ;
     private String ligueJ;
     private String clubJ;
-    
-    public Joueurs(String numLicence,String nom,String prenom,String numEloNormal,String numEloSemiRapide,String numEloRapide,String cat,String dateNais,String sexe,String federation,String ligue,String club){
-        numLicenceJ=numLicence;
-        nomJ=nom;
-        prenomJ=prenom;
-        if("".equals(numEloNormal)){
+        
+    public Joueurs(Map<String, String> infos){
+        if(infos.get("id") != null && !infos.get("id").isEmpty()){
+            idJ = Integer.valueOf(infos.get("id"));
+        }
+        numLicenceJ=infos.get("numLicence");
+        nomJ=infos.get("nom");
+        prenomJ=infos.get("prenom");
+        if("".equals(infos.get("eloClassique"))){
             numEloNormalJ="NC";
         }else{
-            numEloNormalJ=numEloNormal;
+            numEloNormalJ=infos.get("eloClassique");
         }
-        if("".equals(numEloSemiRapide)){
+        if("".equals(infos.get("eloSemiRapide"))){
             numEloSemiRapideJ="NC";
         }else{
-            numEloSemiRapideJ=numEloSemiRapide;
+            numEloSemiRapideJ=infos.get("eloSemiRapide");
         }
-        if("".equals(numEloRapide)){
+        if("".equals(infos.get("eloRapide"))){
             numEloRapideJ="NC";
         }else{
-            numEloRapideJ=numEloRapide;
+            numEloRapideJ=infos.get("eloRapide");
         }      
-        categorieJ=cat;
-        dateNaisJ=dateNais;
-        sexeJ=sexe;
-        federationJ=federation;
-        ligueJ=ligue;
-        clubJ=club;
-    }
-    
-    public Joueurs(String[] infos){
-        numLicenceJ=infos[0];
-        nomJ=infos[1];
-        prenomJ=infos[2];
-        if("".equals(infos[4])){
-            numEloNormalJ="NC";
-        }else{
-            numEloNormalJ=infos[4];
-        }
-        if("".equals(infos[5])){
-            numEloSemiRapideJ="NC";
-        }else{
-            numEloSemiRapideJ=infos[5];
-        }
-        if("".equals(infos[6])){
-            numEloRapideJ="NC";
-        }else{
-            numEloRapideJ=infos[6];
-        }      
-        categorieJ=infos[7];
-        dateNaisJ=infos[3];
-        sexeJ=infos[8];
-        federationJ=infos[9];
-        ligueJ=infos[10];
-        clubJ=infos[11];
+        categorieJ=infos.get("categorie");
+        dateNaisJ=infos.get("dateNaissance");
+        sexeJ=infos.get("sexe");
+        federationJ=infos.get("federation");
+        ligueJ=infos.get("ligue");
+        clubJ=infos.get("club");
     }
    
     // Assesseurs
+    public int getIdJ() {
+        return idJ;
+    }
     public String getNumLicenceJ(){
         return this.numLicenceJ;
     }

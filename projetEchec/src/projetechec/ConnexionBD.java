@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException; 
 import java.sql.Statement; 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -26,7 +28,7 @@ public class ConnexionBD {
     private Connection cn = null;
     
     public ConnexionBD(){
-        
+     
     }
     
     public void initConnexion(){
@@ -86,7 +88,7 @@ public class ConnexionBD {
         }
     }
     
-    public void insertJoueur(String[] informationsJoueur){
+    public void insertJoueur(Map<String, String> informationsJoueur){
         try {
             initConnexion();
             String sqlPrepared;
@@ -96,18 +98,18 @@ public class ConnexionBD {
             
             pst = cn.prepareStatement(sqlPrepared);
             
-            pst.setString(1, informationsJoueur[0]);
-            pst.setString(2, informationsJoueur[1]);
-            pst.setString(3, informationsJoueur[2]);
-            pst.setString(4, informationsJoueur[3]);
-            pst.setString(5, informationsJoueur[4]);
-            pst.setString(6, informationsJoueur[5]);
-            pst.setString(7, informationsJoueur[6]);
-            pst.setString(8, informationsJoueur[7]);
-            pst.setString(9, informationsJoueur[8]);
-            pst.setString(10, informationsJoueur[9]);
-            pst.setString(11, informationsJoueur[10]);
-            pst.setString(12, informationsJoueur[11]);
+            pst.setString(1, informationsJoueur.get("numLicence"));
+            pst.setString(2, informationsJoueur.get("nom"));
+            pst.setString(3, informationsJoueur.get("prenom"));
+            pst.setString(4, informationsJoueur.get("dateNaissance"));
+            pst.setString(5, informationsJoueur.get("eloClassique"));
+            pst.setString(6, informationsJoueur.get("eloRapide"));
+            pst.setString(7, informationsJoueur.get("eloSemiRapide"));
+            pst.setString(8, informationsJoueur.get("sexe"));
+            pst.setString(9, informationsJoueur.get("categorie"));
+            pst.setString(10, informationsJoueur.get("federation"));
+            pst.setString(11, informationsJoueur.get("ligue"));
+            pst.setString(12, informationsJoueur.get("club"));
             
             pst.executeUpdate();
             
@@ -117,32 +119,33 @@ public class ConnexionBD {
         }
     }
     
-    public ArrayList<String[]> selectAllJoueurs(){
-        ArrayList<String[]> list = new ArrayList<>();
+    public ArrayList<Map<String, String>> selectAllJoueurs(){
+        ArrayList<Map<String, String>> list = new ArrayList<>();
         try {         
             initConnexion();
             String sql;
-            sql = "SELECT * FROM Joueurs";
+            sql = "SELECT * FROM Joueurs ORDER BY nom ASC, prenom ASC;";
             
             st = cn.createStatement();
             
             rs = st.executeQuery(sql);
             
             while(rs.next()){
-                String[] infos = new String[12];
-                infos[0] = rs.getString(1);
-                infos[1] = rs.getString(2);
-                infos[2] = rs.getString(3);
-                infos[3] = rs.getString(4);
-                infos[4] = rs.getString(5);
-                infos[5] = rs.getString(6);
-                infos[6] = rs.getString(7);
-                infos[7] = rs.getString(8);
-                infos[8] = rs.getString(9);
-                infos[9] = rs.getString(10);
-                infos[10] = rs.getString(11);
-                infos[11] = rs.getString(12);
-                list.add(infos);
+                Map<String, String> map = new HashMap<>();
+                map.put("id", Integer.toString(rs.getInt(1)));
+                map.put("numLicence", rs.getString(2));
+                map.put("nom", rs.getString(3));
+                map.put("prenom", rs.getString(4));
+                map.put("dateNaissance", rs.getString(5));
+                map.put("eloClassique", rs.getString(6));
+                map.put("eloRapide", rs.getString(7));
+                map.put("eloSemiRapide", rs.getString(8));
+                map.put("sexe", rs.getString(9));
+                map.put("categorie", rs.getString(10));
+                map.put("federation", rs.getString(11));
+                map.put("ligue", rs.getString(12));
+                map.put("club", rs.getString(13));
+                list.add(map);
             }
             
             deconnexion();
@@ -153,7 +156,7 @@ public class ConnexionBD {
         return list;
     }
     
-    public void updateJoueur(int id, String[] informationsJoueur){
+    public void updateJoueur(int id, Map<String, String> informationsJoueur){
         try {
             initConnexion();
             String sqlPrepared;
@@ -162,19 +165,19 @@ public class ConnexionBD {
                         + "WHERE id = ?";
             
             pst = cn.prepareStatement(sqlPrepared);
+            pst.setString(1, informationsJoueur.get("numLicence"));
+            pst.setString(2, informationsJoueur.get("nom"));
+            pst.setString(3, informationsJoueur.get("prenom"));
+            pst.setString(4, informationsJoueur.get("dateNaissance"));
+            pst.setString(5, informationsJoueur.get("eloClassique"));
+            pst.setString(6, informationsJoueur.get("eloRapide"));
+            pst.setString(7, informationsJoueur.get("eloSemiRapide"));
+            pst.setString(8, informationsJoueur.get("sexe"));
+            pst.setString(9, informationsJoueur.get("categorie"));
+            pst.setString(10, informationsJoueur.get("federation"));
+            pst.setString(11, informationsJoueur.get("ligue"));
+            pst.setString(12, informationsJoueur.get("club"));
             
-            pst.setString(1, informationsJoueur[0]);
-            pst.setString(2, informationsJoueur[1]);
-            pst.setString(3, informationsJoueur[2]);
-            pst.setString(4, informationsJoueur[3]);
-            pst.setString(5, informationsJoueur[4]);
-            pst.setString(6, informationsJoueur[5]);
-            pst.setString(7, informationsJoueur[6]);
-            pst.setString(8, informationsJoueur[7]);
-            pst.setString(9, informationsJoueur[8]);
-            pst.setString(10, informationsJoueur[9]);
-            pst.setString(11, informationsJoueur[10]);
-            pst.setString(12, informationsJoueur[11]);
             pst.setInt(13, id);
             
             pst.executeUpdate();
@@ -189,7 +192,7 @@ public class ConnexionBD {
         try {
             initConnexion();
             String sqlPrepared;
-            sqlPrepared = "DELETE FROM Joueurs"
+            sqlPrepared = "DELETE FROM Joueurs "
                         + "WHERE id = ?";
             
             pst = cn.prepareStatement(sqlPrepared);
