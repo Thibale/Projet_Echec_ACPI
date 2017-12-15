@@ -1702,6 +1702,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_SelectionTournoiMenuPrincjButtonActionPerformed
 
     private void selectionTournoiSelectionnerjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectionTournoiSelectionnerjButtonActionPerformed
+        //n'appelle rien d'extérieur à l'interface, on n'a pas dbesoi de le mettre dans le controller du coup ?
         if(MenuPrincipal.idTournoiCourant == -1){
             selectionTournoiMessagejLabel.setText("Veuillez sélectionner un tournoi");
         }else{
@@ -1714,6 +1715,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_selectionTournoiSelectionnerjButtonActionPerformed
 
     private void selectionTournoijListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_selectionTournoijListValueChanged
+       //à refactorer
         ArrayList<Tournoi> listT = xml2.ReadXML();
         String afftmp;
         String s = (String) selectionTournoijList.getSelectedValue();
@@ -1727,14 +1729,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_selectionTournoijListValueChanged
 
     private void ecranTournoiMenuPrincjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ecranTournoiMenuPrincjButtonActionPerformed
-        
+        //n'appelle rien d'extérieur à l'interface, on n'a pas dbesoi de le mettre dans le controller du coup ?
         idTournoiCourant = -1;
         
         initPanel(menuPrinc);
     }//GEN-LAST:event_ecranTournoiMenuPrincjButtonActionPerformed
 
     private void ajouterJoueurjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajouterJoueurjButtonActionPerformed
-        
+        //à refactorer
         ArrayList<Joueurs> listJ = xml2.getJoueursFromTournoi(MenuPrincipal.idTournoiCourant-1);
         DefaultListModel listM = new DefaultListModel();
         ajoutJoueurTounroiJoueurDedansjList.setModel(listM);
@@ -1786,6 +1788,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_ajouterJoueurjButtonActionPerformed
 
     private void AjoutJoueurTournoiRetourjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AjoutJoueurTournoiRetourjButtonActionPerformed
+        //à refactorer
         if(!confirmed){
             confirmed = true;
             ajoutJoueurTournoiMessagejLabel.setText("Vous n'avez pas enregistré, appuyez de nouveau sur retour pour annuler");
@@ -1798,6 +1801,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_AjoutJoueurTournoiRetourjButtonActionPerformed
 
     private void ajoutJoueurTounroiJoueurDehorsjListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_ajoutJoueurTounroiJoueurDehorsjListValueChanged
+        //n'appelle rien d'extérieur à l'interface, on n'a pas dbesoi de le mettre dans le controller du coup ?
         ArrayList<Joueurs> listJ = MenuPrincipal.joueursDehors;
         String afftmp;
         String s = (String) ajoutJoueurTounroiJoueurDehorsjList.getSelectedValue();
@@ -1808,6 +1812,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_ajoutJoueurTounroiJoueurDehorsjListValueChanged
 
     private void ajoutJoueurTournoiAjouterjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajoutJoueurTournoiAjouterjButtonActionPerformed
+        //à refactorer
         if(MenuPrincipal.idJoueurDehors != -1){
             MenuPrincipal.joueursDedans.add(MenuPrincipal.joueursDehors.get(MenuPrincipal.idJoueurDehors-1));
             MenuPrincipal.joueursDehors.remove(MenuPrincipal.idJoueurDehors-1);
@@ -1837,6 +1842,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_ajoutJoueurTournoiAjouterjButtonActionPerformed
 
     private void ajoutJoueurTounroiJoueurDedansjListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_ajoutJoueurTounroiJoueurDedansjListValueChanged
+        //à refactorer
         ArrayList<Joueurs> listJ = MenuPrincipal.joueursDedans;
         String afftmp;
         String s = (String) ajoutJoueurTounroiJoueurDedansjList.getSelectedValue();
@@ -1847,6 +1853,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_ajoutJoueurTounroiJoueurDedansjListValueChanged
 
     private void AjouteJoueurTournoiRemovejButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AjouteJoueurTournoiRemovejButtonActionPerformed
+        //Je sais pas trop si je dois refactorer ou non, je vais y réfléchir
         if(MenuPrincipal.idJoueurDedans != -1){
             MenuPrincipal.joueursDehors.add(MenuPrincipal.joueursDedans.get(MenuPrincipal.idJoueurDedans-1));
             MenuPrincipal.joueursDedans.remove(MenuPrincipal.idJoueurDedans-1);
@@ -1876,6 +1883,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_AjouteJoueurTournoiRemovejButtonActionPerformed
 
     private void ajoutJoueurTournoiConfirmerjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajoutJoueurTournoiConfirmerjButtonActionPerformed
+        //à refactorer
         xml2.ecrireJoueurDansTournoi(joueursDedans, idTournoiCourant-1);
         ajoutJoueurTournoiMessagejLabel.setText("Enregistrement confirmé");
         confirmed = true;
@@ -1948,6 +1956,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     
     private void supprimerTournoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supprimerTournoiActionPerformed
+        //à refactorer
         if(MenuPrincipal.idTournoiCourant == -1){
             selectionTournoiMessagejLabel.setText("Veuillez sélectionner un tournoi");
         }else{
@@ -1975,6 +1984,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_supprimerTournoiActionPerformed
 
     private void modifierTournoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifierTournoiActionPerformed
+        //à refactorer
         if(MenuPrincipal.idTournoiCourant == -1){
             selectionTournoiMessagejLabel.setText("Veuillez sélectionner un tournoi");
         }else{
@@ -2006,6 +2016,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_lieuTextField6ActionPerformed
 
     private void SauvModifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SauvModifActionPerformed
+        //à refactorer
         String nomTournoi=nomTextField3.getText();
         String dateDebut= datedTextField3.getText();
         String dateFin=dateFTextField4.getText();
@@ -2092,7 +2103,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_SauvModifActionPerformed
 
     private void menuprincT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuprincT1ActionPerformed
-
+        
         msgErreurT1.setText("");
         nom.setForeground(Color.black);
         dated.setForeground(Color.black);
@@ -2103,7 +2114,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuprincT1ActionPerformed
     private void accesModifTournoi(int idT, Tournoi T){
         
-
         nomTextField3.setText(T.getNomTournoi());
         datedTextField3.setText(T.getDateDebut());
         dateFTextField4.setText(T.getDateFin());
