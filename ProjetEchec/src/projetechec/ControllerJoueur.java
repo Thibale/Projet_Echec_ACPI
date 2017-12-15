@@ -7,13 +7,18 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
 import java.util.Date;
+import javax.swing.DefaultListModel;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 
 public class ControllerJoueur {
     
+    private static ControllerBD controllerBD = new ControllerBD();
+    
+    private static int idJoueurCourant = -1;
+
+   
     public static XML xmlJoueur = new XML();
-    public static XMLTournoi xmlTournoi = new XMLTournoi();
     
     public static int idTournoiCourant = -1;
     public static int idJoueurDedans = -1;
@@ -23,9 +28,17 @@ public class ControllerJoueur {
     
     public static boolean ajoutJoueurToTournoiConfirmed = false;
     
-    public Joueurs creerJoueur(String numLicence,String nom,String prenom,String numEloNormal,String numEloSemiRapide,String numEloRapide,String dateNais,String sexe,String federation,String ligue,String club){
-        Joueurs j=new Joueurs(numLicence,nom, prenom, numEloNormal, numEloSemiRapide, numEloRapide, this.calculCategorie(sexe, dateNais), dateNais, sexe, federation, ligue, club);
-        return j;
+    public static int getIdJoueurCourant() {
+        return idJoueurCourant;
+    }
+    
+    public Boolean creerJoueur(String[] infosJoueur, JLabel nomLabel, JLabel prenomLabel, JLabel sexeLabel, JLabel dateLabel, JTextArea retour){
+        if(!infosJoueur[3].equals("") && !infosJoueur[8].equals("")){
+            infosJoueur[7] = this.calculCategorie(infosJoueur[3], infosJoueur[8]);
+        }
+        Joueurs j=new Joueurs(infosJoueur);
+        Boolean isSave = saveJoueur(j, nomLabel, prenomLabel, sexeLabel, dateLabel, retour, infosJoueur);
+        return isSave;
     }
     
     //Convert la date au format 0000-00-00
@@ -221,7 +234,7 @@ public class ControllerJoueur {
     }
     
     //Calcul la categorie
-    public String calculCategorie(String sexe, String date){
+    public String calculCategorie(String date, String sexe){
         String tmp = this.conversionDate(date);
         String cat = "";
         if(this.verifFormatDateValide(date)){
@@ -384,7 +397,7 @@ public class ControllerJoueur {
         
         if(verif){
             
-            ArrayList<Joueurs> listJ = xmlJoueur.ReadXML();
+            ArrayList<Joueurs> listJ = this.lireJoueur();
             if(verifJoueurExistantDansList(listJ,j)){
                 stmp += System.lineSeparator()+"Erreur, ce joueur existe déjà .";
             }else{
@@ -396,13 +409,13 @@ public class ControllerJoueur {
         return verif;
     }
     
-    public boolean saveJoueur(Joueurs j, JLabel nomLabel, JLabel prenomLabel, JLabel sexeLabel, JLabel dateLabel, JTextArea retour){
+    public boolean saveJoueur(Joueurs j, JLabel nomLabel, JLabel prenomLabel, JLabel sexeLabel, JLabel dateLabel, JTextArea retour, String[] informationsJoueur){
         
         boolean verif = allVerifJoueur(j, nomLabel, prenomLabel, sexeLabel, dateLabel, retour);        
         
         if(verif){
             retour.setText("Joueur créé avec succès !");
-            xmlJoueur.WriteXML(j);
+            controllerBD.CreerJoueur(informationsJoueur);
             return true;
         }
         return false;
@@ -414,10 +427,65 @@ public class ControllerJoueur {
         
         if(verif){
             retour.setText("Joueur modifié !");
+            controllerBD.modifierJoueurs(idJ, getInfosJoueur(j));
             xmlJoueur.modifierJoueur(idJ, j);
             return true;
         }
         return false;
     }
+    
+    public DefaultListModel setJoueurInListModel(JTextArea textArea){
+        ArrayList<Joueurs> listJ = lireJoueur();
+        DefaultListModel listM = new DefaultListModel();
+        String tmp = new String();
+        String tmpList;
+        for (int i = 0; i < listJ.size(); i++){
+            tmp = tmp + " Joueur n°" + (i+1) + System.lineSeparator();
+            tmpList = (i+1) + " " + listJ.get(i).getNomJ() + " " + listJ.get(i).getPrenomJ();
+            listM.addElement(tmpList);
+            tmp = tmp + listJ.get(i).JtoString() + System.lineSeparator();
+
+        }
+        textArea.setText(tmp);
+        
+        return listM;
+    }
+    
+    public String[] getInfosJoueur(Joueurs joueur){
+        String[] infos = new String[12];
+        infos[0] = joueur.getNumLicenceJ();
+        infos[1] = joueur.getNomJ();
+        infos[2] = joueur.getPrenomJ();
+        infos[3] = joueur.getDateNaisJ();
+        infos[4] = joueur.getNumEloNormalJ();
+        infos[5] = joueur.getNumEloRapideJ();
+        infos[6] = joueur.getNumEloSemiRapideJ();
+        infos[7] = joueur.getCategorieJ();
+        infos[8] = joueur.getSexeJ();
+        infos[9] = joueur.getFederationJ();
+        infos[10] = joueur.getLigueJ();
+        infos[11] = joueur.getClubJ();
+        
+        return infos;
+    }
+    
+    public ArrayList<Joueurs> lireJoueur(){
+        ArrayList<Joueurs> listJoueurs=new ArrayList<>();
+        
+        ArrayList<String[]> listInfosJoueurs = controllerBD.lireJoueurs();
+        
+        for(int i = 0; i < listInfosJoueurs.size() ; i++){
+            Joueurs jtmp= new Joueurs(listInfosJoueurs.get(i));
+                
+            listJoueurs.add(jtmp);
+        }
+
+        return listJoueurs;
+    }
+    
+    public ArrayList<String[]> lireJoueurInStringList(){
+        return controllerBD.lireJoueurs();
+    }
+    
     
 }

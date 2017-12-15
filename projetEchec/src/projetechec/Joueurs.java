@@ -1,16 +1,6 @@
 package projetechec;
 
-import java.awt.Color;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.Period;
-import java.time.format.DateTimeParseException;
-import java.util.Date;
-import java.util.ArrayList;
-
-public class Joueurs {  
-    private int idJ;
+public class Joueurs {
     private String numLicenceJ;
     private String nomJ;
     private String prenomJ;
@@ -25,7 +15,6 @@ public class Joueurs {
     private String clubJ;
     
     public Joueurs(String numLicence,String nom,String prenom,String numEloNormal,String numEloSemiRapide,String numEloRapide,String cat,String dateNais,String sexe,String federation,String ligue,String club){
-        idJ=0;
         numLicenceJ=numLicence;
         nomJ=nom;
         prenomJ=prenom;
@@ -51,11 +40,35 @@ public class Joueurs {
         ligueJ=ligue;
         clubJ=club;
     }
+    
+    public Joueurs(String[] infos){
+        numLicenceJ=infos[0];
+        nomJ=infos[1];
+        prenomJ=infos[2];
+        if("".equals(infos[4])){
+            numEloNormalJ="NC";
+        }else{
+            numEloNormalJ=infos[4];
+        }
+        if("".equals(infos[5])){
+            numEloSemiRapideJ="NC";
+        }else{
+            numEloSemiRapideJ=infos[5];
+        }
+        if("".equals(infos[6])){
+            numEloRapideJ="NC";
+        }else{
+            numEloRapideJ=infos[6];
+        }      
+        categorieJ=infos[7];
+        dateNaisJ=infos[3];
+        sexeJ=infos[8];
+        federationJ=infos[9];
+        ligueJ=infos[10];
+        clubJ=infos[11];
+    }
    
     // Assesseurs
-    public int getIdJ(){
-        return this.idJ;
-    }
     public String getNumLicenceJ(){
         return this.numLicenceJ;
     }
@@ -93,9 +106,6 @@ public class Joueurs {
         return this.clubJ;
     }
     
-    public void setIdJ(int id){
-        this.idJ = id;
-    }
     public void setNumLicenceJ(String numLic){
         this.numLicenceJ = numLic;
     }
