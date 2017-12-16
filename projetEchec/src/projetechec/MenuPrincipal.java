@@ -1990,8 +1990,23 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     
     private void supprimerTournoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supprimerTournoiActionPerformed
-        //à refactorer
+        //refactoré, à vérifier
         if(MenuPrincipal.idTournoiCourant == -1){
+            selectionTournoiMessagejLabel.setText("Veuillez sélectionner un tournoi");
+        }else{
+            String s = (String) selectionTournoijList.getSelectedValue();
+            DefaultListModel listM = new DefaultListModel();
+            listM = ControllerTournoi.supprimerTournoi(s);
+            if (listM != null){
+                selectionTournoijList.setModel(listM);
+                affichageTournois.setText("");
+            }       
+           
+             
+        }
+        
+        /*
+                if(MenuPrincipal.idTournoiCourant == -1){
             selectionTournoiMessagejLabel.setText("Veuillez sélectionner un tournoi");
         }else{
             String s = (String) selectionTournoijList.getSelectedValue();
@@ -2015,6 +2030,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 affichageTournois.setText("");
             }
         }
+        */
+        
     }//GEN-LAST:event_supprimerTournoiActionPerformed
 
     private void modifierTournoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifierTournoiActionPerformed

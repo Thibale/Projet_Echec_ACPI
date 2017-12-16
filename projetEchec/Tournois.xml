@@ -144,12 +144,5 @@
     <lieu lieu=""/>
     <joueurs/>
   </tournoi>
-<tournoi>
-    <nomTournoi nomTournoi="Test"/>
-    <dateDebut dateDebut="18/10/2018"/>
-    <dateFin dateFin="18/11/2018"/>
-    <nbRondes nbRondes="96"/>
-    <lieu lieu=""/>
-    <joueurs/>
-  </tournoi>
+
 </tournois>

@@ -7,7 +7,9 @@ package projetechec;
 
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
-
+import java.util.logging.Logger;
+import javax.xml.transform.TransformerException;
+import java.util.logging.Level;
 /**
  *
  * @author User
@@ -146,6 +148,28 @@ public class ControllerTournoi {
         String res = "Enregistrement confirmé";
         xmlTournoi.ecrireJoueurDansTournoi(listeJ, idT);
         return res;
+    }
+    
+    public static DefaultListModel supprimerTournoi(String Tournoi){ //ligne 2000 environ
+        if(Tournoi != null && !Tournoi.isEmpty()){
+            int intTmp = Integer.valueOf(Tournoi.split(" ")[0]);
+            try { 
+                xmlTournoi.supprimerTournoi(intTmp);
+            } catch (TransformerException ex) {
+                Logger.getLogger(ControllerTournoi.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            ArrayList<Tournoi> listT = xmlTournoi.ReadXML();
+            DefaultListModel listM = new DefaultListModel();
+            String tmp="";
+            String tmpList = "";
+            for (int i=0;i<listT.size();i++){
+                tmp=tmp+" Tournoi n°"+(i+1)+System.getProperty("line.separator");
+                tmpList =(i+1)+" Tournoi n°"+(i+1)+" "+listT.get(i).getNomTournoi();
+                listM.addElement(tmpList);
+            }
+            return listM;
+        }
+        return null;
     }
     
 }
