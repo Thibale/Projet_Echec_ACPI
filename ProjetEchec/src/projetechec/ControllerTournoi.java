@@ -142,4 +142,10 @@ public class ControllerTournoi {
         return res;
     }
     
+    public static String ajoutJoueurTournoi(ArrayList<Joueurs> listeJ,  int idT){
+        String res = "Enregistrement confirmé";
+        xmlTournoi.ecrireJoueurDansTournoi(listeJ, idT);
+        return res;
+    }
+    
 }

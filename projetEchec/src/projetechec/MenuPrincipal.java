@@ -1916,9 +1916,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_AjouteJoueurTournoiRemovejButtonActionPerformed
 
     private void ajoutJoueurTournoiConfirmerjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajoutJoueurTournoiConfirmerjButtonActionPerformed
-        //à refactorer
-        xml2.ecrireJoueurDansTournoi(joueursDedans, idTournoiCourant-1);
-        ajoutJoueurTournoiMessagejLabel.setText("Enregistrement confirmé");
+        //refactoré, à vérifier
+        //xml2.ecrireJoueurDansTournoi(joueursDedans, idTournoiCourant-1);
+        ajoutJoueurTournoiMessagejLabel.setText(ControllerTournoi.ajoutJoueurTournoi(joueursDedans,  idTournoiCourant-1));
         confirmed = true;
     }//GEN-LAST:event_ajoutJoueurTournoiConfirmerjButtonActionPerformed
 
