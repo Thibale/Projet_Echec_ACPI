@@ -1310,6 +1310,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         refreshAffichage(AffJTextArea1);
+        ControllerJoueur.setIdJoueurCourant(-1);
         initPanel(afficherJoueur);
     }//GEN-LAST:event_jButton1ActionPerformed
 
