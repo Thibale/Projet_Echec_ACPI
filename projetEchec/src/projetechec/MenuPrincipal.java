@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import javax.swing.DefaultListSelectionModel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.xml.transform.TransformerException;
@@ -32,6 +33,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     
     public MenuPrincipal() {
         initComponents();
+        affichageJoueurList.setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION);
         initPanel(menuPrinc);
     }
 
@@ -1286,6 +1288,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         federationTextField1.setText(infos.get("federation"));
         ligueTextField1.setText(infos.get("ligue"));
         clubTextField1.setText(infos.get("club"));
+        if(infos.get("sexe").equals("M")){
+            jComboBox2.setSelectedItem("M");
+        }else{
+            jComboBox2.setSelectedItem("F");
+        }
         eloNormalTextField1.setText(infos.get("eloClassique"));
         eloSemiRapideTextField1.setText(infos.get("eloSemiRapide"));
         eloRapideTextField1.setText(infos.get("eloRapide"));
@@ -1486,6 +1493,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         }else{
             controllerJoueur.joueurListGetSelectedJoueur(affichageJoueurList, AffJTextArea1);
             controllerJoueur.supprimerJoueurSelectionne();
+            ControllerJoueur.setIdJoueurCourant(-1);
             refreshAffichage(AffJTextArea1);
         }
     }//GEN-LAST:event_supprimerJoueurButtonActionPerformed
@@ -1494,13 +1502,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
         if(ControllerJoueur.getIdJoueurCourant()== -1){
             ErreurSelectJoueur.setText("Veuillez sélectionner un joueur");
         }else{
-            ArrayList<Map<String, String>> listeInfoJoueurs= controllerJoueur.lireJoueurInStringList();
             String s = (String) affichageJoueurList.getSelectedValue();
             if(s != null && !s.isEmpty()){
                 ControllerJoueur.setIdJoueurCourant(Integer.valueOf(s.split(" ")[0]));
             }
             if(ControllerJoueur.getIdJoueurCourant() != -1){
-                accesModifJoueur(listeInfoJoueurs.get(ControllerJoueur.getIdJoueurCourant()-1));
+                accesModifJoueur(ControllerJoueur.getInfoJoueurCourant());
+                ControllerJoueur.setIdJoueurCourant(-1);
             }
 
             refreshAffichage(AffJTextArea1);

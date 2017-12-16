@@ -41,6 +41,7 @@ public class ControllerJoueur {
     
     //Contient toutes les verification
     // <editor-fold defaultstate="collapsed" desc="Verifications">
+    
     //Convert la date au format 0000-00-00
     public String conversionDate(String date){
         String tmp = "";
@@ -398,27 +399,27 @@ public class ControllerJoueur {
             stmp += System.lineSeparator()+"Erreur, Federation invalide.";
         }
         
-        if(verif){
-            
-            ArrayList<Joueurs> listJ = this.lireJoueur();
-            if(verifJoueurExistantDansList(listJ,j)){
-                stmp += System.lineSeparator()+"Erreur, ce joueur existe déjà .";
-                verif = false;
-            }else{
-                verif = true;
-            }
-        }
         retour.setText(stmp);
       
         return verif;
     }
     // </editor-fold>
     
-    //vérifie les données si elles sont correctes le joueur est sauvegardé dans la base de donnée
+    //appelle les verif, si elles sont correctes le joueur est sauvegardé dans la base de donnée
     public boolean saveJoueur(Joueurs j, JLabel nomLabel, JLabel prenomLabel, JLabel sexeLabel, JLabel dateLabel, JTextArea retour, Map<String, String> informationsJoueur){
         
-        boolean verif = allVerifJoueur(j, nomLabel, prenomLabel, sexeLabel, dateLabel, retour);        
         
+        boolean verif = allVerifJoueur(j, nomLabel, prenomLabel, sexeLabel, dateLabel, retour);        
+        if(verif){
+            
+            ArrayList<Joueurs> listJ = this.lireJoueur();
+            if(verifJoueurExistantDansList(listJ,j)){
+                retour.setText("Erreur, ce joueur existe déjà .");
+                verif = false;
+            }else{
+                verif = true;
+            }
+        }
         if(verif){
             retour.setText("Joueur créé avec succès !");
             CONTROLLER_BD.CreerJoueur(informationsJoueur);
@@ -448,7 +449,7 @@ public class ControllerJoueur {
         String tmpList;
         for (int i = 0; i < listJ.size(); i++){
             tmp = tmp + " Joueur n°" + (i+1) + System.lineSeparator();
-            tmpList = (listJ.get(i).getIdJ()) + " " + listJ.get(i).getNomJ() + " " + listJ.get(i).getPrenomJ();
+            tmpList = (listJ.get(i).getIdJ()) + " " + listJ.get(i).getNomJ() + " " + listJ.get(i).getPrenomJ() + " " + listJ.get(i).getNumLicenceJ();
             listM.addElement(tmpList);
             tmp = tmp + listJ.get(i).JtoString() + System.lineSeparator();
 
@@ -459,7 +460,7 @@ public class ControllerJoueur {
     }
     
     //Met les information d'un joueur dans une HashMap
-    public Map<String, String> getInfosJoueur(Joueurs joueur){
+    public static Map<String, String> getInfosJoueur(Joueurs joueur){
         Map<String, String> map = new HashMap<>();
         
         map.put("numLicence", joueur.getNumLicenceJ());
@@ -479,7 +480,7 @@ public class ControllerJoueur {
     }
     
     //Appelle la base pour récupérer les joueurs
-    public ArrayList<Joueurs> lireJoueur(){
+    public static ArrayList<Joueurs> lireJoueur(){
         ArrayList<Joueurs> listJoueurs=new ArrayList<>();
         
         ArrayList<Map<String, String>> listInfosJoueurs = CONTROLLER_BD.lireJoueurs();
@@ -526,5 +527,23 @@ public class ControllerJoueur {
     //Supprime le joueur
     public void supprimerJoueurSelectionne(){
         CONTROLLER_BD.supprimerJoueur(idJoueurCourant);
+    }
+    
+    public static Map<String, String> getInfoJoueurCourant(){
+        if(idJoueurCourant != -1){
+            ArrayList<Joueurs> listJ = lireJoueur();
+                boolean trouve = false;
+                int i = -1;
+            while(!trouve && i < listJ.size()-1){
+                i++;
+                if(listJ.get(i).getIdJ() == idJoueurCourant){
+                    trouve = true;
+                }
+            }
+            return getInfosJoueur(listJ.get(i));
+        }
+        else{
+            return null;
+        }
     }
 }
