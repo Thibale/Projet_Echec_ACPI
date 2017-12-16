@@ -1497,6 +1497,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuprincTActionPerformed
 
     private void enregistreTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enregistreTActionPerformed
+        //refactoré, à vérifier
         String nomTournoi=nomTextField1.getText();
         String dateDebut= datedTextField2.getText();
         String dateFin=dateFTextField3.getText();
@@ -1506,6 +1507,30 @@ public class MenuPrincipal extends javax.swing.JFrame {
         dated.setForeground(Color.black);
         datef.setForeground(Color.black);
         nbr.setForeground(Color.black);
+        
+        String [] tabString = ControllerTournoi.enregistrerTournoi(nomTournoi, dateDebut, dateFin, nbRondes, lieu);
+        System.out.println(tabString[0]);
+        if(tabString[1].equals("1")){
+            nom.setForeground(Color.red);
+        }
+        if(tabString[2].equals("1")){
+            dated.setForeground(Color.red);
+        }
+        if(tabString[3].equals("1")){
+            datef.setForeground(Color.red);
+        }
+        if(tabString[4].equals("1")){
+            nbr.setForeground(Color.red);
+        }
+        if(tabString[5].equals("1")){
+            nom.setForeground(Color.red);
+        }
+        if(tabString[6].equals("1")){
+            dated.setForeground(Color.red);
+        }
+        msgErreurT.setText(tabString[0]);
+        
+        /*
         Tournoi t = new Tournoi(nomTournoi,dateDebut,dateFin,nbRondes,lieu);
         String stmp="Données incorrectes: ";
         boolean test = true;
@@ -1513,31 +1538,31 @@ public class MenuPrincipal extends javax.swing.JFrame {
         {
             test= false;
             if(t.nomTournoiEstVide()){
-                nom.setForeground(Color.red);
+                nom.setForeground(Color.red); //1
                 stmp += System.getProperty("line.separator")+"Nom Tournoi manquant";
             }
             if(t.dateDebutEstVide()){
-                dated.setForeground(Color.red);
+                dated.setForeground(Color.red); //2
                 stmp += System.getProperty("line.separator")+"Date de début manquante";
             }
             if(t.dateFinEstVide()){
-                datef.setForeground(Color.red);
+                datef.setForeground(Color.red); //3
                 stmp += System.getProperty("line.separator")+"Date de fin manquante";
             }
             if(t.nbRondesEstVide()){
-                nbr.setForeground(Color.red);
+                nbr.setForeground(Color.red); //4
                 stmp += System.getProperty("line.separator")+"Nombre de rondes manquant";
             }
         }
         if(!t.verifTailleNomTournoi()){
-            nom.setForeground(Color.red);
+            nom.setForeground(Color.red); //5
             stmp += System.getProperty("line.separator")+"Nom de tournoi limité à 50 caractères.";
         }
         if(!t.verifFormatDateValide(dateDebut))
         {
             test= false;
             if(!t.verifMatchDate(dateDebut)){
-                dated.setForeground(Color.red);
+                dated.setForeground(Color.red); //6
                 stmp += System.getProperty("line.separator")+"Erreur, date invalide format attendu : JJ/MM/AAAA";
             }else{
                 if(!t.verifDateValide(dateDebut)){
@@ -1550,7 +1575,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         {
             test= false;
             if(!t.verifMatchDate(dateFin)){
-                dated.setForeground(Color.red);
+                dated.setForeground(Color.red); //6
                 stmp += System.getProperty("line.separator")+"Erreur, date invalide format attendu : JJ/MM/AAAA";
             }else{
                 if(!t.verifDateValide(dateFin)){
@@ -1578,7 +1603,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         if(test){
             msgErreurT.setText("Tournoi créé avec succès !");
             xml2.WriteXML(t);
-        }
+        }*/
     }//GEN-LAST:event_enregistreTActionPerformed
 
     private void lieuTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lieuTextField5ActionPerformed
