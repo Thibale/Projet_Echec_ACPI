@@ -130,4 +130,16 @@ public class ControllerTournoi {
         return stmp;
     }
     
+    public static String[] selectionTournoiJoueur(String Tournoi){
+        ArrayList<Tournoi> listT = xmlTournoi.ReadXML();
+        String[] res = new String[3];
+        res[2] = "0";
+        if(Tournoi != null && !Tournoi.isEmpty()){
+            res[2] = "1";
+            res[1] = Tournoi.split(" ")[0];
+            res[0] = listT.get(Integer.valueOf(res[1])-1).TtoString()+System.getProperty("line.separator");
+        }
+        return res;
+    }
+    
 }

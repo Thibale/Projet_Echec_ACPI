@@ -15,9 +15,10 @@
   
   
   
+  
   <joueurs>
       <joueur>
-        <idJoueur idJ="6"/>
+        <idJoueur idJ="8"/>
         <numLicence numLicence=""/>
         <nomJoueur nomJoueur="Falcone"/>
         <prenomJoueur prenomJoueur="Thibaut"/>
@@ -32,7 +33,7 @@
         <club club=""/>
       </joueur>
       <joueur>
-        <idJoueur idJ="6"/>
+        <idJoueur idJ="8"/>
         <numLicence numLicence=""/>
         <nomJoueur nomJoueur="Cousin"/>
         <prenomJoueur prenomJoueur="Charlotte"/>
@@ -47,22 +48,7 @@
         <club club=""/>
       </joueur>
       <joueur>
-        <idJoueur idJ="6"/>
-        <numLicence numLicence="G25489"/>
-        <nomJoueur nomJoueur="Pierre"/>
-        <prenomJoueur prenomJoueur="Dupond"/>
-        <numEloNormal numEloNormal="1783"/>
-        <numEloSemiRapide numEloSemiRapide="1960"/>
-        <numEloRapide numEloRapide="1664"/>
-        <categorie categorie="SePM"/>
-        <dateNais dateNais="17/08/1960"/>
-        <sexe sexe="M"/>
-        <federation federation="FRA"/>
-        <ligue ligue="LAN"/>
-        <club club="Echecs Club Montpellier"/>
-      </joueur>
-      <joueur>
-        <idJoueur idJ="6"/>
+        <idJoueur idJ="8"/>
         <numLicence numLicence="T12344"/>
         <nomJoueur nomJoueur="Durant"/>
         <prenomJoueur prenomJoueur="Nina"/>
@@ -75,6 +61,21 @@
         <federation federation="ITA"/>
         <ligue ligue="LAN"/>
         <club club="Lattes-Echecs"/>
+      </joueur>
+      <joueur>
+        <idJoueur idJ="8"/>
+        <numLicence numLicence=""/>
+        <nomJoueur nomJoueur="Gigi"/>
+        <prenomJoueur prenomJoueur="Thibaut"/>
+        <numEloNormal numEloNormal="NC"/>
+        <numEloSemiRapide numEloSemiRapide="NC"/>
+        <numEloRapide numEloRapide="NC"/>
+        <categorie categorie="JunM"/>
+        <dateNais dateNais="13/05/1998"/>
+        <sexe sexe="M"/>
+        <federation federation=""/>
+        <ligue ligue=""/>
+        <club club=""/>
       </joueur>
     </joueurs>
   </tournoi>

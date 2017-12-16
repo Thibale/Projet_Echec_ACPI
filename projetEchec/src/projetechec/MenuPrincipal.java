@@ -1740,7 +1740,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_selectionTournoiSelectionnerjButtonActionPerformed
 
     private void selectionTournoijListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_selectionTournoijListValueChanged
-       //à refactorer
+       //refactoré, à vérifier
+       String s = (String) selectionTournoijList.getSelectedValue();
+       String[] SelectT = ControllerTournoi.selectionTournoiJoueur(s);
+        if(SelectT[2].equals("1")){
+            MenuPrincipal.idTournoiCourant = Integer.valueOf(SelectT[1]);
+        }
+        affichageTournois.setText(SelectT[0]);
+       
+       /*
         ArrayList<Tournoi> listT = xml2.ReadXML();
         String afftmp;
         String s = (String) selectionTournoijList.getSelectedValue();
@@ -1749,7 +1757,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             MenuPrincipal.idTournoiCourant = Integer.valueOf(tmp);
             afftmp=listT.get(Integer.valueOf(tmp)-1).TtoString()+System.getProperty("line.separator");
             affichageTournois.setText(afftmp);
-        }
+        }*/
         
     }//GEN-LAST:event_selectionTournoijListValueChanged
 
