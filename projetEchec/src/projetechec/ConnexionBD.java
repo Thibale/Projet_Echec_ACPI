@@ -60,7 +60,7 @@ public class ConnexionBD {
                     " federation VARCHAR(64), " +  
                     " ligue VARCHAR(64), " +  
                     " club VARCHAR(64), " +  
-                    " PRIMARY KEY ( id ))";  
+                    " PRIMARY KEY ( id )); ";  
             
             st.executeUpdate(sql);
             
@@ -71,14 +71,16 @@ public class ConnexionBD {
                     " dateFin VARCHAR(16), " +  
                     " nbRondes VARCHAR(64), " +  
                     " lieu VARCHAR(64), " +   
-                    " PRIMARY KEY ( id ))";  
+                    " PRIMARY KEY ( id )); ";  
             
             st.executeUpdate(sql);
             
             sql =  "CREATE TABLE IF NOT EXISTS Participer " + 
                     "(idJoueur bigint, " + 
                     " idTournoi bigint , " +    
-                    " PRIMARY KEY ( idJoueur, idTournoi ))";  
+                    " PRIMARY KEY ( idJoueur, idTournoi ), " +
+                    " FOREIGN KEY (idJoueur) references Joueurs(id) ON DELETE CASCADE, " +
+                    " FOREIGN KEY (idTournoi) references Tournois(id) ON DELETE CASCADE); ";  
             
             st.executeUpdate(sql);
             
@@ -92,9 +94,9 @@ public class ConnexionBD {
         try {
             initConnexion();
             String sqlPrepared;
-            sqlPrepared = "INSERT INTO Joueurs"
-                        + "(numLicence, nom, prenom, dateNaissance, eloClassique, eloRapide, eloSemiRapide, sexe, categorie, federation, ligue, club) VALUES"
-                        + "(?,?,?,?,?,?,?,?,?,?,?,?)";
+            sqlPrepared = "INSERT INTO Joueurs "
+                        + "(numLicence, nom, prenom, dateNaissance, eloClassique, eloRapide, eloSemiRapide, sexe, categorie, federation, ligue, club) VALUES "
+                        + "(?,?,?,?,?,?,?,?,?,?,?,?); ";
             
             pst = cn.prepareStatement(sqlPrepared);
             
@@ -124,7 +126,7 @@ public class ConnexionBD {
         try {         
             initConnexion();
             String sql;
-            sql = "SELECT * FROM Joueurs ORDER BY nom ASC, prenom ASC;";
+            sql = "SELECT * FROM Joueurs ORDER BY nom ASC, prenom ASC; ";
             
             st = cn.createStatement();
             
@@ -156,15 +158,16 @@ public class ConnexionBD {
         return list;
     }
     
-    public void updateJoueur(int id, Map<String, String> informationsJoueur){
+    public void updateJoueur(int idJoueur, Map<String, String> informationsJoueur){
         try {
             initConnexion();
             String sqlPrepared;
-            sqlPrepared = "UPDATE Joueurs"
-                        + "SET numLicence = ?, nom = ?, prenom = ?, dateNaissance = ?, eloClassique = ?, eloRapide = ?, eloSemiRapide = ?, sexe = ?, categorie = ?, federation = ?, ligue = ?, club = ?"
-                        + "WHERE id = ?";
+            sqlPrepared = "UPDATE Joueurs "
+                        + "SET numLicence = ?, nom = ?, prenom = ?, dateNaissance = ?, eloClassique = ?, eloRapide = ?, eloSemiRapide = ?, sexe = ?, categorie = ?, federation = ?, ligue = ?, club = ? "
+                        + "WHERE id = ?; ";
             
             pst = cn.prepareStatement(sqlPrepared);
+            
             pst.setString(1, informationsJoueur.get("numLicence"));
             pst.setString(2, informationsJoueur.get("nom"));
             pst.setString(3, informationsJoueur.get("prenom"));
@@ -178,7 +181,7 @@ public class ConnexionBD {
             pst.setString(11, informationsJoueur.get("ligue"));
             pst.setString(12, informationsJoueur.get("club"));
             
-            pst.setInt(13, id);
+            pst.setInt(13, idJoueur);
             
             pst.executeUpdate();
             
@@ -188,16 +191,16 @@ public class ConnexionBD {
         }
     }
     
-    public void deleteJoueur(int id){
+    public void deleteJoueur(int idJoueur){
         try {
             initConnexion();
             String sqlPrepared;
             sqlPrepared = "DELETE FROM Joueurs "
-                        + "WHERE id = ?";
+                        + "WHERE id = ?; ";
             
             pst = cn.prepareStatement(sqlPrepared);
             
-            pst.setInt(1, id);
+            pst.setInt(1, idJoueur);
             
             pst.executeUpdate();
             
@@ -205,6 +208,191 @@ public class ConnexionBD {
         } catch (SQLException ex) {
             Logger.getLogger(ConnexionBD.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public void insertTournoi(Map<String, String> informationsTournoi){
+        try {
+            initConnexion();
+            String sqlPrepared;
+            sqlPrepared = "INSERT INTO Tournois "
+                        + "(nom, dateDebut, dateFin, nbRondes, lieu) VALUES "
+                        + "(?,?,?,?,?); ";
+            
+            pst = cn.prepareStatement(sqlPrepared);
+            
+            pst.setString(1, informationsTournoi.get("nom"));
+            pst.setString(2, informationsTournoi.get("dateDebut"));
+            pst.setString(3, informationsTournoi.get("dateFin"));
+            pst.setString(4, informationsTournoi.get("nbRondes"));
+            pst.setString(5, informationsTournoi.get("lieu"));
+
+            
+            pst.executeUpdate();
+            
+            deconnexion();
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnexionBD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public ArrayList<Map<String, String>> selectAllTournois(){
+        ArrayList<Map<String, String>> list = new ArrayList<>();
+        try {         
+            initConnexion();
+            String sql;
+            sql = "SELECT * FROM Tournois ORDER BY nom ASC; ";
+            
+            st = cn.createStatement();
+            
+            rs = st.executeQuery(sql);
+            
+            while(rs.next()){
+                Map<String, String> map = new HashMap<>();
+                
+                map.put("id", Integer.toString(rs.getInt(1)));
+                map.put("nom", rs.getString(2));
+                map.put("dateDebut", rs.getString(3));
+                map.put("dateFin", rs.getString(4));
+                map.put("nbRondes", rs.getString(5));
+                map.put("lieu", rs.getString(6));
+                list.add(map);
+            }
+            
+            deconnexion();
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnexionBD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return list;
+    }
+    
+    public void updateTournoi(int idTournoi, Map<String, String> informationsTournoi){
+        try {
+            initConnexion();
+            String sqlPrepared;
+            sqlPrepared = "UPDATE Tournois "
+                        + "SET nom = ?, dateDebut = ?, dateFin = ?, nbRondes = ?, lieu = ? "
+                        + "WHERE id = ?; ";
+            
+            pst = cn.prepareStatement(sqlPrepared);
+            
+            pst.setString(1, informationsTournoi.get("nom"));
+            pst.setString(2, informationsTournoi.get("dateDebut"));
+            pst.setString(3, informationsTournoi.get("dateFin"));
+            pst.setString(4, informationsTournoi.get("nbRondes"));
+            pst.setString(5, informationsTournoi.get("lieu"));
+            
+            pst.setInt(6, idTournoi);
+
+            
+            pst.executeUpdate();
+            
+            deconnexion();
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnexionBD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void deleteTournoi(int idTournoi){
+        try {
+            initConnexion();
+            String sqlPrepared;
+            sqlPrepared = "DELETE FROM Tournois "
+                        + "WHERE id = ?; ";
+            
+            pst = cn.prepareStatement(sqlPrepared);
+            
+            pst.setInt(1, idTournoi);
+            
+            pst.executeUpdate();
+            
+            deconnexion();
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnexionBD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+        
+    public void insertParticiper(int idJoueur, int idTournoi){
+        try {
+            initConnexion();
+            String sqlPrepared;
+            sqlPrepared = "INSERT INTO Participer "
+                        + "(idJoueur, idTournoi) VALUES "
+                        + "(?,?); ";
+            
+            pst = cn.prepareStatement(sqlPrepared);
+            
+            pst.setInt(1, idJoueur);
+            pst.setInt(2, idTournoi);
+
+            pst.executeUpdate();
+            
+            deconnexion();
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnexionBD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void deleteParticiper(int idJoueur, int idTournoi){
+        try {
+            initConnexion();
+            String sqlPrepared;
+            sqlPrepared = "DELETE FROM Participer "
+                        + "WHERE idJoueur = ? "
+                        + "AND idTournoi = ?; ";
+            
+            pst = cn.prepareStatement(sqlPrepared);
+            
+            pst.setInt(1, idJoueur);
+            pst.setInt(2, idTournoi);
+            
+            pst.executeUpdate();
+            
+            deconnexion();
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnexionBD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public ArrayList<Map<String, String>> selectJoueursFromTournoi(int idTournoi){
+        ArrayList<Map<String, String>> list = new ArrayList<>();
+        try {         
+            initConnexion();
+            String sql;
+            sql = "SELECT * FROM Joueurs "
+                + "JOIN Participer ON Joueurs.id = Participer.idJoueur "
+                + "ORDER BY nom ASC, prenom ASC; ";
+            
+            st = cn.createStatement();
+            
+            rs = st.executeQuery(sql);
+            
+            while(rs.next()){
+                Map<String, String> map = new HashMap<>();
+                
+                map.put("id", Integer.toString(rs.getInt(1)));
+                map.put("numLicence", rs.getString(2));
+                map.put("nom", rs.getString(3));
+                map.put("prenom", rs.getString(4));
+                map.put("dateNaissance", rs.getString(5));
+                map.put("eloClassique", rs.getString(6));
+                map.put("eloRapide", rs.getString(7));
+                map.put("eloSemiRapide", rs.getString(8));
+                map.put("sexe", rs.getString(9));
+                map.put("categorie", rs.getString(10));
+                map.put("federation", rs.getString(11));
+                map.put("ligue", rs.getString(12));
+                map.put("club", rs.getString(13));
+                
+                list.add(map);
+            }
+            
+            deconnexion();
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnexionBD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return list;
     }
     
     public void deconnexion(){
@@ -220,5 +408,5 @@ public class ConnexionBD {
         try {
             if(cn!=null) cn.close();
         } catch(SQLException se){}
-    }       
+    } 
 }

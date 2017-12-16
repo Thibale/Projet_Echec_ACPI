@@ -16,22 +16,19 @@ import javax.swing.JTextArea;
 
 public class ControllerJoueur {
     
-    private static ControllerBD controllerBD = new ControllerBD();
+    private static final ControllerBD CONTROLLER_BD = new ControllerBD();
     
     private static int idJoueurCourant = -1;
-    
-    public static int idTournoiCourant = -1;
-    public static int idJoueurDedans = -1;
-    public static int idJoueurDehors = -1;
-    public static ArrayList<Joueurs> joueursDedans;
-    public static ArrayList<Joueurs> joueursDehors;
-    
-    public static boolean ajoutJoueurToTournoiConfirmed = false;
     
     public static int getIdJoueurCourant() {
         return idJoueurCourant;
     }
     
+    public static void setIdJoueurCourant(int idJoueurCourant) {
+        ControllerJoueur.idJoueurCourant = idJoueurCourant;
+    }
+    
+    //Crée une instance de joueur et appelle la fonction saveJoueur
     public Boolean creerJoueur(Map<String, String> infosJoueur, JLabel nomLabel, JLabel prenomLabel, JLabel sexeLabel, JLabel dateLabel, JTextArea retour){
         if(!infosJoueur.get("dateNaissance").equals("") && !infosJoueur.get("sexe").equals("")){
             String cat = this.calculCategorie(infosJoueur.get("dateNaissance"), infosJoueur.get("sexe"));
@@ -42,6 +39,8 @@ public class ControllerJoueur {
         return isSave;
     }
     
+    //Contient toutes les verification
+    // <editor-fold defaultstate="collapsed" desc="Verifications">
     //Convert la date au format 0000-00-00
     public String conversionDate(String date){
         String tmp = "";
@@ -272,6 +271,7 @@ public class ControllerJoueur {
         return cat;
     }
     
+    //Instancie toutes les verifications du joueur
     public boolean allVerifJoueur(Joueurs j, JLabel nomLabel, JLabel prenomLabel, JLabel sexeLabel, JLabel dateLabel, JTextArea retour){
         String stmp="Données incorrectes: ";
         boolean verif = true;
@@ -412,31 +412,35 @@ public class ControllerJoueur {
       
         return verif;
     }
+    // </editor-fold>
     
+    //vérifie les données si elles sont correctes le joueur est sauvegardé dans la base de donnée
     public boolean saveJoueur(Joueurs j, JLabel nomLabel, JLabel prenomLabel, JLabel sexeLabel, JLabel dateLabel, JTextArea retour, Map<String, String> informationsJoueur){
         
         boolean verif = allVerifJoueur(j, nomLabel, prenomLabel, sexeLabel, dateLabel, retour);        
         
         if(verif){
             retour.setText("Joueur créé avec succès !");
-            controllerBD.CreerJoueur(informationsJoueur);
+            CONTROLLER_BD.CreerJoueur(informationsJoueur);
             return true;
         }
         return false;
     }
     
-    public boolean modifieJoueur(Joueurs j, int idJ, JLabel nomLabel, JLabel prenomLabel, JLabel sexeLabel, JLabel dateLabel, JTextArea retour){
-        
+    //Vérifie les modifications apportée et modifie le joueur dans la base
+    public boolean modifieJoueur(Map<String, String> infosJoueur, JLabel nomLabel, JLabel prenomLabel, JLabel sexeLabel, JLabel dateLabel, JTextArea retour){
+        Joueurs j=new Joueurs(infosJoueur);
         boolean verif = allVerifJoueur(j, nomLabel, prenomLabel, sexeLabel, dateLabel, retour);        
         
         if(verif){
             retour.setText("Joueur modifié !");
-            controllerBD.modifierJoueurs(idJ, getInfosJoueur(j));
+            CONTROLLER_BD.modifierJoueur(ControllerJoueur.getIdJoueurCourant(), getInfosJoueur(j));
             return true;
         }
         return false;
     }
     
+    //Instancie les joueur dans une list de String utilisable par l'interface
     public DefaultListModel setJoueurInListModel(JTextArea textArea){
         ArrayList<Joueurs> listJ = lireJoueur();
         DefaultListModel listM = new DefaultListModel();
@@ -454,8 +458,10 @@ public class ControllerJoueur {
         return listM;
     }
     
+    //Met les information d'un joueur dans une HashMap
     public Map<String, String> getInfosJoueur(Joueurs joueur){
         Map<String, String> map = new HashMap<>();
+        
         map.put("numLicence", joueur.getNumLicenceJ());
         map.put("nom", joueur.getNomJ());
         map.put("prenom", joueur.getPrenomJ());
@@ -472,10 +478,11 @@ public class ControllerJoueur {
         return map;
     }
     
+    //Appelle la base pour récupérer les joueurs
     public ArrayList<Joueurs> lireJoueur(){
         ArrayList<Joueurs> listJoueurs=new ArrayList<>();
         
-        ArrayList<Map<String, String>> listInfosJoueurs = controllerBD.lireJoueurs();
+        ArrayList<Map<String, String>> listInfosJoueurs = CONTROLLER_BD.lireJoueurs();
         
         for(int i = 0; i < listInfosJoueurs.size() ; i++){
             Joueurs jtmp= new Joueurs(listInfosJoueurs.get(i));
@@ -486,10 +493,12 @@ public class ControllerJoueur {
         return listJoueurs;
     }
     
+    //Appelle la base pour récupérer les informations des joueurs dans une HashMap
     public ArrayList<Map<String, String>> lireJoueurInStringList(){
-        return controllerBD.lireJoueurs();
+        return CONTROLLER_BD.lireJoueurs();
     }
     
+    //Récupère l'id du joueur séléctionné dans l'interface graphique
     public void joueurListGetSelectedJoueur(JList joueurList, JTextArea textArea){
         String s = (String) joueurList.getSelectedValue();
         if(s != null && !s.isEmpty()){
@@ -497,6 +506,7 @@ public class ControllerJoueur {
         }
     }
     
+    //Place les informations du joueur dnas le champ de texte
     public void setInfoJoueurInTextArea(JList joueurList, JTextArea textArea){
         if(idJoueurCourant != -1){
             ArrayList<Joueurs> listJ = lireJoueur();
@@ -513,7 +523,8 @@ public class ControllerJoueur {
         }
     }
     
+    //Supprime le joueur
     public void supprimerJoueurSelectionne(){
-        controllerBD.supprimerJoueurs(idJoueurCourant);
+        CONTROLLER_BD.supprimerJoueur(idJoueurCourant);
     }
 }

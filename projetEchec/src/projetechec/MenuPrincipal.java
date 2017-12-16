@@ -1,6 +1,5 @@
 package projetechec;
 
-
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -24,8 +23,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     public static int idJoueurDehors = -1;
     public static ArrayList<Joueurs> joueursDedans;
     public static ArrayList<Joueurs> joueursDehors;
-    
-    public static int IDJ;
     public static Joueurs Jmodif;
     
     public static int IDT;
@@ -1278,7 +1275,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         initPanel(creationJoueur);
     }//GEN-LAST:event_createPlayerActionPerformed
 
-    private void accesModifJoueur(int idJ, Map<String, String> infos){
+    private void accesModifJoueur(Map<String, String> infos){
         
         initPanel(modifierJoueur);
         
@@ -1294,7 +1291,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         eloRapideTextField1.setText(infos.get("eloRapide"));
         retourTextArea1.setText("");
         
-        IDJ = idJ;
     }
     private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
         resetInfoJoueur();
@@ -1500,12 +1496,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         }else{
             ArrayList<Map<String, String>> listeInfoJoueurs= controllerJoueur.lireJoueurInStringList();
             String s = (String) affichageJoueurList.getSelectedValue();
-            int intTmp = -1;
             if(s != null && !s.isEmpty()){
-                intTmp = Integer.valueOf(s.split(" ")[0]);
+                ControllerJoueur.setIdJoueurCourant(Integer.valueOf(s.split(" ")[0]));
             }
-            if(intTmp != -1){
-                accesModifJoueur(intTmp, listeInfoJoueurs.get(intTmp-1));
+            if(ControllerJoueur.getIdJoueurCourant() != -1){
+                accesModifJoueur(listeInfoJoueurs.get(ControllerJoueur.getIdJoueurCourant()-1));
             }
 
             refreshAffichage(AffJTextArea1);
@@ -1745,27 +1740,25 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
     
     private void saveButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButton1ActionPerformed
+        Map<String, String> infosJoueurs = new HashMap<>(); 
         
-        boolean estCree;
+        infosJoueurs.put("numLicence", licenceTextField1.getText());
+        infosJoueurs.put("nom", nomTextField2.getText());
+        infosJoueurs.put("prenom", prenomTextField1.getText());
+        infosJoueurs.put("eloClassique", eloNormalTextField1.getText());
+        infosJoueurs.put("eloRapide", eloRapideTextField1.getText());
+        infosJoueurs.put("eloSemiRapide", eloSemiRapideTextField1.getText());
+        infosJoueurs.put("dateNaissance", dateTextField1.getText());
+        infosJoueurs.put("sexe", jComboBox2.getSelectedItem().toString());
+        infosJoueurs.put("federation", federationTextField1 .getText());
+        infosJoueurs.put("ligue", ligueTextField1.getText());
+        infosJoueurs.put("club", clubTextField1.getText());        
         
-        String nom = nomTextField2.getText();
-        String prenom = prenomTextField1.getText();
-        String dateDeNaissance = dateTextField1.getText();
-        String sexe = jComboBox2.getSelectedItem().toString();
-        String licence = licenceTextField1.getText();
-        String eloN = eloNormalTextField1.getText();
-        String eloR = eloRapideTextField1.getText();
-        String eloSR = eloSemiRapideTextField1.getText();
-        String fed = federationTextField1.getText();
-        String lig = ligueTextField1.getText();
-        String clb = clubTextField1.getText();
-        
-        //Joueurs j = controllerJoueur.creerJoueur(licence,nom,prenom,eloN,eloSR,eloR,dateDeNaissance,sexe,fed,lig,clb);
-        //estCree = controllerJoueur.modifieJoueur(j, IDJ, nomLabel1, prenomLabel1, sexeLabel1, dateLabel1, retourTextArea1);
-        //if(estCree){
-          //  resetInfoModifJoueur();
-            //retourTextArea1.setText("Joueur modifié !");
-        //}
+        boolean estCree = controllerJoueur.modifieJoueur(infosJoueurs, nomLabel1, prenomLabel1, sexeLabel1, dateLabel1, retourTextArea1);
+        if(estCree){
+            resetInfoModifJoueur();
+            retourTextArea1.setText("Joueur modifié !");
+        }
         
     }//GEN-LAST:event_saveButton1ActionPerformed
 
