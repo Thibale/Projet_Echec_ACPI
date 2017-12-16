@@ -1770,6 +1770,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void ajouterJoueurjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajouterJoueurjButtonActionPerformed
         //à refactorer
+        
         ArrayList<Joueurs> listJ = xml2.getJoueursFromTournoi(MenuPrincipal.idTournoiCourant-1);
         DefaultListModel listM = new DefaultListModel();
         ajoutJoueurTounroiJoueurDedansjList.setModel(listM);
@@ -1821,7 +1822,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_ajouterJoueurjButtonActionPerformed
 
     private void AjoutJoueurTournoiRetourjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AjoutJoueurTournoiRetourjButtonActionPerformed
-        //à refactorer
+        // pas utile de refactorer ?
         if(!confirmed){
             confirmed = true;
             ajoutJoueurTournoiMessagejLabel.setText("Vous n'avez pas enregistré, appuyez de nouveau sur retour pour annuler");
@@ -1875,7 +1876,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_ajoutJoueurTournoiAjouterjButtonActionPerformed
 
     private void ajoutJoueurTounroiJoueurDedansjListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_ajoutJoueurTounroiJoueurDedansjListValueChanged
-        //à refactorer
+        // interessante à faire ?, elle n'appelle rien de l'extérieur
         ArrayList<Joueurs> listJ = MenuPrincipal.joueursDedans;
         String afftmp;
         String s = (String) ajoutJoueurTounroiJoueurDedansjList.getSelectedValue();
