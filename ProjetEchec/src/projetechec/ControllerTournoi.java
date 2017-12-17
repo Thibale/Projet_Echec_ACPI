@@ -48,7 +48,7 @@ public class ControllerTournoi {
         }
         return listM;
     }
-    
+    //Réalise l'eregistrement d'un tournoi et renvois la chaine de carctère pour les erreurs ainsi que les codes d'erreur pour les labels graphiques
     public static String[] enregistrerTournoi(String nomTournoi,String dateDebut,String dateFin,String nbRondes,String lieu){
         Tournoi t = new Tournoi(nomTournoi,dateDebut,dateFin,nbRondes,lieu);
         boolean test = true ;
@@ -131,7 +131,7 @@ public class ControllerTournoi {
         }
         return stmp;
     }
-    
+    //retourne le string d'un tournoi dont l'id est passé en paramêtre
     public static String[] selectionTournoiJoueur(String Tournoi){
         ArrayList<Tournoi> listT = xmlTournoi.ReadXML();
         String[] res = new String[3];
@@ -143,13 +143,14 @@ public class ControllerTournoi {
         }
         return res;
     }
-    
+    //Permet l'enregistrement d'un joueur dans un tournoi
     public static String ajoutJoueurTournoi(ArrayList<Joueurs> listeJ,  int idT){
         String res = "Enregistrement confirmé";
         xmlTournoi.ecrireJoueurDansTournoi(listeJ, idT);
         return res;
     }
     
+    //permet de supprimer un tournoi dont l'id est passé en paramêtre
     public static DefaultListModel supprimerTournoi(String Tournoi){ //ligne 2000 environ
         if(Tournoi != null && !Tournoi.isEmpty()){
             int intTmp = Integer.valueOf(Tournoi.split(" ")[0]);
@@ -171,8 +172,8 @@ public class ControllerTournoi {
         }
         return null;
     }
-    
-    public static Tournoi modifierTournoi(String Tournoi){ //ligne 20030 environ
+    //permet de retourner le tournoi qui va être modifier
+    public static Tournoi modifierTournoi(String Tournoi){ //ligne 2030 environ
         ArrayList<Tournoi> listT = xmlTournoi.ReadXML();
             int intTmp = -1;
             if(Tournoi != null && !Tournoi.isEmpty()){
