@@ -2039,6 +2039,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
         if(MenuPrincipal.idTournoiCourant == -1){
             selectionTournoiMessagejLabel.setText("Veuillez sélectionner un tournoi");
         }else{
+            String s = (String) selectionTournoijList.getSelectedValue();
+            int intTmp = ControllerTournoi.modifierTournoiIntTmp(s);
+            if(intTmp != -1){
+                accesModifTournoi(intTmp,ControllerTournoi.modifierTournoi(s));
+            }
+        }
+        
+        /*
+                if(MenuPrincipal.idTournoiCourant == -1){
+            selectionTournoiMessagejLabel.setText("Veuillez sélectionner un tournoi");
+        }else{
             ArrayList<Tournoi> listT = xml2.ReadXML();
             String s = (String) selectionTournoijList.getSelectedValue();
             int intTmp = -1;
@@ -2052,6 +2063,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 accesModifTournoi(intTmp, listT.get(intTmp-1));
             }
         }
+        */
     }//GEN-LAST:event_modifierTournoiActionPerformed
 
     private void nomTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomTextField3ActionPerformed

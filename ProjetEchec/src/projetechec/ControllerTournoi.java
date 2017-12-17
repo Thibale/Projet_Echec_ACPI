@@ -172,4 +172,32 @@ public class ControllerTournoi {
         return null;
     }
     
+    public static Tournoi modifierTournoi(String Tournoi){ //ligne 20030 environ
+        ArrayList<Tournoi> listT = xmlTournoi.ReadXML();
+            int intTmp = -1;
+            if(Tournoi != null && !Tournoi.isEmpty()){
+                intTmp = Integer.valueOf(Tournoi.split(" ")[0]);
+
+            }
+            if(intTmp != -1){
+                //Faut pas faire comme ça faut créer un nouveau pannel
+                xmlTournoi.modifierTournoi(intTmp, listT.get(intTmp-1));
+                return listT.get(intTmp-1);
+            }
+        
+        return null;
+    }
+    
+    public static int modifierTournoiIntTmp(String Tournoi){
+        ArrayList<Tournoi> listT = xmlTournoi.ReadXML();
+            int intTmp = -1;
+            if(Tournoi != null && !Tournoi.isEmpty()){
+                intTmp = Integer.valueOf(Tournoi.split(" ")[0]);
+
+            }
+            return intTmp;
+    }
+    
+    
+    
 }
