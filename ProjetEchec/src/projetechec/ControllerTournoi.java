@@ -199,6 +199,21 @@ public class ControllerTournoi {
             return intTmp;
     }
     
-    
+    public static ArrayList<Joueurs> getJoueursTournoi(int idT){
+        ArrayList<Joueurs> listJ = xmlTournoi.getJoueursFromTournoi(idT);
+        return listJ;
+    }
+    public static DefaultListModel selectionTournoiAjoutJ(int idT){
+        ArrayList<Joueurs> listJ = getJoueursTournoi( idT);
+        DefaultListModel listM = new DefaultListModel();
+        String tmp="";
+        String tmpList = "";
+        for (int i=0;i<listJ.size();i++){
+            //tmp=tmp+" Tournoi n°"+(i+1)+System.getProperty("line.separator");
+            tmpList =(i+1)+" "+listJ.get(i).getNumLicenceJ()+ " " +listJ.get(i).getNomJ()+ " " +listJ.get(i).getPrenomJ();
+            listM.addElement(tmpList);
+        }
+        return listM;
+    }
     
 }

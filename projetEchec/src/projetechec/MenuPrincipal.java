@@ -1771,6 +1771,47 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void ajouterJoueurjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajouterJoueurjButtonActionPerformed
         //à refactorer
         
+        ArrayList<Joueurs> listJ = ControllerTournoi.getJoueursTournoi(MenuPrincipal.idTournoiCourant-1);
+        ajoutJoueurTounroiJoueurDedansjList.setModel(ControllerTournoi.selectionTournoiAjoutJ(MenuPrincipal.idTournoiCourant-1));
+        
+        ArrayList<Joueurs> listJ2 = xml1.ReadXML();
+        ArrayList<Integer> toRemove = new ArrayList<>();
+        for (Joueurs listJ1 : listJ) {
+            for (int i = 0; i<listJ2.size(); i++){
+                if(!"".equals(listJ1.getNumLicenceJ())){
+                    if(listJ1.getNumLicenceJ().equals(listJ2.get(i).getNumLicenceJ())){
+                        toRemove.add(i);
+                    }
+                }else{
+                    if(listJ1.getNomJ().equals(listJ2.get(i).getNomJ()) && listJ1.getPrenomJ().equals(listJ2.get(i).getPrenomJ()) && listJ1.getDateNaisJ().equals(listJ2.get(i).getDateNaisJ())){
+                        toRemove.add(i);
+                    }
+                }
+            }
+        }
+        Collections.sort(toRemove);
+        for (int i = toRemove.size()-1; i >= 0; i--){
+            int integer = toRemove.get(i);
+            Joueurs j = listJ2.get(integer);
+            listJ2.remove(j);
+        }
+        
+        
+        DefaultListModel listM2 = new DefaultListModel();
+        ajoutJoueurTounroiJoueurDehorsjList.setModel(listM2);
+        String tmpList2 = "";
+        for (int i=0;i<listJ2.size();i++){
+            //tmp=tmp+" Tournoi n°"+(i+1)+System.getProperty("line.separator");
+            tmpList2 =(i+1)+" "+listJ2.get(i).getNumLicenceJ()+ " " +listJ2.get(i).getNomJ()+ " " +listJ2.get(i).getPrenomJ();
+            listM2.addElement(tmpList2);
+        }
+        MenuPrincipal.joueursDedans = listJ;
+        MenuPrincipal.joueursDehors = listJ2;
+        
+        
+        
+        initPanel(ajoutJoueurTournoi);
+        /*
         ArrayList<Joueurs> listJ = xml2.getJoueursFromTournoi(MenuPrincipal.idTournoiCourant-1);
         DefaultListModel listM = new DefaultListModel();
         ajoutJoueurTounroiJoueurDedansjList.setModel(listM);
@@ -1819,6 +1860,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         
         
         initPanel(ajoutJoueurTournoi);
+        */
     }//GEN-LAST:event_ajouterJoueurjButtonActionPerformed
 
     private void AjoutJoueurTournoiRetourjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AjoutJoueurTournoiRetourjButtonActionPerformed
