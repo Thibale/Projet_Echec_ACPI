@@ -2077,7 +2077,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_supprimerTournoiActionPerformed
 
     private void modifierTournoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifierTournoiActionPerformed
-        //à refactorer
+        //refactoré, mais je demande une vérif
         if(MenuPrincipal.idTournoiCourant == -1){
             selectionTournoiMessagejLabel.setText("Veuillez sélectionner un tournoi");
         }else{
