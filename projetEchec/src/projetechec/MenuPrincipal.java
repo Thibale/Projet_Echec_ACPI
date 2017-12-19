@@ -2122,6 +2122,41 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void SauvModifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SauvModifActionPerformed
         //à refactorer
+        
+        String nomTournoi=nomTextField3.getText();
+        String dateDebut= datedTextField3.getText();
+        String dateFin=dateFTextField4.getText();
+        String nbRondes=nbRTextField5.getText();
+        String lieu=lieuTextField6.getText();
+        nom.setForeground(Color.black);
+        dated.setForeground(Color.black);
+        datef.setForeground(Color.black);
+        nbr.setForeground(Color.black);
+        
+        String [] tabString = ControllerTournoi.enregistrerModifsTournoi(nomTournoi, dateDebut, dateFin, nbRondes, lieu, IDT);
+        System.out.println(tabString[0]);
+        if(tabString[1].equals("1")){
+            nom.setForeground(Color.red);
+        }
+        if(tabString[2].equals("1")){
+            dated.setForeground(Color.red);
+        }
+        if(tabString[3].equals("1")){
+            datef.setForeground(Color.red);
+        }
+        if(tabString[4].equals("1")){
+            nbr.setForeground(Color.red);
+        }
+        if(tabString[5].equals("1")){
+            nom.setForeground(Color.red);
+        }
+        if(tabString[6].equals("1")){
+            dated.setForeground(Color.red);
+        }
+        msgErreurT1.setText(tabString[0]);
+        
+        
+        /*
         String nomTournoi=nomTextField3.getText();
         String dateDebut= datedTextField3.getText();
         String dateFin=dateFTextField4.getText();
@@ -2205,6 +2240,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             msgErreurT1.setText("Tournoi modifié!");
             xml2.modifierTournoi(IDT,t);
         }
+        */
     }//GEN-LAST:event_SauvModifActionPerformed
 
     private void menuprincT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuprincT1ActionPerformed
