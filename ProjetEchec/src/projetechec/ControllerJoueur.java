@@ -40,7 +40,7 @@ public class ControllerJoueur {
     }
     
     //Contient toutes les verification
-    // <editor-fold defaultstate="collapsed" desc="Verifications">
+    //<editor-fold defaultstate="collapsed" desc="Verifications">
     
     //Convert la date au format 0000-00-00
     public String conversionDate(String date){
@@ -236,42 +236,6 @@ public class ControllerJoueur {
         return verif;
     }
     
-    //Calcul la categorie
-    public String calculCategorie(String date, String sexe){
-        String tmp = this.conversionDate(date);
-        String cat = "";
-        if(this.verifFormatDateValide(date)){
-            LocalDate dob = LocalDate.parse(tmp);
-            LocalDate curDate = LocalDate.now();
-            int age = Period.between(dob, curDate).getYears();
-            if(age < 8){
-                cat = cat+"pPo";
-            }else if(age < 10){
-                cat = cat+"Po";
-            }else if(age < 12){
-                cat = cat+"Pu";
-            }else if(age < 14){
-                cat = cat+"Ben";
-            }else if(age < 16){
-                cat = cat+"Min";
-            }else if(age < 18){
-                cat = cat+"Cad";
-            }else if(age < 20){
-                cat = cat+"Jun";
-            }else if(age < 50){
-                cat = cat+"Sen";
-            }else if(age < 60){
-                cat = cat+"SeP";
-            }else{
-                cat = cat+"Vet";
-            }
-            cat = cat+sexe;
-        }else{
-            cat = "Categorie non accessible.";
-        }
-        return cat;
-    }
-    
     //Instancie toutes les verifications du joueur
     public boolean allVerifJoueur(Joueurs j, JLabel nomLabel, JLabel prenomLabel, JLabel sexeLabel, JLabel dateLabel, JTextArea retour){
         String stmp="Données incorrectes: ";
@@ -405,14 +369,49 @@ public class ControllerJoueur {
     }
     // </editor-fold>
     
+    //Calcul la categorie
+    public String calculCategorie(String date, String sexe){
+        String tmp = this.conversionDate(date);
+        String cat = "";
+        if(this.verifFormatDateValide(date)){
+            LocalDate dob = LocalDate.parse(tmp);
+            LocalDate curDate = LocalDate.now();
+            int age = Period.between(dob, curDate).getYears();
+            if(age < 8){
+                cat = cat+"pPo";
+            }else if(age < 10){
+                cat = cat+"Po";
+            }else if(age < 12){
+                cat = cat+"Pu";
+            }else if(age < 14){
+                cat = cat+"Ben";
+            }else if(age < 16){
+                cat = cat+"Min";
+            }else if(age < 18){
+                cat = cat+"Cad";
+            }else if(age < 20){
+                cat = cat+"Jun";
+            }else if(age < 50){
+                cat = cat+"Sen";
+            }else if(age < 60){
+                cat = cat+"SeP";
+            }else{
+                cat = cat+"Vet";
+            }
+            cat = cat+sexe;
+        }else{
+            cat = "Categorie non accessible.";
+        }
+        return cat;
+    }
+    
     //appelle les verif, si elles sont correctes le joueur est sauvegardé dans la base de donnée
     public boolean saveJoueur(Joueurs j, JLabel nomLabel, JLabel prenomLabel, JLabel sexeLabel, JLabel dateLabel, JTextArea retour, Map<String, String> informationsJoueur){
-        
         
         boolean verif = allVerifJoueur(j, nomLabel, prenomLabel, sexeLabel, dateLabel, retour);        
         if(verif){
             
-            ArrayList<Joueurs> listJ = this.lireJoueur();
+            ArrayList<Joueurs> listJ = lireJoueur();
             if(verifJoueurExistantDansList(listJ,j)){
                 retour.setText("Erreur, ce joueur existe déjà .");
                 verif = false;
@@ -421,11 +420,9 @@ public class ControllerJoueur {
             }
         }
         if(verif){
-            retour.setText("Joueur créé avec succès !");
             CONTROLLER_BD.CreerJoueur(informationsJoueur);
-            return true;
         }
-        return false;
+        return verif;
     }
     
     //Vérifie les modifications apportée et modifie le joueur dans la base
@@ -436,9 +433,8 @@ public class ControllerJoueur {
         if(verif){
             retour.setText("Joueur modifié !");
             CONTROLLER_BD.modifierJoueur(ControllerJoueur.getIdJoueurCourant(), getInfosJoueur(j));
-            return true;
         }
-        return false;
+        return verif;
     }
     
     //Instancie les joueur dans une list de String utilisable par l'interface
@@ -452,7 +448,6 @@ public class ControllerJoueur {
             tmpList = (listJ.get(i).getIdJ()) + " " + listJ.get(i).getNomJ() + " " + listJ.get(i).getPrenomJ() + " " + listJ.get(i).getNumLicenceJ();
             listM.addElement(tmpList);
             tmp = tmp + listJ.get(i).JtoString() + System.lineSeparator();
-
         }
         textArea.setText(tmp);
         
@@ -500,7 +495,7 @@ public class ControllerJoueur {
     }
     
     //Récupère l'id du joueur séléctionné dans l'interface graphique
-    public void joueurListGetSelectedJoueur(JList joueurList, JTextArea textArea){
+    public void joueurListGetSelectedJoueur(JList joueurList){
         String s = (String) joueurList.getSelectedValue();
         if(s != null && !s.isEmpty()){
             idJoueurCourant = Integer.valueOf(s.split(" ")[0]);
@@ -508,7 +503,7 @@ public class ControllerJoueur {
     }
     
     //Place les informations du joueur dnas le champ de texte
-    public void setInfoJoueurInTextArea(JList joueurList, JTextArea textArea){
+    public void setInfoJoueurInTextArea(JTextArea textArea){
         if(idJoueurCourant != -1){
             ArrayList<Joueurs> listJ = lireJoueur();
             boolean trouve = false;

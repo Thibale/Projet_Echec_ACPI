@@ -2,7 +2,6 @@ package projetechec;
 
 import java.awt.Color;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
@@ -15,19 +14,8 @@ import javax.xml.transform.TransformerException;
 
 public class MenuPrincipal extends javax.swing.JFrame {
 
-    private static ControllerJoueur controllerJoueur= new ControllerJoueur();
-    public static XMLTournoi xml2 = new XMLTournoi();
-    
-    public static int idTournoiCourant = -1;
-    public static int idJoueurCourant = -1;
-    public static int idJoueurDedans = -1;
-    public static int idJoueurDehors = -1;
-    public static ArrayList<Joueurs> joueursDedans;
-    public static ArrayList<Joueurs> joueursDehors;
-    public static Joueurs Jmodif;
-    
-    public static int IDT;
-    public static Tournoi Tmodif;
+    private static final ControllerJoueur CONTROLLER_JOUEUR= new ControllerJoueur();
+    private static final ControllerTournoi CONTROLLER_TOURNOI= new ControllerTournoi();
     
     public static boolean confirmed = true;
     
@@ -1244,8 +1232,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    public void initPanel(JPanel panel){
+    
+    private void initPanel(JPanel panel){
         
         menuPrinc.setVisible(false);
         creationJoueur.setVisible(false);
@@ -1270,10 +1258,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         panel.setVisible(true);
         add(panel);
         
-    }
-        
+    }        
+    
     private void createPlayerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createPlayerActionPerformed
-        
         initPanel(creationJoueur);
     }//GEN-LAST:event_createPlayerActionPerformed
 
@@ -1299,14 +1286,20 @@ public class MenuPrincipal extends javax.swing.JFrame {
         retourTextArea1.setText("");
         
     }
+    
     private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
         resetInfoJoueur();
     }//GEN-LAST:event_clearButtonActionPerformed
 
     private void refreshAffichage(JTextArea textArea){
-        DefaultListModel listM = controllerJoueur.setJoueurInListModel(textArea);
+        DefaultListModel listM = CONTROLLER_JOUEUR.setJoueurInListModel(textArea);
         affichageJoueurList.setModel(listM);
-        }
+    }
+    
+    private void refreshAffichageTournoiList(JTextArea textArea){
+        DefaultListModel listM = ControllerTournoi.setTournoisInListModel(textArea);
+        selectionTournoijList.setModel(listM);
+    }
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         refreshAffichage(AffJTextArea1);
@@ -1343,7 +1336,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         infosJoueurs.put("ligue", ligueTextField.getText());
         infosJoueurs.put("club", clubTextField.getText());
                 
-        boolean estCree = controllerJoueur.creerJoueur(infosJoueurs, nomLabel, prenomLabel, sexeLabel, dateLabel, retourTextArea);
+        boolean estCree = CONTROLLER_JOUEUR.creerJoueur(infosJoueurs, nomLabel, prenomLabel, sexeLabel, dateLabel, retourTextArea);
         
         if(estCree){
             resetInfoJoueur();
@@ -1370,7 +1363,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         dateLabel.setForeground(Color.black);
     }
     
-    private void cleanTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cleanTActionPerformed
+    public void resetInfoTournoi(){
         nomTextField1.setText("");
         datedTextField2.setText("");
         dateFTextField3.setText("");
@@ -1381,119 +1374,45 @@ public class MenuPrincipal extends javax.swing.JFrame {
         dated.setForeground(Color.black);
         datef.setForeground(Color.black);
         nbr.setForeground(Color.black);
+    }
+    
+    private void cleanTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cleanTActionPerformed
+        resetInfoTournoi();
     }//GEN-LAST:event_cleanTActionPerformed
 
     private void menuprincTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuprincTActionPerformed
-        nomTextField1.setText("");
-        datedTextField2.setText("");
-        dateFTextField3.setText("");
-        nbRTextField4.setText("");
-        lieuTextField5.setText("");
-        msgErreurT.setText("");
-        nom.setForeground(Color.black);
-        dated.setForeground(Color.black);
-        datef.setForeground(Color.black);
-        nbr.setForeground(Color.black);
-        
+        resetInfoTournoi();
         initPanel(menuPrinc);
     }//GEN-LAST:event_menuprincTActionPerformed
 
     private void enregistreTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enregistreTActionPerformed
-        String nomTournoi=nomTextField1.getText();
-        String dateDebut= datedTextField2.getText();
-        String dateFin=dateFTextField3.getText();
-        String nbRondes=nbRTextField4.getText();
-        String lieu=lieuTextField5.getText();
-        nom.setForeground(Color.black);
-        dated.setForeground(Color.black);
-        datef.setForeground(Color.black);
-        nbr.setForeground(Color.black);
-        Tournoi t = new Tournoi(nomTournoi,dateDebut,dateFin,nbRondes,lieu);
-        String stmp="Données incorrectes: ";
-        boolean test = true;
-        if(!t.verifDonneesSensiblesCompletes())
-        {
-            test= false;
-            if(t.nomTournoiEstVide()){
-                nom.setForeground(Color.red);
-                stmp += System.getProperty("line.separator")+"Nom Tournoi manquant";
-            }
-            if(t.dateDebutEstVide()){
-                dated.setForeground(Color.red);
-                stmp += System.getProperty("line.separator")+"Date de début manquante";
-            }
-            if(t.dateFinEstVide()){
-                datef.setForeground(Color.red);
-                stmp += System.getProperty("line.separator")+"Date de fin manquante";
-            }
-            if(t.nbRondesEstVide()){
-                nbr.setForeground(Color.red);
-                stmp += System.getProperty("line.separator")+"Nombre de rondes manquant";
-            }
-        }
-        if(!t.verifTailleNomTournoi()){
-            nom.setForeground(Color.red);
-            stmp += System.getProperty("line.separator")+"Nom de tournoi limité à 50 caractères.";
-        }
-        if(!t.verifFormatDateValide(dateDebut))
-        {
-            test= false;
-            if(!t.verifMatchDate(dateDebut)){
-                dated.setForeground(Color.red);
-                stmp += System.getProperty("line.separator")+"Erreur, date invalide format attendu : JJ/MM/AAAA";
-            }else{
-                if(!t.verifDateValide(dateDebut)){
-                    dated.setForeground(Color.red);
-                    stmp += System.getProperty("line.separator")+"Erreur, date incorrecte";
-                }
-            }
-        } 
-        if(!t.verifFormatDateValide(dateFin))
-        {
-            test= false;
-            if(!t.verifMatchDate(dateFin)){
-                dated.setForeground(Color.red);
-                stmp += System.getProperty("line.separator")+"Erreur, date invalide format attendu : JJ/MM/AAAA";
-            }else{
-                if(!t.verifDateValide(dateFin)){
-                    dated.setForeground(Color.red);
-                    stmp += System.getProperty("line.separator")+"Erreur, date incorrecte";
-                }
-            }
-        }
-        if(t.verifFormatDateValide(dateDebut) && t.verifFormatDateValide(dateFin)){
-            if(!t.verifDateDebut(dateDebut)){
-                test= false;
-                dated.setForeground(Color.red);
-                stmp += System.getProperty("line.separator")+"Erreur, date de début infèrieure à la date actuelle.";
-            }
-            if(!t.verifDateDebutAvantDateFin(dateDebut, dateFin)){
-                test= false;
-                stmp += System.getProperty("line.separator")+"Erreur, date de début plus récente que date de fin.";
-            }
-        }
-        if(!t.verifNbRondes()){
-            test = false;
-            stmp += System.getProperty("line.separator")+"Erreur, le nombre de rondes doit être positif.";
-        }
-        msgErreurT.setText(stmp);
-        if(test){
+        Map<String, String> infosTournoi = new HashMap<>(); 
+        
+        infosTournoi.put("nom", nomTextField1.getText());
+        infosTournoi.put("dateDebut", datedTextField2.getText());
+        infosTournoi.put("dateFin", dateFTextField3.getText());
+        infosTournoi.put("nbRondes", nbRTextField4.getText());
+        infosTournoi.put("lieu", lieuTextField5.getText());        
+                
+        boolean estCree = CONTROLLER_TOURNOI.enregistrerTournoi(infosTournoi, nom, dated, datef, nbr, msgErreurT);
+        
+        if(estCree){
+            resetInfoTournoi();
             msgErreurT.setText("Tournoi créé avec succès !");
-            xml2.WriteXML(t);
         }
     }//GEN-LAST:event_enregistreTActionPerformed
 
     private void affichageJoueurListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_affichageJoueurListValueChanged
-        controllerJoueur.joueurListGetSelectedJoueur(affichageJoueurList, AffJTextArea1); 
-        controllerJoueur.setInfoJoueurInTextArea(affichageJoueurList, AffJTextArea1); 
+        CONTROLLER_JOUEUR.joueurListGetSelectedJoueur(affichageJoueurList); 
+        CONTROLLER_JOUEUR.setInfoJoueurInTextArea(AffJTextArea1); 
     }//GEN-LAST:event_affichageJoueurListValueChanged
 
     private void supprimerJoueurButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supprimerJoueurButtonActionPerformed
         if(ControllerJoueur.getIdJoueurCourant() == -1){
             ErreurSelectJoueur.setText("Veuillez sélectionner un joueur");
         }else{
-            controllerJoueur.joueurListGetSelectedJoueur(affichageJoueurList, AffJTextArea1);
-            controllerJoueur.supprimerJoueurSelectionne();
+            CONTROLLER_JOUEUR.joueurListGetSelectedJoueur(affichageJoueurList);
+            CONTROLLER_JOUEUR.supprimerJoueurSelectionne();
             ControllerJoueur.setIdJoueurCourant(-1);
             refreshAffichage(AffJTextArea1);
         }
@@ -1503,55 +1422,32 @@ public class MenuPrincipal extends javax.swing.JFrame {
         if(ControllerJoueur.getIdJoueurCourant()== -1){
             ErreurSelectJoueur.setText("Veuillez sélectionner un joueur");
         }else{
-            String s = (String) affichageJoueurList.getSelectedValue();
-            if(s != null && !s.isEmpty()){
-                ControllerJoueur.setIdJoueurCourant(Integer.valueOf(s.split(" ")[0]));
-            }
-            if(ControllerJoueur.getIdJoueurCourant() != -1){
-                accesModifJoueur(ControllerJoueur.getInfoJoueurCourant());
-                ControllerJoueur.setIdJoueurCourant(-1);
-            }
-
+            accesModifJoueur(ControllerJoueur.getInfoJoueurCourant());
+            ControllerJoueur.setIdJoueurCourant(-1);
             refreshAffichage(AffJTextArea1);
         }
     }//GEN-LAST:event_modifierJoueurButtonActionPerformed
 
     private void SelectionTournoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectionTournoiActionPerformed
-
-        idTournoiCourant = -1;
-        
-        ArrayList<Tournoi> listT = xml2.ReadXML();
-        DefaultListModel listM = new DefaultListModel();
-        selectionTournoijList.setModel(listM);
-        String tmp="";
-        String tmpList = "";
-        for (int i=0;i<listT.size();i++){
-            tmp=tmp+" Tournoi n°"+(i+1)+System.getProperty("line.separator");
-            tmpList =(i+1)+" Tournoi n°"+(i+1)+" "+listT.get(i).getNomTournoi();
-            listM.addElement(tmpList);
-            tmp=tmp+listT.get(i).TtoString()+System.getProperty("line.separator");
-        }
-        affichageTournois.setText(tmp);
-        
+        refreshAffichageTournoiList(affichageTournois);
+        ControllerTournoi.setIdTournoiCourant(-1);      
         initPanel(selectionTournoi);
-
     }//GEN-LAST:event_SelectionTournoiActionPerformed
 
     private void SelectionTournoiMenuPrincjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectionTournoiMenuPrincjButtonActionPerformed
         selectionTournoijList.setModel(new DefaultListModel());
         selectionTournoiMessagejLabel.setText("");
         
-        idTournoiCourant = -1;
+        ControllerTournoi.setIdTournoiCourant(-1);
         
         initPanel(menuPrinc);
     }//GEN-LAST:event_SelectionTournoiMenuPrincjButtonActionPerformed
 
     private void selectionTournoiSelectionnerjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectionTournoiSelectionnerjButtonActionPerformed
-        if(MenuPrincipal.idTournoiCourant == -1){
+        if(ControllerTournoi.getIdTournoiCourant() == -1){
             selectionTournoiMessagejLabel.setText("Veuillez sélectionner un tournoi");
         }else{
             selectionTournoijList.setModel(new DefaultListModel());
-
             selectionTournoiMessagejLabel.setText("");
             
             initPanel(ecranTournoi);
@@ -1559,74 +1455,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_selectionTournoiSelectionnerjButtonActionPerformed
 
     private void selectionTournoijListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_selectionTournoijListValueChanged
-        ArrayList<Tournoi> listT = xml2.ReadXML();
-        String afftmp;
-        String s = (String) selectionTournoijList.getSelectedValue();
-        if(s != null && !s.isEmpty()){
-            String tmp = s.split(" ")[0];
-            MenuPrincipal.idTournoiCourant = Integer.valueOf(tmp);
-            afftmp=listT.get(Integer.valueOf(tmp)-1).TtoString()+System.getProperty("line.separator");
-            affichageTournois.setText(afftmp);
-        }
-        
+        CONTROLLER_TOURNOI.tournoiListGetSelectedTournoi(selectionTournoijList);
+        CONTROLLER_TOURNOI.setInfoTournoiInTextArea(AffJTextArea1);       
     }//GEN-LAST:event_selectionTournoijListValueChanged
 
     private void ecranTournoiMenuPrincjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ecranTournoiMenuPrincjButtonActionPerformed
-        
-        idTournoiCourant = -1;
-        
+        ControllerTournoi.setIdTournoiCourant(-1);
         initPanel(menuPrinc);
     }//GEN-LAST:event_ecranTournoiMenuPrincjButtonActionPerformed
 
     private void ajouterJoueurjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajouterJoueurjButtonActionPerformed
-        
-        ArrayList<Joueurs> listJ = xml2.getJoueursFromTournoi(MenuPrincipal.idTournoiCourant-1);
-        DefaultListModel listM = new DefaultListModel();
-        ajoutJoueurTounroiJoueurDedansjList.setModel(listM);
-        String tmp="";
-        String tmpList = "";
-        for (int i=0;i<listJ.size();i++){
-            //tmp=tmp+" Tournoi n°"+(i+1)+System.getProperty("line.separator");
-            tmpList =(i+1)+" "+listJ.get(i).getNumLicenceJ()+ " " +listJ.get(i).getNomJ()+ " " +listJ.get(i).getPrenomJ();
-            listM.addElement(tmpList);
-        }
-        
-        ArrayList<Joueurs> listJ2 = controllerJoueur.lireJoueur();
-        ArrayList<Integer> toRemove = new ArrayList<>();
-        for (Joueurs listJ1 : listJ) {
-            for (int i = 0; i<listJ2.size(); i++){
-                if(!"".equals(listJ1.getNumLicenceJ())){
-                    if(listJ1.getNumLicenceJ().equals(listJ2.get(i).getNumLicenceJ())){
-                        toRemove.add(i);
-                    }
-                }else{
-                    if(listJ1.getNomJ().equals(listJ2.get(i).getNomJ()) && listJ1.getPrenomJ().equals(listJ2.get(i).getPrenomJ()) && listJ1.getDateNaisJ().equals(listJ2.get(i).getDateNaisJ())){
-                        toRemove.add(i);
-                    }
-                }
-            }
-        }
-        Collections.sort(toRemove);
-        for (int i = toRemove.size()-1; i >= 0; i--){
-            int integer = toRemove.get(i);
-            Joueurs j = listJ2.get(integer);
-            listJ2.remove(j);
-        }
-        
-        
-        DefaultListModel listM2 = new DefaultListModel();
-        ajoutJoueurTounroiJoueurDehorsjList.setModel(listM2);
-        String tmpList2 = "";
-        for (int i=0;i<listJ2.size();i++){
-            //tmp=tmp+" Tournoi n°"+(i+1)+System.getProperty("line.separator");
-            tmpList2 =(i+1)+" "+listJ2.get(i).getNumLicenceJ()+ " " +listJ2.get(i).getNomJ()+ " " +listJ2.get(i).getPrenomJ();
-            listM2.addElement(tmpList2);
-        }
-        MenuPrincipal.joueursDedans = listJ;
-        MenuPrincipal.joueursDehors = listJ2;
-        
-        
-        
+        CONTROLLER_TOURNOI.setAjoutJoueursInTournoiJList(ajoutJoueurTounroiJoueurDedansjList, ajoutJoueurTounroiJoueurDehorsjList);
         initPanel(ajoutJoueurTournoi);
     }//GEN-LAST:event_ajouterJoueurjButtonActionPerformed
 
@@ -1643,89 +1482,23 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_AjoutJoueurTournoiRetourjButtonActionPerformed
 
     private void ajoutJoueurTounroiJoueurDehorsjListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_ajoutJoueurTounroiJoueurDehorsjListValueChanged
-        //mettre autre part
-        ArrayList<Joueurs> listJ = MenuPrincipal.joueursDehors;
-        String afftmp;
-        String s = (String) ajoutJoueurTounroiJoueurDehorsjList.getSelectedValue();
-        if(s != null && !s.isEmpty()){
-            String tmp = s.split(" ")[0];
-            MenuPrincipal.idJoueurDehors = Integer.valueOf(tmp);
-        }
+        CONTROLLER_TOURNOI.tournoiListGetSelectedJoueurDehors(ajoutJoueurTounroiJoueurDehorsjList);
     }//GEN-LAST:event_ajoutJoueurTounroiJoueurDehorsjListValueChanged
 
     private void ajoutJoueurTournoiAjouterjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajoutJoueurTournoiAjouterjButtonActionPerformed
-        //mettre autre part
-        if(MenuPrincipal.idJoueurDehors != -1){
-            MenuPrincipal.joueursDedans.add(MenuPrincipal.joueursDehors.get(MenuPrincipal.idJoueurDehors-1));
-            MenuPrincipal.joueursDehors.remove(MenuPrincipal.idJoueurDehors-1);
-            
-            DefaultListModel listM = new DefaultListModel();
-            ajoutJoueurTounroiJoueurDedansjList.setModel(listM);
-            String tmp="";
-            String tmpList = "";
-            for (int i=0;i<MenuPrincipal.joueursDedans.size();i++){
-                //tmp=tmp+" Tournoi n°"+(i+1)+System.getProperty("line.separator");
-                tmpList =(i+1)+" "+MenuPrincipal.joueursDedans.get(i).getNumLicenceJ()+ " " +MenuPrincipal.joueursDedans.get(i).getNomJ()+ " " +MenuPrincipal.joueursDedans.get(i).getPrenomJ();
-                listM.addElement(tmpList);
-            }
-            
-            DefaultListModel listM2 = new DefaultListModel();
-            ajoutJoueurTounroiJoueurDehorsjList.setModel(listM2);
-            String tmpList2 = "";
-            for (int i=0;i<MenuPrincipal.joueursDehors.size();i++){
-                //tmp=tmp+" Tournoi n°"+(i+1)+System.getProperty("line.separator");
-                tmpList2 =(i+1)+" "+MenuPrincipal.joueursDehors.get(i).getNumLicenceJ()+ " " +MenuPrincipal.joueursDehors.get(i).getNomJ()+ " " +MenuPrincipal.joueursDehors.get(i).getPrenomJ();
-                listM2.addElement(tmpList2);
-            }
-            
-            MenuPrincipal.idJoueurDehors = -1;
-            confirmed = false;
-        }
+        CONTROLLER_TOURNOI.ajoutJoueurToTournoiList(ajoutJoueurTounroiJoueurDedansjList, ajoutJoueurTounroiJoueurDehorsjList);
     }//GEN-LAST:event_ajoutJoueurTournoiAjouterjButtonActionPerformed
 
     private void ajoutJoueurTounroiJoueurDedansjListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_ajoutJoueurTounroiJoueurDedansjListValueChanged
-        //mettre autre part
-        ArrayList<Joueurs> listJ = MenuPrincipal.joueursDedans;
-        String afftmp;
-        String s = (String) ajoutJoueurTounroiJoueurDedansjList.getSelectedValue();
-        if(s != null && !s.isEmpty()){
-            String tmp = s.split(" ")[0];
-            MenuPrincipal.idJoueurDedans = Integer.valueOf(tmp);
-        }
+        CONTROLLER_TOURNOI.tournoiListGetSelectedJoueurDedans(ajoutJoueurTounroiJoueurDedansjList);
     }//GEN-LAST:event_ajoutJoueurTounroiJoueurDedansjListValueChanged
 
     private void AjouteJoueurTournoiRemovejButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AjouteJoueurTournoiRemovejButtonActionPerformed
-        //mettre autre part
-        if(MenuPrincipal.idJoueurDedans != -1){
-            MenuPrincipal.joueursDehors.add(MenuPrincipal.joueursDedans.get(MenuPrincipal.idJoueurDedans-1));
-            MenuPrincipal.joueursDedans.remove(MenuPrincipal.idJoueurDedans-1);
-            
-            DefaultListModel listM = new DefaultListModel();
-            ajoutJoueurTounroiJoueurDehorsjList.setModel(listM);
-            String tmp="";
-            String tmpList = "";
-            for (int i=0;i<MenuPrincipal.joueursDehors.size();i++){
-                //tmp=tmp+" Tournoi n°"+(i+1)+System.getProperty("line.separator");
-                tmpList =(i+1)+" "+MenuPrincipal.joueursDehors.get(i).getNumLicenceJ()+ " " +MenuPrincipal.joueursDehors.get(i).getNomJ()+ " " +MenuPrincipal.joueursDehors.get(i).getPrenomJ();
-                listM.addElement(tmpList);
-            }
-            
-            DefaultListModel listM2 = new DefaultListModel();
-            ajoutJoueurTounroiJoueurDedansjList.setModel(listM2);
-            String tmpList2 = "";
-            for (int i=0;i<MenuPrincipal.joueursDedans.size();i++){
-                //tmp=tmp+" Tournoi n°"+(i+1)+System.getProperty("line.separator");
-                tmpList2 =(i+1)+" "+MenuPrincipal.joueursDedans.get(i).getNumLicenceJ()+ " " +MenuPrincipal.joueursDedans.get(i).getNomJ()+ " " +MenuPrincipal.joueursDedans.get(i).getPrenomJ();
-                listM2.addElement(tmpList2);
-            }
-            
-            MenuPrincipal.idJoueurDedans = -1;
-            confirmed = false;
-        }
+        CONTROLLER_TOURNOI.retireJoueurToTournoiList(ajoutJoueurTounroiJoueurDedansjList, ajoutJoueurTounroiJoueurDehorsjList);
     }//GEN-LAST:event_AjouteJoueurTournoiRemovejButtonActionPerformed
 
     private void ajoutJoueurTournoiConfirmerjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajoutJoueurTournoiConfirmerjButtonActionPerformed
-        xml2.ecrireJoueurDansTournoi(joueursDedans, idTournoiCourant-1);
+        CONTROLLER_TOURNOI.ajoutJoueursTournoi();
         ajoutJoueurTournoiMessagejLabel.setText("Enregistrement confirmé");
         confirmed = true;
     }//GEN-LAST:event_ajoutJoueurTournoiConfirmerjButtonActionPerformed
@@ -1763,7 +1536,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         infosJoueurs.put("ligue", ligueTextField1.getText());
         infosJoueurs.put("club", clubTextField1.getText());        
         
-        boolean estCree = controllerJoueur.modifieJoueur(infosJoueurs, nomLabel1, prenomLabel1, sexeLabel1, dateLabel1, retourTextArea1);
+        boolean estCree = CONTROLLER_JOUEUR.modifieJoueur(infosJoueurs, nomLabel1, prenomLabel1, sexeLabel1, dateLabel1, retourTextArea1);
         if(estCree){
             resetInfoModifJoueur();
             retourTextArea1.setText("Joueur modifié !");
@@ -1778,134 +1551,40 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_mainMenuButton1ActionPerformed
 
     private void supprimerTournoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supprimerTournoiActionPerformed
-        if(MenuPrincipal.idTournoiCourant == -1){
-            selectionTournoiMessagejLabel.setText("Veuillez sélectionner un tournoi");
+        if(ControllerTournoi.getIdTournoiCourant()== -1){
+            ErreurSelectJoueur.setText("Veuillez sélectionner un tournoi");
         }else{
-            String s = (String) selectionTournoijList.getSelectedValue();
-            if(s != null && !s.isEmpty()){
-                int intTmp = Integer.valueOf(s.split(" ")[0]);
-                try { 
-                    xml2.supprimerTournoi(intTmp);
-                } catch (TransformerException ex) {
-                    Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                ArrayList<Tournoi> listT = xml2.ReadXML();
-                DefaultListModel listM = new DefaultListModel();
-                selectionTournoijList.setModel(listM);
-                String tmp="";
-                String tmpList = "";
-                for (int i=0;i<listT.size();i++){
-                    tmp=tmp+" Tournoi n°"+(i+1)+System.getProperty("line.separator");
-                    tmpList =(i+1)+" Tournoi n°"+(i+1)+" "+listT.get(i).getNomTournoi();
-                    listM.addElement(tmpList);
-                }
-                affichageTournois.setText("");
-            }
+            CONTROLLER_TOURNOI.tournoiListGetSelectedTournoi(selectionTournoijList);
+            CONTROLLER_TOURNOI.supprimerTournoiSelectionne();
+            ControllerTournoi.setIdTournoiCourant(-1);
+            refreshAffichageTournoiList(affichageTournois);
         }
     }//GEN-LAST:event_supprimerTournoiActionPerformed
 
     private void modifierTournoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifierTournoiActionPerformed
-        if(MenuPrincipal.idTournoiCourant == -1){
+        if(ControllerTournoi.getIdTournoiCourant() == -1){
             selectionTournoiMessagejLabel.setText("Veuillez sélectionner un tournoi");
         }else{
-            ArrayList<Tournoi> listT = xml2.ReadXML();
-            String s = (String) selectionTournoijList.getSelectedValue();
-            int intTmp = -1;
-            if(s != null && !s.isEmpty()){
-                intTmp = Integer.valueOf(s.split(" ")[0]);
-
-            }
-            if(intTmp != -1){
-                //Faut pas faire comme ça faut créer un nouveau pannel
-                xml2.modifierTournoi(intTmp, listT.get(intTmp-1));
-                accesModifTournoi(intTmp, listT.get(intTmp-1));
-            }
+            accesModifTournoi(ControllerTournoi.getInfoTournoiCourant());
+            ControllerTournoi.setIdTournoiCourant(-1);
+            refreshAffichageTournoiList(affichageTournois);
         }
     }//GEN-LAST:event_modifierTournoiActionPerformed
 
     private void SauvModifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SauvModifActionPerformed
-        String nomTournoi=nomTextField3.getText();
-        String dateDebut= datedTextField3.getText();
-        String dateFin=dateFTextField4.getText();
-        String nbRondes=nbRTextField5.getText();
-        String lieu=lieuTextField6.getText();
-        nom.setForeground(Color.black);
-        dated.setForeground(Color.black);
-        datef.setForeground(Color.black);
-        nbr.setForeground(Color.black);
+        Map<String, String> infosTournoi = new HashMap<>(); 
         
-        Tournoi t = new Tournoi(nomTournoi,dateDebut,dateFin,nbRondes,lieu);
-        String stmp="Données incorrectes: ";
-        boolean test = true;
-        if(!t.verifDonneesSensiblesCompletes())
-        {
-            test= false;
-            if(t.nomTournoiEstVide()){
-                nom.setForeground(Color.red);
-                stmp += System.getProperty("line.separator")+"Nom Tournoi manquant";
-            }
-            if(t.dateDebutEstVide()){
-                dated.setForeground(Color.red);
-                stmp += System.getProperty("line.separator")+"Date de début manquante";
-            }
-            if(t.dateFinEstVide()){
-                datef.setForeground(Color.red);
-                stmp += System.getProperty("line.separator")+"Date de fin manquante";
-            }
-            if(t.nbRondesEstVide()){
-                nbr.setForeground(Color.red);
-                stmp += System.getProperty("line.separator")+"Nombre de rondes manquant";
-            }
-        }
-        if(!t.verifTailleNomTournoi()){
-            nom.setForeground(Color.red);
-            stmp += System.getProperty("line.separator")+"Nom de tournoi limité à 50 caractères.";
-        }
-        if(!t.verifFormatDateValide(dateDebut))
-        {
-            test= false;
-            if(!t.verifMatchDate(dateDebut)){
-                dated.setForeground(Color.red);
-                stmp += System.getProperty("line.separator")+"Erreur, date invalide format attendu : JJ/MM/AAAA";
-            }else{
-                if(!t.verifDateValide(dateDebut)){
-                    dated.setForeground(Color.red);
-                    stmp += System.getProperty("line.separator")+"Erreur, date incorrecte";
-                }
-            }
-        } 
-        if(!t.verifFormatDateValide(dateFin))
-        {
-            test= false;
-            if(!t.verifMatchDate(dateFin)){
-                dated.setForeground(Color.red);
-                stmp += System.getProperty("line.separator")+"Erreur, date invalide format attendu : JJ/MM/AAAA";
-            }else{
-                if(!t.verifDateValide(dateFin)){
-                    dated.setForeground(Color.red);
-                    stmp += System.getProperty("line.separator")+"Erreur, date incorrecte";
-                }
-            }
-        }
-        if(t.verifFormatDateValide(dateDebut) && t.verifFormatDateValide(dateFin)){
-            if(!t.verifDateDebut(dateDebut)){
-                test= false;
-                dated.setForeground(Color.red);
-                stmp += System.getProperty("line.separator")+"Erreur, date de é©but inférieure à la date actuelle.";
-            }
-            if(!t.verifDateDebutAvantDateFin(dateDebut, dateFin)){
-                test= false;
-                stmp += System.getProperty("line.separator")+"Erreur, date de début plus récente que date de fin.";
-            }
-        }
-        if(!t.verifNbRondes()){
-            test = false;
-            stmp += System.getProperty("line.separator")+"Erreur, le nombre de rondes doit être positif.";
-        }
-        msgErreurT1.setText(stmp);
-        if(test){
-            msgErreurT1.setText("Tournoi modifié!");
-            xml2.modifierTournoi(IDT,t);
+        infosTournoi.put("nom", nomTextField3.getText());
+        infosTournoi.put("dateDebut", datedTextField3.getText());
+        infosTournoi.put("dateFin", dateFTextField4.getText());
+        infosTournoi.put("nbRondes", nbRTextField5.getText());
+        infosTournoi.put("lieu", lieuTextField6.getText());
+                
+        boolean estCree = CONTROLLER_TOURNOI.enregistrerTournoi(infosTournoi, nom, dated, datef, nbr, msgErreurT);
+        
+        if(estCree){
+            resetInfoTournoi();
+            retourTextArea.setText("Tournoi créé avec succès !");
         }
     }//GEN-LAST:event_SauvModifActionPerformed
 
@@ -1919,18 +1598,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
         
         initPanel(menuPrinc);
     }//GEN-LAST:event_menuprincT1ActionPerformed
-    private void accesModifTournoi(int idT, Tournoi T){
+    private void accesModifTournoi(Map<String, String> infos){
         
-
-        nomTextField3.setText(T.getNomTournoi());
-        datedTextField3.setText(T.getDateDebut());
-        dateFTextField4.setText(T.getDateFin());
-        nbRTextField5.setText(""+T.getNbRondes());
-        lieuTextField6.setText(T.getLieu());
+        nomTextField3.setText(infos.get("nom"));
+        datedTextField3.setText(infos.get("dateDebut"));
+        dateFTextField4.setText(infos.get("dateFin"));
+        nbRTextField5.setText(infos.get("nbRondes"));
+        lieuTextField6.setText(infos.get("lieu"));
         retourTextArea1.setText("");
-        IDT = idT;
-        Tmodif = T;
-        
+
         initPanel(modifierTournoiJPanel);
     }
 
