@@ -18,6 +18,22 @@ public class Joueurs {
     private String ligueJ;
     private String clubJ;
         
+    public Joueurs(){
+        idJ = -1;
+        numLicenceJ = "";
+        nomJ = "";
+        prenomJ = "";
+        numEloNormalJ = "";
+        numEloSemiRapideJ = "";
+        numEloRapideJ = "";
+        categorieJ = "";
+        dateNaisJ = "";
+        sexeJ = "";
+        federationJ = "";
+        ligueJ = "";
+        clubJ = "";
+    }
+    
     public Joueurs(Map<String, String> infos){
         if(infos.get("id") != null && !infos.get("id").isEmpty()){
             idJ = Integer.valueOf(infos.get("id"));

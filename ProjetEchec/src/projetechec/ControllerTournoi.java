@@ -10,9 +10,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.DefaultListModel;
-import java.util.logging.Logger;
-import javax.xml.transform.TransformerException;
-import java.util.logging.Level;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JTextArea;
@@ -27,12 +24,6 @@ public class ControllerTournoi {
     public static int idJoueurDehors = -1;
     public static ArrayList<Joueurs> joueursDedans;
     public static ArrayList<Joueurs> joueursDehors;
-    public static Joueurs Jmodif;
-    
-    public static int IDT;
-    public static Tournoi Tmodif;
-    
-    public static boolean confirmed = true;
     
     //Réalise l'eregistrement d'un tournoi et renvois la chaine de carctère pour les erreurs ainsi que les codes d'erreur pour les labels graphiques
     public boolean enregistrerTournoi(Map<String, String> infosTournoi,  JLabel nomTournoiLabel, JLabel dateDebutLabel, JLabel dateFinLabel, JLabel nbRondesLabel, JTextArea retour){
@@ -367,14 +358,14 @@ public class ControllerTournoi {
     
     public void ajoutJoueurToTournoiList(JList dedans, JList dehors){
         if(idJoueurDehors != -1){
-            joueursDedans.add(joueursDehors.get(idJoueurDehors-1));
-            joueursDehors.remove(idJoueurDehors-1);
+            joueursDedans.add(getJoueurFromId(joueursDehors, idJoueurDehors));
+            joueursDehors.remove(getJoueurFromId(joueursDehors, idJoueurDehors));
             
             DefaultListModel listM = new DefaultListModel();
             dedans.setModel(listM);
             String tmpList;
             for (int i = 0; i < joueursDedans.size();i++){
-                tmpList =(i+1)+" "+joueursDedans.get(i).getNumLicenceJ()+ " " +joueursDedans.get(i).getNomJ()+ " " +joueursDedans.get(i).getPrenomJ();
+                tmpList =(joueursDedans.get(i).getIdJ())+" "+joueursDedans.get(i).getNumLicenceJ()+ " " +joueursDedans.get(i).getNomJ()+ " " +joueursDedans.get(i).getPrenomJ();
                 listM.addElement(tmpList);
             }
             
@@ -382,25 +373,26 @@ public class ControllerTournoi {
             dehors.setModel(listM2);
             String tmpList2;
             for (int i = 0; i < joueursDehors.size();i++){
-                tmpList2 =(i+1)+" "+joueursDehors.get(i).getNumLicenceJ()+ " " +joueursDehors.get(i).getNomJ()+ " " +joueursDehors.get(i).getPrenomJ();
+                tmpList2 =(joueursDehors.get(i).getIdJ())+" "+joueursDehors.get(i).getNumLicenceJ()+ " " +joueursDehors.get(i).getNomJ()+ " " +joueursDehors.get(i).getPrenomJ();
                 listM2.addElement(tmpList2);
             }
             
             idJoueurDehors = -1;
+            idJoueurDedans = -1;
             MenuPrincipal.confirmed = false;
         }
     }
     
     public void retireJoueurToTournoiList(JList dedans, JList dehors){
         if(idJoueurDedans != -1){
-            joueursDehors.add(joueursDedans.get(idJoueurDedans-1));
-            joueursDedans.remove(idJoueurDedans-1);
+            joueursDehors.add(getJoueurFromId(joueursDedans, idJoueurDedans));
+            joueursDedans.remove(getJoueurFromId(joueursDedans, idJoueurDedans));
             
             DefaultListModel listM = new DefaultListModel();
             dehors.setModel(listM);
             String tmpList;
             for (int i=0;i<joueursDehors.size();i++){
-                tmpList =(i+1)+" "+joueursDehors.get(i).getNumLicenceJ()+ " " +joueursDehors.get(i).getNomJ()+ " " +joueursDehors.get(i).getPrenomJ();
+                tmpList =(joueursDehors.get(i).getIdJ())+" "+joueursDehors.get(i).getNumLicenceJ()+ " " +joueursDehors.get(i).getNomJ()+ " " +joueursDehors.get(i).getPrenomJ();
                 listM.addElement(tmpList);
             }
             
@@ -408,17 +400,19 @@ public class ControllerTournoi {
             dedans.setModel(listM2);
             String tmpList2;
             for (int i=0;i<joueursDedans.size();i++){
-                tmpList2 =(i+1)+" "+joueursDedans.get(i).getNumLicenceJ()+ " " +joueursDedans.get(i).getNomJ()+ " " +joueursDedans.get(i).getPrenomJ();
+                tmpList2 =(joueursDedans.get(i).getIdJ())+" "+joueursDedans.get(i).getNumLicenceJ()+ " " +joueursDedans.get(i).getNomJ()+ " " +joueursDedans.get(i).getPrenomJ();
                 listM2.addElement(tmpList2);
             }
             
             idJoueurDedans = -1;
+            idJoueurDehors = -1;
             MenuPrincipal.confirmed = false;
         }
     }
     
     //Permet l'enregistrement d'un joueur dans un tournoi
     public void ajoutJoueursTournoi(){
+        CONTROLLER_BD.resetParticipation(idTournoiCourant);
         for(int i = 0; i < joueursDedans.size(); i++){
             CONTROLLER_BD.CreerParticipation(joueursDedans.get(i).getIdJ(), idTournoiCourant);
         }
@@ -445,8 +439,8 @@ public class ControllerTournoi {
     public static Map<String, String> getInfoTournoiCourant(){
         if(idTournoiCourant != -1){
             ArrayList<Tournoi> listT = lireTournois();
-                boolean trouve = false;
-                int i = -1;
+            boolean trouve = false;
+            int i = -1;
             while(!trouve && i < listT.size()-1){
                 i++;
                 if(listT.get(i).getIdT() == idTournoiCourant){
@@ -480,5 +474,17 @@ public class ControllerTournoi {
         ControllerTournoi.idTournoiCourant = idTournoiCourant;
     }
 
+    public Joueurs getJoueurFromId(ArrayList<Joueurs> joueurs, int id){
+        boolean trouve = false;
+        int i = -1;
+        while(!trouve && i < joueurs.size()-1){
+            i++;
+            if(joueurs.get(i).getIdJ() == id){
+                return joueurs.get(i);
+            }
+        }
+        return new Joueurs();        
+    }
+    
     
 }

@@ -312,6 +312,25 @@ public class ConnexionBD {
         }
     }
         
+    public void deleteParticipationTournoi(int idTournoi){
+        try {
+            initConnexion();
+            String sqlPrepared;
+            sqlPrepared = "DELETE FROM Participer "
+                        + "WHERE idTournoi = ?; ";
+            
+            pst = cn.prepareStatement(sqlPrepared);
+            
+            pst.setInt(1, idTournoi);
+            
+            pst.executeUpdate();
+            
+            deconnexion();
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnexionBD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     public void insertParticiper(int idJoueur, int idTournoi){
         try {
             initConnexion();

@@ -42,6 +42,10 @@ public class ControllerBD {
         CONNEXION_BD.insertParticiper(idJoueur, idTournoi);
     }
     
+    public void resetParticipation(int idTournoi){
+        CONNEXION_BD.deleteParticipationTournoi(idTournoi);
+    }
+    
     public void supprimerParticipation(int idJoueur, int idTournoi){
         CONNEXION_BD.deleteParticiper(idJoueur, idTournoi);
     }
