@@ -377,14 +377,17 @@ public class ConnexionBD {
         ArrayList<Map<String, String>> list = new ArrayList<>();
         try {         
             initConnexion();
-            String sql;
-            sql = "SELECT * FROM Joueurs "
-                + "JOIN Participer ON Joueurs.id = Participer.idJoueur "
-                + "ORDER BY nom ASC, prenom ASC; ";
+            String sqlPrepared;
+            sqlPrepared = "SELECT * FROM Joueurs "
+                        + "JOIN Participer ON Joueurs.id = Participer.idJoueur "
+                        + "WHERE idTournoi = ?"
+                        + "ORDER BY nom ASC, prenom ASC; ";
             
-            st = cn.createStatement();
+            pst = cn.prepareStatement(sqlPrepared);
             
-            rs = st.executeQuery(sql);
+            pst.setInt(1, idTournoi);
+            
+            rs = pst.executeQuery();
             
             while(rs.next()){
                 Map<String, String> map = new HashMap<>();

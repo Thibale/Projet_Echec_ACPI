@@ -333,7 +333,7 @@ public class ControllerTournoi {
         listJoueursDehors.setModel(listM2);
         String tmpList2;
         for (int i=0;i<listJoueurEnDehors.size();i++){
-            tmpList2 =(i+1)+" "+listJoueurEnDehors.get(i).getNumLicenceJ()+ " " +listJoueurEnDehors.get(i).getNomJ()+ " " +listJoueurEnDehors.get(i).getPrenomJ();
+            tmpList2 =(listJoueurEnDehors.get(i).getIdJ())+" "+listJoueurEnDehors.get(i).getNumLicenceJ()+ " " +listJoueurEnDehors.get(i).getNomJ()+ " " +listJoueurEnDehors.get(i).getPrenomJ();
             listM2.addElement(tmpList2);
         }
         joueursDedans = listJoueursDuTournoi;
