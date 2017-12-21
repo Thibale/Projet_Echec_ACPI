@@ -111,6 +111,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         ajouterJoueurjButton = new javax.swing.JButton();
         ecranTournoiMenuPrincjButton = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
+        ecranTournoiGenererListeJoueursjButton = new javax.swing.JButton();
         ajoutJoueurTournoi = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
         ajoutJoueurTounroiJoueurDehorsjList = new javax.swing.JList<>();
@@ -793,6 +794,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jLabel8.setText("Cette page affichera plus tard les différentes fonctionnalités du tournoi (départage etc...)");
 
+        ecranTournoiGenererListeJoueursjButton.setText("Générer la liste des joueurs");
+        ecranTournoiGenererListeJoueursjButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ecranTournoiGenererListeJoueursjButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout ecranTournoiLayout = new javax.swing.GroupLayout(ecranTournoi);
         ecranTournoi.setLayout(ecranTournoiLayout);
         ecranTournoiLayout.setHorizontalGroup(
@@ -803,8 +811,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     .addComponent(jLabel8)
                     .addGroup(ecranTournoiLayout.createSequentialGroup()
                         .addComponent(ajouterJoueurjButton)
-                        .addGap(18, 18, 18)
-                        .addComponent(ecranTournoiMenuPrincjButton)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(ecranTournoiMenuPrincjButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(ecranTournoiGenererListeJoueursjButton)))
                 .addContainerGap(300, Short.MAX_VALUE))
         );
         ecranTournoiLayout.setVerticalGroup(
@@ -813,7 +823,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addGap(41, 41, 41)
                 .addGroup(ecranTournoiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ajouterJoueurjButton)
-                    .addComponent(ecranTournoiMenuPrincjButton))
+                    .addComponent(ecranTournoiMenuPrincjButton)
+                    .addComponent(ecranTournoiGenererListeJoueursjButton))
                 .addGap(69, 69, 69)
                 .addComponent(jLabel8)
                 .addContainerGap(653, Short.MAX_VALUE))
@@ -1598,6 +1609,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         
         initPanel(menuPrinc);
     }//GEN-LAST:event_menuprincT1ActionPerformed
+
+    private void ecranTournoiGenererListeJoueursjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ecranTournoiGenererListeJoueursjButtonActionPerformed
+        CONTROLLER_TOURNOI.creerPDFListeJoueurs();
+    }//GEN-LAST:event_ecranTournoiGenererListeJoueursjButtonActionPerformed
     private void accesModifTournoi(Map<String, String> infos){
         
         nomTextField3.setText(infos.get("nom"));
@@ -1658,6 +1673,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel datef;
     private javax.swing.JLabel datef1;
     private javax.swing.JPanel ecranTournoi;
+    private javax.swing.JButton ecranTournoiGenererListeJoueursjButton;
     private javax.swing.JButton ecranTournoiMenuPrincjButton;
     private javax.swing.JLabel eloNormalLabel;
     private javax.swing.JLabel eloNormalLabel1;

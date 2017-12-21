@@ -8,24 +8,30 @@ import com.itextpdf.text.Font;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class PDF {
-    private static final String FILE = "N:/Documents/ListeDeJoueurs.pdf";
+    private static final String FILE = System.getProperty("user.dir")+"/ListeDeJoueurs.pdf";
     private static final com.itextpdf.text.Font catFont = new Font(Font.FontFamily.TIMES_ROMAN, 18,Font.BOLD);
    
-    public static void createPDF(String[] args) {
-        try {
+   
+    public static Document creerPDF(){
             Document document = new Document();
+        try {
             PdfWriter.getInstance(document, new FileOutputStream(FILE));
             document.open();
             addMetaData(document);
             addTitlePage(document);
-            addContent(document);
-            document.close();
-        } catch (DocumentException | FileNotFoundException e) {
+        } catch (FileNotFoundException | DocumentException ex) {
+            Logger.getLogger(PDF.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return document;
     }
-
+     public static void close(Document document) {
+            document.close();
+    }
     private static void addMetaData(Document document) {
         document.addTitle("Liste des joueurs");
         document.addSubject("Liste des joueurs");
@@ -44,12 +50,12 @@ public class PDF {
        document.add(preface);
     }
 
-    private static void addContent(Document document) throws DocumentException {
-        
-        Paragraph listeJ = new Paragraph("Mettre la liste des joueurs");
-        
-        document.add(listeJ);
-
+    public static void addContent(Document document, ArrayList<Joueurs> joueursDuTournoi) throws DocumentException {
+        int i;
+        for(i=0;i<joueursDuTournoi.size();i++){
+            Paragraph infoJoueur = new Paragraph(joueursDuTournoi.get(i).affichageListe());
+            document.add(infoJoueur);
+        }
     }
     
     private static void addEmptyLine(Paragraph paragraph, int number) {
