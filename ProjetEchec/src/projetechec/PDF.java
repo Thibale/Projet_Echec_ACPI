@@ -1,10 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package projetechec;
-
 
 import java.io.FileOutputStream;
 
@@ -16,11 +10,10 @@ import com.itextpdf.text.pdf.PdfWriter;
 import java.io.FileNotFoundException;
 
 public class PDF {
-     private static final String FILE = "N:/Documents/ListeDeJoueurs.pdf";
-   private static final com.itextpdf.text.Font catFont = new Font(Font.FontFamily.TIMES_ROMAN, 18,
-            Font.BOLD);
+    private static final String FILE = "N:/Documents/ListeDeJoueurs.pdf";
+    private static final com.itextpdf.text.Font catFont = new Font(Font.FontFamily.TIMES_ROMAN, 18,Font.BOLD);
    
-    public static void main(String[] args) {
+    public static void createPDF(String[] args) {
         try {
             Document document = new Document();
             PdfWriter.getInstance(document, new FileOutputStream(FILE));
