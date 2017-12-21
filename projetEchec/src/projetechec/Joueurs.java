@@ -156,4 +156,8 @@ public class Joueurs {
                 "Ligue : " + this.ligueJ +System.lineSeparator()+
                 "Club : "+ this.clubJ+System.lineSeparator();
     }
+    
+    public String affichageListe(){
+        return nomJ+" "+prenomJ+"   "+numEloNormalJ+" "+categorieJ+" "+federationJ+" "+ligueJ+" "+clubJ;
+    }
 }  

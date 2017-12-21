@@ -1,5 +1,7 @@
 package projetechec;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
 import java.awt.Color;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -9,6 +11,8 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -486,5 +490,15 @@ public class ControllerTournoi {
         return new Joueurs();        
     }
     
+    public void creerPDFListeJoueurs(){
+        try {
+            ArrayList<Joueurs> ListeJoueurs = lireJoueursFromTournoi(idTournoiCourant);
+            Document document = PDF.creerPDF();
+            PDF.addContent(document, ListeJoueurs);
+            PDF.close(document);
+        } catch (DocumentException ex) {
+            Logger.getLogger(ControllerTournoi.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
 }

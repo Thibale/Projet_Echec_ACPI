@@ -1071,8 +1071,10 @@
                       <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Component id="ajouterJoueurjButton" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="ecranTournoiMenuPrincjButton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="ecranTournoiGenererListeJoueursjButton" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="300" max="32767" attributes="0"/>
@@ -1086,6 +1088,7 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="ajouterJoueurjButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="ecranTournoiMenuPrincjButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="ecranTournoiGenererListeJoueursjButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
                   <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
@@ -1115,6 +1118,14 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Cette page affichera plus tard les diff&#xe9;rentes fonctionnalit&#xe9;s du tournoi (d&#xe9;partage etc...)"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="ecranTournoiGenererListeJoueursjButton">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="G&#xe9;n&#xe9;rer la liste des joueurs"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ecranTournoiGenererListeJoueursjButtonActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
