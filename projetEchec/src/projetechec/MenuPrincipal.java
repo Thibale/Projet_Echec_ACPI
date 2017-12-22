@@ -1424,7 +1424,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         }else{
             CONTROLLER_JOUEUR.joueurListGetSelectedJoueur(affichageJoueurList);
             CONTROLLER_JOUEUR.supprimerJoueurSelectionne();
-            ControllerJoueur.setIdJoueurCourant(-1);
+            
             refreshAffichage(AffJTextArea1);
         }
     }//GEN-LAST:event_supprimerJoueurButtonActionPerformed
@@ -1434,7 +1434,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
             ErreurSelectJoueur.setText("Veuillez sélectionner un joueur");
         }else{
             accesModifJoueur(ControllerJoueur.getInfoJoueurCourant());
-            ControllerJoueur.setIdJoueurCourant(-1);
             refreshAffichage(AffJTextArea1);
         }
     }//GEN-LAST:event_modifierJoueurButtonActionPerformed
@@ -1567,7 +1566,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         }else{
             CONTROLLER_TOURNOI.tournoiListGetSelectedTournoi(selectionTournoijList);
             CONTROLLER_TOURNOI.supprimerTournoiSelectionne();
-            ControllerTournoi.setIdTournoiCourant(-1);
+            
             refreshAffichageTournoiList(affichageTournois);
         }
     }//GEN-LAST:event_supprimerTournoiActionPerformed
@@ -1577,7 +1576,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
             selectionTournoiMessagejLabel.setText("Veuillez sélectionner un tournoi");
         }else{
             accesModifTournoi(ControllerTournoi.getInfoTournoiCourant());
-            ControllerTournoi.setIdTournoiCourant(-1);
             refreshAffichageTournoiList(affichageTournois);
         }
     }//GEN-LAST:event_modifierTournoiActionPerformed

@@ -305,7 +305,7 @@ public class ControllerTournoi {
         String tmpList;
         //Créé une list avec les joueurs déjà présent dans le tournoi
         for (int i=0;i<listJoueursDuTournoi.size();i++){
-            tmpList =(listJoueursDuTournoi.get(i).getIdJ())+" "+listJoueursDuTournoi.get(i).getNumLicenceJ()+ " " +listJoueursDuTournoi.get(i).getNomJ()+ " " +listJoueursDuTournoi.get(i).getPrenomJ();
+            tmpList =(listJoueursDuTournoi.get(i).getIdJ())+ " " +listJoueursDuTournoi.get(i).getNomJ()+ " " +listJoueursDuTournoi.get(i).getPrenomJ()+" "+listJoueursDuTournoi.get(i).getNumLicenceJ();
             listM.addElement(tmpList);
         }
         
@@ -337,7 +337,7 @@ public class ControllerTournoi {
         listJoueursDehors.setModel(listM2);
         String tmpList2;
         for (int i=0;i<listJoueurEnDehors.size();i++){
-            tmpList2 =(listJoueurEnDehors.get(i).getIdJ())+" "+listJoueurEnDehors.get(i).getNumLicenceJ()+ " " +listJoueurEnDehors.get(i).getNomJ()+ " " +listJoueurEnDehors.get(i).getPrenomJ();
+            tmpList2 =(listJoueurEnDehors.get(i).getIdJ())+ " " +listJoueurEnDehors.get(i).getNomJ()+ " " +listJoueurEnDehors.get(i).getPrenomJ()+" "+listJoueurEnDehors.get(i).getNumLicenceJ();
             listM2.addElement(tmpList2);
         }
         joueursDedans = listJoueursDuTournoi;
