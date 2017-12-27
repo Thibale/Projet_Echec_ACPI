@@ -1466,7 +1466,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void selectionTournoijListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_selectionTournoijListValueChanged
         CONTROLLER_TOURNOI.tournoiListGetSelectedTournoi(selectionTournoijList);
-        CONTROLLER_TOURNOI.setInfoTournoiInTextArea(AffJTextArea1);       
+        CONTROLLER_TOURNOI.setInfoTournoiInTextArea(affichageTournois);       
     }//GEN-LAST:event_selectionTournoijListValueChanged
 
     private void ecranTournoiMenuPrincjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ecranTournoiMenuPrincjButtonActionPerformed
@@ -1589,11 +1589,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         infosTournoi.put("nbRondes", nbRTextField5.getText());
         infosTournoi.put("lieu", lieuTextField6.getText());
                 
-        boolean estCree = CONTROLLER_TOURNOI.enregistrerTournoi(infosTournoi, nom, dated, datef, nbr, msgErreurT);
+        boolean estCree = CONTROLLER_TOURNOI.modifieTournoi(infosTournoi, nom, dated, datef, nbr, msgErreurT1);
         
         if(estCree){
             resetInfoTournoi();
-            retourTextArea.setText("Tournoi créé avec succès !");
+            msgErreurT1.setText("Tournoi modifié avec succès !");
         }
     }//GEN-LAST:event_SauvModifActionPerformed
 

@@ -424,7 +424,7 @@ public class ControllerTournoi {
     
     //Supprime le tournoi
     public void supprimerTournoiSelectionne(){
-        CONTROLLER_BD.supprimerJoueur(idTournoiCourant);
+        CONTROLLER_BD.supprimerTournoi(idTournoiCourant);
     }
     
     //Met les information d'un joueur dans une HashMap
