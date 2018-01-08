@@ -75,15 +75,39 @@ public class ConnexionBD {
             
             st.executeUpdate(sql);
             
-            sql =  "CREATE TABLE IF NOT EXISTS Participer " + 
-                    "(idJoueur bigint, " + 
-                    " idTournoi bigint , " +    
+            sql =  "CREATE TABLE IF NOT EXISTS Participer " +
+                    "(idJoueur bigint, " +
+                    " idTournoi bigint , " +
                     " PRIMARY KEY ( idJoueur, idTournoi ), " +
                     " FOREIGN KEY (idJoueur) references Joueurs(id) ON DELETE CASCADE, " +
-                    " FOREIGN KEY (idTournoi) references Tournois(id) ON DELETE CASCADE); ";  
-            
+                    " FOREIGN KEY (idTournoi) references Tournois(id) ON DELETE CASCADE); ";
+
             st.executeUpdate(sql);
-            
+
+            sql =  "CREATE TABLE IF NOT EXISTS Rondes " +
+                    "(idRonde bigint, " +
+                    " idTournoi bigint , " +
+                    " PRIMARY KEY (idRonde, idTournoi ), " +
+                    " FOREIGN KEY (idTournoi) references Tournois(id) ON DELETE CASCADE); ";
+
+            st.executeUpdate(sql);
+
+            sql =  "CREATE TABLE IF NOT EXISTS Rencontres " +
+                    "(idRencontre bigint auto_increment, " +
+                    "idRonde bigint, " +
+                    "idJoueur1 bigint, " +
+                    "idJoueur2 bigint, " +
+                    "scoreJ1 VARCHAR(16), " +
+                    "scoreJ2 VARCHAR(16), " +
+                    "idGagnant bigint, " +
+                    "PRIMARY KEY (idRencontre), " +
+                    "FOREIGN KEY (idRonde) references Rondes(idRonde) ON DELETE CASCADE, " +
+                    "FOREIGN KEY (idJoueur1) references Joueurs(id) ON DELETE CASCADE, " +
+                    "FOREIGN KEY (idJoueur2) references Joueurs(id) ON DELETE CASCADE, " +
+                    "FOREIGN KEY (idGagnant) references Joueurs(id) ON DELETE CASCADE); ";
+
+            st.executeUpdate(sql);
+
             this.deconnexion();
         } catch (SQLException ex) {
             Logger.getLogger(ConnexionBD.class.getName()).log(Level.SEVERE, null, ex);
@@ -312,7 +336,7 @@ public class ConnexionBD {
         }
     }
         
-    public void deleteParticipationTournoi(int idTournoi){
+    public void deleteAllParticipationTournoi(int idTournoi){
         try {
             initConnexion();
             String sqlPrepared;
@@ -415,6 +439,59 @@ public class ConnexionBD {
         }
         
         return list;
+    }
+
+    public int getNombreParticipants(int idTournoi){
+        int resultat = 0;
+        try {
+            initConnexion();
+            String sqlPrepared;
+            sqlPrepared = "SELECT COUNT(*) "
+                    + "FROM Participer "
+                    + "WHERE idTournoi = ?; ";
+
+            pst = cn.prepareStatement(sqlPrepared);
+
+            pst.setInt(1, idTournoi);
+
+            rs = pst.executeQuery();
+
+            rs.next();
+            resultat = rs.getInt(1);
+
+            deconnexion();
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnexionBD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return resultat;
+    }
+
+    public void insertRonde(int idTournoi, int numeroRonde){
+
+    }
+
+    public void selectAllRondes(int idTournoi){
+
+    }
+
+    public void deleteRonde(int idTournoi, int numeroRonde){
+
+    }
+
+    public void insertRencontre(Map<String, String> informationsRencontre){
+
+    }
+
+    public void deleteRencontre(int idRencontre){
+
+    }
+
+    public void getCouleursJoueesRencontre(int idTournoi, int idJoueurs){
+
+    }
+
+    public void getJoueursRencontres(int idTournoi, int idJoueurs){
+
     }
     
     public void deconnexion(){

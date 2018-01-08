@@ -29,7 +29,7 @@ public class PDF {
         }
         return document;
     }
-     public static void close(Document document) {
+    public static void close(Document document) {
             document.close();
     }
     private static void addMetaData(Document document) {

@@ -34,34 +34,34 @@ public class Joueurs {
         clubJ = "";
     }
     
-    public Joueurs(Map<String, String> infos){
-        if(infos.get("id") != null && !infos.get("id").isEmpty()){
-            idJ = Integer.valueOf(infos.get("id"));
+    Joueurs(Map<String, String> informations){
+        if(informations.get("id") != null && !informations.get("id").isEmpty()){
+            idJ = Integer.valueOf(informations.get("id"));
         }
-        numLicenceJ=infos.get("numLicence");
-        nomJ=infos.get("nom");
-        prenomJ=infos.get("prenom");
-        if("".equals(infos.get("eloClassique"))){
+        numLicenceJ=informations.get("numLicence");
+        nomJ=informations.get("nom");
+        prenomJ=informations.get("prenom");
+        if("".equals(informations.get("eloClassique"))){
             numEloNormalJ="NC";
         }else{
-            numEloNormalJ=infos.get("eloClassique");
+            numEloNormalJ=informations.get("eloClassique");
         }
-        if("".equals(infos.get("eloSemiRapide"))){
+        if("".equals(informations.get("eloSemiRapide"))){
             numEloSemiRapideJ="NC";
         }else{
-            numEloSemiRapideJ=infos.get("eloSemiRapide");
+            numEloSemiRapideJ=informations.get("eloSemiRapide");
         }
-        if("".equals(infos.get("eloRapide"))){
+        if("".equals(informations.get("eloRapide"))){
             numEloRapideJ="NC";
         }else{
-            numEloRapideJ=infos.get("eloRapide");
+            numEloRapideJ=informations.get("eloRapide");
         }      
-        categorieJ=infos.get("categorie");
-        dateNaisJ=infos.get("dateNaissance");
-        sexeJ=infos.get("sexe");
-        federationJ=infos.get("federation");
-        ligueJ=infos.get("ligue");
-        clubJ=infos.get("club");
+        categorieJ=informations.get("categorie");
+        dateNaisJ=informations.get("dateNaissance");
+        sexeJ=informations.get("sexe");
+        federationJ=informations.get("federation");
+        ligueJ=informations.get("ligue");
+        clubJ=informations.get("club");
     }
    
     // Assesseurs
@@ -143,13 +143,13 @@ public class Joueurs {
     }
     
     public String JtoString(){
-        return  "Numero Licence : " + this.numLicenceJ +System.lineSeparator()+
+        return  "Numéro Licence : " + this.numLicenceJ +System.lineSeparator()+
                 "Nom joueur : " + this.nomJ +System.lineSeparator()+ 
                 "Prénom joueur : " + this.prenomJ +System.lineSeparator()+
                 "Elo Classique : " + this.numEloNormalJ +System.lineSeparator()+
                 "Elo SemiRapide : "+ this.numEloSemiRapideJ +System.lineSeparator()+
                 "Elo Rapide :  " + this.numEloRapideJ +System.lineSeparator()+
-                "Categorie : "+this.categorieJ +System.lineSeparator()+
+                "Catégorie : "+this.categorieJ +System.lineSeparator()+
                 "Date Naissance : " + this.dateNaisJ +System.lineSeparator()+
                 "Sexe : " + this.sexeJ +System.lineSeparator()+
                 "Fédération : " + this.federationJ +System.lineSeparator()+

@@ -29,13 +29,15 @@ public class ControllerJoueur {
     }
     
     //Crée une instance de joueur et appelle la fonction saveJoueur
-    public Boolean creerJoueur(Map<String, String> infosJoueur, JLabel nomLabel, JLabel prenomLabel, JLabel sexeLabel, JLabel dateLabel, JTextArea retour){
-        if(!infosJoueur.get("dateNaissance").equals("") && !infosJoueur.get("sexe").equals("")){
-            String cat = this.calculCategorie(infosJoueur.get("dateNaissance"), infosJoueur.get("sexe"));
-            infosJoueur.put("categorie", cat);
+    public Boolean creerJoueur(Map<String, String> informationsJoueur, JLabel nomLabel, JLabel prenomLabel, JLabel sexeLabel, JLabel dateLabel, JTextArea retour){
+        if(!informationsJoueur.get("dateNaissance").equals("") && !informationsJoueur.get("sexe").equals("")){
+            String cat = this.calculCategorie(informationsJoueur.get("dateNaissance"), informationsJoueur.get("sexe"));
+            informationsJoueur.put("categorie", cat);
+        }else{
+            informationsJoueur.put("categorie", "Catégorie non disponible");
         }
-        Joueurs j=new Joueurs(infosJoueur);
-        Boolean isSave = saveJoueur(j, nomLabel, prenomLabel, sexeLabel, dateLabel, retour, infosJoueur);
+        Joueurs j=new Joueurs(informationsJoueur);
+        Boolean isSave = saveJoueur(j, nomLabel, prenomLabel, sexeLabel, dateLabel, retour, informationsJoueur);
         return isSave;
     }
     
@@ -394,7 +396,7 @@ public class ControllerJoueur {
             }else if(age < 50){
                 cat = cat+"Sen";
             }else if(age < 60){
-                cat = cat+"SeP";
+                cat = cat+"Sep";
             }else{
                 cat = cat+"Vet";
             }

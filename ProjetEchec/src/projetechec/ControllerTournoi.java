@@ -22,51 +22,51 @@ public class ControllerTournoi {
     
     private static final ControllerBD CONTROLLER_BD = new ControllerBD();
     
-    public static int idTournoiCourant = -1;
+    private static int idTournoiCourant = -1;
 
-    public static int idJoueurDedans = -1;
-    public static int idJoueurDehors = -1;
-    public static ArrayList<Joueurs> joueursDedans;
-    public static ArrayList<Joueurs> joueursDehors;
+    private static int idJoueurDedans = -1;
+    private static int idJoueurDehors = -1;
+    private static ArrayList<Joueurs> joueursDedans;
+    private static ArrayList<Joueurs> joueursDehors;
     
-    //Réalise l'eregistrement d'un tournoi et renvois la chaine de carctère pour les erreurs ainsi que les codes d'erreur pour les labels graphiques
+    //Réalise l'eregistrement d'un tournoi et renvois la chaîne de caractère pour les erreurs ainsi que les codes d'erreur pour les labels graphiques
     public boolean enregistrerTournoi(Map<String, String> infosTournoi,  JLabel nomTournoiLabel, JLabel dateDebutLabel, JLabel dateFinLabel, JLabel nbRondesLabel, JTextArea retour){
         Tournoi t = new Tournoi(infosTournoi);
-        boolean verif = allVerifTournoi(t, nomTournoiLabel, dateDebutLabel, dateFinLabel, nbRondesLabel, retour);        
-        if(verif){
+        boolean verifications = allVerifTournoi(t, nomTournoiLabel, dateDebutLabel, dateFinLabel, nbRondesLabel, retour);
+        if(verifications){
             CONTROLLER_BD.CreerTournoi(infosTournoi);
         }
-        return verif;
+        return verifications;
     }
     
     //Contient toutes les verification
     //<editor-fold defaultstate="collapsed" desc="Verifications">
     
     //Vérifie que les données obligatoires du tournoi ont bien été rentrée
-    public boolean verifDonneesSensiblesCompletes(Tournoi t){ 
-        boolean verif = true;
+    private boolean verificationDonneesSensiblesCompletes(Tournoi t){
+        boolean verification = true;
         if(stringEstVide(t.getNomTournoi())){
-            verif = false;
+            verification = false;
         }
         if(stringEstVide(t.getDateDebut())){
-            verif = false;
+            verification = false;
         }
         if(stringEstVide(t.getDateFin())){
-            verif = false;
+            verification = false;
         }
         if(t.getNbRondes() == 0){
-            verif = false;
+            verification = false;
         }
-        return verif;
+        return verification;
     }
     
-    //Verifie que la chaine est vide
-    public boolean stringEstVide(String chaineTester){
+    //Vérifie que la chaîne est vide
+    private boolean stringEstVide(String chaineTester){
         return "".equals(chaineTester);
     }
     
     //Vérifie que la taille du nom du tournoi ne dépasse pas 50 caractères
-    public boolean verifTailleNomTournoi(String chaineTester){
+    private boolean verifTailleNomTournoi(String chaineTester){
         boolean verif = true;
         if(chaineTester.length() > 50){
             verif = false;
@@ -75,7 +75,7 @@ public class ControllerTournoi {
     }
     
     //Vérifie que le nombre de rondes est positif
-    public boolean verifNbRondes(int nbRondes){
+    private boolean verifNbRondes(int nbRondes){
         boolean verif = true;
         if(nbRondes < 0){
             verif = false;
@@ -84,7 +84,7 @@ public class ControllerTournoi {
     }
     
     //Convertie la date au format AAAA-MM-JJ
-    public String conversionDate(String date){
+    private String conversionDate(String date){
         String tmp = "";
         tmp = tmp + date.charAt(6) + date.charAt(7) + date.charAt(8) + date.charAt(9);
         tmp += "-";
@@ -96,12 +96,12 @@ public class ControllerTournoi {
     }
     
     //Verifier que la date soit au bon format (00/00/0000)
-    public boolean verifMatchDate(String date){
+    private boolean verifMatchDate(String date){
         return date.matches("([0-9]{2})/([0-9]{2})/([0-9]{4})"); 
     }
     
     //Verifier que la date existe
-    public boolean verifDateValide(String date){
+    private boolean verifDateValide(String date){
         String tmp = this.conversionDate(date);
         boolean checkFormat = true;
         Date datetmp = null;
@@ -121,7 +121,7 @@ public class ControllerTournoi {
     }
     
     //Test avec les fonctions format date
-    public boolean verifFormatDateValide(String date){
+    private boolean verifFormatDateValide(String date){
         boolean checkFormat;
 
         checkFormat = this.verifMatchDate(date);
@@ -133,7 +133,7 @@ public class ControllerTournoi {
     }
     
     //Vérifie que la date de début est plus ancienne que la date de fin
-    public boolean verifDateDebutAvantDateFin(String dateDeb, String dateFi){
+    private boolean verifDateDebutAvantDateFin(String dateDeb, String dateFi){
         String tmpD = this.conversionDate(dateDeb);
         String tmpF = this.conversionDate(dateFi);
         boolean verif = true;
@@ -146,7 +146,7 @@ public class ControllerTournoi {
     }
     
     //Vérifie que la date de début n'est pas encore passée
-    public boolean verifDateDebut(String dateDeb){
+    private boolean verifDateDebut(String dateDeb){
         String tmp = this.conversionDate(dateDeb);
         boolean verif = true;
         LocalDate dateD = LocalDate.parse(tmp);
@@ -158,10 +158,10 @@ public class ControllerTournoi {
     }
     
     //Instancie toutes les vérifications du tournoi
-    public boolean allVerifTournoi(Tournoi t, JLabel nomTournoiLabel, JLabel dateDebutLabel, JLabel dateFinLabel, JLabel nbRondesLabel, JTextArea retour){
+    private boolean allVerifTournoi(Tournoi t, JLabel nomTournoiLabel, JLabel dateDebutLabel, JLabel dateFinLabel, JLabel nbRondesLabel, JTextArea retour){
         String stmp="Données incorrectes: ";
         boolean verif = true;
-        if(!verifDonneesSensiblesCompletes(t)){
+        if(!verificationDonneesSensiblesCompletes(t)){
             verif = false;
             if(stringEstVide(t.getNomTournoi())){
                 nomTournoiLabel.setForeground(Color.red);
@@ -236,7 +236,7 @@ public class ControllerTournoi {
     }
     
     //Appelle la base pour récupérer les tournoi
-    public static ArrayList<Tournoi> lireTournois(){
+    private static ArrayList<Tournoi> lireTournois(){
         ArrayList<Tournoi> listTournoi = new ArrayList<>();
         
         ArrayList<Map<String, String>> listInfosTournois = CONTROLLER_BD.lireTournois();
@@ -251,14 +251,14 @@ public class ControllerTournoi {
     }
     
     //Appelle la base pour récupérer les joueurs
-    public ArrayList<Joueurs> lireJoueursFromTournoi(int idTournoi){
+    private ArrayList<Joueurs> lireJoueursFromTournoi(int idTournoi){
         ArrayList<Joueurs> listJoueurs=new ArrayList<>();
         
         ArrayList<Map<String, String>> listInfosJoueurs = CONTROLLER_BD.recupererJoueursTournoi(idTournoi);
-        
-        for(int i = 0; i < listInfosJoueurs.size() ; i++){
-            Joueurs jtmp= new Joueurs(listInfosJoueurs.get(i));
-                
+
+        for (Map<String, String> listInfosJoueur : listInfosJoueurs) {
+            Joueurs jtmp = new Joueurs(listInfosJoueur);
+
             listJoueurs.add(jtmp);
         }
 
@@ -267,13 +267,13 @@ public class ControllerTournoi {
     
     //renvoie la liste DefaultListModel des tournois
     public static DefaultListModel setTournoisInListModel(JTextArea textArea){
-        String text = new String();
+        StringBuilder text = new StringBuilder();
         ArrayList<Tournoi> listT = lireTournois();
         DefaultListModel listM = new DefaultListModel();
         String tmpList;
         for (int i=0;i<listT.size();i++){
-            text = text + " Tournoi n°"+(i+1)+System.lineSeparator();
-            text = text +listT.get(i).TtoString()+System.lineSeparator();
+            text.append(" Tournoi n°").append(i + 1).append(System.lineSeparator());
+            text.append(listT.get(i).TtoString()).append(System.lineSeparator());
             tmpList =(listT.get(i).getIdT())+" "+listT.get(i).getNomTournoi();
             listM.addElement(tmpList);
         }
@@ -304,12 +304,12 @@ public class ControllerTournoi {
         listJoueursDedans.setModel(listM);
         String tmpList;
         //Créé une list avec les joueurs déjà présent dans le tournoi
-        for (int i=0;i<listJoueursDuTournoi.size();i++){
-            tmpList =(listJoueursDuTournoi.get(i).getIdJ())+ " " +listJoueursDuTournoi.get(i).getNomJ()+ " " +listJoueursDuTournoi.get(i).getPrenomJ()+" "+listJoueursDuTournoi.get(i).getNumLicenceJ();
+        for (Joueurs aListJoueursDuTournoi : listJoueursDuTournoi) {
+            tmpList = (aListJoueursDuTournoi.getIdJ()) + " " + aListJoueursDuTournoi.getNomJ() + " " + aListJoueursDuTournoi.getPrenomJ() + " " + aListJoueursDuTournoi.getNumLicenceJ();
             listM.addElement(tmpList);
         }
         
-        //récupèration des id des joueurs présent dans le tournoi
+        //récupération des id des joueurs présent dans le tournoi
         ArrayList<Joueurs> listJoueurEnDehors = ControllerJoueur.lireJoueur();
         ArrayList<Integer> toRemove = new ArrayList<>();
         for (Joueurs joueur : listJoueursDuTournoi) {
@@ -336,15 +336,15 @@ public class ControllerTournoi {
         DefaultListModel listM2 = new DefaultListModel();
         listJoueursDehors.setModel(listM2);
         String tmpList2;
-        for (int i=0;i<listJoueurEnDehors.size();i++){
-            tmpList2 =(listJoueurEnDehors.get(i).getIdJ())+ " " +listJoueurEnDehors.get(i).getNomJ()+ " " +listJoueurEnDehors.get(i).getPrenomJ()+" "+listJoueurEnDehors.get(i).getNumLicenceJ();
+        for (Joueurs listJoueurEnDehor : listJoueurEnDehors) {
+            tmpList2 = (listJoueurEnDehor.getIdJ()) + " " + listJoueurEnDehor.getNomJ() + " " + listJoueurEnDehor.getPrenomJ() + " " + listJoueurEnDehor.getNumLicenceJ();
             listM2.addElement(tmpList2);
         }
         joueursDedans = listJoueursDuTournoi;
         joueursDehors = listJoueurEnDehors;
     }
     
-    //récupère l'id du joueur séléctionné
+    //récupère l'id du joueur sélectionné
     public void tournoiListGetSelectedJoueurDedans(JList joueurList){
         String s = (String) joueurList.getSelectedValue();
         if(s != null && !s.isEmpty()){
@@ -352,7 +352,6 @@ public class ControllerTournoi {
         }
     }
     
-    //récupère l'id du joueur séléctionné
     public void tournoiListGetSelectedJoueurDehors(JList joueurList){
         String s = (String) joueurList.getSelectedValue();
         if(s != null && !s.isEmpty()){
@@ -368,16 +367,16 @@ public class ControllerTournoi {
             DefaultListModel listM = new DefaultListModel();
             dedans.setModel(listM);
             String tmpList;
-            for (int i = 0; i < joueursDedans.size();i++){
-                tmpList =(joueursDedans.get(i).getIdJ())+" "+joueursDedans.get(i).getNumLicenceJ()+ " " +joueursDedans.get(i).getNomJ()+ " " +joueursDedans.get(i).getPrenomJ();
+            for (Joueurs joueursDedan : joueursDedans) {
+                tmpList = (joueursDedan.getIdJ()) + " " + joueursDedan.getNumLicenceJ() + " " + joueursDedan.getNomJ() + " " + joueursDedan.getPrenomJ();
                 listM.addElement(tmpList);
             }
             
             DefaultListModel listM2 = new DefaultListModel();
             dehors.setModel(listM2);
             String tmpList2;
-            for (int i = 0; i < joueursDehors.size();i++){
-                tmpList2 =(joueursDehors.get(i).getIdJ())+" "+joueursDehors.get(i).getNumLicenceJ()+ " " +joueursDehors.get(i).getNomJ()+ " " +joueursDehors.get(i).getPrenomJ();
+            for (Joueurs joueursDehor : joueursDehors) {
+                tmpList2 = (joueursDehor.getIdJ()) + " " + joueursDehor.getNumLicenceJ() + " " + joueursDehor.getNomJ() + " " + joueursDehor.getPrenomJ();
                 listM2.addElement(tmpList2);
             }
             
@@ -395,16 +394,16 @@ public class ControllerTournoi {
             DefaultListModel listM = new DefaultListModel();
             dehors.setModel(listM);
             String tmpList;
-            for (int i=0;i<joueursDehors.size();i++){
-                tmpList =(joueursDehors.get(i).getIdJ())+" "+joueursDehors.get(i).getNumLicenceJ()+ " " +joueursDehors.get(i).getNomJ()+ " " +joueursDehors.get(i).getPrenomJ();
+            for (Joueurs joueursDehor : joueursDehors) {
+                tmpList = (joueursDehor.getIdJ()) + " " + joueursDehor.getNumLicenceJ() + " " + joueursDehor.getNomJ() + " " + joueursDehor.getPrenomJ();
                 listM.addElement(tmpList);
             }
             
             DefaultListModel listM2 = new DefaultListModel();
             dedans.setModel(listM2);
             String tmpList2;
-            for (int i=0;i<joueursDedans.size();i++){
-                tmpList2 =(joueursDedans.get(i).getIdJ())+" "+joueursDedans.get(i).getNumLicenceJ()+ " " +joueursDedans.get(i).getNomJ()+ " " +joueursDedans.get(i).getPrenomJ();
+            for (Joueurs joueursDedan : joueursDedans) {
+                tmpList2 = (joueursDedan.getIdJ()) + " " + joueursDedan.getNumLicenceJ() + " " + joueursDedan.getNomJ() + " " + joueursDedan.getPrenomJ();
                 listM2.addElement(tmpList2);
             }
             
@@ -417,8 +416,8 @@ public class ControllerTournoi {
     //Permet l'enregistrement d'un joueur dans un tournoi
     public void ajoutJoueursTournoi(){
         CONTROLLER_BD.resetParticipation(idTournoiCourant);
-        for(int i = 0; i < joueursDedans.size(); i++){
-            CONTROLLER_BD.CreerParticipation(joueursDedans.get(i).getIdJ(), idTournoiCourant);
+        for (Joueurs joueursDedan : joueursDedans) {
+            CONTROLLER_BD.CreerParticipation(joueursDedan.getIdJ(), idTournoiCourant);
         }
     }
     
@@ -428,7 +427,7 @@ public class ControllerTournoi {
     }
     
     //Met les information d'un joueur dans une HashMap
-    public static Map<String, String> getInfosTournoi(Tournoi tournoi){
+    private static Map<String, String> getInfosTournoi(Tournoi tournoi){
         Map<String, String> map = new HashMap<>();
         
         map.put("nom", tournoi.getNomTournoi());
@@ -458,6 +457,10 @@ public class ControllerTournoi {
         }
     }
 
+    public static int getNombreParticipants(){
+        return CONTROLLER_BD.recupererNombreParticipation(idTournoiCourant);
+    }
+
     //Vérifie les modifications apportée et modifie le joueur dans la base
     public boolean modifieTournoi(Map<String, String> infosTournoi, JLabel nomLabel, JLabel prenomLabel, JLabel sexeLabel, JLabel dateLabel, JTextArea retour){
         Tournoi t = new Tournoi(infosTournoi);
@@ -478,16 +481,16 @@ public class ControllerTournoi {
         ControllerTournoi.idTournoiCourant = idTournoiCourant;
     }
 
-    public Joueurs getJoueurFromId(ArrayList<Joueurs> joueurs, int id){
+    private Joueurs getJoueurFromId(ArrayList<Joueurs> joueurs, int id){
         boolean trouve = false;
         int i = -1;
         while(!trouve && i < joueurs.size()-1){
             i++;
             if(joueurs.get(i).getIdJ() == id){
-                return joueurs.get(i);
+                trouve = true;
             }
         }
-        return new Joueurs();        
+        return joueurs.get(i);
     }
     
     public void creerPDFListeJoueurs(){

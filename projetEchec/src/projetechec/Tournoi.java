@@ -1,10 +1,6 @@
 package projetechec;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 public class Tournoi {
@@ -15,18 +11,18 @@ public class Tournoi {
     private String dateFin;
     private int nbRondes;
     private String lieu;
-    private ArrayList<Joueurs> joueurs;
+    private List<Joueurs> joueurs;
     
-    public Tournoi(Map<String, String> infos){
-        if(infos.get("id") != null && !infos.get("id").isEmpty()){
-            idT = Integer.valueOf(infos.get("id"));
+    public Tournoi(Map<String, String> informations){
+        if(informations.get("id") != null && !informations.get("id").isEmpty()){
+            idT = Integer.valueOf(informations.get("id"));
         }
-        nomTournoi=infos.get("nom");
-        dateDebut=infos.get("dateDebut");
-        dateFin=infos.get("dateFin");
-        if(!(infos.get("nbRondes").isEmpty())){
+        nomTournoi=informations.get("nom");
+        dateDebut=informations.get("dateDebut");
+        dateFin=informations.get("dateFin");
+        if(!(informations.get("nbRondes").isEmpty())){
             try{
-                nbRondes=Integer.valueOf(infos.get("nbRondes"));
+                nbRondes=Integer.valueOf(informations.get("nbRondes"));
             }catch(java.lang.NumberFormatException e){
                 nbRondes = 0;
             }
@@ -34,7 +30,7 @@ public class Tournoi {
             nbRondes = 0;
         }
         
-        lieu=infos.get("lieu");
+        lieu=informations.get("lieu");
     }
 
     
@@ -86,13 +82,14 @@ public class Tournoi {
         this.lieu = lieu;
     }
     
-    public void setJoueurs(ArrayList<Joueurs> jList){
+    public void setJoueurs(List<Joueurs> jList){
         this.joueurs = jList;
     }
     
-    public ArrayList<Joueurs> getJoueurs(){
+    public List<Joueurs> getJoueurs(){
         return this.joueurs;
     }
+
     public String TtoString(){
         return  "Nom tournoi : " + this.nomTournoi +System.getProperty("line.separator")+
                 "Date de début : " + this.dateDebut +System.getProperty("line.separator")+ 

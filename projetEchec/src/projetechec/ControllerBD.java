@@ -43,7 +43,7 @@ public class ControllerBD {
     }
     
     public void resetParticipation(int idTournoi){
-        CONNEXION_BD.deleteParticipationTournoi(idTournoi);
+        CONNEXION_BD.deleteAllParticipationTournoi(idTournoi);
     }
     
     public void supprimerParticipation(int idJoueur, int idTournoi){
@@ -52,6 +52,10 @@ public class ControllerBD {
     
     public ArrayList<Map<String, String>> recupererJoueursTournoi(int idTournoi){
         return CONNEXION_BD.selectJoueursFromTournoi(idTournoi);
+    }
+
+    public int recupererNombreParticipation(int idTournoi){
+        return CONNEXION_BD.getNombreParticipants(idTournoi);
     }
 
 }
