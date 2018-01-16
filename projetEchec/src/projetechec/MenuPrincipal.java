@@ -1,5 +1,8 @@
 package projetechec;
 
+import com.itextpdf.text.log.SysoLogger;
+import javafx.beans.property.adapter.JavaBeanLongPropertyBuilder;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,13 +25,13 @@ public class MenuPrincipal extends javax.swing.JFrame implements ActionListener,
     //Boutons utilisés par plusieurs panels
     private JButton buttonMenuPrincipal;
 
-        //Boutons du menuPrincipal
+    //Boutons du menuPrincipal
     private JButton buttonCreationJoueurs;
     private JButton buttonCreationTournois;
     private JButton buttonGestionJoueurs;
     private JButton buttonGestionTournois;
 
-        //Boutons et champs de text du panel Création/Modification Joueur
+    //Boutons et champs de text du panel Création/Modification Joueur
     private JTextField textFieldNom;
     private JTextField textFieldPrenom;
     private JTextField textFieldDate;
@@ -60,7 +63,7 @@ public class MenuPrincipal extends javax.swing.JFrame implements ActionListener,
     private JButton buttonEnregistrerJoueur;
     private JButton buttonResetInfosJoueur;
 
-        //Bouton et list du panel Gestion Joueurs
+    //Bouton et list du panel Gestion Joueurs
     private JList listJoueurs;
     private JTextArea textAreaJoueurs;
 
@@ -69,7 +72,7 @@ public class MenuPrincipal extends javax.swing.JFrame implements ActionListener,
     private JButton buttonModifierJoueur;
     private JButton buttonSupprimerJoueur;
 
-        //Boutons et champs de text du panel Création/Modification Tournoi
+    //Boutons et champs de text du panel Création/Modification Tournoi
     private JTextField textFieldNomTournoi;
     private JTextField textFieldDateDebut;
     private JTextField textFieldDateFin;
@@ -87,7 +90,7 @@ public class MenuPrincipal extends javax.swing.JFrame implements ActionListener,
     private JButton buttonEnregistrerTournoi;
     private JButton buttonResetInfosTournoi;
 
-        //Bouton et list du panel Gestion Tournois
+    //Bouton et list du panel Gestion Tournois
     private JList listTournois;
     private JTextArea textAreaTournois;
 
@@ -103,8 +106,9 @@ public class MenuPrincipal extends javax.swing.JFrame implements ActionListener,
     private JButton buttonSelectionRonde;
     private JButton buttonGenererListParticipant;
 
-        //Bouton du panel EcranTournoi
+    //Bouton du panel EcranTournoi
     private JPanel panelContainerAppareillement;
+    private JComboBox comboBoxRondes;
 
     private ArrayList<JComboBox> tableauComboBoxJoueur;
     private ArrayList<JComboBox> tableauComboBoxCouleur;
@@ -112,7 +116,7 @@ public class MenuPrincipal extends javax.swing.JFrame implements ActionListener,
 
     private JButton buttonValiderAppareillement;
 
-        //Elements panel AjoutJoueursTournoi
+    //Elements panel AjoutJoueursTournoi
     private JButton buttonAjouter;
     private JButton buttonEnlever;
     private JButton buttonConfirmer;
@@ -637,29 +641,37 @@ public class MenuPrincipal extends javax.swing.JFrame implements ActionListener,
         JPanel panelAffichageTitreEcranTournoi = new JPanel();
         panelAffichageTitreEcranTournoi.add(labelTitreTournoi);
 
-        panelContainerAppareillement = new JPanel(flowLayout);
+        panelContainerAppareillement = new JPanel(new GridLayout(2,1,5,20));
+        panelContainerAppareillement.setMinimumSize(new Dimension(500, 300));
 
         JPanel panelButtonsEcranTournoi = new JPanel();
         flowLayout = new FlowLayout();
         flowLayout.setHgap(10);
+        flowLayout.setVgap(20);
         panelButtonsEcranTournoi.setLayout(flowLayout);
         panelButtonsEcranTournoi.setMinimumSize(new Dimension(500, 300));
 
-
-
-        JPanel panelAppareillementJoueurs = new JPanel();
-        JScrollPane scrollPaneAppareillementJoueurs = new JScrollPane();
-        scrollPaneAppareillementJoueurs.setViewportView(panelAppareillementJoueurs);
-        scrollPaneAppareillementJoueurs.setAutoscrolls(true);
-
-        panelContainerAppareillement.add(scrollPaneAppareillementJoueurs);
-
         buttonAjouterJoueursAuTournoi = new JButton("Ajouter des Joueurs au tournoi");
+
+        JPanel miniPanelGestionRondes = new JPanel(new GridLayout(2,1,5,5));
+        JPanel labelRondeEtComboBox = new JPanel(new FlowLayout());
+
+        JLabel labelRonde = new JLabel("Ronde à sélectionner : ");
+        String[] rondes = CONTROLLER_TOURNOI.rondesJusquaMaintenant();
+        comboBoxRondes = new JComboBox(rondes);
+        comboBoxRondes.setSelectedIndex(-1);
         buttonSelectionRonde = new JButton("Sélectionner une ronde");
         buttonGenererListParticipant = new JButton("Générer la liste des participants");
         buttonMenuPrincipal = new JButton("Menu Principal");
+
+        labelRondeEtComboBox.add(labelRonde);
+        labelRondeEtComboBox.add(comboBoxRondes);
+
+        miniPanelGestionRondes.add(labelRondeEtComboBox);
+        miniPanelGestionRondes.add(buttonSelectionRonde);
+
         panelButtonsEcranTournoi.add(buttonAjouterJoueursAuTournoi);
-        panelButtonsEcranTournoi.add(buttonSelectionRonde);
+        panelButtonsEcranTournoi.add(miniPanelGestionRondes);
         panelButtonsEcranTournoi.add(buttonGenererListParticipant);
         panelButtonsEcranTournoi.add(buttonMenuPrincipal);
 
@@ -667,7 +679,8 @@ public class MenuPrincipal extends javax.swing.JFrame implements ActionListener,
 
         ecranTournoiMainContent.add(panelButtonsEcranTournoi);
 
-        ecranTournoiMainContent.add(panelAppareillementJoueurs);
+        ecranTournoiMainContent.add(panelContainerAppareillement);
+        panelContainerAppareillement.setVisible(false);
 
         buttonAjouterJoueursAuTournoi.addActionListener(this);
         buttonSelectionRonde.addActionListener(this);
@@ -889,20 +902,38 @@ public class MenuPrincipal extends javax.swing.JFrame implements ActionListener,
     public void setAppareillementJoueur(){
         //panelContainerAppareillement
 
-        JPanel ensembleLignesAppareillement = new EnsembleLigneAppareillement();
+        int nbParticipants = ControllerTournoi.getNombreParticipants();
+        int nombreLignes;
+        if(nbParticipants %2 == 0){
+            nombreLignes = nbParticipants/2;
+        } else {
+            nombreLignes = (nbParticipants/2) + 1;
+        }
 
-        JScrollPane scrollPaneAppareillementJoueurs = new JScrollPane();
-        scrollPaneAppareillementJoueurs.setViewportView(ensembleLignesAppareillement);
+        FlowLayout flowLayout = new FlowLayout();
+        flowLayout.setHgap(5);
+        flowLayout.setVgap(20);
+
+        JPanel ensembleLignesAppareillement = new EnsembleLigneAppareillement(new GridLayout(nombreLignes+1, 1, 5, 20));
+        ensembleLignesAppareillement.setMinimumSize(new Dimension(300, 300));
+
+        JScrollPane scrollPaneAppareillementJoueurs = new JScrollPane(ensembleLignesAppareillement,JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        //scrollPaneAppareillementJoueurs.setMinimumSize(new Dimension(400, 200));
+        scrollPaneAppareillementJoueurs.setPreferredSize(new Dimension(600, 500));
         scrollPaneAppareillementJoueurs.setAutoscrolls(true);
 
         JPanel panelButtonValider = new JPanel();
-        buttonValiderAppareillement = new JButton("Valider");
 
+        buttonValiderAppareillement = new JButton("Valider");
         panelButtonValider.add(buttonValiderAppareillement);
         buttonValiderAppareillement.addActionListener(this);
 
+        //panelContainerAppareillement.add(scrollPaneAppareillementJoueurs);
+
+
         panelContainerAppareillement.add(scrollPaneAppareillementJoueurs);
         panelContainerAppareillement.add(panelButtonValider);
+        panelContainerAppareillement.setVisible(true);
     }
 
     @Override
@@ -932,7 +963,6 @@ public class MenuPrincipal extends javax.swing.JFrame implements ActionListener,
             ControllerTournoi.setIdTournoiCourant(-1);
             createPanelGestionTournoi();
         }
-
         //Actions CréationModificationJoueur
         if (e.getSource() == buttonEnregistrerJoueur) {
             enregistrerJoueur();
@@ -940,6 +970,7 @@ public class MenuPrincipal extends javax.swing.JFrame implements ActionListener,
         if (e.getSource() == buttonResetInfosJoueur) {
             resetInformationFormulaireJoueur();
         }
+
 
         //Actions de GestionJoueurs
         if (e.getSource() == buttonModifierJoueur) {
@@ -1000,43 +1031,51 @@ public class MenuPrincipal extends javax.swing.JFrame implements ActionListener,
         }
 
         //Action de Ecran Tournoi
-        if(e.getSource() == buttonAjouterJoueursAuTournoi){
+        if (e.getSource() == buttonAjouterJoueursAuTournoi) {
             createPanelAjoutJoueurTournoi();
         }
-        if(e.getSource() == buttonSelectionRonde){
-
+        if (e.getSource() == buttonSelectionRonde) {
+            String rondeSelected = comboBoxRondes.getSelectedItem().toString();
+            if(rondeSelected != null && !rondeSelected.isEmpty()){
+                if(CONTROLLER_TOURNOI.verifExistanceRonde(Integer.valueOf(rondeSelected))){
+                    //TODO : Afficher les donnée de la ronde récupérées sur la base.
+                } else {
+                    //TODO : Créer la ronde et l'insérer dans la base puis créer un pannel de joueurs
+                    setAppareillementJoueur();
+                }
+            }
         }
-        if(e.getSource() == buttonGenererListParticipant){
+        if (e.getSource() == buttonGenererListParticipant) {
             CONTROLLER_TOURNOI.creerPDFListeJoueurs();
         }
-        if(e.getSource() == buttonValiderAppareillement){
+        if (e.getSource() == buttonValiderAppareillement) {
             //enregistrer les rencontres dnas la base de données
         }
 
         //Action de Ajout Joueurs Tournoi
-        if(e.getSource() == buttonAjouter){
+        if (e.getSource() == buttonAjouter) {
             CONTROLLER_TOURNOI.ajoutJoueurToTournoiList(listJoueursDedans, listJoueursDehors);
         }
-        if(e.getSource() == buttonEnlever){
+        if (e.getSource() == buttonEnlever) {
             CONTROLLER_TOURNOI.retireJoueurToTournoiList(listJoueursDedans, listJoueursDehors);
         }
-        if(e.getSource() == buttonConfirmer){
+        if (e.getSource() == buttonConfirmer) {
             CONTROLLER_TOURNOI.ajoutJoueursTournoi();
             labelInformationConfirmationAjoutJoueur.setText("Enregistrement confirmé");
             confirmed = true;
         }
-        if(e.getSource() == buttonRetour){
-            if(!confirmed){
+        if (e.getSource() == buttonRetour) {
+            if (!confirmed) {
                 confirmed = true;
                 labelInformationConfirmationAjoutJoueur.setText("Vous n'avez pas enregistré, appuyez de nouveau sur retour pour annuler");
-            }else{
+            } else {
                 labelInformationConfirmationAjoutJoueur.setText("");
                 confirmed = false;
 
                 createPanelEcranTournoi();
             }
         }
-        if(e.getSource() == buttonAnnuler){
+        if (e.getSource() == buttonAnnuler) {
             createPanelEcranTournoi();
         }
     }
