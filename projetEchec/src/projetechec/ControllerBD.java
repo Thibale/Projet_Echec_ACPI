@@ -29,6 +29,10 @@ public class ControllerBD {
     public ArrayList<Map<String, String>> lireTournois(){
         return CONNEXION_BD.selectAllTournois();
     }
+    
+    public String getNomTournoiCourant(int id){
+        return CONNEXION_BD.nomTournoiCourant(id);
+    }
 
     public void modifierTournoi(int id, Map<String, String> informationsTournoi){
         CONNEXION_BD.updateTournoi(id, informationsTournoi);

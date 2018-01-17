@@ -52,7 +52,12 @@ public class PDF {
         addEmptyLine(preface, 1);
        document.add(preface);
     }
-
+    public static void addNomTournoi(Document document, String s)throws DocumentException {
+        String nomT = "Nom du tournoi: "+s;
+        Paragraph nom = new Paragraph(nomT);
+        addEmptyLine(nom, 1);
+        document.add(nom);
+    }
     public static void addContent(Document document, ArrayList<Joueurs> joueursDuTournoi) throws DocumentException {
         int i;
         PdfPTable   table = new PdfPTable(new float[] { 4f, 4f, 2f, 4f, 4f, 2.5f, 3f });

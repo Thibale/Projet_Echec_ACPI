@@ -253,7 +253,31 @@ public class ConnexionBD {
             Logger.getLogger(ConnexionBD.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public String nomTournoiCourant(int id){
+        String nomTournoi="";
+        try{
+            initConnexion();
+            String sqlPrepared;
+            sqlPrepared = "SELECT nom "
+                    + "FROM Tournois "
+                    + "WHERE id = ?; ";
 
+            pst = cn.prepareStatement(sqlPrepared);
+
+            pst.setInt(1, id);
+
+            rs = pst.executeQuery();
+
+            rs.next();
+            nomTournoi = rs.getString(1);
+
+            deconnexion();
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnexionBD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return nomTournoi;
+    }
     public ArrayList<Map<String, String>> selectAllTournois(){
         ArrayList<Map<String, String>> list = new ArrayList<>();
         try {

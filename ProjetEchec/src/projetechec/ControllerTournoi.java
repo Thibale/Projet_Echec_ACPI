@@ -508,7 +508,9 @@ public class ControllerTournoi {
     public void creerPDFListeJoueurs(){
         try {
             ArrayList<Joueurs> ListeJoueurs = lireJoueursFromTournoi(idTournoiCourant);
+            String NomTournoi = CONTROLLER_BD.getNomTournoiCourant(idTournoiCourant);
             Document document = PDF.creerPDF();
+            PDF.addNomTournoi(document, NomTournoi);
             PDF.addContent(document, ListeJoueurs);
             PDF.close(document);
         } catch (DocumentException ex) {
