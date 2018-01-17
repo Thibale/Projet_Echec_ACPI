@@ -158,6 +158,6 @@ public class Joueurs {
     }
     
     public String affichageListe(){
-        return nomJ+" "+prenomJ+"   "+numEloNormalJ+" "+categorieJ+" "+federationJ+" "+ligueJ+" "+clubJ;
+        return nomJ+"   "+prenomJ+"   "+numEloNormalJ+"   "+categorieJ+"      "+federationJ+"      "+ligueJ+"     "+clubJ;
     }
 }  

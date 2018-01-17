@@ -6,9 +6,13 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -45,17 +49,32 @@ public class PDF {
         addEmptyLine(preface, 1);
         // gros titre
         preface.add(new Paragraph("Liste des joueurs", catFont));
-
         addEmptyLine(preface, 1);
        document.add(preface);
     }
 
     public static void addContent(Document document, ArrayList<Joueurs> joueursDuTournoi) throws DocumentException {
         int i;
-        for(i=0;i<joueursDuTournoi.size();i++){
-            Paragraph infoJoueur = new Paragraph(joueursDuTournoi.get(i).affichageListe());
-            document.add(infoJoueur);
-        }
+        PdfPTable   table = new PdfPTable(new float[] { 4f, 4f, 2f, 4f, 4f, 2.5f, 3f });
+ 
+                table.addCell(new Phrase("Nom"));
+                table.addCell(new Phrase("Prénom"));
+                table.addCell(new Phrase("Elo"));
+                table.addCell(new Phrase("Categorie"));
+                table.addCell(new Phrase("Fédération"));
+                table.addCell(new Phrase("Ligue"));
+                table.addCell(new Phrase("Club"));
+
+            for(i=0;i<joueursDuTournoi.size();i++) {
+                table.addCell(joueursDuTournoi.get(i).getNomJ());
+                table.addCell(joueursDuTournoi.get(i).getPrenomJ());
+                table.addCell(joueursDuTournoi.get(i).getNumEloNormalJ());
+                table.addCell(joueursDuTournoi.get(i).getCategorieJ());
+                table.addCell(joueursDuTournoi.get(i).getFederationJ());
+                table.addCell(joueursDuTournoi.get(i).getLigueJ());
+                table.addCell(joueursDuTournoi.get(i).getClubJ());
+            }
+         document.add(table);
     }
     
     private static void addEmptyLine(Paragraph paragraph, int number) {
